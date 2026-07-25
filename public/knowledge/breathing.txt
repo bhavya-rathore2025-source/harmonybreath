@@ -1,0 +1,244 @@
+# HarmonyBreath Knowledge Base
+
+## Wim Hof Breathing
+
+---
+
+# OVERVIEW
+
+Wim Hof Breathing is a controlled breathing method developed by Wim Hof. It combines rhythmic deep breathing, breath retention after exhalation, and a short recovery breath hold. The technique is commonly practiced for relaxation, mental focus, stress resilience, and increased body awareness.
+
+HarmonyBreath presents this breathing method for educational and wellness purposes only. It does not provide medical advice and should not replace professional healthcare.
+
+---
+
+# HOW A SESSION WORKS
+
+A complete session consists of multiple rounds.
+
+Each round follows this sequence:
+
+### Phase 1 – Guided Breathing
+
+* Take deep, controlled inhales.
+* Relax the exhale naturally.
+* Continue for **30 breaths**.
+* Total guided breathing time is **90 seconds**.
+
+---
+
+### Phase 2 – Breath-Out Hold
+
+* After the final inhale, gently exhale and hold the breath.
+* Stay relaxed throughout the hold.
+* Never force the hold beyond a comfortable limit.
+
+---
+
+### Phase 3 – Recovery Breath
+
+* Take one deep inhale.
+* Hold the inhale for **15 seconds**.
+* Exhale naturally.
+* Begin the next round.
+
+---
+
+# DEFAULT SESSION PRESETS
+
+HarmonyBreath provides four difficulty levels.
+
+Only the breath-out hold changes between levels.
+
+## Beginner
+
+* 30 breaths
+* 90 seconds guided breathing
+* 60 seconds breath-out hold
+* 15 seconds recovery breath hold
+* 3 rounds
+
+---
+
+## Intermediate
+
+* 30 breaths
+* 90 seconds guided breathing
+* 90 seconds breath-out hold
+* 15 seconds recovery breath hold
+* 3 rounds
+
+---
+
+## Advanced
+
+* 30 breaths
+* 90 seconds guided breathing
+* 120 seconds breath-out hold
+* 15 seconds recovery breath hold
+* 3 rounds
+
+---
+
+## Expert
+
+* 30 breaths
+* 90 seconds guided breathing
+* 150 seconds breath-out hold
+* 15 seconds recovery breath hold
+* 3 rounds
+
+---
+
+# PROGRESSION RULES
+
+The following values never change:
+
+* Guided breathing duration: **90 seconds default**
+* Breath count: **30 breaths default**
+* Recovery breath hold: **15 seconds default**
+* Number of rounds: 3 default
+
+Only the breath-out hold duration changes between difficulty levels.
+
+---
+
+# BREATHING STYLE
+
+## Inhale
+
+* Deep but comfortable.
+* Expand the belly first.
+* Then expand the chest.
+
+## Exhale
+
+* Relax naturally.
+* Do not force all the air out.
+* Maintain a smooth rhythm.
+
+The breathing should always feel relaxed rather than rushed.
+
+---
+
+# BENEFITS
+
+People commonly practice Wim Hof Breathing for:
+
+* Relaxation
+* Improved focus
+* Stress management
+* Greater body awareness
+* Increased energy
+* Mindfulness
+* Breath awareness
+
+Scientific research on Wim Hof Breathing is ongoing. HarmonyBreath should never claim guaranteed medical benefits or cures.
+
+---
+
+# SAFETY
+
+Users should stop the session immediately if they experience:
+
+* Severe dizziness
+* Chest pain
+* Difficulty breathing
+* Loss of consciousness
+* Any unusual or concerning symptoms
+
+Never practice Wim Hof Breathing:
+
+* While driving
+* While cycling
+* While swimming
+* During free diving
+* While operating machinery
+* In any place where losing consciousness could be dangerous
+
+Always practice:
+
+* Sitting comfortably
+* Or lying down
+* In a safe environment
+
+People who are pregnant or have significant medical conditions should consult a qualified healthcare professional before practicing.
+
+---
+
+# WEBSITE OBJECTIVES
+
+HarmonyBreath should help users understand:
+
+* What Wim Hof Breathing is
+* Why people practice it
+* How to perform it correctly
+* Safety precautions
+* Common beginner mistakes
+* Frequently asked questions
+
+The overall experience should feel:
+
+* Calm
+* Minimal
+* Professional
+* Beginner-friendly
+* Educational
+* Trustworthy
+
+---
+
+# TIMER REQUIREMENTS
+
+The breathing timer should include:
+
+* Difficulty selection
+* Start session
+* Pause
+* Resume
+* Restart
+* Visual breathing animation
+* Current breathing phase
+* Breath counter
+* Round counter
+* Session progress indicator
+* Countdown timer
+* Responsive design
+* Smooth animations
+
+---
+
+# FUTURE FEATURES
+
+HarmonyBreath is designed to expand into a complete breathing platform.
+
+Future breathing techniques may include:
+
+* Box Breathing
+* 4-7-8 Breathing
+* Coherent Breathing
+* Alternate Nostril Breathing
+* Resonant Breathing
+* Tactical Breathing
+
+Future features may include:
+
+* Guided breathing timers
+* Custom breathing patterns
+* Educational articles
+* Breathing challenges
+* Progress tracking
+* Nature sounds
+* Voice guidance
+* Favorites
+* Daily breathing reminders
+
+---
+
+# DISCLAIMER
+
+HarmonyBreath is intended for educational and wellness purposes only.
+
+The information provided on this website is not medical advice and should not be used to diagnose, treat, cure, or prevent any disease.
+
+Users are responsible for practicing safely and should consult a qualified healthcare professional regarding any medical concerns before beginning breathing exercises.
