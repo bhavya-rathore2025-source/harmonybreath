@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --canvas: #000000;
+    --canvas-soft: #0a0a0a;
+    --canvas-card: #121212;
+    --hairline: #222222;
+    --hairline-strong: #333333;
+    --ink: #ffffff;
+    --ink-muted: #888888;
+    --ink-subtle: #666666;
+    --accent-cyan: #50e3c2;
+    --accent-blue: #0070f3;
+    --accent-violet: #7928ca;
+    --accent-magenta: #eb367f;
+    --accent-amber: #f5a623;
+  }
+
+  body {
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-family: Geist, Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Vercel mesh gradient animation background */
+.hero-gradient-mesh {
+  background: radial-gradient(circle at 50% 20%, rgba(0, 112, 243, 0.15), transparent 50%),
+              radial-gradient(circle at 20% 50%, rgba(121, 40, 202, 0.12), transparent 45%),
+              radial-gradient(circle at 80% 60%, rgba(80, 227, 194, 0.10), transparent 45%);
+}
+
+.gradient-text-develop {
+  background: linear-gradient(135deg, #007cf0 0%, #00dfd8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-preview {
+  background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-ship {
+  background: linear-gradient(135deg, #ff4d4d 0%, #f9cb28 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-border-glow {
+  position: relative;
+}
+
+.gradient-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 124, 240, 0.4), rgba(121, 40, 202, 0.4), rgba(255, 0, 128, 0.4));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Custom breathing pulsing animation ring */
+@keyframes breathPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+    box-shadow: 0 0 20px rgba(0, 124, 240, 0.3);
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
+    box-shadow: 0 0 60px rgba(80, 227, 194, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+    box-shadow: 0 0 20px rgba(0, 124, 240, 0.3);
+  }
+}
+
+.animate-breath {
+  animation: breathPulse 3s ease-in-out infinite;
+}
+
+.font-mono-numbers {
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+}

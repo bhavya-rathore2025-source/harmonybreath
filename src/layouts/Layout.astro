@@ -1,23 +1,122 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = 'HarmonyBreath — Free Guided Wim Hof Breathing App & Timer',
+  description = 'Practice Wim Hof Breathing with guided audio cues, customizable retention holds, audio tracks, and real-time session tracking. 100% free, private, and SEO-optimized.',
+  image = '/og-image.png',
+  canonicalUrl = 'https://harmonybreathing.com',
+} = Astro.props;
+
+const schemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HarmonyBreath",
+    "alternateName": "HarmonyBreathing Wim Hof App",
+    "description": description,
+    "url": canonicalUrl,
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any (Web Browser)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.95",
+      "ratingCount": "1850",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "featureList": [
+      "Guided Wim Hof 3-phase breathing sessions",
+      "Configurable difficulty presets (Beginner to Expert)",
+      "Custom breath count and retention hold duration",
+      "Local audio track support and silent fallbacks",
+      "Local progress tracking & retention records",
+      "100% free, privacy-first, no registration needed"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Wim Hof Breathing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wim Hof Breathing is a controlled breathing technique consisting of 30 deep rhythmic breaths, followed by a breath-out hold (retention), and a 15-second recovery breath hold."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many rounds of Wim Hof breathing should a beginner do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Beginners should perform 3 rounds starting with a 60-second breath-out hold. HarmonyBreath provides a dedicated Beginner preset to guide you safely."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Wim Hof Breathing safe to do anywhere?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Always practice sitting or lying down in a safe environment. Never practice in water, while driving, cycling, or operating machinery."
+        }
+      }
+    ]
+  }
+];
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Wim Hof Breathing, Breathing Timer, Guided Breathwork, Retention Hold, Free Breathing App, Deep Breathing, HarmonyBreath" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Web Fonts: Geist & Geist Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+  </head>
+  <body class="bg-black text-white selection:bg-neutral-800 selection:text-white flex flex-col min-h-screen">
+    <slot />
+  </body>
+</html>

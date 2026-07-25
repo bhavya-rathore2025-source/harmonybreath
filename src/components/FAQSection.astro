@@ -1,0 +1,51 @@
+---
+const faqs = [
+  {
+    q: "What is Wim Hof Breathing and how does it work?",
+    a: "Wim Hof Breathing is a controlled hyperoxygenation method developed by Wim Hof. It involves 30 deep rhythmic breaths (filling belly then chest), followed by a breath-out retention hold, and a 15-second recovery breath hold."
+  },
+  {
+    q: "Why do I feel lightheaded or tingling during guided breathing?",
+    a: "Tingling sensations in fingers or light lightheadedness are normal reactions caused by blowing off carbon dioxide and temporarily altering oxygen saturation. Always practice sitting or lying down."
+  },
+  {
+    q: "How long should I hold my breath during Phase 2?",
+    a: "Never force your breath hold. Start with the Beginner preset (60 seconds hold) and naturally let your body adapt. As you practice regularly, your comfortable retention time will increase."
+  },
+  {
+    q: "Is HarmonyBreath 100% free with no hidden charges?",
+    a: "Yes! HarmonyBreath is completely free, privacy-focused, requires no account registration, and works offline."
+  },
+  {
+    q: "Can I add my own audio files to guided breathing?",
+    a: "Yes. HarmonyBreath is built to reference local audio files in public/audio/ (such as guided-breathing.mp3, breath-out-hold.mp3, and recovery-hold.mp3) and degrades gracefully if no audio is present."
+  }
+];
+---
+
+<section id="faq-section" class="w-full max-w-4xl mx-auto py-16 px-4 border-t border-neutral-900">
+  <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+    <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400">Frequently Asked Questions</h2>
+    <h3 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+      Everything You Need to Know
+    </h3>
+  </div>
+
+  <div class="space-y-4">
+    {faqs.map((faq, idx) => (
+      <details class="group border border-neutral-800 rounded-xl bg-neutral-950/60 p-5 font-sans [&_summary::-webkit-details-marker]:hidden transition-all duration-200 hover:border-neutral-700">
+        <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-sm sm:text-base">
+          <span>{faq.q}</span>
+          <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-cyan-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
+        </summary>
+        <p class="mt-4 text-xs sm:text-sm text-neutral-400 leading-relaxed font-mono">
+          {faq.a}
+        </p>
+      </details>
+    ))}
+  </div>
+</section>

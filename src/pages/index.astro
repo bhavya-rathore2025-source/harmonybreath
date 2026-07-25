@@ -1,11 +1,53 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../components/Header.astro';
+import BreathingTimer from '../components/BreathingTimer.astro';
+import AnalyticsPanel from '../components/AnalyticsPanel.astro';
+import TechniqueGuide from '../components/TechniqueGuide.astro';
+import SafetyModal from '../components/SafetyModal.astro';
+import FAQSection from '../components/FAQSection.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout 
+  title="HarmonyBreath — Free Guided Wim Hof Breathing App & Timer"
+  description="Master Wim Hof Breathing with guided 3-phase sessions, customizable retention holds, local audio tracks, and session tracking. 100% free & SEO-optimized."
+>
+  <Header />
+
+  <main class="flex-1 hero-gradient-mesh relative">
+    <!-- Hero Header Banner -->
+    <section class="w-full max-w-4xl mx-auto pt-12 pb-6 px-4 text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-mono mb-2">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+        Interactive Wim Hof Breathing Platform
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+        Master Your Breath, <br />
+        <span class="gradient-text-develop">Elevate Your Mind.</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans">
+        Experience guided 30-breath cycles, customizable retention holds, local audio integration, and session statistics. Free, private, and designed for optimal focus.
+      </p>
+    </section>
+
+    <!-- Main Interactive Breathing Timer Component -->
+    <BreathingTimer />
+
+    <!-- Analytics Stats Panel -->
+    <AnalyticsPanel />
+
+    <!-- Step-by-Step Technique Guide -->
+    <TechniqueGuide />
+
+    <!-- Safety Precautions & Contraindications -->
+    <SafetyModal />
+
+    <!-- FAQ Section -->
+    <FAQSection />
+  </main>
+
+  <Footer />
 </Layout>

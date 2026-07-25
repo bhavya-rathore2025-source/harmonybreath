@@ -1,0 +1,88 @@
+---
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-neutral-900 bg-black/80 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="/" class="flex items-center gap-2.5 group">
+      <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-400 via-blue-600 to-purple-600 p-[1px] shadow-lg shadow-cyan-500/10 group-hover:scale-105 transition-transform duration-300">
+        <div class="w-full h-full bg-black rounded-full flex items-center justify-center">
+          <svg class="w-4 h-4 text-cyan-400 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-bold text-lg tracking-tight text-white flex items-center gap-1.5">
+          Harmony<span class="gradient-text-develop">Breath</span>
+        </span>
+      </div>
+    </a>
+
+    <!-- Nav Items -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-400">
+      <a href="#timer-section" class="hover:text-white transition-colors duration-200">Timer</a>
+      <a href="#technique-section" class="hover:text-white transition-colors duration-200">Technique</a>
+      <a href="#safety-section" class="hover:text-white transition-colors duration-200">Safety</a>
+      <a href="#faq-section" class="hover:text-white transition-colors duration-200">FAQ</a>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-3">
+      <!-- Sound Mute/Unmute Toggle -->
+      <button 
+        id="sound-toggle-btn"
+        type="button" 
+        class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 text-xs font-mono text-neutral-300 hover:text-white transition-all"
+        title="Toggle Audio Cues & Music"
+      >
+        <svg id="sound-on-icon" class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+        </svg>
+        <svg id="sound-off-icon" class="w-3.5 h-3.5 text-neutral-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+        </svg>
+        <span id="sound-label">Audio On</span>
+      </button>
+
+      <a 
+        href="#timer-section"
+        class="hidden sm:inline-flex items-center justify-center px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-black hover:bg-neutral-200 transition-colors shadow-sm"
+      >
+        Start Practice
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { audioPlayer } from '../utils/audioPlayer';
+
+  const btn = document.getElementById('sound-toggle-btn');
+  const soundOnIcon = document.getElementById('sound-on-icon');
+  const soundOffIcon = document.getElementById('sound-off-icon');
+  const soundLabel = document.getElementById('sound-label');
+
+  let isMuted = localStorage.getItem('hb_muted') === 'true';
+
+  function updateSoundUI() {
+    audioPlayer.setMuted(isMuted);
+    if (isMuted) {
+      soundOnIcon?.classList.add('hidden');
+      soundOffIcon?.classList.remove('hidden');
+      if (soundLabel) soundLabel.textContent = 'Muted';
+    } else {
+      soundOnIcon?.classList.remove('hidden');
+      soundOffIcon?.classList.add('hidden');
+      if (soundLabel) soundLabel.textContent = 'Audio On';
+    }
+  }
+
+  updateSoundUI();
+
+  btn?.addEventListener('click', () => {
+    isMuted = !isMuted;
+    localStorage.setItem('hb_muted', String(isMuted));
+    updateSoundUI();
+  });
+</script>

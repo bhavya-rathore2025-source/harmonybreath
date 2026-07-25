@@ -1,0 +1,61 @@
+---
+---
+
+<div class="w-full max-w-4xl mx-auto my-8 px-4">
+  <div class="bg-neutral-950/60 border border-neutral-800 rounded-2xl p-6 backdrop-blur-md">
+    <div class="flex items-center justify-between border-b border-neutral-800 pb-4 mb-6">
+      <div class="flex items-center gap-2">
+        <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        <h3 class="text-sm font-mono text-white uppercase tracking-wider font-semibold">Your Practice Stats</h3>
+      </div>
+      <span class="text-[11px] font-mono text-neutral-500">Stored Locally (Private)</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+      <!-- Total Sessions -->
+      <div class="p-4 rounded-xl bg-neutral-900/40 border border-neutral-800/80">
+        <div class="text-xs font-mono text-neutral-400">Total Sessions</div>
+        <div id="stat-sessions" class="text-3xl font-extrabold text-white font-mono-numbers mt-1">0</div>
+        <div class="text-[10px] text-neutral-500 mt-1">Completed exercises</div>
+      </div>
+
+      <!-- Total Rounds -->
+      <div class="p-4 rounded-xl bg-neutral-900/40 border border-neutral-800/80">
+        <div class="text-xs font-mono text-neutral-400">Total Rounds</div>
+        <div id="stat-rounds" class="text-3xl font-extrabold text-cyan-400 font-mono-numbers mt-1">0</div>
+        <div class="text-[10px] text-neutral-500 mt-1">Breath cycles completed</div>
+      </div>
+
+      <!-- Best Retention Hold -->
+      <div class="p-4 rounded-xl bg-neutral-900/40 border border-neutral-800/80">
+        <div class="text-xs font-mono text-neutral-400">Personal Best Hold</div>
+        <div id="stat-best-hold" class="text-3xl font-extrabold text-purple-400 font-mono-numbers mt-1">0s</div>
+        <div class="text-[10px] text-neutral-500 mt-1">Max retention record</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function renderStats() {
+    try {
+      const statsStr = localStorage.getItem('hb_session_stats');
+      const stats = statsStr ? JSON.parse(statsStr) : { totalSessions: 0, totalRounds: 0, bestHoldSec: 0 };
+
+      const elSessions = document.getElementById('stat-sessions');
+      const elRounds = document.getElementById('stat-rounds');
+      const elBest = document.getElementById('stat-best-hold');
+
+      if (elSessions) elSessions.textContent = String(stats.totalSessions || 0);
+      if (elRounds) elRounds.textContent = String(stats.totalRounds || 0);
+      if (elBest) elBest.textContent = `${stats.bestHoldSec || 0}s`;
+    } catch {
+      // Ignore
+    }
+  }
+
+  renderStats();
+  window.addEventListener('hb_stats_updated', renderStats);
+</script>
