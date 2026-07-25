@@ -32,6 +32,7 @@ Each round follows this sequence:
 * After the final inhale, gently exhale and hold the breath.
 * Stay relaxed throughout the hold.
 * Never force the hold beyond a comfortable limit.
+* Once the target hold duration is reached, the system automatically sounds a chime and transitions to Phase 3.
 
 ---
 
@@ -83,8 +84,18 @@ Only the breath-out hold changes between levels.
 ## Expert
 
 * 30 breaths
-* 90 seconds guided breathing
+* Guided breathing duration (approx. 2.5s inhale / 2.5s exhale)
 * 150 seconds breath-out hold
+* 15 seconds recovery breath hold
+* 3 rounds
+
+---
+
+## Custom
+
+* 30 breaths
+* Guided breathing duration (approx. 2.5s inhale / 2.5s exhale)
+* 180 seconds breath-out hold (default, customizable)
 * 15 seconds recovery breath hold
 * 3 rounds
 
@@ -108,14 +119,13 @@ Only the breath-out hold duration changes between difficulty levels.
 ## Inhale
 
 * Deep but comfortable.
-* Expand the belly first.
-* Then expand the chest.
+* Breathe in deeply in whatever way feels most comfortable and natural to you.
 
 ## Exhale
 
 * Relax naturally.
 * Do not force all the air out.
-* Maintain a smooth rhythm.
+* Maintain a smooth, slow rhythm (~2.5s inhale / ~2.5s exhale).
 
 The breathing should always feel relaxed rather than rushed.
 
