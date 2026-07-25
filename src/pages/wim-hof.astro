@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import BreathingTimer from '../components/BreathingTimer.astro';
+import AnalyticsPanel from '../components/AnalyticsPanel.astro';
+import TechniqueGuide from '../components/TechniqueGuide.astro';
+import SafetyModal from '../components/SafetyModal.astro';
+import FAQSection from '../components/FAQSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Wim Hof Breathing Method — Free Guided Timer & App | HarmonyBreath"
+  description="Master Wim Hof Breathing with guided 3-phase sessions, customizable retention holds, audio cues, and session analytics. 100% free, private & science-backed."
+>
+  <Header />
+
+  <main class="flex-1 hero-gradient-mesh relative">
+    <!-- Top Navigation Breadcrumb & Hero Header -->
+    <section class="w-full max-w-4xl mx-auto pt-8 pb-6 px-4 text-center space-y-4">
+      <div class="flex items-center justify-center gap-2 mb-2">
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/80 text-neutral-400 hover:text-white text-xs font-mono transition-colors"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to All Techniques
+        </a>
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          Wim Hof Method
+        </span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+        Wim Hof Breathing <br />
+        <span class="gradient-text-develop">Guided Session & Timer</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans">
+        Experience guided 30-breath hyperoxygenation cycles, customizable breath retention holds, recovery breathing, and session analytics. 100% free & private.
+      </p>
+    </section>
+
+    <!-- Main Interactive Breathing Timer Component -->
+    <BreathingTimer />
+
+    <!-- Analytics Stats Panel -->
+    <AnalyticsPanel />
+
+    <!-- Step-by-Step Technique Guide -->
+    <TechniqueGuide />
+
+    <!-- Safety Precautions & Contraindications -->
+    <SafetyModal />
+
+    <!-- FAQ Section -->
+    <FAQSection />
+  </main>
+
+  <Footer />
+</Layout>

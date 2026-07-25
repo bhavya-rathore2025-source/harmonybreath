@@ -1,52 +1,334 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import BreathingTimer from '../components/BreathingTimer.astro';
-import AnalyticsPanel from '../components/AnalyticsPanel.astro';
-import TechniqueGuide from '../components/TechniqueGuide.astro';
-import SafetyModal from '../components/SafetyModal.astro';
-import FAQSection from '../components/FAQSection.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout 
-  title="HarmonyBreath — Free Guided Wim Hof Breathing App & Timer"
-  description="Master Wim Hof Breathing with guided 3-phase sessions, customizable retention holds, local audio tracks, and session tracking. 100% free & SEO-optimized."
+  title="HarmonyBreath — The Universal Breathwork & Pranayama Platform"
+  description="Explore guided breathing techniques from Wim Hof Breathing to Box Breathing, 4-7-8, and Coherent frequency control. 100% free, private & science-backed."
 >
   <Header />
 
   <main class="flex-1 hero-gradient-mesh relative">
-    <!-- Hero Header Banner -->
-    <section class="w-full max-w-4xl mx-auto pt-12 pb-6 px-4 text-center space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-mono mb-2">
+    <!-- HERO SECTION -->
+    <section class="w-full max-w-5xl mx-auto pt-14 pb-12 px-4 sm:px-6 text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-mono">
         <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-        Interactive Wim Hof Breathing Platform
+        The Universal Breathwork & Pranayama Platform
       </div>
 
-      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-        Master Your Breath, <br />
-        <span class="gradient-text-develop">Elevate Your Mind.</span>
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+        Master Every Breath, <br />
+        <span class="gradient-text-develop">Elevate Mind & Body.</span>
       </h1>
 
-      <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans">
-        Experience guided 30-breath cycles, customizable retention holds, local audio integration, and session statistics. Free, private, and designed for optimal focus.
+      <p class="max-w-3xl mx-auto text-base sm:text-lg text-neutral-300 leading-relaxed font-sans font-normal">
+        HarmonyBreath is your open, privacy-first hub for conscious breathwork. Harness evidence-backed breathing techniques with dedicated timers, audio cues, and physiological analytics.
       </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a 
+          href="#techniques" 
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-neutral-300 hover:text-white font-medium text-sm transition-all"
+        >
+          Explore Breathing Catalog ↓
+        </a>
+      </div>
     </section>
 
-    <!-- Main Interactive Breathing Timer Component -->
-    <BreathingTimer />
+    <!-- TECHNIQUES CATALOG GRID -->
+    <section id="techniques" class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-12 border-t border-neutral-900">
+      <div class="text-center space-y-3 mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Breathing Technique Catalog
+        </h2>
+        <p class="text-neutral-400 max-w-2xl mx-auto text-sm sm:text-base font-sans">
+          Each breathwork method targets specific physiological responses. Select a technique to explore its dedicated guide and interactive timer.
+        </p>
+      </div>
 
-    <!-- Analytics Stats Panel -->
-    <AnalyticsPanel />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 1. WIM HOF METHOD (LIVE) -->
+        <div class="rounded-2xl border border-cyan-500/40 bg-neutral-900/80 p-6 flex flex-col justify-between space-y-6 hover:border-cyan-400 transition-all duration-300 group shadow-lg shadow-cyan-500/5">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase font-semibold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+                Live & Available
+              </span>
+              <span class="text-xs text-neutral-500 font-mono">Hyperoxygenation</span>
+            </div>
 
-    <!-- Step-by-Step Technique Guide -->
-    <TechniqueGuide />
+            <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+              Wim Hof Method
+            </h3>
 
-    <!-- Safety Precautions & Contraindications -->
-    <SafetyModal />
+            <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+              30 power inhales followed by breath retention after exhalation. Triggers adrenaline release, reduces inflammation, and enhances stress tolerance.
+            </p>
 
-    <!-- FAQ Section -->
-    <FAQSection />
+            <div class="space-y-1.5 text-xs font-mono text-neutral-400 pt-2 border-t border-neutral-800">
+              <div class="flex justify-between"><span>Cadence:</span> <span class="text-white">30 Breaths + Retention</span></div>
+              <div class="flex justify-between"><span>Primary Goal:</span> <span class="text-cyan-400">Energy & Immunity</span></div>
+            </div>
+          </div>
+
+          <a 
+            href="/wim-hof" 
+            class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-semibold text-xs transition-colors"
+          >
+            Open Wim Hof Timer →
+          </a>
+        </div>
+
+        <!-- 2. BOX BREATHING (PLANNED) -->
+        <div class="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6 flex flex-col justify-between space-y-6 hover:border-neutral-700 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                In Development
+              </span>
+              <span class="text-xs text-neutral-500 font-mono">Equal Cadence</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-white">
+              Box Breathing (4-4-4-4)
+            </h3>
+
+            <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+              Equal duration inhale, hold, exhale, and empty hold. Utilized by tactical operators and athletes to immediately reset composure under high stress.
+            </p>
+
+            <div class="space-y-1.5 text-xs font-mono text-neutral-500 pt-2 border-t border-neutral-800/80">
+              <div class="flex justify-between"><span>Cadence:</span> <span class="text-neutral-300">4s In | 4s Hold | 4s Out | 4s Hold</span></div>
+              <div class="flex justify-between"><span>Primary Goal:</span> <span class="text-purple-400">Panic & Stress Reset</span></div>
+            </div>
+          </div>
+
+          <button 
+            disabled 
+            class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-800 bg-neutral-900 text-neutral-500 font-semibold text-xs cursor-not-allowed"
+          >
+            Coming Soon
+          </button>
+        </div>
+
+        <!-- 3. 4-7-8 RELAXING BREATH (PLANNED) -->
+        <div class="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6 flex flex-col justify-between space-y-6 hover:border-neutral-700 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                In Development
+              </span>
+              <span class="text-xs text-neutral-500 font-mono">Vagal Activation</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-white">
+              4-7-8 Relaxing Breath
+            </h3>
+
+            <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+              Extended exhalation protocol popularized by Dr. Andrew Weil. Rapidly shifts your nervous system into deep parasympathetic rest for sleep.
+            </p>
+
+            <div class="space-y-1.5 text-xs font-mono text-neutral-500 pt-2 border-t border-neutral-800/80">
+              <div class="flex justify-between"><span>Cadence:</span> <span class="text-neutral-300">4s In | 7s Hold | 8s Exhale</span></div>
+              <div class="flex justify-between"><span>Primary Goal:</span> <span class="text-blue-400">Deep Sleep & Anxiety</span></div>
+            </div>
+          </div>
+
+          <button 
+            disabled 
+            class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-800 bg-neutral-900 text-neutral-500 font-semibold text-xs cursor-not-allowed"
+          >
+            Coming Soon
+          </button>
+        </div>
+
+        <!-- 4. COHERENT BREATHING (PLANNED) -->
+        <div class="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6 flex flex-col justify-between space-y-6 hover:border-neutral-700 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase font-semibold bg-teal-500/10 text-teal-400 border border-teal-500/20">
+                In Development
+              </span>
+              <span class="text-xs text-neutral-500 font-mono">HRV Optimization</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-white">
+              Coherent / Resonant Frequency
+            </h3>
+
+            <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+              Rhythmic 5.5-second inhales and exhales (5.5 breaths per minute) designed to align heart rate rhythm, blood pressure, and brainwaves.
+            </p>
+
+            <div class="space-y-1.5 text-xs font-mono text-neutral-500 pt-2 border-t border-neutral-800/80">
+              <div class="flex justify-between"><span>Cadence:</span> <span class="text-neutral-300">5.5s Inhale | 5.5s Exhale</span></div>
+              <div class="flex justify-between"><span>Primary Goal:</span> <span class="text-teal-400">Heart Rate Variability</span></div>
+            </div>
+          </div>
+
+          <button 
+            disabled 
+            class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-800 bg-neutral-900 text-neutral-500 font-semibold text-xs cursor-not-allowed"
+          >
+            Coming Soon
+          </button>
+        </div>
+
+        <!-- 5. NADI SHODHANA (PLANNED) -->
+        <div class="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6 flex flex-col justify-between space-y-6 hover:border-neutral-700 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                In Development
+              </span>
+              <span class="text-xs text-neutral-500 font-mono">Pranayama</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-white">
+              Nadi Shodhana (Alternate Nostril)
+            </h3>
+
+            <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+              Traditional yogic alternate nostril breathing. Harmonizes left and right brain hemispheres, clears subtle energetic channels, and calms thoughts.
+            </p>
+
+            <div class="space-y-1.5 text-xs font-mono text-neutral-500 pt-2 border-t border-neutral-800/80">
+              <div class="flex justify-between"><span>Cadence:</span> <span class="text-neutral-300">Alternating Airflow</span></div>
+              <div class="flex justify-between"><span>Primary Goal:</span> <span class="text-emerald-400">Brain Balance & Focus</span></div>
+            </div>
+          </div>
+
+          <button 
+            disabled 
+            class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-800 bg-neutral-900 text-neutral-500 font-semibold text-xs cursor-not-allowed"
+          >
+            Coming Soon
+          </button>
+        </div>
+
+        <!-- 6. TUMMO INNER FIRE (PLANNED) -->
+        <div class="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6 flex flex-col justify-between space-y-6 hover:border-neutral-700 transition-all duration-300">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                In Development
+              </span>
+              <span class="text-xs text-neutral-500 font-mono">Inner Heat</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-white">
+              Tummo (Inner Fire Breathing)
+            </h3>
+
+            <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+              Ancient Himalayan meditative breathing protocol involving intense abdominal contractions and heat visualization for core vitality.
+            </p>
+
+            <div class="space-y-1.5 text-xs font-mono text-neutral-500 pt-2 border-t border-neutral-800/80">
+              <div class="flex justify-between"><span>Cadence:</span> <span class="text-neutral-300">Abdominal Retentions</span></div>
+              <div class="flex justify-between"><span>Primary Goal:</span> <span class="text-amber-400">Thermogenesis & Vitality</span></div>
+            </div>
+          </div>
+
+          <button 
+            disabled 
+            class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-800 bg-neutral-900 text-neutral-500 font-semibold text-xs cursor-not-allowed"
+          >
+            Coming Soon
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCIENCE & BENEFITS SECTION -->
+    <section id="benefits" class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-16 border-t border-neutral-900">
+      <div class="text-center space-y-3 mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900 text-neutral-400 text-xs font-mono">
+          Physiological Impact
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          The Science of Conscious Breathwork
+        </h2>
+        <p class="text-neutral-400 max-w-2xl mx-auto text-sm sm:text-base font-sans">
+          Targeted breathing directly influences your autonomic nervous system, brain chemistry, and metabolic rate.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Benefit 1 -->
+        <div class="p-6 rounded-2xl border border-neutral-800/80 bg-neutral-900/50 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold">
+            01
+          </div>
+          <h3 class="text-lg font-bold text-white">Autonomic Nervous System Regulation</h3>
+          <p class="text-sm text-neutral-400 leading-relaxed font-sans">
+            By shifting between prolonged inhales (sympathetic stimulation) and extended exhales (parasympathetic activation), conscious breathing gives you direct voluntary control over your body's stress response.
+          </p>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="p-6 rounded-2xl border border-neutral-800/80 bg-neutral-900/50 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 font-bold">
+            02
+          </div>
+          <h3 class="text-lg font-bold text-white">Vagus Nerve Stimulation & HRV</h3>
+          <p class="text-sm text-neutral-400 leading-relaxed font-sans">
+            Slow, controlled breathing at resonant frequencies (~5.5 breaths/min) stimulates the vagus nerve, improving Heart Rate Variability (HRV), lowering resting pulse, and stabilizing emotional balance.
+          </p>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="p-6 rounded-2xl border border-neutral-800/80 bg-neutral-900/50 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-bold">
+            03
+          </div>
+          <h3 class="text-lg font-bold text-white">Oxygen Efficiency & CO2 Tolerance</h3>
+          <p class="text-sm text-neutral-400 leading-relaxed font-sans">
+            Breath hold retentions condition chemoreceptors in the brainstem to tolerate higher carbon dioxide levels, expanding aerobic stamina and improving oxygen release into muscular tissues (Bohr Effect).
+          </p>
+        </div>
+
+        <!-- Benefit 4 -->
+        <div class="p-6 rounded-2xl border border-neutral-800/80 bg-neutral-900/50 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold">
+            04
+          </div>
+          <h3 class="text-lg font-bold text-white">Mental Focus & Default Mode Network</h3>
+          <p class="text-sm text-neutral-400 leading-relaxed font-sans">
+            Rhythmic breath counting quietens the brain's Default Mode Network (associated with mind-wandering and anxiety), inducing acute focus, mental clarity, and meditative calm.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION BANNER -->
+    <section class="w-full max-w-5xl mx-auto px-4 sm:px-6 my-16">
+      <div class="rounded-3xl border border-neutral-800 bg-gradient-to-br from-neutral-900 via-neutral-950 to-black p-8 sm:p-12 text-center space-y-6 relative overflow-hidden">
+        <div class="max-w-2xl mx-auto space-y-4">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Ready to Start Your Breathwork Practice?
+          </h2>
+          <p class="text-neutral-400 text-sm sm:text-base font-sans">
+            Choose a technique from our catalog to launch a guided session with live audio cues, customizable timers, and local session tracking.
+          </p>
+        </div>
+
+        <div>
+          <a 
+            href="#techniques" 
+            class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-white text-black font-extrabold text-sm hover:bg-neutral-200 transition-all shadow-xl"
+          >
+            <span>Explore Technique Catalog</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer />
