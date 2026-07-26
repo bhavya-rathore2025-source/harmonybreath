@@ -130,6 +130,26 @@ class ResilientAudioPlayer {
   }
 
   /**
+   * Check if an audio file exists at the given path (with caching)
+   */
+  private async checkAudioExists(filePath: string): Promise<boolean> {
+    // Return cached result if available
+    if (this.availabilityCache.has(filePath)) {
+      return this.availabilityCache.get(filePath)!;
+    }
+
+    try {
+      const response = await fetch(filePath, { method: 'HEAD' });
+      const exists = response.ok;
+      this.availabilityCache.set(filePath, exists);
+      return exists;
+    } catch {
+      this.availabilityCache.set(filePath, false);
+      return false;
+    }
+  }
+
+  /**
    * Stop any currently playing track
    */
   public stop(): void {
