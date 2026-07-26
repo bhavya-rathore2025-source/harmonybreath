@@ -3,7 +3,9 @@ import { defaultAudioConfig, type AudioConfig } from '../config/audioConfig';
 class ResilientAudioPlayer {
   private config: AudioConfig;
   private currentAudio: HTMLAudioElement | null = null;
+  private currentBreathSound: HTMLAudioElement | null = null;
   private isMuted: boolean = false;
+  private isBreathSoundMuted: boolean = false;
   private availabilityCache: Map<string, boolean> = new Map();
 
   constructor(customConfig?: Partial<AudioConfig>) {
@@ -21,6 +23,17 @@ class ResilientAudioPlayer {
     return this.isMuted;
   }
 
+  public setBreathSoundMuted(muted: boolean) {
+    this.isBreathSoundMuted = muted;
+    if (this.currentBreathSound) {
+      this.currentBreathSound.muted = muted;
+    }
+  }
+
+  public getBreathSoundMuted(): boolean {
+    return this.isBreathSoundMuted;
+  }
+
   public setVolume(vol: number) {
     this.config.volume = Math.max(0, Math.min(1, vol));
     if (this.currentAudio) {
@@ -28,22 +41,37 @@ class ResilientAudioPlayer {
     }
   }
 
+  public setBreathSoundVolume(vol: number) {
+    this.config.breathSoundVolume = Math.max(0, Math.min(1, vol));
+    if (this.currentBreathSound) {
+      this.currentBreathSound.volume = this.config.breathSoundVolume;
+    }
+  }
+
   /**
-   * Gracefully check if audio file exists locally before attempting playback
+   * Play breath sound (inhale/exhale) - independent of main audio
    */
-  public async checkAudioExists(url: string): Promise<boolean> {
-    if (this.availabilityCache.has(url)) {
-      return this.availabilityCache.get(url)!;
+  public async playBreathSound(isInhale: boolean): Promise<void> {
+    if (this.isBreathSoundMuted) return;
+
+    const filePath = isInhale
+      ? this.config.phases.breathSoundInhale.filePath
+      : this.config.phases.breathSoundExhale.filePath;
+
+    if (!filePath) return;
+
+    const exists = await this.checkAudioExists(filePath);
+    if (!exists) {
+      return;
     }
 
     try {
-      const response = await fetch(url, { method: 'HEAD' });
-      const exists = response.ok;
-      this.availabilityCache.set(url, exists);
-      return exists;
+      this.currentBreathSound = new Audio(filePath);
+      this.currentBreathSound.volume = this.config.breathSoundVolume;
+      this.currentBreathSound.muted = this.isBreathSoundMuted;
+      await this.currentBreathSound.play();
     } catch {
-      this.availabilityCache.set(url, false);
-      return false;
+      // Ignore autoplay errors for breath sounds
     }
   }
 

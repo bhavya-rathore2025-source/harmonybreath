@@ -30,37 +30,54 @@
       <a href="/#benefits" class="hover:text-white transition-colors duration-200">Benefits & Science</a>
     </nav>
 
-    <!-- Header Actions -->
-    <div class="flex items-center gap-3">
-      <!-- Sound Mute/Unmute Toggle -->
-      <button 
-        id="sound-toggle-btn"
-        type="button" 
-        class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 text-xs font-mono text-neutral-300 hover:text-white transition-all"
-        title="Toggle Audio Cues & Music"
-      >
-        <svg id="sound-on-icon" class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-        </svg>
-        <svg id="sound-off-icon" class="w-3.5 h-3.5 text-neutral-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-        </svg>
-        <span id="sound-label">Audio On</span>
-      </button>
+<!-- Header Actions -->
+      <div class="flex items-center gap-3">
+        <!-- Breath Sound Toggle (independent from main audio) -->
+        <button
+          id="breath-sound-toggle-btn"
+          type="button"
+          class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 text-xs font-mono text-neutral-300 hover:text-white transition-all"
+          title="Toggle Breath Sounds (Inhale/Exhale Cues)"
+        >
+          <svg id="breath-sound-on-icon" class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <svg id="breath-sound-off-icon" class="w-3.5 h-3.5 text-neutral-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M12 3v2m0 14v2M5 12H3" />
+          </svg>
+          <span id="breath-sound-label">Breath Sounds</span>
+        </button>
 
-      <a 
-        href="/wim-hof"
-        class="hidden sm:inline-flex items-center justify-center px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-black hover:bg-neutral-200 transition-colors shadow-sm"
-      >
-        Start Wim Hof Practice
-      </a>
-    </div>
+        <!-- Sound Mute/Unmute Toggle -->
+        <button
+          id="sound-toggle-btn"
+          type="button"
+          class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 text-xs font-mono text-neutral-300 hover:text-white transition-all"
+          title="Toggle Audio Cues & Music"
+        >
+          <svg id="sound-on-icon" class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+          <svg id="sound-off-icon" class="w-3.5 h-3.5 text-neutral-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+          </svg>
+          <span id="sound-label">Audio On</span>
+        </button>
+
+        <a
+          href="/wim-hof"
+          class="hidden sm:inline-flex items-center justify-center px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-black hover:bg-neutral-200 transition-colors shadow-sm"
+        >
+          Start Wim Hof Practice
+        </a>
+      </div>
   </div>
 </header>
 
 <script>
   import { audioPlayer } from '../utils/audioPlayer';
 
+  // Main Audio Toggle
   const btn = document.getElementById('sound-toggle-btn');
   const soundOnIcon = document.getElementById('sound-on-icon');
   const soundOffIcon = document.getElementById('sound-off-icon');
@@ -87,5 +104,34 @@
     isMuted = !isMuted;
     localStorage.setItem('hb_muted', String(isMuted));
     updateSoundUI();
+  });
+
+  // Breath Sound Toggle (independent from main audio)
+  const breathBtn = document.getElementById('breath-sound-toggle-btn');
+  const breathSoundOnIcon = document.getElementById('breath-sound-on-icon');
+  const breathSoundOffIcon = document.getElementById('breath-sound-off-icon');
+  const breathSoundLabel = document.getElementById('breath-sound-label');
+
+  let isBreathSoundMuted = localStorage.getItem('hb_breath_sound_muted') === 'true';
+
+  function updateBreathSoundUI() {
+    audioPlayer.setBreathSoundMuted(isBreathSoundMuted);
+    if (isBreathSoundMuted) {
+      breathSoundOnIcon?.classList.add('hidden');
+      breathSoundOffIcon?.classList.remove('hidden');
+      if (breathSoundLabel) breathSoundLabel.textContent = 'Breath Sounds Off';
+    } else {
+      breathSoundOnIcon?.classList.remove('hidden');
+      breathSoundOffIcon?.classList.add('hidden');
+      if (breathSoundLabel) breathSoundLabel.textContent = 'Breath Sounds On';
+    }
+  }
+
+  updateBreathSoundUI();
+
+  breathBtn?.addEventListener('click', () => {
+    isBreathSoundMuted = !isBreathSoundMuted;
+    localStorage.setItem('hb_breath_sound_muted', String(isBreathSoundMuted));
+    updateBreathSoundUI();
   });
 </script>

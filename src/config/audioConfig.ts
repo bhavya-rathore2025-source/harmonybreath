@@ -8,17 +8,23 @@ export interface AudioPhaseConfig {
 export interface AudioConfig {
   enabledByDefault: boolean;
   volume: number;
+  breathSoundEnabledByDefault: boolean;
+  breathSoundVolume: number;
   phases: {
     guidedBreathing: AudioPhaseConfig;
     breathOutHold: AudioPhaseConfig;
     recoveryHold: AudioPhaseConfig;
     chimeCue: AudioPhaseConfig;
+    breathSoundInhale: AudioPhaseConfig;
+    breathSoundExhale: AudioPhaseConfig;
   };
 }
 
 export const defaultAudioConfig: AudioConfig = {
   enabledByDefault: true,
   volume: 0.8,
+  breathSoundEnabledByDefault: true,
+  breathSoundVolume: 0.7,
   phases: {
     guidedBreathing: {
       id: 'guided-breathing',
@@ -43,6 +49,18 @@ export const defaultAudioConfig: AudioConfig = {
       name: 'Phase Transition Chime',
       filePath: '/audio/chime.mp3',
       description: 'Soft chime sound for phase changes',
+    },
+    breathSoundInhale: {
+      id: 'breath-sound-inhale',
+      name: 'Breath Sound Inhale',
+      filePath: '/audio/breath-inhale.mp3',
+      description: 'Inhale breath sound cue (placeholder - audio file to be added)',
+    },
+    breathSoundExhale: {
+      id: 'breath-sound-exhale',
+      name: 'Breath Sound Exhale',
+      filePath: '/audio/breath-exhale.mp3',
+      description: 'Exhale breath sound cue (placeholder - audio file to be added)',
     },
   },
 };

@@ -147,6 +147,27 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
   let totalRounds = 3;
   let currentRound = 1;
 
+  // Breath timing configuration - progressive pace per round
+  let customBreathTime = null; // Custom breath cycle time in seconds (from custom settings)
+  
+  function getBreathTiming(round: number): { inhale: number; exhale: number; total: number } {
+    // If custom breath time is set, use it
+    if (customBreathTime) {
+      const inhale = customBreathTime * 0.6; // 60% inhale, 40% exhale ratio
+      const exhale = customBreathTime * 0.4;
+      return { inhale, exhale, total: customBreathTime };
+    }
+    
+    // Progressive breathing pace for built-in presets
+    if (round === 1) {
+      return { inhale: 2.5, exhale: 1.5, total: 4.0 };
+    } else if (round === 2) {
+      return { inhale: 2.0, exhale: 1.0, total: 3.0 };
+    } else {
+      return { inhale: 1.5, exhale: 1.0, total: 2.5 };
+    }
+  }
+
   // Phase enum: 'IDLE' | 'GUIDED' | 'HOLD' | 'RECOVERY' | 'COMPLETE'
   let phase = 'IDLE';
   let isPaused = false;
@@ -156,6 +177,7 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
   let elapsedPhaseSeconds = 0;
   let phaseTimer: number | null = null;
   let breathCycleTimer: number | null = null;
+  let isInhaling = true;
 
   // UI Elements
   const progressCircle = document.getElementById('progress-circle') as SVGCircleElement | null;
@@ -185,10 +207,12 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
   const customBreathsInput = document.getElementById('custom-breaths-input') as HTMLInputElement | null;
   const customHoldInput = document.getElementById('custom-hold-input') as HTMLInputElement | null;
   const customRoundsInput = document.getElementById('custom-rounds-input') as HTMLInputElement | null;
+  const customBreathTimeInput = document.getElementById('custom-breath-time-input') as HTMLInputElement | null;
 
   const customBreathsVal = document.getElementById('custom-breaths-val');
   const customHoldVal = document.getElementById('custom-hold-val');
   const customRoundsVal = document.getElementById('custom-rounds-val');
+  const customBreathTimeVal = document.getElementById('custom-breath-time-val');
 
   // Format seconds into MM:SS
   function formatTime(sec: number): string {
@@ -214,6 +238,7 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
       baseHoldSeconds = targetHoldSeconds;
       targetBreaths = parseInt(target.dataset.breaths || '30', 10);
       totalRounds = parseInt(target.dataset.rounds || '3', 10);
+      customBreathTime = null; // Reset custom breath time for presets
 
       updatePresetUI();
       resetSession();
@@ -246,14 +271,18 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
   customRoundsInput?.addEventListener('input', () => {
     if (customRoundsVal && customRoundsInput) customRoundsVal.textContent = `${customRoundsInput.value} Rounds`;
   });
+  customBreathTimeInput?.addEventListener('input', () => {
+    if (customBreathTimeVal && customBreathTimeInput) customBreathTimeVal.textContent = `${customBreathTimeInput.value}s`;
+  });
 
   applyCustomSettings?.addEventListener('click', () => {
-    if (customBreathsInput && customHoldInput && customRoundsInput) {
+    if (customBreathsInput && customHoldInput && customRoundsInput && customBreathTimeInput) {
       currentPreset = 'custom';
       targetBreaths = parseInt(customBreathsInput.value, 10);
       targetHoldSeconds = parseInt(customHoldInput.value, 10);
       baseHoldSeconds = targetHoldSeconds;
       totalRounds = parseInt(customRoundsInput.value, 10);
+      customBreathTime = parseFloat(customBreathTimeInput.value);
 
       updatePresetUI();
       resetSession();
@@ -352,13 +381,15 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
     if (phaseTimer) clearInterval(phaseTimer);
     if (breathCycleTimer) clearInterval(breathCycleTimer);
 
-    // Breath rhythm generator (1.5s Inhale, 1.5s Exhale = 3s per breath)
-    let isInhaling = true;
+    // Get breathing timing for current round
+    const timing = getBreathTiming(currentRound);
+    isInhaling = true;
     
     breathCycleTimer = window.setInterval(() => {
       if (isPaused) return;
 
       if (isInhaling) {
+        // Switch to exhale
         isInhaling = false;
         breathCount++;
         if (breathActionText) breathActionText.textContent = 'Inhale Deep';
@@ -368,17 +399,24 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
 
         updateProgressRing((breathCount / targetBreaths) * 100);
 
+        // Play inhale breath sound
+        audioPlayer.playBreathSound(true);
+
         if (breathCount >= targetBreaths) {
           clearInterval(breathCycleTimer!);
           audioPlayer.playChime();
           startPhaseHold();
         }
       } else {
+        // Switch to inhale
         isInhaling = true;
         if (breathActionText) breathActionText.textContent = 'Relax Exhale';
         if (breathHalo) breathHalo.style.transform = 'scale(0.95)';
+        
+        // Play exhale breath sound
+        audioPlayer.playBreathSound(false);
       }
-    }, 2500);
+    }, timing.inhale * 1000);
   }
 
   // Phase 2: Breath-Out Hold
