@@ -1,8 +1,40 @@
-import { defaultAudioConfig, type AudioConfig } from '../config/audioConfig';
+import { defaultAudioConfig, type AudioConfig, type MusicTrack, musicTracks } from '../config/audioConfig';
+
+const STORAGE_KEY = 'hb_music_selections';
+
+function getSelectedMusic(): Record<string, string> {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : {};
+  } catch {
+    return {};
+  }
+}
+
+function getDefaultTrackForPhase(phase: string): string {
+  const phaseConfig = defaultAudioConfig.phases[phase as keyof typeof defaultAudioConfig.phases];
+  return phaseConfig?.filePath || '';
+}
+
+function getFilePathForTrackId(phase: string, trackId: string): string {
+  const tracks = musicTracks[phase as keyof typeof musicTracks] || [];
+  const track = tracks.find(t => t.id === trackId);
+  return track?.filePath || getDefaultTrackForPhase(phase);
+}
+
+function getSelectedTrackForPhase(phase: string): string {
+  const selected = getSelectedMusic();
+  const trackId = selected[phase];
+  if (trackId) {
+    return getFilePathForTrackId(phase, trackId);
+  }
+  return getDefaultTrackForPhase(phase);
+}
 
 class ResilientAudioPlayer {
   private config: AudioConfig;
   private currentAudio: HTMLAudioElement | null = null;
+  private currentPreviewAudio: HTMLAudioElement | null = null;
   private currentBreathSound: HTMLAudioElement | null = null;
   private isMuted: boolean = false;
   private isBreathSoundMuted: boolean = false;
@@ -16,6 +48,9 @@ class ResilientAudioPlayer {
     this.isMuted = muted;
     if (this.currentAudio) {
       this.currentAudio.muted = muted;
+    }
+    if (this.currentPreviewAudio) {
+      this.currentPreviewAudio.muted = muted;
     }
   }
 
@@ -49,6 +84,62 @@ class ResilientAudioPlayer {
   }
 
   /**
+   * Get the selected music track for a phase
+   */
+  public getSelectedTrack(phase: 'guidedBreathing' | 'breathOutHold' | 'recoveryHold'): string {
+    return getSelectedTrackForPhase(phase);
+  }
+
+  /**
+   * Get all available music tracks for a phase
+   */
+  public getAvailableTracks(phase: 'guidedBreathing' | 'breathOutHold' | 'recoveryHold'): MusicTrack[] {
+    return this.config.musicTracks[phase] || [];
+  }
+
+  /**
+   * Preview a specific track for a phase (stops current preview, plays new one)
+   */
+  public async previewTrack(phase: 'guidedBreathing' | 'breathOutHold' | 'recoveryHold', trackId: string): Promise<void> {
+    this.stopPreview();
+
+    const tracks = this.config.musicTracks[phase] || [];
+    const track = tracks.find(t => t.id === trackId);
+    if (!track) return;
+
+    const filePath = track.filePath;
+    if (!filePath) return;
+
+    const exists = await this.checkAudioExists(filePath);
+    if (!exists) return;
+
+    try {
+      this.currentPreviewAudio = new Audio(filePath);
+      this.currentPreviewAudio.volume = this.config.volume;
+      this.currentPreviewAudio.muted = this.isMuted;
+      this.currentPreviewAudio.loop = false;
+      await this.currentPreviewAudio.play();
+    } catch {
+      // Ignore autoplay errors for preview
+    }
+  }
+
+  /**
+   * Stop any preview audio
+   */
+  public stopPreview(): void {
+    if (this.currentPreviewAudio) {
+      try {
+        this.currentPreviewAudio.pause();
+        this.currentPreviewAudio.currentTime = 0;
+      } catch {
+        // Ignore
+      }
+      this.currentPreviewAudio = null;
+    }
+  }
+
+  /**
    * Play breath sound (inhale/exhale) - independent of main audio
    */
   public async playBreathSound(isInhale: boolean): Promise<void> {
@@ -76,12 +167,20 @@ class ResilientAudioPlayer {
   }
 
   /**
-   * Play audio track for phase safely
+   * Play audio track for phase safely using selected music
    */
-  public async playPhaseTrack(filePath: string, loop: boolean = false): Promise<void> {
+  public async playPhaseTrack(phase: 'guidedBreathing' | 'breathOutHold' | 'recoveryHold', loop: boolean = false): Promise<void> {
+    this.stopPreview();
     this.stop();
 
-    if (this.isMuted || !filePath) return;
+    if (this.isMuted) return;
+
+    const filePath = this.getSelectedTrack(phase);
+
+    if (!filePath) {
+      console.warn(`[HarmonyBreath Audio] No audio file configured for phase "${phase}".`);
+      return;
+    }
 
     const exists = await this.checkAudioExists(filePath);
     if (!exists) {
@@ -153,6 +252,7 @@ class ResilientAudioPlayer {
    * Stop any currently playing track
    */
   public stop(): void {
+    this.stopPreview();
     if (this.currentAudio) {
       try {
         this.currentAudio.pause();
@@ -161,6 +261,82 @@ class ResilientAudioPlayer {
         // Ignore pause errors
       }
       this.currentAudio = null;
+    }
+  }
+
+  /**
+   * Pause the currently playing track (without resetting position)
+   */
+  public pause(): void {
+    if (this.currentAudio) {
+      try {
+        this.currentAudio.pause();
+      } catch {
+        // Ignore pause errors
+      }
+    }
+  }
+
+  /**
+   * Resume the currently paused track
+   */
+  public resume(): void {
+    if (this.currentAudio && this.currentAudio.paused) {
+      try {
+        this.currentAudio.play().catch(() => {
+          // Ignore autoplay errors
+        });
+      } catch {
+        // Ignore errors
+      }
+    }
+  }
+
+  /**
+   * Stop any currently playing preview track
+   */
+  public stopPreview(): void {
+    if (this.currentPreviewAudio) {
+      try {
+        this.currentPreviewAudio.pause();
+        this.currentPreviewAudio.currentTime = 0;
+      } catch {
+        // Ignore pause errors
+      }
+      this.currentPreviewAudio = null;
+    }
+  }
+
+  /**
+   * Preview a specific track by trackId for a phase (for music selection modal)
+   */
+  public async previewTrack(phase: 'guidedBreathing' | 'breathOutHold' | 'recoveryHold', trackId: string): Promise<void> {
+    const filePath = getFilePathForTrackId(phase, trackId);
+    
+    if (!filePath) {
+      console.warn(`[HarmonyBreath Audio] No audio file for track "${trackId}" in phase "${phase}".`);
+      return;
+    }
+
+    const exists = await this.checkAudioExists(filePath);
+    if (!exists) {
+      console.warn(`[HarmonyBreath Audio] Preview audio not found: "${filePath}".`);
+      return;
+    }
+
+    // Stop any currently playing preview
+    this.stopPreview();
+
+    if (this.isMuted) return;
+
+    try {
+      this.currentPreviewAudio = new Audio(filePath);
+      this.currentPreviewAudio.volume = this.config.volume;
+      this.currentPreviewAudio.muted = this.isMuted;
+      this.currentPreviewAudio.loop = false;
+      await this.currentPreviewAudio.play();
+    } catch {
+      // Ignore autoplay errors for preview
     }
   }
 }

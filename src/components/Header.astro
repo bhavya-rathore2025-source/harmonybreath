@@ -30,14 +30,60 @@
       <a href="/#benefits" class="hover:text-white transition-colors duration-200">Benefits & Science</a>
     </nav>
 
-<!-- Header Actions -->
-      <div class="flex items-center gap-3">
-        <!-- Breath Sound Toggle (independent from main audio) -->
+    <!-- Header Actions -->
+    <div class="flex items-center gap-6">
+      <!-- Main Audio Volume Control -->
+      <div class="relative" id="main-audio-control">
+        <button
+          id="sound-toggle-btn"
+          type="button"
+          class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 text-xs font-mono text-neutral-300 hover:text-white transition-all"
+          title="Audio Volume"
+          aria-expanded="false"
+          aria-controls="main-volume-slider"
+        >
+          <svg id="sound-on-icon" class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+          <svg id="sound-off-icon" class="w-3.5 h-3.5 text-neutral-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+          </svg>
+          <span id="sound-label">Audio</span>
+        </button>
+        <div
+          id="main-volume-slider"
+          class="absolute top-full left-1/2 -translate-x-1/2 mt-2 hidden flex-col items-center gap-1.5 bg-neutral-950 border border-neutral-800 rounded-xl p-3 shadow-2xl min-w-[140px] z-50"
+          role="group"
+          aria-label="Main audio volume"
+        >
+          <label for="main-volume-input" class="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">Audio Volume</label>
+          <input
+            type="range"
+            id="main-volume-input"
+            min="0"
+            max="100"
+            step="5"
+            value="80"
+            class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
+            aria-label="Main audio volume"
+          />
+          <div class="flex justify-between text-[10px] text-neutral-500 font-mono w-full">
+            <span>0%</span>
+            <span id="main-volume-value" class="text-cyan-400 font-bold">80%</span>
+            <span>100%</span>
+          </div>
+        </div>
+      </div>
+
+<!-- Breath Sound Volume Control -->
+      <div class="relative" id="breath-sound-control">
         <button
           id="breath-sound-toggle-btn"
           type="button"
           class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 text-xs font-mono text-neutral-300 hover:text-white transition-all"
-          title="Toggle Breath Sounds (Inhale/Exhale Cues)"
+          title="Breath Sound Volume"
+          aria-expanded="false"
+          aria-controls="breath-volume-slider"
         >
           <svg id="breath-sound-on-icon" class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -47,91 +93,169 @@
           </svg>
           <span id="breath-sound-label">Breath Sounds</span>
         </button>
-
-        <!-- Sound Mute/Unmute Toggle -->
-        <button
-          id="sound-toggle-btn"
-          type="button"
-          class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 text-xs font-mono text-neutral-300 hover:text-white transition-all"
-          title="Toggle Audio Cues & Music"
+        <div
+          id="breath-volume-slider"
+          class="absolute top-full left-1/2 -translate-x-1/2 mt-2 hidden flex-col items-center gap-1.5 bg-neutral-950 border border-neutral-800 rounded-xl p-3 shadow-2xl min-w-[140px] z-50"
+          role="group"
+          aria-label="Breath sound volume"
         >
-          <svg id="sound-on-icon" class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-          </svg>
-          <svg id="sound-off-icon" class="w-3.5 h-3.5 text-neutral-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-          </svg>
-          <span id="sound-label">Audio On</span>
-        </button>
-
-        <a
-          href="/wim-hof"
-          class="hidden sm:inline-flex items-center justify-center px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-black hover:bg-neutral-200 transition-colors shadow-sm"
-        >
-          Start Wim Hof Practice
-        </a>
+          <label for="breath-volume-input" class="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">Breath Volume</label>
+          <input
+            type="range"
+            id="breath-volume-input"
+            min="0"
+            max="100"
+            step="5"
+            value="70"
+            class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+            aria-label="Breath sound volume"
+          />
+          <div class="flex justify-between text-[10px] text-neutral-500 font-mono w-full">
+            <span>0%</span>
+            <span id="breath-volume-value" class="text-amber-400 font-bold">70%</span>
+            <span>100%</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Choose Music Button -->
+      <button
+        id="choose-music-btn"
+        type="button"
+        class="hidden sm:inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-500/50 text-xs font-semibold transition-all"
+        aria-label="Choose music for breathing phases"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+        </svg>
+        <span>Choose your Music</span>
+      </button>
+    </div>
   </div>
 </header>
 
 <script>
   import { audioPlayer } from '../utils/audioPlayer';
 
-  // Main Audio Toggle
-  const btn = document.getElementById('sound-toggle-btn');
-  const soundOnIcon = document.getElementById('sound-on-icon');
-  const soundOffIcon = document.getElementById('sound-off-icon');
-  const soundLabel = document.getElementById('sound-label');
+  // Main Audio Volume Control
+  const mainAudioControl = document.getElementById('main-audio-control') as HTMLElement | null;
+  const mainVolumeBtn = document.getElementById('sound-toggle-btn') as HTMLButtonElement | null;
+  const mainVolumeSlider = document.getElementById('main-volume-slider') as HTMLElement | null;
+  const mainVolumeInput = document.getElementById('main-volume-input') as HTMLInputElement | null;
+  const mainVolumeValue = document.getElementById('main-volume-value') as HTMLElement | null;
+  const soundOnIcon = document.getElementById('sound-on-icon') as HTMLElement | null;
+  const soundOffIcon = document.getElementById('sound-off-icon') as HTMLElement | null;
+  const soundLabel = document.getElementById('sound-label') as HTMLElement | null;
 
-  let isMuted = localStorage.getItem('hb_muted') === 'true';
+  let mainVolume = parseInt(localStorage.getItem('hb_main_volume') || '80', 10);
+  let isMainMuted = mainVolume === 0;
 
-  function updateSoundUI() {
-    audioPlayer.setMuted(isMuted);
-    if (isMuted) {
+  function updateMainAudioUI() {
+    const vol = mainVolume / 100;
+    audioPlayer.setVolume(vol);
+    audioPlayer.setMuted(isMainMuted);
+
+    if (mainVolumeInput) mainVolumeInput.value = String(mainVolume);
+    if (mainVolumeValue) mainVolumeValue.textContent = `${mainVolume}%`;
+
+    if (isMainMuted || mainVolume === 0) {
       soundOnIcon?.classList.add('hidden');
       soundOffIcon?.classList.remove('hidden');
       if (soundLabel) soundLabel.textContent = 'Muted';
     } else {
       soundOnIcon?.classList.remove('hidden');
       soundOffIcon?.classList.add('hidden');
-      if (soundLabel) soundLabel.textContent = 'Audio On';
+      if (soundLabel) soundLabel.textContent = 'Audio';
     }
   }
 
-  updateSoundUI();
+  updateMainAudioUI();
 
-  btn?.addEventListener('click', () => {
-    isMuted = !isMuted;
-    localStorage.setItem('hb_muted', String(isMuted));
-    updateSoundUI();
+  mainVolumeBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isExpanded = mainVolumeBtn.getAttribute('aria-expanded') === 'true';
+    mainVolumeBtn?.setAttribute('aria-expanded', String(!isExpanded));
+    mainVolumeSlider?.classList.toggle('hidden');
+    mainVolumeSlider?.classList.toggle('flex');
   });
 
-  // Breath Sound Toggle (independent from main audio)
-  const breathBtn = document.getElementById('breath-sound-toggle-btn');
-  const breathSoundOnIcon = document.getElementById('breath-sound-on-icon');
-  const breathSoundOffIcon = document.getElementById('breath-sound-off-icon');
-  const breathSoundLabel = document.getElementById('breath-sound-label');
+  mainVolumeInput?.addEventListener('input', (e) => {
+    const target = e.target as HTMLInputElement;
+    mainVolume = parseInt(target.value, 10);
+    isMainMuted = mainVolume === 0;
+    localStorage.setItem('hb_main_volume', String(mainVolume));
+    updateMainAudioUI();
+  });
 
-  let isBreathSoundMuted = localStorage.getItem('hb_breath_sound_muted') === 'true';
+  // Click outside to close slider
+  document.addEventListener('click', (e) => {
+    if (!mainAudioControl?.contains(e.target as Node)) {
+      mainVolumeSlider?.classList.add('hidden');
+      mainVolumeSlider?.classList.remove('flex');
+      mainVolumeBtn?.setAttribute('aria-expanded', 'false');
+    }
+    const breathControl = document.getElementById('breath-sound-control');
+    if (!breathControl?.contains(e.target as Node)) {
+      document.getElementById('breath-volume-slider')?.classList.add('hidden');
+      document.getElementById('breath-volume-slider')?.classList.remove('flex');
+      document.getElementById('breath-sound-toggle-btn')?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Breath Sound Volume Control
+  const breathVolumeBtn = document.getElementById('breath-sound-toggle-btn') as HTMLButtonElement | null;
+  const breathVolumeSlider = document.getElementById('breath-volume-slider') as HTMLElement | null;
+  const breathVolumeInput = document.getElementById('breath-volume-input') as HTMLInputElement | null;
+  const breathVolumeValue = document.getElementById('breath-volume-value') as HTMLElement | null;
+  const breathSoundOnIcon = document.getElementById('breath-sound-on-icon') as HTMLElement | null;
+  const breathSoundOffIcon = document.getElementById('breath-sound-off-icon') as HTMLElement | null;
+  const breathSoundLabel = document.getElementById('breath-sound-label') as HTMLElement | null;
+
+  let breathVolume = parseInt(localStorage.getItem('hb_breath_volume') || '70', 10);
+  let isBreathMuted = breathVolume === 0;
 
   function updateBreathSoundUI() {
-    audioPlayer.setBreathSoundMuted(isBreathSoundMuted);
-    if (isBreathSoundMuted) {
+    const vol = breathVolume / 100;
+    audioPlayer.setBreathSoundVolume(vol);
+    audioPlayer.setBreathSoundMuted(isBreathMuted);
+
+    if (breathVolumeInput) breathVolumeInput.value = String(breathVolume);
+    if (breathVolumeValue) breathVolumeValue.textContent = `${breathVolume}%`;
+
+    if (isBreathMuted || breathVolume === 0) {
       breathSoundOnIcon?.classList.add('hidden');
       breathSoundOffIcon?.classList.remove('hidden');
-      if (breathSoundLabel) breathSoundLabel.textContent = 'Breath Sounds Off';
+      if (breathSoundLabel) breathSoundLabel.textContent = 'Breath Off';
     } else {
       breathSoundOnIcon?.classList.remove('hidden');
       breathSoundOffIcon?.classList.add('hidden');
-      if (breathSoundLabel) breathSoundLabel.textContent = 'Breath Sounds On';
+      if (breathSoundLabel) breathSoundLabel.textContent = 'Breath Sounds';
     }
   }
 
   updateBreathSoundUI();
 
-  breathBtn?.addEventListener('click', () => {
-    isBreathSoundMuted = !isBreathSoundMuted;
-    localStorage.setItem('hb_breath_sound_muted', String(isBreathSoundMuted));
+  breathVolumeBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isExpanded = breathVolumeBtn.getAttribute('aria-expanded') === 'true';
+    breathVolumeBtn?.setAttribute('aria-expanded', String(!isExpanded));
+    breathVolumeSlider?.classList.toggle('hidden');
+    breathVolumeSlider?.classList.toggle('flex');
+  });
+
+  breathVolumeInput?.addEventListener('input', (e) => {
+    const target = e.target as HTMLInputElement;
+    breathVolume = parseInt(target.value, 10);
+    isBreathMuted = breathVolume === 0;
+    localStorage.setItem('hb_breath_volume', String(breathVolume));
     updateBreathSoundUI();
+  });
+
+  // Choose Music Button
+  const chooseMusicBtn = document.getElementById('choose-music-btn') as HTMLButtonElement | null;
+  chooseMusicBtn?.addEventListener('click', () => {
+    if (typeof window.openMusicModal === 'function') {
+      window.openMusicModal();
+    }
   });
 </script>
