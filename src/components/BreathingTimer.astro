@@ -139,9 +139,10 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
   import { audioPlayer } from '../utils/audioPlayer';
   import { defaultAudioConfig } from '../config/audioConfig';
 
-  // State Variables
+// State Variables
   let currentPreset = 'beginner';
   let targetHoldSeconds = 60;
+  let baseHoldSeconds = 60;
   let targetBreaths = 30;
   let totalRounds = 3;
   let currentRound = 1;
@@ -210,6 +211,7 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
       const target = e.currentTarget as HTMLButtonElement;
       currentPreset = target.dataset.preset || 'beginner';
       targetHoldSeconds = parseInt(target.dataset.hold || '60', 10);
+      baseHoldSeconds = targetHoldSeconds;
       targetBreaths = parseInt(target.dataset.breaths || '30', 10);
       totalRounds = parseInt(target.dataset.rounds || '3', 10);
 
@@ -220,7 +222,12 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
 
   function updatePresetUI() {
     if (presetBadge) {
-      presetBadge.textContent = `${currentPreset.toUpperCase()} (${targetHoldSeconds}s Hold)`;
+      let badgeText = `${currentPreset.toUpperCase()} (${baseHoldSeconds}s Hold`;
+      if (currentPreset !== 'beginner' && currentPreset !== 'custom') {
+        badgeText += ` +10s/round`;
+      }
+      badgeText += ')';
+      presetBadge.textContent = badgeText;
     }
     if (totalRoundsText) totalRoundsText.textContent = String(totalRounds);
     if (currentRoundText) currentRoundText.textContent = String(currentRound);
@@ -245,6 +252,7 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
       currentPreset = 'custom';
       targetBreaths = parseInt(customBreathsInput.value, 10);
       targetHoldSeconds = parseInt(customHoldInput.value, 10);
+      baseHoldSeconds = targetHoldSeconds;
       totalRounds = parseInt(customRoundsInput.value, 10);
 
       updatePresetUI();
@@ -278,6 +286,7 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
 
   function startSession() {
     currentRound = 1;
+    targetHoldSeconds = baseHoldSeconds;
     resetTimers();
     startPhaseGuided();
   }
@@ -469,6 +478,9 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
   function advanceRound() {
     if (currentRound < totalRounds) {
       currentRound++;
+      if (currentPreset !== 'beginner' && currentPreset !== 'custom') {
+        targetHoldSeconds = baseHoldSeconds + (currentRound - 1) * 10;
+      }
       startPhaseGuided();
     } else {
       completeSession();
@@ -509,6 +521,7 @@ import CustomSettingsModal from './CustomSettingsModal.astro';
     isPaused = false;
     breathCount = 0;
     elapsedPhaseSeconds = 0;
+    targetHoldSeconds = baseHoldSeconds;
 
     if (phaseLabel) {
       phaseLabel.textContent = 'Ready';
