@@ -1,13 +1,9 @@
 ---
-import SessionPresets from './SessionPresets.astro';
 import CustomSettingsModal from './CustomSettingsModal.astro';
 import MusicSelectionModal from './MusicSelectionModal.astro';
 ---
 
 <section id="timer-section" class="w-full max-w-4xl mx-auto py-8 px-4">
-  <!-- Presets Bar -->
-  <SessionPresets />
-
   <!-- Main Timer Control Box -->
   <div class="relative w-full bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl overflow-hidden">
     <!-- Background Ambient Glow -->
@@ -84,7 +80,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
       <!-- Breathing Style Visual Tip -->
       <div id="technique-tip" class="mt-6 text-xs text-neutral-400 bg-neutral-900/60 border border-neutral-800/80 px-4 py-2 rounded-full font-mono text-center max-w-sm">
-        💡 Inhale deep & relaxed. Relax the exhale.
+        💡 <span id="tip-text">Inhale deep & relaxed. Relax the exhale.</span>
       </div>
     </div>
 
@@ -175,6 +171,18 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     }
   }
 
+  const roundTips: Record<number, string> = {
+    1: 'Slow, deep, and relaxed breathing.',
+    2: 'Increase the pace slightly. Keep each breath deep and controlled.',
+    3: 'Fast, deep, and rhythmic breathing. Stay relaxed and never force the exhale.',
+  };
+
+  function updateTip(round: number) {
+    if (techniqueTip) {
+      techniqueTip.textContent = roundTips[round] || roundTips[3] || 'Inhale deep & relaxed. Relax the exhale.';
+    }
+  }
+
   // Phase enum: 'IDLE' | 'GUIDED' | 'HOLD' | 'RECOVERY' | 'COMPLETE'
   let phase = 'IDLE';
   let isPaused = false;
@@ -194,6 +202,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
   const breathActionText = document.getElementById('breath-action-text');
   const primaryCounter = document.getElementById('primary-counter');
   const secondaryCounter = document.getElementById('secondary-counter');
+  const techniqueTip = document.getElementById('tip-text');
   const presetBadge = document.getElementById('preset-badge');
   const currentRoundText = document.getElementById('current-round-text');
   const totalRoundsText = document.getElementById('total-rounds-text');
@@ -331,7 +340,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     isPaused = true;
     audioPlayer.pause();
     if (phaseTimer) clearInterval(phaseTimer);
-    if (breathCycleTimer) clearInterval(breathCycleTimer);
+    if (breathCycleTimer) clearTimeout(breathCycleTimer);
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.remove('hidden');
       iconPause.classList.add('hidden');
@@ -363,6 +372,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     isPaused = false;
     breathCount = 0;
     elapsedPhaseSeconds = 0;
+    updateTip(currentRound);
 
     if (phaseLabel) {
       phaseLabel.textContent = 'Phase 1: Guided Breathing';
@@ -388,17 +398,17 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
   function runGuidedLoop() {
     if (phaseTimer) clearInterval(phaseTimer);
-    if (breathCycleTimer) clearInterval(breathCycleTimer);
+    if (breathCycleTimer) clearTimeout(breathCycleTimer);
 
-    // Get breathing timing for current round
     const timing = getBreathTiming(currentRound);
     isInhaling = true;
-    
-    breathCycleTimer = window.setInterval(() => {
+
+    function tick() {
       if (isPaused) return;
 
+      const delay = (isInhaling ? timing.inhale : timing.exhale) * 1000;
+
       if (isInhaling) {
-        // Switch to exhale
         isInhaling = false;
         breathCount++;
         if (breathActionText) breathActionText.textContent = 'Inhale Deep';
@@ -408,24 +418,26 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
         updateProgressRing((breathCount / targetBreaths) * 100);
 
-        // Play inhale breath sound
         audioPlayer.playBreathSound(true);
-
-        if (breathCount >= targetBreaths) {
-          clearInterval(breathCycleTimer!);
-          audioPlayer.playChime();
-          startPhaseHold();
-        }
       } else {
-        // Switch to inhale
         isInhaling = true;
         if (breathActionText) breathActionText.textContent = 'Relax Exhale';
         if (breathHalo) breathHalo.style.transform = 'scale(0.95)';
-        
-        // Play exhale breath sound
+
         audioPlayer.playBreathSound(false);
+
+        if (breathCount >= targetBreaths) {
+          clearTimeout(breathCycleTimer!);
+          audioPlayer.playChime();
+          startPhaseHold();
+          return;
+        }
       }
-    }, timing.inhale * 1000);
+
+      breathCycleTimer = window.setTimeout(tick, delay);
+    }
+
+    tick();
   }
 
   // Phase 2: Breath-Out Hold
@@ -434,7 +446,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     isPaused = false;
     elapsedPhaseSeconds = 0;
 
-    if (breathCycleTimer) clearInterval(breathCycleTimer);
+    if (breathCycleTimer) clearTimeout(breathCycleTimer);
     if (phaseTimer) clearInterval(phaseTimer);
 
     if (phaseLabel) {
@@ -558,7 +570,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
   function resetTimers() {
     if (phaseTimer) clearInterval(phaseTimer);
-    if (breathCycleTimer) clearInterval(breathCycleTimer);
+    if (breathCycleTimer) clearTimeout(breathCycleTimer);
     audioPlayer.stop();
   }
 
@@ -575,6 +587,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       phaseLabel.className = 'uppercase tracking-wider font-semibold text-emerald-400';
     }
     if (breathActionText) breathActionText.textContent = 'Press Start';
+    updateTip(1);
     if (primaryCounter) primaryCounter.textContent = '00:00';
     if (secondaryCounter) secondaryCounter.textContent = `${targetBreaths} Breaths Total`;
     if (breathHalo) breathHalo.style.transform = 'scale(1.0)';

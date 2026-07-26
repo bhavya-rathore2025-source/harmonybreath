@@ -97,47 +97,7 @@ class ResilientAudioPlayer {
     return this.config.musicTracks[phase] || [];
   }
 
-  /**
-   * Preview a specific track for a phase (stops current preview, plays new one)
-   */
-  public async previewTrack(phase: 'guidedBreathing' | 'breathOutHold' | 'recoveryHold', trackId: string): Promise<void> {
-    this.stopPreview();
 
-    const tracks = this.config.musicTracks[phase] || [];
-    const track = tracks.find(t => t.id === trackId);
-    if (!track) return;
-
-    const filePath = track.filePath;
-    if (!filePath) return;
-
-    const exists = await this.checkAudioExists(filePath);
-    if (!exists) return;
-
-    try {
-      this.currentPreviewAudio = new Audio(filePath);
-      this.currentPreviewAudio.volume = this.config.volume;
-      this.currentPreviewAudio.muted = this.isMuted;
-      this.currentPreviewAudio.loop = false;
-      await this.currentPreviewAudio.play();
-    } catch {
-      // Ignore autoplay errors for preview
-    }
-  }
-
-  /**
-   * Stop any preview audio
-   */
-  public stopPreview(): void {
-    if (this.currentPreviewAudio) {
-      try {
-        this.currentPreviewAudio.pause();
-        this.currentPreviewAudio.currentTime = 0;
-      } catch {
-        // Ignore
-      }
-      this.currentPreviewAudio = null;
-    }
-  }
 
   /**
    * Play breath sound (inhale/exhale) - independent of main audio
