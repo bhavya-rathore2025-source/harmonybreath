@@ -31,7 +31,7 @@
     </nav>
 
     <!-- Header Actions -->
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-3 sm:gap-6">
       <!-- Main Audio Volume Control -->
       <div class="relative" id="main-audio-control">
         <button
@@ -48,7 +48,7 @@
           <svg id="sound-off-icon" class="w-3.5 h-3.5 text-neutral-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
           </svg>
-          <span id="sound-label">Audio</span>
+          <span id="sound-label" class="hidden sm:inline">Audio</span>
         </button>
         <div
           id="main-volume-slider"
@@ -91,7 +91,7 @@
           <svg id="breath-sound-off-icon" class="w-3.5 h-3.5 text-neutral-500 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M12 3v2m0 14v2M5 12H3" />
           </svg>
-          <span id="breath-sound-label">Breath Sounds</span>
+          <span id="breath-sound-label" class="hidden sm:inline">Breath Sounds</span>
         </button>
         <div
           id="breath-volume-slider"
@@ -118,17 +118,17 @@
         </div>
       </div>
 
-      <!-- Choose Music Button -->
+      <!-- Music Button -->
       <button
         id="choose-music-btn"
         type="button"
-        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-500/50 text-xs font-semibold transition-all"
+        class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/60 hover:bg-neutral-800 text-xs font-mono text-neutral-300 hover:text-white transition-all"
         aria-label="Choose music for breathing phases"
       >
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
         </svg>
-        <span>Choose your Music</span>
+        <span class="hidden sm:inline">Music</span>
       </button>
     </div>
   </div>
