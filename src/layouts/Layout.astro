@@ -6,22 +6,24 @@ interface Props {
   description?: string;
   image?: string;
   canonicalUrl?: string;
+  keywords?: string;
 }
 
 const {
-  title = 'HarmonyBreath — Free Guided Wim Hof Breathing App & Timer',
-  description = 'Practice Wim Hof Breathing with guided audio cues, customizable retention holds, audio tracks, and real-time session tracking. 100% free, private, and SEO-optimized.',
+  title = 'Wim Hof Breathing — Free Guided Timer & Breathwork App | HarmonyBreath',
+  description = 'Master the Wim Hof breathing technique with our free guided timer. Practice Wim Hof method breathing with customizable retention holds, audio cues, and session analytics. 100% free & private.',
   image = '/og-image.png',
   canonicalUrl = 'https://harmonybreathing.com',
+  keywords = 'wim hof breathing, wim hof method, wim hof breathing technique, guided breathing, breathwork timer, wim hof timer online, breathing exercises',
 } = Astro.props;
 
 const schemaData = [
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "HarmonyBreath",
-    "alternateName": "HarmonyBreathing Wim Hof App",
-    "description": description,
+    "name": "HarmonyBreath — Wim Hof Breathing Timer",
+    "alternateName": "HarmonyBreath Wim Hof Guided Breathing App",
+    "description": "Free guided Wim Hof breathing timer with customizable retention holds, audio cues, and session tracking. Practice the Wim Hof method online with beginner to expert difficulty presets.",
     "url": canonicalUrl,
     "applicationCategory": "HealthApplication",
     "operatingSystem": "Any (Web Browser)",
@@ -42,9 +44,18 @@ const schemaData = [
       "Configurable difficulty presets (Beginner to Expert)",
       "Custom breath count and retention hold duration",
       "Local audio track support and silent fallbacks",
-      "Local progress tracking & retention records",
+      "Local progress tracking and retention records",
       "100% free, privacy-first, no registration needed"
     ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HarmonyBreath Wim Hof Breathing Timer",
+    "description": "Free online Wim Hof breathing timer with guided sessions, breath retention tracking, and customizable difficulty levels. Practice the Wim Hof breathing method safely.",
+    "browserRequirements": "Requires JavaScript",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All"
   },
   {
     "@context": "https://schema.org",
@@ -55,7 +66,23 @@ const schemaData = [
         "name": "What is Wim Hof Breathing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Wim Hof Breathing is a controlled breathing technique consisting of 30 deep rhythmic breaths, followed by a breath-out hold (retention), and a 15-second recovery breath hold."
+          "text": "Wim Hof Breathing is a controlled breathing technique developed by Wim Hof, consisting of 30 deep rhythmic breaths followed by a breath-out retention hold and a 15-second recovery breath. It is designed to hyperoxygenate the body, trigger adrenaline release, and enhance stress tolerance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the Wim Hof breathing timer work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The HarmonyBreath Wim Hof breathing timer guides you through three phases: 30 deep breaths (guided breathing), a breath-out hold (retention), and a 15-second recovery hold. You can choose difficulty presets from Beginner (60s hold) to Expert (150s hold) or customize your own session settings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the benefits of the Wim Hof breathing technique?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Wim Hof breathing method benefits include reduced stress and anxiety, improved immune response, enhanced mental focus, increased energy levels, better sleep quality, and greater emotional balance. Regular practice has been shown to influence the autonomic nervous system and reduce inflammation markers."
         }
       },
       {
@@ -63,15 +90,15 @@ const schemaData = [
         "name": "How many rounds of Wim Hof breathing should a beginner do?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Beginners should perform 3 rounds starting with a 60-second breath-out hold. HarmonyBreath provides a dedicated Beginner preset to guide you safely."
+          "text": "Beginners should perform 3 rounds starting with a 60-second breath-out hold. HarmonyBreath provides a dedicated Beginner preset that safely introduces you to the Wim Hof breathing method with progressive pacing across all three rounds."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Wim Hof Breathing safe to do anywhere?",
+        "name": "Is Wim Hof Breathing safe?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Always practice sitting or lying down in a safe environment. Never practice in water, while driving, cycling, or operating machinery."
+          "text": "Wim Hof Breathing is generally safe for healthy individuals but should always be practiced sitting or lying down in a safe environment. Never practice while driving, swimming, or operating machinery. Consult a doctor before practicing if you have epilepsy, high blood pressure, heart conditions, or are pregnant."
         }
       }
     ]
@@ -91,8 +118,10 @@ const schemaData = [
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="keywords" content="Wim Hof Breathing, Breathing Timer, Guided Breathwork, Retention Hold, Free Breathing App, Deep Breathing, HarmonyBreath" />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0c0a09" />
+    <meta name="author" content="HarmonyBreath" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -100,13 +129,19 @@ const schemaData = [
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="HarmonyBreath" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalUrl} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:site" content="@harmonybreath" />
+    <meta name="twitter:creator" content="@harmonybreath" />
 
     <!-- Web Fonts: Geist & Geist Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
