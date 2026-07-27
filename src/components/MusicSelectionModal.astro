@@ -6,7 +6,7 @@
     <!-- Header -->
     <div class="flex items-center justify-between border-b border-neutral-800 px-4 sm:px-6 py-3 sm:py-4 gap-2 shrink-0">
       <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2 shrink-0">
-        <svg class="w-5 h-5 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
         </svg>
         Choose Your Music
@@ -126,7 +126,7 @@
       <button
         id="apply-music-settings"
         type="button"
-        class="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 sm:py-2 rounded-xl bg-cyan-500 text-black font-semibold text-sm hover:bg-cyan-400 transition-colors whitespace-nowrap"
+        class="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 sm:py-2 rounded-xl bg-amber-400/90 text-neutral-950 font-semibold text-sm hover:bg-amber-300 transition-colors whitespace-nowrap"
       >
         Apply & Close
       </button>
@@ -196,20 +196,20 @@
         <button
           type="button"
           class="music-track-card relative group p-4 rounded-xl border-2 transition-all duration-200 ${isSelected
-            ? 'border-cyan-400 bg-cyan-500/10'
+            ? 'border-amber-400 bg-amber-400/10'
             : 'border-neutral-800 bg-neutral-900/50 hover:border-neutral-700'}"
           data-track-id="${track.id}"
           data-phase="${phase}"
           aria-pressed="${isSelected}"
         >
           <div class="absolute top-2 right-2">
-            <svg class="w-5 h-5 ${isSelected ? 'text-cyan-400' : 'hidden'}" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-5 h-5 ${isSelected ? 'text-amber-400' : 'hidden'}" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
           </div>
           <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center ${isSelected ? 'bg-cyan-500/20' : 'bg-neutral-800/50'}">
-              <svg class="w-5 h-5 ${isSelected ? 'text-cyan-400' : 'text-neutral-500'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center ${isSelected ? 'bg-amber-400/20' : 'bg-neutral-800/50'}">
+              <svg class="w-5 h-5 ${isSelected ? 'text-amber-400' : 'text-neutral-500'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
               </svg>
             </div>
@@ -218,7 +218,7 @@
               <p class="text-xs text-neutral-400 mt-0.5 truncate">${track.description}</p>
             </div>
           </div>
-          ${isSelected ? '<span class="absolute bottom-2 right-2 text-xs font-mono text-cyan-400">Selected</span>' : ''}
+          ${isSelected ? '<span class="absolute bottom-2 right-2 text-xs font-mono text-amber-400">Selected</span>' : ''}
         </button>
       `;
     }).join('');
@@ -317,7 +317,7 @@
 
 <style>
   .music-track-card:focus-visible {
-    outline: 2px solid #22d3ee;
+    outline: 2px solid #d4a574;
     outline-offset: 2px;
   }
   

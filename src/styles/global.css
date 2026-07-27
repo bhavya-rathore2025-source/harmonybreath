@@ -1,20 +1,35 @@
 @import "tailwindcss";
 
+@theme {
+  --color-neutral-50: #fafaf9;
+  --color-neutral-100: #f5f5f4;
+  --color-neutral-200: #e7e5e4;
+  --color-neutral-300: #d6d3d1;
+  --color-neutral-400: #a8a29e;
+  --color-neutral-500: #78716c;
+  --color-neutral-600: #57534e;
+  --color-neutral-700: #44403c;
+  --color-neutral-800: #292524;
+  --color-neutral-900: #1c1917;
+  --color-neutral-950: #0f0d0a;
+}
+
 @layer base {
   :root {
-    --canvas: #000000;
-    --canvas-soft: #0a0a0a;
-    --canvas-card: #121212;
-    --hairline: #222222;
-    --hairline-strong: #333333;
+    --canvas: #0c0a09;
+    --canvas-soft: #141110;
+    --canvas-card: #1c1817;
+    --hairline: #2a2522;
+    --hairline-strong: #3d3530;
     --ink: #ffffff;
-    --ink-muted: #888888;
-    --ink-subtle: #666666;
+    --ink-muted: #a8a29e;
+    --ink-subtle: #78716c;
     --accent-cyan: #50e3c2;
     --accent-blue: #0070f3;
     --accent-violet: #7928ca;
     --accent-magenta: #eb367f;
-    --accent-amber: #f5a623;
+    --accent-amber: #d4a574;
+    --accent-warm: #d4a574;
   }
 
   body {
@@ -30,27 +45,27 @@
   }
 }
 
-/* Custom Vercel mesh gradient animation background */
+/* Custom warm mesh gradient background */
 .hero-gradient-mesh {
-  background: radial-gradient(circle at 50% 20%, rgba(0, 112, 243, 0.15), transparent 50%),
-              radial-gradient(circle at 20% 50%, rgba(121, 40, 202, 0.12), transparent 45%),
-              radial-gradient(circle at 80% 60%, rgba(80, 227, 194, 0.10), transparent 45%);
+  background: radial-gradient(circle at 50% 20%, rgba(212, 165, 116, 0.12), transparent 50%),
+              radial-gradient(circle at 20% 80%, rgba(124, 186, 154, 0.10), transparent 45%),
+              radial-gradient(circle at 80% 40%, rgba(232, 168, 124, 0.08), transparent 45%);
 }
 
 .gradient-text-develop {
-  background: linear-gradient(135deg, #007cf0 0%, #00dfd8 100%);
+  background: linear-gradient(135deg, #d4a574 0%, #f5a623 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-text-preview {
-  background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
+  background: linear-gradient(135deg, #7cba9a 0%, #50e3c2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-text-ship {
-  background: linear-gradient(135deg, #ff4d4d 0%, #f9cb28 100%);
+  background: linear-gradient(135deg, #e8a87c 0%, #d4876a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -65,7 +80,7 @@
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(0, 124, 240, 0.4), rgba(121, 40, 202, 0.4), rgba(255, 0, 128, 0.4));
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.3), rgba(124, 186, 154, 0.3), rgba(232, 168, 124, 0.3));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -76,18 +91,18 @@
 @keyframes breathPulse {
   0% {
     transform: scale(1);
-    opacity: 0.7;
-    box-shadow: 0 0 20px rgba(0, 124, 240, 0.3);
+    opacity: 0.6;
+    box-shadow: 0 0 20px rgba(212, 165, 116, 0.2);
   }
   50% {
-    transform: scale(1.18);
-    opacity: 1;
-    box-shadow: 0 0 60px rgba(80, 227, 194, 0.6);
+    transform: scale(1.15);
+    opacity: 0.9;
+    box-shadow: 0 0 60px rgba(80, 227, 194, 0.35);
   }
   100% {
     transform: scale(1);
-    opacity: 0.7;
-    box-shadow: 0 0 20px rgba(0, 124, 240, 0.3);
+    opacity: 0.6;
+    box-shadow: 0 0 20px rgba(212, 165, 116, 0.2);
   }
 }
 
