@@ -13,6 +13,7 @@ import Footer from '../components/Footer.astro';
   title="Wim Hof Breathing — Free Guided Timer & Online Breathwork Tool | HarmonyBreath"
   description="Master the Wim Hof breathing technique with our free guided timer. Practice Wim Hof method breathing with customizable retention holds, audio cues, and session tracking. The best Wim Hof timer online."
   keywords="wim hof breathing, wim hof method, wim hof breathing technique, wim hof guided breathing, wim hof timer online, wim hof breathing benefits, wim hof breathing methods, breathwork timer"
+  canonicalUrl="https://harmonybreathing.com/wim-hof"
 >
   <Header />
 
@@ -44,6 +45,23 @@ import Footer from '../components/Footer.astro';
         Master the Wim Hof breathing technique with our free online guided timer. Experience the full Wim Hof method with customizable sessions, audio cues, and progress tracking. 100% free and private.
       </p>
     </section>
+
+    <!-- Main Interactive Breathing Timer Component -->
+    <BreathingTimer />
+
+    <!-- Difficulty Presets -->
+    <SessionPresets />
+
+    <!-- Analytics Stats Panel -->
+    <AnalyticsPanel />
+
+    <!-- Step-by-Step Technique Guide -->
+    <TechniqueGuide />
+
+    <!-- Safety Precautions & Contraindications -->
+    <SafetyModal />
+
+    
 
     <!-- SEO Content Section ~600 words about the tool -->
     <section class="w-full max-w-4xl mx-auto px-4 pb-4">
@@ -102,21 +120,6 @@ import Footer from '../components/Footer.astro';
         </p>
       </div>
     </section>
-
-    <!-- Main Interactive Breathing Timer Component -->
-    <BreathingTimer />
-
-    <!-- Difficulty Presets -->
-    <SessionPresets />
-
-    <!-- Analytics Stats Panel -->
-    <AnalyticsPanel />
-
-    <!-- Step-by-Step Technique Guide -->
-    <TechniqueGuide />
-
-    <!-- Safety Precautions & Contraindications -->
-    <SafetyModal />
 
     <!-- FAQ Section with JSON-LD SEO -->
     <section id="faq-section" class="w-full max-w-4xl mx-auto py-16 px-4 border-t border-neutral-900">

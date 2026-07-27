@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Privacy Policy — HarmonyBreath';
+const description = 'HarmonyBreath privacy policy. We do not collect, store, or share any personal data. Your breathwork practice is 100% private and local to your device.';
+const canonicalUrl = 'https://harmonybreathing.com/privacy';
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+>
+  <Header />
+
+  <main class="flex-1 hero-gradient-mesh relative">
+    <section class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <div class="text-center space-y-4 mb-12">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400 text-xs font-mono">
+          Privacy First
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-bold text-white">Privacy Policy</h1>
+        <p class="text-neutral-400 max-w-2xl mx-auto text-sm font-sans font-light">Last updated: July 27, 2026</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-6 text-sm sm:text-base text-neutral-300 leading-relaxed font-sans font-light [&_h2]:text-white [&_h2]:text-xl [&_h2]:sm:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-white [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_strong]:text-white [&_strong]:font-medium [&_ul]:list-disc [&_ul]:list-inside [&_ul]:space-y-2 [&_ul]:text-neutral-400">
+        <h2>Our Commitment to Privacy</h2>
+        <p>
+          HarmonyBreath is built on a fundamental belief: your breathing practice is personal, and your data should remain yours. We operate a strict <strong>zero-data-collection policy</strong>. This Privacy Policy explains how we handle information when you use our website and breathing tools.
+        </p>
+
+        <h2>Information We Collect</h2>
+        <p>We collect <strong>no personal information</strong>. HarmonyBreath does not have accounts, user registration, or any server-side data storage. Specifically:</p>
+        <ul>
+          <li>We do not collect your name, email address, IP address, or any personally identifiable information.</li>
+          <li>We do not use cookies for tracking, analytics, or advertising purposes.</li>
+          <li>We do not embed third-party tracking scripts, fingerprinting, or analytics services.</li>
+          <li>We do not store your session data, breathing history, or preferences on any server.</li>
+        </ul>
+
+        <h2>Local Storage</h2>
+        <p>
+          HarmonyBreath uses your browser's <strong>localStorage</strong> to save preferences such as volume settings and session history. This data never leaves your device. You can clear this data at any time through your browser settings. No one — including us — can access this information.
+        </p>
+
+        <h2>Third-Party Services</h2>
+        <p>
+          Our website is hosted on a static infrastructure. We do not integrate third-party analytics, advertising networks, social media tracking pixels, or external comment systems. The only external requests made by the website are for web fonts (Google Fonts) served to enhance visual appearance.
+        </p>
+
+        <h2>Data Sharing</h2>
+        <p>
+          Since we collect no data, we share no data. We do not sell, rent, trade, or transfer any information to third parties. We do not respond to requests for user data because we have none to provide.
+        </p>
+
+        <h2>Children's Privacy</h2>
+        <p>
+          Our services are suitable for all ages. We do not knowingly collect any information from children under 13. Since no data collection occurs on our platform, no special precautions are necessary beyond standard parental guidance for internet usage.
+        </p>
+
+        <h2>Changes to This Policy</h2>
+        <p>
+          If this policy changes, the updated version will be posted on this page with a new effective date. Material changes will be communicated via the website. Continued use of HarmonyBreath after changes constitutes acceptance of the updated policy.
+        </p>
+
+        <h2>Contact Us</h2>
+        <p>
+          If you have questions about this Privacy Policy, you can <a href="/contact" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">contact us here</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
