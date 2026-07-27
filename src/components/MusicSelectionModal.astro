@@ -2,20 +2,20 @@
 ---
 
 <div id="music-selection-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-  <div class="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950/95 shadow-2xl">
+  <div class="relative w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950/95 shadow-2xl">
     <!-- Header -->
-    <div class="flex items-center justify-between border-b border-neutral-800 px-6 py-4">
-      <h2 class="text-lg font-bold text-white flex items-center gap-2">
-        <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="flex items-center justify-between border-b border-neutral-800 px-4 sm:px-6 py-3 sm:py-4 gap-2 shrink-0">
+      <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2 shrink-0">
+        <svg class="w-5 h-5 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
         </svg>
         Choose Your Music
       </h2>
-      <p class="text-xs text-neutral-500 font-mono">Customize audio for each breathing phase</p>
+      <p class="hidden sm:block text-xs text-neutral-500 font-mono">Customize audio for each breathing phase</p>
       <button
         id="close-music-modal"
         type="button"
-        class="p-2 rounded-lg hover:bg-neutral-800 text-neutral-400 hover:text-white transition-colors"
+        class="p-2 rounded-lg hover:bg-neutral-800 text-neutral-400 hover:text-white transition-colors shrink-0"
         aria-label="Close music selection"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -25,10 +25,10 @@
     </div>
 
     <!-- Phase Tabs -->
-    <div class="flex border-b border-neutral-800 bg-neutral-900/50 px-2 py-1 overflow-x-auto" role="tablist" aria-label="Breathing phases">
+    <div class="grid grid-cols-3 border-b border-neutral-800 bg-neutral-900/50 shrink-0" role="tablist" aria-label="Breathing phases">
       <button
         type="button"
-        class="phase-tab px-4 py-2 text-xs font-mono font-medium text-neutral-400 hover:text-white transition-colors whitespace-nowrap rounded-t-lg"
+        class="phase-tab px-3 sm:px-4 py-2.5 text-xs font-mono font-medium text-neutral-400 hover:text-white transition-colors whitespace-nowrap rounded-t-lg flex items-center justify-center"
         data-phase="guidedBreathing"
         role="tab"
         aria-selected="true"
@@ -38,12 +38,12 @@
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          Phase 1: Guided Breathing
+          Phase 1
         </span>
       </button>
       <button
         type="button"
-        class="phase-tab px-4 py-2 text-xs font-mono font-medium text-neutral-500 hover:text-white transition-colors whitespace-nowrap rounded-t-lg"
+        class="phase-tab px-3 sm:px-4 py-2.5 text-xs font-mono font-medium text-neutral-500 hover:text-white transition-colors whitespace-nowrap rounded-t-lg flex items-center justify-center"
         data-phase="breathOutHold"
         role="tab"
         aria-selected="false"
@@ -53,12 +53,12 @@
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          Phase 2: Breath-Out Hold
+          Phase 2
         </span>
       </button>
       <button
         type="button"
-        class="phase-tab px-4 py-2 text-xs font-mono font-medium text-neutral-500 hover:text-white transition-colors whitespace-nowrap rounded-t-lg"
+        class="phase-tab px-3 sm:px-4 py-2.5 text-xs font-mono font-medium text-neutral-500 hover:text-white transition-colors whitespace-nowrap rounded-t-lg flex items-center justify-center"
         data-phase="recoveryHold"
         role="tab"
         aria-selected="false"
@@ -68,13 +68,13 @@
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
           </svg>
-          Phase 3: Recovery Breath
+          Phase 3
         </span>
       </button>
     </div>
 
     <!-- Phase Panels -->
-    <div class="overflow-y-auto max-h-[calc(90vh-140px)] p-4 space-y-6">
+    <div class="overflow-y-auto flex-1 p-4 space-y-6 music-panels-scroll">
       <!-- Phase 1: Guided Breathing -->
       <div
         id="panel-guidedBreathing"
@@ -116,9 +116,9 @@
     </div>
 
     <!-- Footer Actions -->
-    <div class="flex items-center justify-between border-t border-neutral-800 px-6 py-4 bg-neutral-900/50">
-      <div class="flex items-center gap-2 text-xs text-neutral-500">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="flex items-center justify-between border-t border-neutral-800 px-4 sm:px-6 py-3 sm:py-4 bg-neutral-900/50 shrink-0 gap-3">
+      <div class="hidden sm:flex items-center gap-2 text-xs text-neutral-500">
+        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         <span>Settings saved automatically to your browser</span>
@@ -126,7 +126,7 @@
       <button
         id="apply-music-settings"
         type="button"
-        class="px-5 py-2 rounded-xl bg-cyan-500 text-black font-semibold text-sm hover:bg-cyan-400 transition-colors"
+        class="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 sm:py-2 rounded-xl bg-cyan-500 text-black font-semibold text-sm hover:bg-cyan-400 transition-colors whitespace-nowrap"
       >
         Apply & Close
       </button>
@@ -324,6 +324,28 @@
   .phase-tab[aria-selected="true"] {
     background-color: #1f2937;
     color: white;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #404040;
+    border-radius: 4px;
+  }
+
+  .music-panels-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  .music-panels-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .music-panels-scroll::-webkit-scrollbar-thumb {
+    background-color: #404040;
+    border-radius: 4px;
   }
   
   @media (prefers-reduced-motion: reduce) {
