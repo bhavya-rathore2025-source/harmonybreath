@@ -5,13 +5,88 @@ import BoxBreathingTimer from '../components/BoxBreathingTimer.astro';
 import BoxSessionPresets from '../components/BoxSessionPresets.astro';
 import AnalyticsPanel from '../components/AnalyticsPanel.astro';
 import Footer from '../components/Footer.astro';
+
+const pageSchemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HarmonyBreath — Box Breathing Timer",
+    "alternateName": "HarmonyBreath Box Breathing Guided App",
+    "description": "Free guided box breathing timer with customizable phase durations, audio cues, and session tracking. Practice the box breathing method online with adjustable 2s to 10s per phase.",
+    "url": "https://harmonybreathing.com/box-breathing",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any (Web Browser)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Guided box breathing 4-phase sessions",
+      "Customizable phase duration 2–10 seconds",
+      "Session presets and custom mode",
+      "Audio cue support and silent fallbacks",
+      "Local progress tracking with analytics",
+      "100% free, privacy-first, no registration"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HarmonyBreath Box Breathing Timer",
+    "description": "Free online box breathing timer with guided 4-4-4-4 sessions, adjustable phase durations, and session analytics. Practice box breathing safely.",
+    "browserRequirements": "Requires JavaScript",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a box breathing method?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Box breathing, also known as square breathing or 4-4-4-4 breathing, is a structured breathing technique where you inhale, hold, exhale, and hold empty for equal counts. This balanced square-shaped pattern helps calm the nervous system, reduce stress, and improve focus. Each of the four phases lasts the same duration, typically 4 seconds, creating a predictable rhythm that makes it one of the most accessible and effective breathwork techniques."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is box breathing good or bad for you?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Box breathing is generally safe and beneficial for most people when practiced correctly. It helps reduce stress, improve focus, lower heart rate, and regulate the nervous system. However, individuals with epilepsy, high blood pressure, heart conditions, or who are pregnant should consult a doctor before practicing. Always practice in a safe environment — never while driving, in water, or operating machinery. Stop immediately if you experience chest pain or severe dizziness."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to do box breathing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sit comfortably in a safe space and set a timer. Inhale slowly through your nose for 4 seconds, filling your lungs completely. Hold your breath gently for 4 seconds without straining. Exhale steadily through your mouth for 4 seconds, emptying fully. Hold with lungs empty for 4 seconds. Repeat this cycle for 3–5 minutes. Beginners can start with 2–3 seconds per phase and gradually increase. Use our free guided box breathing timer to follow each phase without counting mentally."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who invented box breathing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The underlying technique traces back thousands of years to ancient yoga traditions known as sama vritti pranayama, or equal breathing. The modern structured version with four equal phases was popularized by Navy SEALs and tactical breathing programs for stress regulation under pressure. Today it is used by first responders, elite athletes, and corporate executives to maintain composure in high-stakes situations."
+        }
+      }
+    ]
+  }
+];
 ---
 
 <Layout
-  title="Box Breathing — Free Guided 4-4-4-4 Timer & Tool | HarmonyBreath"
-  description="Master box breathing (square breathing) with our free guided timer. Equal inhale, hold, exhale, and empty hold. Customizable from 2s to 10s per phase. 100% free and private."
-  keywords="box breathing, square breathing, 4-4-4-4 breathing, box breathing technique, guided breathing timer, stress relief breathing, tactical breathing"
+  title="Box Breathing — Free Guided 4-4-4-4 Timer & Exercise Tool | HarmonyBreath"
+  description="What is box breathing? Master the box breathing method with our free guided box breathing timer. Practice the box breathing exercise for anxiety relief with equal inhale, hold, exhale, and empty hold phases. Customizable 2s–10s per phase. Free & private."
+  keywords="box breathing, box breathing timer, box breathing exercise, box breathing meaning, what is box breathing, box breathing for anxiety, box breathing method, square breathing, 4-4-4-4 breathing, stress relief breathing, guided breathing timer"
   canonicalUrl="https://harmonybreathing.com/box-breathing"
+  image="/og-image.png"
+  schemaData={pageSchemaData}
 >
   <Header />
 
@@ -133,6 +208,150 @@ import Footer from '../components/Footer.astro';
             Emotional Control
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- About Section: SEO Content -->
+    <section id="box-about-section" class="w-full max-w-4xl mx-auto py-16 px-4 border-t border-neutral-900">
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-amber-400">About Box Breathing</h2>
+        <h3 class="text-3xl font-bold text-white sm:text-4xl">
+          What Is Box Breathing? Understanding the Box Breathing Meaning
+        </h3>
+        <p class="text-sm text-neutral-400">
+          Everything you need to know about the box breathing technique — from its origins to how our guided tool helps you practice effectively.
+        </p>
+      </div>
+
+      <div class="space-y-8 text-sm text-neutral-300 leading-relaxed">
+        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+          <p class="mb-4">
+            <strong class="text-white">What is box breathing?</strong> Box breathing, also known as square breathing or 4-4-4-4 breathing, is a structured breathwork technique where each phase of the breath cycle — inhale, hold, exhale, and hold empty — lasts for an equal duration. The <strong class="text-white">box breathing meaning</strong> comes from the visual representation: four equal sides forming a perfect square. This balanced structure makes it one of the most accessible breathing exercises for both beginners and experienced practitioners.
+          </p>
+          <p class="mb-4">
+            The <strong class="text-white">box breathing method</strong> has been used for decades by Navy SEALs, first responders, elite athletes, and corporate executives to maintain composure under pressure. By forcing a slow, rhythmic pattern, you directly influence your autonomic nervous system, shifting from fight-or-flight to a state of calm and control.
+          </p>
+          <p>
+            Our free <strong class="text-white">box breathing timer</strong> removes the guesswork. Instead of counting seconds, you focus entirely on your breath while the timer guides each phase with visual progress rings, phase indicators, and optional audio cues. Customize phase durations from 2 to 10 seconds to match your comfort level and experience.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+          <h4 class="text-lg font-bold text-white mb-3">The Box Breathing Exercise: How to Practice</h4>
+          <p class="mb-4">
+            The <strong class="text-white">box breathing exercise</strong> follows a simple cycle. Sit comfortably, set your timer, and begin. Breathe in slowly through your nose, filling your lungs completely. Hold gently without strain. Exhale steadily through your mouth, emptying fully. Hold with lungs empty, staying calm before the next cycle.
+          </p>
+          <p class="mb-4">
+            Our timer makes each phase visually distinct with color-coded indicators: amber for inhale, cyan for full hold, blue for exhale, and purple for empty hold. The progress ring shows your position in each phase, eliminating the need to count mentally and allowing you to sink deeper into the practice.
+          </p>
+          <p>
+            Beginners should start with 3 to 5 minutes using the Standard 4-second preset. As comfort grows, increase session length or experiment with different durations using Custom mode. Consistency matters most — even five minutes of daily practice yields measurable stress management and emotional regulation benefits.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+          <h4 class="text-lg font-bold text-white mb-3">Box Breathing for Anxiety: A Natural Stress Reset</h4>
+          <p class="mb-4">
+            <strong class="text-white">Box breathing for anxiety</strong> is one of the most recommended techniques in clinical and performance settings. When anxiety strikes, breathing becomes shallow and rapid, activating the sympathetic nervous system. Box breathing interrupts this cycle by forcing a slow, deep, equal pattern that engages the vagus nerve and activates the parasympathetic relaxation response.
+          </p>
+          <p class="mb-4">
+            Three minutes of box breathing can significantly reduce heart rate and produce a measurable sense of calm. The technique works anywhere, anytime — before a presentation, during a difficult conversation, or when anxiety feels overwhelming. Our <strong class="text-white">box breathing timer</strong> is especially helpful because it removes the cognitive load of counting when you are already stressed.
+          </p>
+          <p>
+            Session analytics let you track your practice over time, reinforcing the habit and showing tangible progress. The combination of guided timing and progress tracking makes this one of the most effective tools for building a sustainable <strong class="text-white">box breathing for anxiety</strong> practice.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+          <h4 class="text-lg font-bold text-white mb-3">Why Our Box Breathing Timer Stands Out</h4>
+          <p class="mb-4">
+            Our <strong class="text-white">box breathing exercise</strong> tool is purpose-built for this technique. The interface is minimal and distraction-free, honoring the meditative nature of the practice while providing the guidance you need. Features include customizable durations from 2 to 10 seconds, preset and custom modes, integrated ambient audio tracks, detailed session analytics, and complete privacy — everything runs locally with no registration or data collection.
+          </p>
+          <p>
+            The tool is 100% free with no ads, no paywalls, and no account required. It works on any device with a modern browser, making <strong class="text-white">what is box breathing</strong> knowledge and practice accessible to everyone. We believe effective breathwork tools should never be hidden behind a paywall.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+          <h4 class="text-lg font-bold text-white mb-3">Box Breathing Method: Tips for Best Results</h4>
+          <p class="mb-4">
+            Focus on smooth, controlled breaths rather than forcing the rhythm. If 4 seconds per phase feels challenging, start at 2 or 3 seconds using Custom mode and gradually increase. The goal is finding a sustainable rhythm, not pushing your limits.
+          </p>
+          <p>
+            Daily consistency beats occasional long sessions. A five-minute daily <strong class="text-white">box breathing exercise</strong> produces better long-term results than 20 minutes once a week. Use our timer to build the habit, and you will notice improved focus, better stress resilience, and greater emotional balance over time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="box-faq-section" class="w-full max-w-4xl mx-auto py-16 px-4 border-t border-neutral-900">
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-amber-400">FAQ</h2>
+        <h3 class="text-3xl font-bold text-white sm:text-4xl">
+          Frequently Asked Questions About Box Breathing
+        </h3>
+        <p class="text-sm text-neutral-400">
+          Everything you need to know about the box breathing method, its benefits, and how to practice safely.
+        </p>
+      </div>
+
+      <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-amber-500/30 transition-all duration-300" open>
+          <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base">
+            <span itemprop="name">What is a box breathing method?</span>
+            <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="mt-4 text-sm text-neutral-300 leading-relaxed" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text">
+              <p>Box breathing, also known as square breathing or 4-4-4-4 breathing, is a structured breathing technique where you inhale, hold, exhale, and hold empty for equal counts. This balanced square-shaped pattern helps calm the nervous system, reduce stress, and improve focus. Each of the four phases lasts the same duration, typically 4 seconds, creating a predictable rhythm that makes it one of the most accessible and effective breathwork techniques.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-cyan-500/30 transition-all duration-300">
+          <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base">
+            <span itemprop="name">Is box breathing good or bad for you?</span>
+            <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="mt-4 text-sm text-neutral-300 leading-relaxed" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text">
+              <p>Box breathing is generally safe and beneficial for most people when practiced correctly. It helps reduce stress, improve focus, lower heart rate, and regulate the nervous system. However, individuals with epilepsy, high blood pressure, heart conditions, or who are pregnant should consult a doctor before practicing. Always practice in a safe environment — never while driving, in water, or operating machinery. Stop immediately if you experience chest pain or severe dizziness.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-blue-500/30 transition-all duration-300">
+          <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base">
+            <span itemprop="name">How to do box breathing?</span>
+            <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="mt-4 text-sm text-neutral-300 leading-relaxed" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text">
+              <p>Sit comfortably in a safe space and set a timer. Inhale slowly through your nose for 4 seconds, filling your lungs completely. Hold your breath gently for 4 seconds without straining. Exhale steadily through your mouth for 4 seconds, emptying fully. Hold with lungs empty for 4 seconds. Repeat this cycle for 3–5 minutes. Beginners can start with 2–3 seconds per phase and gradually increase. Use our free guided box breathing timer above to follow each phase without counting mentally.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-purple-500/30 transition-all duration-300">
+          <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base">
+            <span itemprop="name">Who invented box breathing?</span>
+            <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="mt-4 text-sm text-neutral-300 leading-relaxed" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+            <div itemprop="text">
+              <p>The underlying technique traces back thousands of years to ancient yoga traditions known as <em>sama vritti pranayama</em>, or equal breathing. The modern structured version with four equal phases was popularized by Navy SEALs and tactical breathing programs for stress regulation under pressure. Today it is used by first responders, elite athletes, and corporate executives to maintain composure in high-stakes situations.</p>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
 
