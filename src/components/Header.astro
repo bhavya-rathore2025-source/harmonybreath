@@ -70,7 +70,7 @@
             </div>
           </div>
           <!-- Breath Sound Volume -->
-          <div class="space-y-1">
+          <div id="breath-volume-section" class="space-y-1">
             <label for="breath-volume-input" class="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">Breath Volume</label>
             <input
               type="range"
@@ -109,6 +109,12 @@
 
 <script>
   import { audioPlayer } from '../utils/audioPlayer';
+
+  const isBoxBreathing = window.location.pathname.includes('box-breathing');
+  const breathVolumeSection = document.getElementById('breath-volume-section');
+  if (isBoxBreathing && breathVolumeSection) {
+    breathVolumeSection.classList.add('hidden');
+  }
 
   // Volume Control
   const volumeControl = document.getElementById('volume-control') as HTMLElement | null;

@@ -118,6 +118,18 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
         </svg>
         <span>Reset</span>
       </button>
+
+      <button
+        id="box-btn-music"
+        type="button"
+        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+        title="Change Background Music"
+      >
+        <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+        </svg>
+        <span>Music</span>
+      </button>
     </div>
   </div>
 </section>
@@ -174,6 +186,8 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
   const customDurationVal = document.getElementById('box-custom-duration-val');
   const customCyclesInput = document.getElementById('box-custom-cycles-input');
   const customCyclesVal = document.getElementById('box-custom-cycles-val');
+
+  const btnMusic = document.getElementById('box-btn-music');
 
   const phaseConfig = {
     INHALE: {
@@ -296,6 +310,20 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
   });
 
   btnRestart?.addEventListener('click', () => resetSession());
+
+  btnMusic?.addEventListener('click', () => {
+    window.openBoxMusicModal?.();
+  });
+
+  window.addEventListener('hb_box_music_updated', (e) => {
+    if (phase === 'IDLE' || phase === 'COMPLETE') return;
+    const filePath = getSelectedMusicFilePath();
+    if (filePath) {
+      audioPlayer.playMusicTrack(filePath, true);
+    } else {
+      audioPlayer.playPhaseTrack('guidedBreathing', true);
+    }
+  });
 
   function startSession() {
     currentCycle = 1;

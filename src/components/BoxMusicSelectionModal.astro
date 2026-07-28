@@ -113,6 +113,10 @@
         if (track) {
           audioPlayer.previewTrack(track.phase, trackId);
         }
+
+        window.dispatchEvent(new CustomEvent('hb_box_music_updated', {
+          detail: { trackId },
+        }));
       });
     });
   }
