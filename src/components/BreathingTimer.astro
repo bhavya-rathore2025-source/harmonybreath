@@ -138,6 +138,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 <script>
   import { audioPlayer } from '../utils/audioPlayer';
   import { defaultAudioConfig } from '../config/audioConfig';
+  import { saveExerciseStats } from '../utils/stats';
 
   // openMusicModal is defined by MusicSelectionModal.astro's own script
   // which properly calls renderTracks() before showing the modal.
@@ -603,17 +604,10 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
   function saveSessionStats() {
     try {
-      const statsStr = localStorage.getItem('hb_session_stats');
-      const stats = statsStr ? JSON.parse(statsStr) : { totalSessions: 0, totalRounds: 0, bestHoldSec: 0 };
-
-      stats.totalSessions += 1;
-      stats.totalRounds += totalRounds;
-      stats.bestHoldSec = Math.max(stats.bestHoldSec, targetHoldSeconds);
-
-      localStorage.setItem('hb_session_stats', JSON.stringify(stats));
-
-      // Dispatch custom event to notify Analytics Panel
-      window.dispatchEvent(new Event('hb_stats_updated'));
+      saveExerciseStats('wim-hof', {
+        totalRounds: totalRounds,
+        bestHoldSec: targetHoldSeconds,
+      });
     } catch {
       // Ignore localStorage errors
     }

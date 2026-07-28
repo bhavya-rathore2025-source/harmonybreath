@@ -140,6 +140,7 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
 <script>
   import { audioPlayer } from '../utils/audioPlayer';
   import { musicTracks } from '../config/audioConfig';
+  import { saveExerciseStats } from '../utils/stats';
 
   const BOX_MUSIC_KEY = 'hb_box_music_selection';
 
@@ -505,13 +506,9 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
 
   function saveSessionStats() {
     try {
-      const statsStr = localStorage.getItem('hb_session_stats');
-      const stats = statsStr ? JSON.parse(statsStr) : { totalSessions: 0, totalRounds: 0, bestHoldSec: 0 };
-      stats.totalSessions += 1;
-      stats.totalRounds += totalCycles;
-      stats.bestHoldSec = Math.max(stats.bestHoldSec, phaseDuration);
-      localStorage.setItem('hb_session_stats', JSON.stringify(stats));
-      window.dispatchEvent(new Event('hb_stats_updated'));
+      saveExerciseStats('box-breathing', {
+        totalRounds: totalCycles,
+      });
     } catch {
       // Ignore localStorage errors
     }

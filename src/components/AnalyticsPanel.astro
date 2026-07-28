@@ -1,7 +1,12 @@
 ---
+export interface Props {
+  exerciseId: string;
+}
+
+const { exerciseId } = Astro.props;
 ---
 
-<div class="w-full max-w-4xl mx-auto my-8 px-4">
+<div class="w-full max-w-4xl mx-auto my-8 px-4" data-exercise-id={exerciseId}>
   <div class="bg-neutral-950/60 border border-neutral-800 rounded-2xl p-6 backdrop-blur-md">
     <div class="flex items-center justify-between border-b border-neutral-800 pb-4 mb-6">
       <div class="flex items-center gap-2">
@@ -29,7 +34,7 @@
       </div>
 
       <!-- Best Retention Hold -->
-      <div class="p-4 rounded-xl bg-neutral-900/40 border border-neutral-800/80">
+      <div id="best-hold-card" class="p-4 rounded-xl bg-neutral-900/40 border border-neutral-800/80">
         <div class="text-xs font-mono text-neutral-400">Personal Best Hold</div>
         <div id="stat-best-hold" class="text-3xl font-extrabold text-purple-400 font-mono-numbers mt-1">0s</div>
         <div class="text-[10px] text-neutral-500 mt-1">Max retention record</div>
@@ -38,16 +43,23 @@
   </div>
 </div>
 
+<style>
+  [data-exercise-id="box-breathing"] #best-hold-card {
+    display: none;
+  }
+</style>
+
 <script>
+  import { getExerciseStats } from '../utils/stats';
+
   function renderStats() {
     try {
-      const statsStr = localStorage.getItem('hb_session_stats');
-      const stats = statsStr ? JSON.parse(statsStr) : { totalSessions: 0, totalRounds: 0, bestHoldSec: 0 };
-
+      const container = document.querySelector('[data-exercise-id]');
+      const exerciseId = container?.getAttribute('data-exercise-id') || '';
+      const stats = getExerciseStats(exerciseId);
       const elSessions = document.getElementById('stat-sessions');
       const elRounds = document.getElementById('stat-rounds');
       const elBest = document.getElementById('stat-best-hold');
-
       if (elSessions) elSessions.textContent = String(stats.totalSessions || 0);
       if (elRounds) elRounds.textContent = String(stats.totalRounds || 0);
       if (elBest) elBest.textContent = `${stats.bestHoldSec || 0}s`;
