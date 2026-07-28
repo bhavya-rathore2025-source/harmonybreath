@@ -110,7 +110,16 @@
 <script>
   import { audioPlayer } from '../utils/audioPlayer';
 
-  const isBoxBreathing = window.location.pathname.includes('box-breathing');
+  const hidePages = ['/', '/about', '/contact', '/privacy', '/terms'];
+  const currentPath = window.location.pathname;
+  if (hidePages.includes(currentPath)) {
+    const volumeControl = document.getElementById('volume-control');
+    const musicBtn = document.getElementById('choose-music-btn');
+    if (volumeControl) volumeControl.classList.add('hidden');
+    if (musicBtn) musicBtn.classList.add('hidden');
+  }
+
+  const isBoxBreathing = currentPath.includes('box-breathing');
   const breathVolumeSection = document.getElementById('breath-volume-section');
   if (isBoxBreathing && breathVolumeSection) {
     breathVolumeSection.classList.add('hidden');
