@@ -9,6 +9,7 @@ interface Props {
   canonicalUrl?: string;
   keywords?: string;
   schemaData?: any[];
+  breadcrumb?: { name: string; url: string }[];
 }
 
 const {
@@ -62,6 +63,7 @@ const defaultSchemaData = [
 ];
 
 const schemaData = Astro.props.schemaData ?? defaultSchemaData;
+const breadcrumb = Astro.props.breadcrumb;
 ---
 
 <!doctype html>
@@ -113,6 +115,18 @@ const schemaData = Astro.props.schemaData ?? defaultSchemaData;
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+    {breadcrumb && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumb.map((item, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": item.name,
+          "item": `https://harmonybreathing.com${item.url}`
+        }))
+      })} />
+    )}
   </head>
   <body class="bg-neutral-950 text-white selection:bg-neutral-700 selection:text-white flex flex-col min-h-screen">
     <slot />
