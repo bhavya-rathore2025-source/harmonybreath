@@ -100,9 +100,9 @@ class ResilientAudioPlayer {
 
 
   /**
-   * Play breath sound (inhale/exhale) - independent of main audio
+   * Play breath sound (inhale/exhale) stretched to match phase duration
    */
-  public async playBreathSound(isInhale: boolean): Promise<void> {
+  public async playBreathSound(isInhale: boolean, phaseDuration?: number): Promise<void> {
     if (this.isBreathSoundMuted) return;
 
     const filePath = isInhale
@@ -120,9 +120,38 @@ class ResilientAudioPlayer {
       this.currentBreathSound = new Audio(filePath);
       this.currentBreathSound.volume = this.config.breathSoundVolume;
       this.currentBreathSound.muted = this.isBreathSoundMuted;
+      
+      if (phaseDuration && phaseDuration > 0) {
+        const setupPlaybackRate = () => {
+          if (this.currentBreathSound && !isNaN(this.currentBreathSound.duration) && this.currentBreathSound.duration > 0) {
+            const naturalDuration = this.currentBreathSound.duration;
+            const rate = naturalDuration / phaseDuration;
+            this.currentBreathSound.playbackRate = Math.max(0.25, Math.min(4, rate));
+          } else {
+            this.currentBreathSound?.addEventListener('loadedmetadata', setupPlaybackRate, { once: true });
+          }
+        };
+        setupPlaybackRate();
+      }
+      
       await this.currentBreathSound.play();
     } catch {
       // Ignore autoplay errors for breath sounds
+    }
+  }
+
+  /**
+   * Stop the currently playing breath sound
+   */
+  public stopBreathSound(): void {
+    if (this.currentBreathSound) {
+      try {
+        this.currentBreathSound.pause();
+        this.currentBreathSound.currentTime = 0;
+      } catch {
+        // Ignore errors
+      }
+      this.currentBreathSound = null;
     }
   }
 

@@ -182,7 +182,6 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       glow: 'from-amber-500/20',
       labelClass: 'text-amber-400',
       haloScale: '1.25',
-      breathSound: true,
     },
     HOLD_FULL: {
       label: 'Phase 2: Hold (Full)',
@@ -190,7 +189,6 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       glow: 'from-cyan-500/20',
       labelClass: 'text-cyan-400',
       haloScale: '1.25',
-      breathSound: null,
     },
     EXHALE: {
       label: 'Phase 3: Exhale',
@@ -198,7 +196,6 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       glow: 'from-blue-500/20',
       labelClass: 'text-blue-400',
       haloScale: '0.95',
-      breathSound: false,
     },
     HOLD_EMPTY: {
       label: 'Phase 4: Hold (Empty)',
@@ -206,7 +203,6 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       glow: 'from-purple-500/20',
       labelClass: 'text-purple-400',
       haloScale: '0.95',
-      breathSound: null,
     },
   };
 
@@ -314,6 +310,8 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
     const filePath = getSelectedMusicFilePath();
     if (filePath) {
       audioPlayer.playMusicTrack(filePath, true);
+    } else {
+      audioPlayer.playPhaseTrack('guidedBreathing', true);
     }
   }
 
@@ -373,10 +371,6 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       iconPlay.classList.add('hidden');
       iconPause.classList.remove('hidden');
       labelMainAction.textContent = 'Pause';
-    }
-
-    if (cfg.breathSound !== null) {
-      audioPlayer.playBreathSound(cfg.breathSound);
     }
 
     updateCounter();
