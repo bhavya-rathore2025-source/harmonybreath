@@ -82,36 +82,36 @@ import Footer from '../components/Footer.astro';
           </a>
         </div>
 
-        <!-- 2. BOX BREATHING (PLANNED) -->
-        <div class="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6 flex flex-col justify-between space-y-6 hover:border-neutral-700 transition-all duration-300">
+        <!-- 2. BOX BREATHING -->
+        <div class="rounded-2xl border border-neutral-800 bg-neutral-900/40 p-6 flex flex-col justify-between space-y-6 hover:border-amber-500/30 transition-all duration-300 group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                In Development
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-mono uppercase font-semibold bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                Live & Available
               </span>
               <span class="text-xs text-neutral-500 font-mono">Equal Cadence</span>
             </div>
 
-            <h3 class="text-xl font-bold text-white">
+            <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
               Box Breathing (4-4-4-4)
             </h3>
 
-            <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+            <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
               Equal duration inhale, hold, exhale, and empty hold. Utilized by tactical operators and athletes to immediately reset composure under high stress.
             </p>
 
-            <div class="space-y-1.5 text-xs font-mono text-neutral-500 pt-2 border-t border-neutral-800/80">
-              <div class="flex justify-between"><span>Cadence:</span> <span class="text-neutral-300">4s In | 4s Hold | 4s Out | 4s Hold</span></div>
-              <div class="flex justify-between"><span>Primary Goal:</span> <span class="text-purple-400">Panic & Stress Reset</span></div>
+            <div class="space-y-1.5 text-xs font-mono text-neutral-400 pt-2 border-t border-neutral-800">
+              <div class="flex justify-between"><span>Cadence:</span> <span class="text-white">4s In | 4s Hold | 4s Out | 4s Hold</span></div>
+              <div class="flex justify-between"><span>Primary Goal:</span> <span class="text-amber-400">Panic & Stress Reset</span></div>
             </div>
           </div>
 
-          <button 
-            disabled 
-            class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-800 bg-neutral-900 text-neutral-500 font-semibold text-xs cursor-not-allowed"
+          <a
+            href="/box-breathing"
+            class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-semibold text-xs transition-colors"
           >
-            Coming Soon
-          </button>
+            Open Box Breathing Timer →
+          </a>
         </div>
 
         <!-- 3. 4-7-8 RELAXING BREATH (PLANNED) -->

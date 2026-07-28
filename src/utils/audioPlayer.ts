@@ -253,6 +253,39 @@ class ResilientAudioPlayer {
   }
 
   /**
+   * Play a single music track by file path (for box breathing)
+   */
+  public async playMusicTrack(filePath: string, loop: boolean = false): Promise<void> {
+    this.stop();
+    this.stopPreview();
+
+    if (this.isMuted || !filePath) return;
+
+    const exists = await this.checkAudioExists(filePath);
+    if (!exists) {
+      console.warn(`[HarmonyBreath Audio] Audio file not found at "${filePath}".`);
+      return;
+    }
+
+    try {
+      const audio = new Audio(filePath);
+      audio.volume = this.config.volume;
+      audio.muted = this.isMuted;
+      audio.loop = loop;
+      this.currentAudio = audio;
+
+      audio.onerror = () => {
+        console.warn(`[HarmonyBreath Audio] Failed to play audio from "${filePath}".`);
+        this.currentAudio = null;
+      };
+
+      await audio.play();
+    } catch (err) {
+      console.warn(`[HarmonyBreath Audio] Autoplay prevented for "${filePath}":`, err);
+    }
+  }
+
+  /**
    * Stop any currently playing preview track
    */
   public stopPreview(): void {

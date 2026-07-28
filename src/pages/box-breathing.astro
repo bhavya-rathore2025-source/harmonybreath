@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import BoxBreathingTimer from '../components/BoxBreathingTimer.astro';
+import BoxSessionPresets from '../components/BoxSessionPresets.astro';
+import AnalyticsPanel from '../components/AnalyticsPanel.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Box Breathing — Free Guided 4-4-4-4 Timer & Tool | HarmonyBreath"
+  description="Master box breathing (square breathing) with our free guided timer. Equal inhale, hold, exhale, and empty hold. Customizable from 2s to 10s per phase. 100% free and private."
+  keywords="box breathing, square breathing, 4-4-4-4 breathing, box breathing technique, guided breathing timer, stress relief breathing, tactical breathing"
+  canonicalUrl="https://harmonybreathing.com/box-breathing"
+>
+  <Header />
+
+  <main class="flex-1 hero-gradient-mesh relative">
+    <section class="w-full max-w-4xl mx-auto pt-8 pb-6 px-4 text-center space-y-4">
+      <div class="flex items-center justify-center gap-2 mb-2">
+        <a
+          href="/"
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/80 text-neutral-400 hover:text-white text-xs font-mono transition-colors"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to All Techniques
+        </a>
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+          Box Breathing
+        </span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-bold tracking-normal text-white leading-tight">
+        Box Breathing <br />
+        <span class="gradient-text-develop">Free Guided 4-4-4-4 Timer</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light">
+        Master box breathing (square breathing) with our free guided timer. Equal inhale, hold, exhale, and empty hold — customizable from 2 to 10 seconds per phase. Used by tactical operators and athletes to reset composure under stress. 100% free and private.
+      </p>
+    </section>
+
+    <BoxSessionPresets />
+    <BoxBreathingTimer />
+    <AnalyticsPanel />
+
+    <!-- Technique Guide -->
+    <section id="box-technique-section" class="w-full max-w-4xl mx-auto py-16 px-4 border-t border-neutral-900">
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-amber-400">How It Works</h2>
+        <h3 class="text-3xl font-bold text-white sm:text-4xl">
+          The Four Phases of Box Breathing
+        </h3>
+        <p class="text-sm text-neutral-400">
+          Four equal parts. One calm rhythm. Box breathing uses equal duration for each phase, creating a balanced, square-shaped breathing pattern.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-amber-500/40 transition-all duration-300">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">01</div>
+          <h4 class="text-lg font-bold text-white mb-2">Inhale</h4>
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+            Breathe in slowly and deeply through your nose. Fill your lungs completely over the full duration.
+          </p>
+          <ul class="text-xs font-mono text-neutral-500 space-y-1">
+            <li>• Equal to all phases</li>
+            <li>• Deep belly breath</li>
+            <li>• Smooth & controlled</li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-cyan-500/40 transition-all duration-300">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">02</div>
+          <h4 class="text-lg font-bold text-white mb-2">Hold (Full)</h4>
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+            Hold your breath gently after the inhale. Keep your lungs full without straining or tensing up.
+          </p>
+          <ul class="text-xs font-mono text-neutral-500 space-y-1">
+            <li>• Relaxed retention</li>
+            <li>• No tension</li>
+            <li>• Mindful pause</li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-blue-500/40 transition-all duration-300">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">03</div>
+          <h4 class="text-lg font-bold text-white mb-2">Exhale</h4>
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+            Exhale slowly and completely through your mouth. Empty your lungs over the full duration.
+          </p>
+          <ul class="text-xs font-mono text-neutral-500 space-y-1">
+            <li>• Slow & steady</li>
+            <li>• Complete exhale</li>
+            <li>• Release tension</li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-purple-500/40 transition-all duration-300">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">04</div>
+          <h4 class="text-lg font-bold text-white mb-2">Hold (Empty)</h4>
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+            Hold your breath after the exhale with lungs empty. Stay calm and relaxed before beginning the next inhale.
+          </p>
+          <ul class="text-xs font-mono text-neutral-500 space-y-1">
+            <li>• Empty retention</li>
+            <li>• Complete cycle</li>
+            <li>• Prepare to repeat</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="p-8 rounded-2xl border border-neutral-800 bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950">
+        <h4 class="text-sm font-mono text-amber-400 uppercase tracking-widest mb-4">Benefits</h4>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-medium text-neutral-300">
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+            Stress & Panic Reset
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+            Improved Focus
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+            Calm Nervous System
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+            Emotional Control
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Safety Section -->
+    <section id="box-safety-section" class="w-full max-w-4xl mx-auto py-12 px-4 border-t border-neutral-900">
+      <div class="bg-red-950/20 border border-red-500/30 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-red-500/20 border border-red-500/30 text-red-400 flex items-center justify-center font-bold">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Essential Safety Guidelines</h3>
+            <p class="text-xs text-neutral-400">Please read carefully before starting any breathing session.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-neutral-300">
+          <div>
+            <h4 class="font-bold text-red-400 uppercase tracking-wider mb-2 font-mono">NEVER Practice Box Breathing:</h4>
+            <ul class="space-y-1.5 text-neutral-400 list-disc list-inside">
+              <li>While driving or operating any vehicle</li>
+              <li>While swimming, bathing, or in water</li>
+              <li>While operating machinery</li>
+              <li>In any situation where dizziness could cause harm</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-emerald-400 uppercase tracking-wider mb-2 font-mono">ALWAYS Practice:</h4>
+            <ul class="space-y-1.5 text-neutral-400 list-disc list-inside">
+              <li>Sitting comfortably or lying down in a safe environment</li>
+              <li>Listening to your body — never force breath holds</li>
+              <li>Starting with shorter durations if 4s feels too long (use Custom mode)</li>
+              <li>Stopping immediately if experiencing chest pain or severe dizziness</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-red-500/20 text-[11px] text-neutral-400 leading-relaxed font-mono">
+          <strong>Medical Disclaimer:</strong> HarmonyBreath is for wellness and educational purposes only. It is not medical advice. Individuals with epilepsy, high blood pressure, heart conditions, or who are pregnant should consult a qualified doctor before practicing.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

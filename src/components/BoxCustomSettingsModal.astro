@@ -1,0 +1,77 @@
+---
+---
+
+<div id="box-custom-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
+  <div class="w-full max-w-md bg-neutral-950 border border-neutral-800 rounded-2xl p-6 shadow-2xl space-y-6">
+    <div class="flex items-center justify-between border-b border-neutral-800 pb-4">
+      <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        Custom Box Breathing Settings
+      </h3>
+      <button id="close-box-custom-modal" class="text-neutral-400 hover:text-white transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="text-xs text-neutral-500 font-mono leading-relaxed -mt-2">
+      All four phases (inhale, hold, exhale, hold empty) stay equal. Increasing one increases all.
+    </div>
+
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-mono text-neutral-300">
+        <span>Phase Duration</span>
+        <span id="box-custom-duration-val" class="text-amber-400 font-bold">4s</span>
+      </div>
+      <input
+        type="range"
+        id="box-custom-duration-input"
+        min="2"
+        max="10"
+        step="0.5"
+        value="4"
+        class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+      />
+      <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
+        <span>2s</span>
+        <span>10s</span>
+      </div>
+      <p class="text-[10px] text-neutral-500 font-mono">Duration of each phase: Inhale • Hold • Exhale • Hold Empty</p>
+    </div>
+
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-mono text-neutral-300">
+        <span>Total Cycles</span>
+        <span id="box-custom-cycles-val" class="text-purple-400 font-bold">20 Cycles</span>
+      </div>
+      <input
+        type="range"
+        id="box-custom-cycles-input"
+        min="5"
+        max="50"
+        step="5"
+        value="20"
+        class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-purple-400"
+      />
+      <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
+        <span>5 Cycles</span>
+        <span>50 Cycles</span>
+      </div>
+      <p class="text-[10px] text-neutral-500 font-mono">One cycle = Inhale + Hold + Exhale + Hold Empty</p>
+    </div>
+
+    <div class="pt-4 flex gap-3">
+      <button
+        id="apply-box-custom"
+        type="button"
+        class="flex-1 py-2.5 rounded-xl bg-amber-400/90 text-neutral-950 font-semibold text-xs hover:bg-amber-300 transition-colors shadow-lg shadow-amber-500/10"
+      >
+        Apply Custom Session
+      </button>
+    </div>
+  </div>
+</div>
