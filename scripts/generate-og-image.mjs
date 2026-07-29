@@ -27,7 +27,7 @@ const svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2
   <text x="600" y="350" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#a78bfa">Master Every Breath, Elevate Mind &amp; Body</text>
   <text x="600" y="420" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#57534e">Wim Hof Breathing · Box Breathing · Breathwork Timer</text>
   <line x1="400" y1="460" x2="800" y2="460" stroke="#292524" stroke-width="1" />
-  <text x="600" y="490" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#44403c">harmonybreathing.com</text>
+  <text x="600" y="490" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#44403c">harmonybreath.com</text>
 </svg>`;
 
 await sharp(Buffer.from(svg)).png().toFile(outputPath);
