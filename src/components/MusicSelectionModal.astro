@@ -5,13 +5,22 @@
   <div class="relative w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950/95 shadow-2xl">
     <!-- Header -->
     <div class="flex items-center justify-between border-b border-neutral-800 px-4 sm:px-6 py-3 sm:py-4 gap-2 shrink-0">
-      <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2 shrink-0">
-        <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
-        </svg>
-        Choose Your Music
-      </h2>
-      <p class="hidden sm:block text-xs text-neutral-500 font-mono">Customize audio for each breathing phase</p>
+      <div class="flex items-center gap-3 min-w-0">
+        <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2 shrink-0">
+          <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+          </svg>
+          Choose Your Music
+        </h2>
+        <label id="unified-toggle" class="flex items-center gap-1.5 cursor-pointer select-none shrink-0" title="Use the same track for all breathing phases">
+          <input type="checkbox" id="unified-checkbox" class="sr-only peer">
+          <div class="w-8 h-4 rounded-full bg-neutral-700 peer-checked:bg-amber-400 transition-colors relative">
+            <div class="w-3 h-3 rounded-full bg-white absolute top-0.5 left-0.5 peer-checked:translate-x-4 transition-transform"></div>
+          </div>
+          <span class="text-xs text-neutral-500 font-mono whitespace-nowrap hidden sm:inline">Same track</span>
+        </label>
+      </div>
+      <span id="unified-subtitle" class="hidden sm:block text-xs text-neutral-500 font-mono">Customize audio for each breathing phase</span>
       <button
         id="close-music-modal"
         type="button"
@@ -25,7 +34,7 @@
     </div>
 
     <!-- Phase Tabs -->
-    <div class="grid grid-cols-3 border-b border-neutral-800 bg-neutral-900/50 shrink-0" role="tablist" aria-label="Breathing phases">
+    <div id="phase-tab-row" class="grid grid-cols-3 border-b border-neutral-800 bg-neutral-900/50 shrink-0" role="tablist" aria-label="Breathing phases">
       <button
         type="button"
         class="phase-tab px-3 sm:px-4 py-2.5 text-xs font-mono font-medium text-neutral-400 hover:text-white transition-colors whitespace-nowrap rounded-t-lg flex items-center justify-center"
@@ -113,6 +122,14 @@
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="tracks-recoveryHold"></div>
       </div>
+
+      <!-- Unified Panel: Same track for all phases -->
+      <div id="unified-panel" class="hidden space-y-4">
+        <div class="text-center text-xs text-neutral-500 font-mono pb-2 border-b border-neutral-800">
+          Pick one track to play throughout all breathing phases
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="tracks-unified"></div>
+      </div>
     </div>
 
     <!-- Footer Actions -->
@@ -139,6 +156,15 @@
   import { audioPlayer } from '../utils/audioPlayer';
 
   const STORAGE_KEY = 'hb_music_selections';
+  const UNIFIED_KEY = 'hb_music_unified';
+  const UNIFIED_TRACK_KEY = 'hb_music_unified_track_id';
+  const UNIFIED_PATH_KEY = 'hb_music_unified_file_path';
+
+  const allTracks = [
+    ...musicTracks.guidedBreathing,
+    ...musicTracks.breathOutHold,
+    ...musicTracks.recoveryHold,
+  ];
 
   // Default selections
   const defaultSelections = {
@@ -171,6 +197,7 @@
 
   // Current selections
   let currentSelections = getSavedSelections();
+  let isUnified = localStorage.getItem(UNIFIED_KEY) === 'true';
 
   // DOM Elements
   const modal = document.getElementById('music-selection-modal');
@@ -178,6 +205,11 @@
   const applyBtn = document.getElementById('apply-music-settings');
   const phaseTabs = document.querySelectorAll('.phase-tab');
   const phasePanels = document.querySelectorAll('.phase-panel');
+  const phaseTabRow = document.getElementById('phase-tab-row');
+  const unifiedPanel = document.getElementById('unified-panel');
+  const unifiedContainer = document.getElementById('tracks-unified');
+  const unifiedCheckbox = document.getElementById('unified-checkbox');
+  const unifiedSubtitle = document.getElementById('unified-subtitle');
   const trackContainers = {
     guidedBreathing: document.getElementById('tracks-guidedBreathing'),
     breathOutHold: document.getElementById('tracks-breathOutHold'),
@@ -233,6 +265,75 @@
     });
   }
 
+  // Render unified tracks (all phases combined)
+  function renderUnifiedTracks() {
+    if (!unifiedContainer) return;
+    const savedTrackId = localStorage.getItem(UNIFIED_TRACK_KEY) || allTracks[0]?.id || '';
+
+    unifiedContainer.innerHTML = allTracks.map(track => {
+      const isSelected = track.id === savedTrackId;
+      return `
+        <button
+          type="button"
+          class="music-track-card relative group p-4 rounded-xl border-2 transition-all duration-200 ${isSelected
+            ? 'border-amber-400 bg-amber-400/10'
+            : 'border-neutral-800 bg-neutral-900/50 hover:border-neutral-700'}"
+          data-track-id="${track.id}"
+          aria-pressed="${isSelected}"
+        >
+          <div class="absolute top-2 right-2">
+            <svg class="w-5 h-5 ${isSelected ? 'text-amber-400' : 'hidden'}" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center ${isSelected ? 'bg-amber-400/20' : 'bg-neutral-800/50'}">
+              <svg class="w-5 h-5 ${isSelected ? 'text-amber-400' : 'text-neutral-500'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="text-sm font-medium text-white truncate">${track.name}</h4>
+              <p class="text-xs text-neutral-400 mt-0.5 truncate">${track.description}</p>
+            </div>
+          </div>
+          ${isSelected ? '<span class="absolute bottom-2 right-2 text-xs font-mono text-amber-400">Selected</span>' : ''}
+        </button>
+      `;
+    }).join('');
+
+    unifiedContainer.querySelectorAll('.music-track-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const trackId = card.dataset.trackId;
+        selectUnifiedTrack(trackId);
+      });
+    });
+  }
+
+  // Select a unified track (applies to all phases)
+  function selectUnifiedTrack(trackId) {
+    const track = allTracks.find(t => t.id === trackId);
+    if (!track) return;
+
+    localStorage.setItem(UNIFIED_TRACK_KEY, trackId);
+    localStorage.setItem(UNIFIED_PATH_KEY, track.filePath);
+
+    // Set the same track for all phases
+    currentSelections.guidedBreathing = trackId;
+    currentSelections.breathOutHold = trackId;
+    currentSelections.recoveryHold = trackId;
+    saveSelections(currentSelections);
+
+    // Preview
+    audioPlayer.previewTrack(track.phase, trackId);
+
+    renderUnifiedTracks();
+
+    window.dispatchEvent(new CustomEvent('hb_music_unified_updated', {
+      detail: { trackId, filePath: track.filePath }
+    }));
+  }
+
   // Select a track for a phase
   function selectTrack(phase, trackId) {
     currentSelections[phase] = trackId;
@@ -266,15 +367,61 @@
     });
   }
 
+  // Toggle unified mode
+  function setUnifiedMode(enabled) {
+    isUnified = enabled;
+    localStorage.setItem(UNIFIED_KEY, enabled ? 'true' : '');
+
+    if (enabled) {
+      // If no unified track selected yet, use current guided breathing default
+      let savedId = localStorage.getItem(UNIFIED_TRACK_KEY);
+      if (!savedId) {
+        savedId = currentSelections.guidedBreathing || allTracks[0]?.id || '';
+        localStorage.setItem(UNIFIED_TRACK_KEY, savedId);
+      }
+
+      // Sync all phases to the unified track
+      const track = allTracks.find(t => t.id === savedId);
+      if (track) {
+        currentSelections.guidedBreathing = savedId;
+        currentSelections.breathOutHold = savedId;
+        currentSelections.recoveryHold = savedId;
+        saveSelections(currentSelections);
+      }
+
+      if (phaseTabRow) phaseTabRow.classList.add('hidden');
+      phasePanels.forEach(p => p.classList.add('hidden'));
+      unifiedPanel.classList.remove('hidden');
+      if (unifiedSubtitle) unifiedSubtitle.textContent = 'One track for all three phases';
+      renderUnifiedTracks();
+    } else {
+      if (phaseTabRow) phaseTabRow.classList.remove('hidden');
+      unifiedPanel.classList.add('hidden');
+      switchPhase('guidedBreathing');
+      if (unifiedSubtitle) unifiedSubtitle.textContent = 'Customize audio for each breathing phase';
+      Object.keys(trackContainers).forEach(renderTracks);
+    }
+  }
+
   // Open modal
   function openModal() {
     audioPlayer.stopPreview();
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
-    
-    // Render all tracks
-    Object.keys(trackContainers).forEach(renderTracks);
+
+    // Sync checkbox
+    if (unifiedCheckbox) unifiedCheckbox.checked = isUnified;
+
+    if (isUnified) {
+      if (phaseTabRow) phaseTabRow.classList.add('hidden');
+      phasePanels.forEach(p => p.classList.add('hidden'));
+      unifiedPanel.classList.remove('hidden');
+      if (unifiedSubtitle) unifiedSubtitle.textContent = 'One track for all three phases';
+      renderUnifiedTracks();
+    } else {
+      Object.keys(trackContainers).forEach(renderTracks);
+    }
   }
 
   // Close modal
@@ -288,6 +435,10 @@
   // Event Listeners
   closeBtn?.addEventListener('click', closeModal);
   applyBtn?.addEventListener('click', closeModal);
+
+  unifiedCheckbox?.addEventListener('change', () => {
+    setUnifiedMode(unifiedCheckbox.checked);
+  });
 
   phaseTabs.forEach(tab => {
     tab.addEventListener('click', () => switchPhase(tab.dataset.phase));

@@ -184,6 +184,17 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     }
   }
 
+  // Unified music mode: same track for all phases
+  const UNIFIED_KEY = 'hb_music_unified';
+  const UNIFIED_PATH_KEY = 'hb_music_unified_file_path';
+
+  function getUnifiedTrackPath() {
+    if (localStorage.getItem(UNIFIED_KEY) === 'true') {
+      return localStorage.getItem(UNIFIED_PATH_KEY);
+    }
+    return null;
+  }
+
   // Phase enum: 'IDLE' | 'GUIDED' | 'HOLD' | 'RECOVERY' | 'COMPLETE'
   let phase = 'IDLE';
   let isPaused = false;
@@ -393,7 +404,12 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       labelMainAction.textContent = 'Pause';
     }
 
-    audioPlayer.playPhaseTrack('guidedBreathing', true);
+    const unifiedPath = getUnifiedTrackPath();
+    if (unifiedPath) {
+      audioPlayer.playMusicTrack(unifiedPath, true);
+    } else {
+      audioPlayer.playPhaseTrack('guidedBreathing', true);
+    }
     runGuidedLoop();
   }
 
@@ -464,7 +480,12 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       labelSkipPhase.textContent = 'Inhale Recovery';
     }
 
-    audioPlayer.playPhaseTrack('breathOutHold', true);
+    const unifiedPath = getUnifiedTrackPath();
+    if (unifiedPath) {
+      audioPlayer.playMusicTrack(unifiedPath, true);
+    } else {
+      audioPlayer.playPhaseTrack('breathOutHold', true);
+    }
     runHoldLoop();
   }
 
@@ -511,7 +532,12 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       labelSkipPhase.textContent = 'Next Round';
     }
 
-    audioPlayer.playPhaseTrack('recoveryHold', false);
+    const unifiedPath = getUnifiedTrackPath();
+    if (unifiedPath) {
+      audioPlayer.playMusicTrack(unifiedPath, true);
+    } else {
+      audioPlayer.playPhaseTrack('recoveryHold', false);
+    }
     runRecoveryLoop();
   }
 
@@ -619,14 +645,25 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
   // Listen for music selection changes and apply immediately if session is active
   window.addEventListener('hb_music_updated', (e: CustomEvent) => {
     const { phase: updatedPhase } = e.detail;
-    // If session is running and the updated phase matches current phase, restart music
     if (phase !== 'IDLE' && phase !== 'COMPLETE') {
-      if (updatedPhase === 'guidedBreathing' && phase === 'GUIDED') {
+      const unifiedPath = getUnifiedTrackPath();
+      if (unifiedPath) {
+        audioPlayer.playMusicTrack(unifiedPath, true);
+      } else if (updatedPhase === 'guidedBreathing' && phase === 'GUIDED') {
         audioPlayer.playPhaseTrack('guidedBreathing', true);
       } else if (updatedPhase === 'breathOutHold' && phase === 'HOLD') {
         audioPlayer.playPhaseTrack('breathOutHold', true);
       } else if (updatedPhase === 'recoveryHold' && phase === 'RECOVERY') {
         audioPlayer.playPhaseTrack('recoveryHold', false);
+      }
+    }
+  });
+
+  window.addEventListener('hb_music_unified_updated', () => {
+    if (phase !== 'IDLE' && phase !== 'COMPLETE') {
+      const unifiedPath = getUnifiedTrackPath();
+      if (unifiedPath) {
+        audioPlayer.playMusicTrack(unifiedPath, true);
       }
     }
   });
