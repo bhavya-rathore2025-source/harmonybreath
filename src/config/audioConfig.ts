@@ -60,7 +60,7 @@ export const musicTracks = {
       id: 'guided-breathing-minimal',
       name: 'Minimal Bell Tones',
       filePath: '/audio/guided-breathing-minimal.mp3',
-      description: 'Subtle bell tones for focused breathing',
+      description: 'Subtle piano for focused breathing',
       phase: 'guidedBreathing' as const,
     },
     {

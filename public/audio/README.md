@@ -9,7 +9,7 @@ Audio files for the three-phase breathing exercise. Place or replace custom audi
 | `guided-breathing.mp3` | Default guided 30-breath rhythmic audio |
 | `guided-breathing-calm.mp3` | Gentle ocean waves for relaxed breathing |
 | `guided-breathing-forest.mp3` | Peaceful forest sounds for grounding |
-| `guided-breathing-minimal.mp3` | Subtle bell tones for focused breathing |
+| `guided-breathing-minimal.mp3` | Subtle piano for focused breathing |
 | `guided-breathing-ambient.mp3` | Deep ambient drone for trance states |
 
 ## Phase 2 — Breath-Out Hold (Retention)
