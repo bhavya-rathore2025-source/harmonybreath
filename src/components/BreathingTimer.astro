@@ -479,6 +479,11 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       btnSkipPhase.classList.remove('hidden');
       labelSkipPhase.textContent = 'Inhale Recovery';
     }
+    if (iconPlay && iconPause && labelMainAction) {
+      iconPlay.classList.add('hidden');
+      iconPause.classList.remove('hidden');
+      labelMainAction.textContent = 'Pause';
+    }
 
     const unifiedPath = getUnifiedTrackPath();
     if (unifiedPath) {
@@ -530,6 +535,11 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     if (btnSkipPhase && labelSkipPhase) {
       btnSkipPhase.classList.remove('hidden');
       labelSkipPhase.textContent = 'Next Round';
+    }
+    if (iconPlay && iconPause && labelMainAction) {
+      iconPlay.classList.add('hidden');
+      iconPause.classList.remove('hidden');
+      labelMainAction.textContent = 'Pause';
     }
 
     const unifiedPath = getUnifiedTrackPath();

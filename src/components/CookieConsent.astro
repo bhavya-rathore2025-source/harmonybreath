@@ -8,9 +8,8 @@
         <div class="flex-1 text-sm text-neutral-300 leading-relaxed">
           <p class="font-medium text-white mb-1">This site uses cookies</p>
           <p>
-            We use Google AdSense to show ads. Some ads may be personalized based on your browsing activity.
-            You can accept or reject personalized advertising. Read our
-            <a href="/privacy" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Privacy Policy</a>.
+            We use cookies and privacy-friendly analytics to understand how HarmonyBreath is used and improve your experience.
+            You can choose whether to allow analytics cookies.
           </p>
         </div>
         <div class="flex items-center gap-3 shrink-0">
@@ -51,8 +50,12 @@
     if (typeof gtag === 'function') {
       gtag('consent', 'update', {
         ad_storage: consent === 'accepted' ? 'granted' : 'denied',
+        analytics_storage: consent === 'accepted' ? 'granted' : 'denied',
         ad_user_data: consent === 'accepted' ? 'granted' : 'denied',
         ad_personalization: consent === 'accepted' ? 'granted' : 'denied',
+        functionality_storage: consent === 'accepted' ? 'granted' : 'denied',
+        personalization_storage: consent === 'accepted' ? 'granted' : 'denied',
+        security_storage: 'granted',
       });
     }
     if (typeof dataLayer !== 'undefined') {
