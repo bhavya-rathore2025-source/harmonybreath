@@ -68,11 +68,13 @@ const consentKey = 'hb-cookie-consent';
   }
 
   acceptBtn.addEventListener('click', function () {
+    applyConsent('accepted');
     setConsent('accepted');
     banner.classList.add('hidden');
   });
 
   rejectBtn.addEventListener('click', function () {
+    applyConsent('rejected');
     setConsent('rejected');
     banner.classList.add('hidden');
   });
