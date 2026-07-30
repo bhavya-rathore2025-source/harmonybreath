@@ -1,5 +1,4 @@
 ---
-const consentKey = 'hb-cookie-consent';
 ---
 
 <section id="cookie-consent" class="fixed bottom-0 left-0 right-0 z-50 hidden" aria-label="Cookie consent banner">
@@ -27,8 +26,8 @@ const consentKey = 'hb-cookie-consent';
   </div>
 </section>
 
-<script>
-  const STORAGE_KEY = '{consentKey}';
+<script is:inline>
+  const STORAGE_KEY = 'hb-cookie-consent';
   const banner = document.getElementById('cookie-consent');
   const acceptBtn = document.getElementById('cookie-accept');
   const rejectBtn = document.getElementById('cookie-reject');

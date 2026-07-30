@@ -108,23 +108,33 @@ const breadcrumb = Astro.props.breadcrumb;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Schema.org JSON-LD -->
+       <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
     {breadcrumb && (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": breadcrumb.map((item, i) => ({
-          "@type": "ListItem",
-          "position": i + 1,
-          "name": item.name,
-          "item": `https://harmonybreath.com${item.url}`
-        }))
-      })} />
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": breadcrumb.map((item, i) => ({
+            "@type": "ListItem",
+            "position": i + 1,
+            "name": item.name,
+            "item": `https://harmonybreath.com${item.url}`
+          }))
+        })}
+      />
     )}
-    <script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RL5BBWJ3Q7"></script>
+
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
 
       gtag('consent', 'default', {
         ad_storage: 'denied',
@@ -132,16 +142,16 @@ const breadcrumb = Astro.props.breadcrumb;
         ad_personalization: 'denied',
         wait_for_update: 500,
       });
+
       gtag('set', 'ads_data_redaction', true);
       gtag('set', 'url_passthrough', true);
-    </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RL5BBWJ3Q7"></script>
-    <script>
+
       gtag('js', new Date());
       gtag('config', 'G-RL5BBWJ3Q7');
     </script>
+
   </head>
+
   <body class="bg-neutral-950 text-white selection:bg-neutral-700 selection:text-white flex flex-col min-h-screen">
     <slot />
     <CookieConsent />
