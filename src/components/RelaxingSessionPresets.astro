@@ -1,0 +1,98 @@
+---
+---
+
+<div class="w-full max-w-4xl mx-auto mb-8 px-4">
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
+    <div>
+      <h3 class="text-sm font-mono text-blue-400 uppercase tracking-widest font-semibold">Session Presets</h3>
+      <p class="text-xs text-neutral-400">Select cycle count for your 4-7-8 relaxing breath session. Dr. Weil recommends starting with 4 cycles.</p>
+    </div>
+    <button
+      id="relax-custom-settings-btn"
+      type="button"
+      class="flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-xs font-medium text-neutral-300 hover:text-white transition-colors shrink-0"
+    >
+      <svg class="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+      </svg>
+      Custom Timing & Cycles
+    </button>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+    <!-- Preset 1: 4 Cycles (Beginner) -->
+    <button
+      data-relax-preset="beginner"
+      data-inhale="4"
+      data-hold="7"
+      data-exhale="8"
+      data-cycles="4"
+      class="relax-preset-btn group relative p-4 rounded-xl border border-blue-500/50 bg-blue-500/10 text-left transition-all duration-200 focus:outline-none col-span-1"
+    >
+      <div class="text-xs font-mono text-blue-400 mb-1">Standard (4 Cycles)</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">4-7-8</div>
+      <div class="text-[11px] text-neutral-400 mt-1">4 cycles • ~1m 16s</div>
+    </button>
+
+    <!-- Preset 2: 8 Cycles (Calm & Focus) -->
+    <button
+      data-relax-preset="calm"
+      data-inhale="4"
+      data-hold="7"
+      data-exhale="8"
+      data-cycles="8"
+      class="relax-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-blue-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1"
+    >
+      <div class="text-xs font-mono text-cyan-400 mb-1">Calm (8 Cycles)</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">4-7-8</div>
+      <div class="text-[11px] text-neutral-400 mt-1">8 cycles • ~2m 32s</div>
+    </button>
+
+    <!-- Preset 3: 12 Cycles (Deep Relaxation) -->
+    <button
+      data-relax-preset="deep"
+      data-inhale="4"
+      data-hold="7"
+      data-exhale="8"
+      data-cycles="12"
+      class="relax-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-blue-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1"
+    >
+      <div class="text-xs font-mono text-indigo-400 mb-1">Deep (12 Cycles)</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">4-7-8</div>
+      <div class="text-[11px] text-neutral-400 mt-1">12 cycles • ~3m 48s</div>
+    </button>
+
+    <!-- Preset 4: 16 Cycles (Sleep Prep) -->
+    <button
+      data-relax-preset="sleep"
+      data-inhale="4"
+      data-hold="7"
+      data-exhale="8"
+      data-cycles="16"
+      class="relax-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-blue-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1"
+    >
+      <div class="text-xs font-mono text-purple-400 mb-1">Sleep Prep (16)</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">4-7-8</div>
+      <div class="text-[11px] text-neutral-400 mt-1">16 cycles • ~5m 04s</div>
+    </button>
+
+    <!-- Custom -->
+    <button
+      data-relax-preset="custom"
+      data-inhale="4"
+      data-hold="7"
+      data-exhale="8"
+      data-cycles="4"
+      class="relax-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-blue-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-2 sm:col-span-1"
+    >
+      <div class="text-xs font-mono text-amber-400 mb-1">Custom</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers flex items-center gap-1">
+        <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+      <div class="text-[11px] text-neutral-400 mt-1">Custom timing & cycles</div>
+    </button>
+  </div>
+</div>

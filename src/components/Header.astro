@@ -119,9 +119,9 @@
     if (musicBtn) musicBtn.classList.add('hidden');
   }
 
-  const isBoxBreathing = currentPath.includes('box-breathing');
+  const isNoBreathSoundPage = currentPath.includes('box-breathing') || currentPath.includes('4-7-8-breathing');
   const breathVolumeSection = document.getElementById('breath-volume-section');
-  if (isBoxBreathing && breathVolumeSection) {
+  if (isNoBreathSoundPage && breathVolumeSection) {
     breathVolumeSection.classList.add('hidden');
   }
 
