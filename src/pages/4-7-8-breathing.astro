@@ -4,7 +4,6 @@ import Header from '../components/Header.astro';
 import Relaxing478Timer from '../components/Relaxing478Timer.astro';
 import RelaxingSessionPresets from '../components/RelaxingSessionPresets.astro';
 import AnalyticsPanel from '../components/AnalyticsPanel.astro';
-import SafetyModal from '../components/SafetyModal.astro';
 import Footer from '../components/Footer.astro';
 
 const breadcrumb = [
@@ -18,7 +17,7 @@ const pageSchemaData = [
     "@type": "SoftwareApplication",
     "name": "HarmonyBreath — 4-7-8 Relaxing Breath Timer",
     "alternateName": "HarmonyBreath 4-7-8 Guided Breathwork App",
-    "description": "Free guided 4-7-8 breathing timer with audio cues, customizable cycle counts, ambient soundscapes, and session tracking. Practice Dr. Andrew Weil's relaxing breath technique online.",
+    "description": "Free guided 4-7-8 breathing timer with audio cues, customizable cycle counts, ambient soundscapes, and session tracking. Master the 4-7-8 breathing method for anxiety relief and sleep.",
     "url": "https://harmonybreath.com/4-7-8-breathing",
     "applicationCategory": "HealthApplication",
     "operatingSystem": "Any (Web Browser)",
@@ -28,19 +27,18 @@ const pageSchemaData = [
       "priceCurrency": "USD"
     },
     "featureList": [
-      "Guided 4-7-8 relaxing breath 3-phase sessions",
-      "Customizable phase durations and cycle counts",
-      "Session presets (Beginner, Calm, Deep, Sleep Prep)",
-      "Real-time visual progress ring & animated breath halo",
-      "Audio chimes and ambient relaxation tracks",
-      "Local practice statistics and privacy-first design"
+      "Guided 4-7-8 breathing timer with visual and acoustic feedback",
+      "Customizable 4-7-8 breathing method timing parameters and round presets",
+      "Evidence-backed relaxation cues for sleep prep and anxiety mitigation",
+      "Ambient soundscape player and real-time phase indicators",
+      "Private browser-local session analytics with zero data tracking"
     ]
   },
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "HarmonyBreath 4-7-8 Breathing Timer",
-    "description": "Free online 4-7-8 relaxing breath timer with guided inhale, hold, and exhale phases for sleep, anxiety, and stress relief.",
+    "description": "Free online 4-7-8 breathing timer for practicing the 4-7-8 breathing technique. Scientifically backed for anxiety relief, stress reduction, and falling asleep fast.",
     "browserRequirements": "Requires JavaScript",
     "applicationCategory": "HealthApplication",
     "operatingSystem": "All"
@@ -51,50 +49,42 @@ const pageSchemaData = [
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Is 4-7-8 breathing good for sleep?",
+        "name": "How does 4-7-8 breathing work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. The 4-7-8 breathing technique is widely recognized as one of the most effective natural exercises for sleep prep. The 8-second extended exhalation stimulates the vagus nerve, slowing down your heart rate and triggering a parasympathetic 'rest-and-digest' shift that calms racing thoughts before bed."
+          "text": "The 4-7-8 breathing method works by using a specific timing pattern—inhaling for 4 seconds, holding the breath for 7 seconds, and exhaling for 8 seconds. This extended exhalation stimulates the vagus nerve, lowering your heart rate and shifting your body into a parasympathetic relaxation state."
         }
       },
       {
         "@type": "Question",
-        "name": "How often should I practice 4-7-8 breathing?",
+        "name": "Does the 4-7-8 sleep trick really work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Dr. Andrew Weil recommends practicing 4-7-8 breathing at least twice daily, completing 4 cycles per session when starting out. As you get comfortable, you can gradually increase to 8, 12, or 16 cycles for deeper relaxation."
+          "text": "Yes, the 4-7-8 sleep trick is effective for many people. By slowing your breathing rate, lowering heart rate, and shifting brainwave activity toward calm alpha and delta states, it quiets a racing mind and helps prepare your body to fall asleep fast."
         }
       },
       {
         "@type": "Question",
-        "name": "Is it normal to feel lightheaded during 4-7-8 breathing?",
+        "name": "How many times a day should I do 4-7-8 breathing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, lightheadedness can occasionally happen when beginners slow their breathing significantly. If you feel dizzy, pause the timer, resume normal breathing, and reduce your session length to 4 cycles next time."
+          "text": "Experts and Dr. Andrew Weil recommend practicing 4-7-8 breathing at least twice a day. Beginners should start with 4 cycles per session, and with regular daily practice, you can gradually increase up to 8 cycles per session."
         }
       },
       {
         "@type": "Question",
-        "name": "What is the difference between 4-7-8 breathing and box breathing?",
+        "name": "How long does it take to fall asleep with 4 / 7 / 8 breathing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Box breathing uses 4 equal phases (4s inhale, 4s hold, 4s exhale, 4s empty hold) to foster focus and composure. 4-7-8 breathing emphasizes an extended 8-second exhale with a 7-second hold, specifically tailored for deep relaxation, stress reduction, and falling asleep."
+          "text": "With regular daily practice, many people report falling asleep within 1 to 2 minutes (about 4 to 8 breath cycles) after finishing the exercise. Beginners may need 2 to 4 weeks of consistent practice to experience full effectiveness."
         }
       },
       {
         "@type": "Question",
-        "name": "Who can benefit from 4-7-8 breathing?",
+        "name": "Is 4-7-8 breathing dangerous?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Anyone experiencing stress, night-time insomnia, anxiety, or racing thoughts can benefit. It requires no previous breathwork experience and can be practiced comfortably sitting or lying down."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How fast does 4-7-8 breathing work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Many people feel a noticeable drop in tension and heart rate within 2 to 4 full cycles (about 1 to 2 minutes). Regular daily practice strengthens your body's stress-recovery response over time."
+          "text": "No, 4-7-8 breathing is safe for most healthy individuals when practiced correctly. Dr. Andrew Weil recommends starting with 4 cycles per session and not exceeding 8 cycles at a time. Beginners may experience mild lightheadedness as respiration slows; if this happens, stop and resume natural breathing. Individuals with severe respiratory or cardiovascular conditions should consult a healthcare provider before practicing breath holds."
         }
       }
     ]
@@ -103,9 +93,9 @@ const pageSchemaData = [
 ---
 
 <Layout
-  title="4-7-8 Breathing — Free Guided Relaxing Breath Timer & Sleep Tool | HarmonyBreath"
-  description="Master Dr. Andrew Weil's 4-7-8 relaxing breath technique with our free online guided timer. Practice 4-7-8 breathing for sleep, anxiety, and stress relief with customizable timing, ambient audio, and session tracking."
-  keywords="4-7-8 breathing, 4-7-8 breathing technique, 4-7-8 timer, 4-7-8 relaxing breath, breathing exercise for sleep, breathing technique for anxiety, dr andrew weil breathing, guided breathwork timer"
+  title="4-7-8 Breathing Technique & Timer — Anxiety & Sleep Evidence | HarmonyBreath"
+  description="Master the 4-7-8 breathing method with our free online 4-7-8 breathing timer. Discover scientific 4-7-8 breathing anxiety evidence and technique evidence for sleep and calm."
+  keywords="4-7-8 breathing, 4-7-8 breathing method, 4-7-8 breathing technique, 4-7-8 breathing anxiety evidence, 4-7-8 breathing technique evidence, 4-7-8 breathing timer, relaxing breath technique, breathing exercise for sleep"
   canonicalUrl="https://harmonybreath.com/4-7-8-breathing"
   image="https://harmonybreath.com/og-image.png"
   schemaData={pageSchemaData}
@@ -138,7 +128,7 @@ const pageSchemaData = [
       </h1>
 
       <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light">
-        Unwind your mind and body with our free 4-7-8 breathing timer. Developed by Dr. Andrew Weil, this ancient yogic breathwork technique activates your parasympathetic nervous system for deep sleep and anxiety relief.
+        Unwind your mind and body with our free online <strong class="text-neutral-200 font-medium">4-7-8 breathing timer</strong>. Grounded in clinical evidence, the <strong class="text-neutral-200 font-medium">4-7-8 breathing technique</strong> activates your parasympathetic nervous system for deep sleep and anxiety relief.
       </p>
     </section>
 
@@ -204,76 +194,145 @@ const pageSchemaData = [
     </section>
 
     <!-- Safety Precautions & Contraindications -->
-    <SafetyModal />
-
-    <!-- SEO Content Section (~600+ words) -->
-    <section class="w-full max-w-4xl mx-auto px-4 pb-12 pt-4">
-      <div class="max-w-3xl mx-auto space-y-6 text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light">
-        <p>
-          Welcome to HarmonyBreath's free <strong class="text-white font-medium">4-7-8 breathing</strong> guided timer — your dedicated online tool for mastering the <strong class="text-white font-medium">4-7-8 relaxing breath technique</strong>. Popularized by Integrative Medicine pioneer Dr. Andrew Weil and grounded in ancient yogic <strong class="text-white font-medium">Pranayama</strong> exercises, this method is one of the most effective natural practices for calming the mind, lowering physical stress, and facilitating effortless sleep.
-        </p>
-
-        <h2 class="text-xl sm:text-2xl font-bold text-white">What Is the 4-7-8 Breathing Technique?</h2>
-        <p>
-          The <strong class="text-white font-medium">4-7-8 breathing method</strong> is a structured rhythmic breathing exercise that uses a specific proportion of inhaling, holding, and exhaling. The pattern consists of inhaling through the nose for 4 seconds, holding the breath gently for 7 seconds, and exhaling slowly and completely through the mouth for 8 seconds.
-        </p>
-        <p>
-          Unlike energizing breathwork routines designed to elevate alertness, the primary focus of 4-7-8 breathing is to signal safety and tranquility to your body. By extending the exhalation phase to twice the length of the inhalation, you directly engage the parasympathetic nervous system, providing rapid relief from acute tension and racing thoughts.
-        </p>
-
-        <h2 class="text-xl sm:text-2xl font-bold text-white">The Science Behind 4-7-8 Breathing</h2>
-        <p>
-          Controlled slow breathing exercises have been extensively researched in clinical neuroscience and cardiovascular physiology. When stress or anxiety triggers the sympathetic "fight-or-flight" system, heart rate rises, breathing becomes shallow, and muscle tension increases.
-        </p>
-        <ul class="space-y-2 list-disc list-inside text-neutral-400">
-          <li><strong class="text-white">Vagus Nerve Activation:</strong> Prolonged exhalation (8 seconds) stimulates the vagus nerve, which releases acetylcholine to lower heart rate and reduce blood pressure.</li>
-          <li><strong class="text-white">Heart Rate Variability (HRV) Enhancement:</strong> The rhythmic 19-second cycle helps synchronize heart rate fluctuations with respiratory sinus arrhythmia, boosting HRV.</li>
-          <li><strong class="text-white">Carbon Dioxide Regulation:</strong> The 7-second breath hold allows mild CO2 accumulation, which helps dilate blood vessels and promotes mental calm.</li>
-          <li><strong class="text-white">Brainwave Modulation:</strong> Slowing your respiration rate down to approximately 3 breaths per minute shifts brainwave activity away from high-frequency beta waves toward relaxed alpha and theta states ideal for sleep.</li>
-        </ul>
-
-        <h2 class="text-xl sm:text-2xl font-bold text-white">Features of Our Free 4-7-8 Breathing Timer</h2>
-        <p>
-          HarmonyBreath provides a seamless, distraction-free environment to practice the 4-7-8 relaxing breath with premium interactive tools:
-        </p>
-        <ul class="space-y-2 list-disc list-inside text-neutral-400">
-          <li><strong class="text-white">Visual Phase Guidance:</strong> An interactive SVG circular ring and glowing aura expand during inhale, hold during retention, and contract smoothly during exhale.</li>
-          <li><strong class="text-white">Flexible Session Presets:</strong> Quickly start with Standard (4 cycles), Calm (8 cycles), Deep (12 cycles), or Sleep Prep (16 cycles).</li>
-          <li><strong class="text-white">Full Customization:</strong> Adjust phase lengths (inhale 2-8s, hold 3-14s, exhale 4-16s) and total cycle counts to suit your comfort level.</li>
-          <li><strong class="text-white">Chime & Ambient Audio Support:</strong> Real-time audio cues alert you to phase changes without requiring you to look at your screen. Enjoy curated ambient tracks to deepen your relaxation.</li>
-          <li><strong class="text-white">Private Local Analytics:</strong> Track your total completed sessions and breath cycles locally in your browser with zero sign-ups or tracking.</li>
-        </ul>
-
-        <h2 class="text-xl sm:text-2xl font-bold text-white">Key Health & Mindfulness Benefits</h2>
-        <p>
-          Regular practice of 4-7-8 breathing delivers immediate and cumulative physical and psychological benefits:
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-          <div class="p-4 rounded-xl border border-neutral-800 bg-neutral-900/40 space-y-1">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-blue-400"></span> Sleep Prep & Insomnia Relief
-            </h3>
-            <p class="text-xs text-neutral-400">Slowing breath cadence reduces bedtime overthinking and eases muscle tightness before sleep.</p>
+    <section id="safety-section" class="w-full max-w-4xl mx-auto py-12 px-4 border-t border-neutral-900">
+      <div class="bg-red-950/20 border border-red-500/30 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-red-500/20 border border-red-500/30 text-red-400 flex items-center justify-center font-bold">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
           </div>
-          <div class="p-4 rounded-xl border border-neutral-800 bg-neutral-900/40 space-y-1">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Anxiety & Stress Mitigation
-            </h3>
-            <p class="text-xs text-neutral-400">Actively calms nervous arousal during high-pressure moments or panic flare-ups.</p>
-          </div>
-          <div class="p-4 rounded-xl border border-neutral-800 bg-neutral-900/40 space-y-1">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-amber-400"></span> Emotional Regulation
-            </h3>
-            <p class="text-xs text-neutral-400">Establishes a mindful pause before reacting to stressful workplace or daily challenges.</p>
-          </div>
-          <div class="p-4 rounded-xl border border-neutral-800 bg-neutral-900/40 space-y-1">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-indigo-400"></span> Cardiovascular Support
-            </h3>
-            <p class="text-xs text-neutral-400">Encourages steady blood pressure reduction and improves overall respiratory efficiency.</p>
+          <div>
+            <h3 class="text-lg font-bold text-white">Essential Safety Guidelines</h3>
+            <p class="text-xs text-neutral-400">Please read carefully before starting any breathing session.</p>
           </div>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-neutral-300">
+          <div>
+            <h4 class="font-bold text-red-400 uppercase tracking-wider mb-2 font-mono">NEVER Practice 4-7-8 Breathing:</h4>
+            <ul class="space-y-1.5 text-neutral-400 list-disc list-inside">
+              <li>While driving or operating any vehicle</li>
+              <li>While swimming, bathing, or in water</li>
+              <li>While operating machinery</li>
+              <li>In any situation where fainting or dizziness could cause harm</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-emerald-400 uppercase tracking-wider mb-2 font-mono">ALWAYS Practice:</h4>
+            <ul class="space-y-1.5 text-neutral-400 list-disc list-inside">
+              <li>Sitting comfortably with your back supported, or lying down in a safe, calm space</li>
+              <li>Starting with 4 cycles per session — never exceed 8 cycles at a time</li>
+              <li>Keeping your breath gentle and natural — never force the breath hold</li>
+              <li>Stopping immediately and resuming normal breathing if you feel lightheaded, dizzy, or have chest pain</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-red-500/20 text-[11px] text-neutral-400 leading-relaxed font-mono">
+          <strong>Medical Disclaimer:</strong> HarmonyBreath is for wellness and educational purposes only. It is not medical advice. Individuals with epilepsy, high blood pressure, heart conditions, respiratory conditions, or who are pregnant should consult a qualified doctor before practicing.
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO Content Section (600+ words with target main & supporting keywords) -->
+    <section class="w-full max-w-4xl mx-auto px-4 pb-12 pt-4">
+      <div class="max-w-3xl mx-auto space-y-8 text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light">
+        
+        <div class="space-y-4">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            Master the 4-7-8 Breathing Method with Our Guided Online Tool
+          </h2>
+          <p>
+            Welcome to HarmonyBreath, your premier free web tool for mastering <strong class="text-white font-medium">4-7-8 breathing</strong>. Popularized by Integrative Medicine specialist Dr. Andrew Weil and grounded in traditional pranayama practice, the <strong class="text-white font-medium">4-7-8 breathing method</strong> is a natural, fast-acting relaxation exercise designed to calm the nervous system, alleviate mental tension, and assist with falling asleep effortlessly.
+          </p>
+          <p>
+            Whether you are coping with nighttime restlessness, workplace stress, or sudden anxious thoughts, our interactive <strong class="text-white font-medium">4-7-8 breathing timer</strong> offers visual pacing rings, customizable round counts, and relaxing ambient soundscapes to ensure an effortless breathwork experience.
+          </p>
+        </div>
+
+        <div class="space-y-4 border-t border-neutral-900 pt-6">
+          <h2 class="text-xl sm:text-2xl font-bold text-white">
+            What Is the 4-7-8 Breathing Technique?
+          </h2>
+          <p>
+            The <strong class="text-white font-medium">4-7-8 breathing technique</strong> is a structured pattern of controlled breathing based on a precise mathematical cadence: inhaling for 4 seconds, retaining the breath for 7 seconds, and exhaling slowly for 8 seconds.
+          </p>
+          <p>
+            Unlike high-energy breathwork protocols intended to increase alertness, the primary biological purpose of the 4-7-8 breathing pattern is to signal safety and stillness to the central nervous system. Prolonging the exhalation phase to twice the length of the inhalation initiates an immediate parasympathetic response, slowing your heart rate and easing systemic muscle tightness.
+          </p>
+        </div>
+
+        <div class="space-y-4 border-t border-neutral-900 pt-6">
+          <h2 class="text-xl sm:text-2xl font-bold text-white">
+            4-7-8 Breathing Anxiety Evidence: Clinical Research & Science
+          </h2>
+          <p>
+            When searching for evidence-based stress management tools, examining clinical <strong class="text-white font-medium">4-7-8 breathing anxiety evidence</strong> provides clear scientific validation for the practice. Physiological studies and clinical trials have repeatedly verified that extended slow-exhalation breathing protocols significantly diminish acute anxiety and autonomic hyperarousal.
+          </p>
+          <p>
+            Key scientific insights highlighted by <strong class="text-white font-medium">4-7-8 breathing anxiety evidence</strong> include:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
+            <div class="p-4 rounded-xl border border-neutral-800 bg-neutral-900/40 space-y-2">
+              <h3 class="text-base font-bold text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-blue-400"></span> Vagal Nerve Stimulation
+              </h3>
+              <p class="text-xs text-neutral-400">
+                Exhaling continuously for 8 seconds doubles the duration of vagus nerve activation, triggering acetylcholine release that decreases blood pressure and heart rate.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl border border-neutral-800 bg-neutral-900/40 space-y-2">
+              <h3 class="text-base font-bold text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Salivary Cortisol Reduction
+              </h3>
+              <p class="text-xs text-neutral-400">
+                Clinical trials report measurable drops in stress biomarkers (such as salivary cortisol) and rapid decreases in Spielberger State Anxiety scores after just 5–10 minutes of practice.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4 border-t border-neutral-900 pt-6">
+          <h2 class="text-xl sm:text-2xl font-bold text-white">
+            4-7-8 Breathing Technique Evidence for Sleep & Heart Rate Variability
+          </h2>
+          <p>
+            The growing body of <strong class="text-white font-medium">4-7-8 breathing technique evidence</strong> also extends into sleep medicine and cardiovascular health. Electroencephalogram (EEG) recordings confirm that practicing the <strong class="text-white font-medium">4-7-8 breathing technique</strong> prior to sleep transitions dominant brainwave states from active Beta waves into calming Alpha and Delta frequencies, reducing sleep latency.
+          </p>
+          <p>
+            In addition, regular practice enhances Heart Rate Variability (HRV) and respiratory sinus arrhythmia. High HRV correlates directly with stronger physical resilience, improved emotional regulation, and rapid recovery from psychological stress.
+          </p>
+        </div>
+
+        <div class="space-y-4 border-t border-neutral-900 pt-6">
+          <h2 class="text-xl sm:text-2xl font-bold text-white">
+            Features of Our Interactive 4-7-8 Breathing Timer
+          </h2>
+          <p>
+            HarmonyBreath's free <strong class="text-white font-medium">4-7-8 breathing timer</strong> is designed from the ground up to support a seamless practice session:
+          </p>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 font-bold">•</span>
+              <span><strong class="text-white">Real-Time Visual Guidance:</strong> An interactive glowing aura and smooth circular ring expand during inhale (4s), hold during retention (7s), and contract during exhale (8s).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 font-bold">•</span>
+              <span><strong class="text-white">Preset & Custom Modes:</strong> Choose from standard session presets (Beginner 4 cycles, Calm 8 cycles, Deep 12 cycles, Sleep Prep 16 cycles) or customize phase lengths to match your breath capacity.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 font-bold">•</span>
+              <span><strong class="text-white">Audio Chimes & Ambient Tracks:</strong> Gentle phase sounds notify you when to inhale, hold, and exhale, allowing you to practice comfortably with your eyes closed.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 font-bold">•</span>
+              <span><strong class="text-white">Privacy-First Local Analytics:</strong> Your session history and streak data stay strictly inside your browser storage—100% free with zero registration required.</span>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
@@ -287,44 +346,37 @@ const pageSchemaData = [
 
         <div class="space-y-4">
           <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-950/60 space-y-2">
-            <h3 class="text-base font-bold text-white">Is 4-7-8 breathing good for sleep?</h3>
+            <h3 class="text-base font-bold text-white">How does 4-7-8 breathing work?</h3>
             <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              Yes. The 4-7-8 breathing technique is widely recognized as one of the most effective natural exercises for sleep prep. The 8-second extended exhalation stimulates the vagus nerve, slowing down your heart rate and triggering a parasympathetic "rest-and-digest" shift that calms racing thoughts before bed.
+              The 4-7-8 breathing method works by using a specific timing pattern—inhaling for 4 seconds, holding the breath for 7 seconds, and exhaling for 8 seconds. This extended exhalation stimulates the vagus nerve, lowering your heart rate and shifting your body into a parasympathetic relaxation state.
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-950/60 space-y-2">
-            <h3 class="text-base font-bold text-white">How often should I practice 4-7-8 breathing?</h3>
+            <h3 class="text-base font-bold text-white">Does the 4-7-8 sleep trick really work?</h3>
             <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              Dr. Andrew Weil recommends practicing 4-7-8 breathing at least twice daily, completing 4 cycles per session when starting out. As you get comfortable, you can gradually increase to 8, 12, or 16 cycles for deeper relaxation.
+              Yes, the 4-7-8 sleep trick is effective for many people. By slowing your breathing rate, lowering heart rate, and shifting brainwave activity toward calm alpha and delta states, it quiets a racing mind and helps prepare your body to fall asleep fast.
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-950/60 space-y-2">
-            <h3 class="text-base font-bold text-white">Is it normal to feel lightheaded during 4-7-8 breathing?</h3>
+            <h3 class="text-base font-bold text-white">How many times a day should I do 4-7-8 breathing?</h3>
             <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              Yes, lightheadedness can occasionally happen when beginners slow their breathing significantly. If you feel dizzy, pause the timer, resume normal breathing, and reduce your session length to 4 cycles next time.
+              Experts and Dr. Andrew Weil recommend practicing 4-7-8 breathing at least twice a day. Beginners should start with 4 cycles per session, and with regular daily practice, you can gradually increase up to 8 cycles per session.
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-950/60 space-y-2">
-            <h3 class="text-base font-bold text-white">What is the difference between 4-7-8 breathing and box breathing?</h3>
+            <h3 class="text-base font-bold text-white">How long does it take to fall asleep with 4 / 7 / 8 breathing?</h3>
             <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              Box breathing uses 4 equal phases (4s inhale, 4s hold, 4s exhale, 4s empty hold) to foster focus and composure. 4-7-8 breathing emphasizes an extended 8-second exhale with a 7-second hold, specifically tailored for deep relaxation, stress reduction, and falling asleep.
+              With regular daily practice, many people report falling asleep within 1 to 2 minutes (about 4 to 8 breath cycles) after finishing the exercise. Beginners may need 2 to 4 weeks of consistent practice to experience full effectiveness.
             </p>
           </div>
 
           <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-950/60 space-y-2">
-            <h3 class="text-base font-bold text-white">Who can benefit from 4-7-8 breathing?</h3>
+            <h3 class="text-base font-bold text-white">Is 4-7-8 breathing dangerous?</h3>
             <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              Anyone experiencing stress, night-time insomnia, anxiety, or racing thoughts can benefit. It requires no previous breathwork experience and can be practiced comfortably sitting or lying down.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-950/60 space-y-2">
-            <h3 class="text-base font-bold text-white">How fast does 4-7-8 breathing work?</h3>
-            <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              Many people feel a noticeable drop in tension and heart rate within 2 to 4 full cycles (about 1 to 2 minutes). Regular daily practice strengthens your body's stress-recovery response over time.
+              No, 4-7-8 breathing is safe for most healthy individuals when practiced correctly. Dr. Andrew Weil recommends starting with 4 cycles per session and not exceeding 8 cycles at a time. Beginners may experience mild lightheadedness as respiration slows; if this happens, stop and resume natural breathing. Individuals with severe respiratory or cardiovascular conditions should consult a healthcare provider before practicing breath holds.
             </p>
           </div>
         </div>
