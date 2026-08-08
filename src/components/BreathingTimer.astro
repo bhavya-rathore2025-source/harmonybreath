@@ -125,6 +125,19 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
         </svg>
         <span>Reset</span>
       </button>
+
+      <!-- Music Button -->
+      <button
+        id="btn-music"
+        type="button"
+        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+        title="Change Background Music"
+      >
+        <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+        </svg>
+        <span>Music</span>
+      </button>
     </div>
   </div>
 </section>
@@ -137,7 +150,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
 <script>
   import { audioPlayer } from '../utils/audioPlayer';
-  import { defaultAudioConfig } from '../config/audioConfig';
+  import { defaultAudioConfig, musicTracks } from '../config/audioConfig';
   import { saveExerciseStats } from '../utils/stats';
 
   // openMusicModal is defined by MusicSelectionModal.astro's own script
@@ -184,15 +197,28 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     }
   }
 
-  // Unified music mode: same track for all phases
-  const UNIFIED_KEY = 'hb_music_unified';
-  const UNIFIED_PATH_KEY = 'hb_music_unified_file_path';
+  // Background Music Storage Key
+  const MUSIC_KEY = 'hb_music_selection';
 
-  function getUnifiedTrackPath() {
-    if (localStorage.getItem(UNIFIED_KEY) === 'true') {
-      return localStorage.getItem(UNIFIED_PATH_KEY);
+  function getSelectedMusicFilePath(): string {
+    const trackId = localStorage.getItem(MUSIC_KEY);
+    const allTracks = [
+      ...musicTracks.guidedBreathing,
+      ...musicTracks.breathOutHold,
+      ...musicTracks.recoveryHold,
+    ];
+    if (trackId) {
+      const found = allTracks.find(t => t.id === trackId);
+      if (found) return found.filePath;
     }
-    return null;
+    return musicTracks.guidedBreathing[0]?.filePath || '/audio/guided-breathing.mp3';
+  }
+
+  function playBackgroundMusic() {
+    const filePath = getSelectedMusicFilePath();
+    if (filePath) {
+      audioPlayer.playMusicTrack(filePath, true);
+    }
   }
 
   // Phase enum: 'IDLE' | 'GUIDED' | 'HOLD' | 'RECOVERY' | 'COMPLETE'
@@ -226,6 +252,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
   const btnSkipPhase = document.getElementById('btn-skip-phase');
   const labelSkipPhase = document.getElementById('label-skip-phase');
   const btnRestart = document.getElementById('btn-restart');
+  const btnMusic = document.getElementById('btn-music');
 
   const customModal = document.getElementById('custom-modal');
   const customSettingsBtn = document.getElementById('custom-settings-btn');
@@ -340,11 +367,17 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
   });
 
   btnRestart?.addEventListener('click', () => resetSession());
+  btnMusic?.addEventListener('click', () => {
+    if (typeof (window as any).openMusicModal === 'function') {
+      (window as any).openMusicModal();
+    }
+  });
 
   function startSession() {
     currentRound = 1;
     targetHoldSeconds = baseHoldSeconds;
     resetTimers();
+    playBackgroundMusic();
     startPhaseGuided();
   }
 
@@ -404,12 +437,6 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       labelMainAction.textContent = 'Pause';
     }
 
-    const unifiedPath = getUnifiedTrackPath();
-    if (unifiedPath) {
-      audioPlayer.playMusicTrack(unifiedPath, true);
-    } else {
-      audioPlayer.playPhaseTrack('guidedBreathing', true);
-    }
     runGuidedLoop();
   }
 
@@ -485,12 +512,6 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       labelMainAction.textContent = 'Pause';
     }
 
-    const unifiedPath = getUnifiedTrackPath();
-    if (unifiedPath) {
-      audioPlayer.playMusicTrack(unifiedPath, true);
-    } else {
-      audioPlayer.playPhaseTrack('breathOutHold', true);
-    }
     runHoldLoop();
   }
 
@@ -542,12 +563,6 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       labelMainAction.textContent = 'Pause';
     }
 
-    const unifiedPath = getUnifiedTrackPath();
-    if (unifiedPath) {
-      audioPlayer.playMusicTrack(unifiedPath, true);
-    } else {
-      audioPlayer.playPhaseTrack('recoveryHold', false);
-    }
     runRecoveryLoop();
   }
 
@@ -653,28 +668,9 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
   resetSession();
 
   // Listen for music selection changes and apply immediately if session is active
-  window.addEventListener('hb_music_updated', (e: CustomEvent) => {
-    const { phase: updatedPhase } = e.detail;
+  window.addEventListener('hb_music_updated', () => {
     if (phase !== 'IDLE' && phase !== 'COMPLETE') {
-      const unifiedPath = getUnifiedTrackPath();
-      if (unifiedPath) {
-        audioPlayer.playMusicTrack(unifiedPath, true);
-      } else if (updatedPhase === 'guidedBreathing' && phase === 'GUIDED') {
-        audioPlayer.playPhaseTrack('guidedBreathing', true);
-      } else if (updatedPhase === 'breathOutHold' && phase === 'HOLD') {
-        audioPlayer.playPhaseTrack('breathOutHold', true);
-      } else if (updatedPhase === 'recoveryHold' && phase === 'RECOVERY') {
-        audioPlayer.playPhaseTrack('recoveryHold', false);
-      }
-    }
-  });
-
-  window.addEventListener('hb_music_unified_updated', () => {
-    if (phase !== 'IDLE' && phase !== 'COMPLETE') {
-      const unifiedPath = getUnifiedTrackPath();
-      if (unifiedPath) {
-        audioPlayer.playMusicTrack(unifiedPath, true);
-      }
+      playBackgroundMusic();
     }
   });
 </script>
