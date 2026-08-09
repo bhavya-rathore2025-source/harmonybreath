@@ -221,9 +221,12 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     }
   }
 
-  // Phase enum: 'IDLE' | 'GUIDED' | 'HOLD' | 'RECOVERY' | 'COMPLETE'
+  // Phase enum: 'IDLE' | 'GUIDED' | 'HOLD' | 'RECOVERY' | 'REST' | 'COMPLETE'
   let phase = 'IDLE';
   let isPaused = false;
+
+  // Duration of the resting break between rounds
+  const REST_SECONDS = 7;
 
   // Timer intervals & counters
   let breathCount = 0;
@@ -363,6 +366,8 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       startPhaseRecovery();
     } else if (phase === 'RECOVERY') {
       advanceRound();
+    } else if (phase === 'REST') {
+      startPhaseGuided();
     }
   });
 
@@ -408,6 +413,8 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       runHoldLoop();
     } else if (phase === 'RECOVERY') {
       runRecoveryLoop();
+    } else if (phase === 'REST') {
+      runRestLoop();
     }
   }
 
@@ -588,13 +595,76 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     }, 1000);
   }
 
+  // Rest Break Between Rounds (Normal Breathing)
+  function startPhaseRest() {
+    phase = 'REST';
+    isPaused = false;
+    elapsedPhaseSeconds = REST_SECONDS;
+
+    if (breathCycleTimer) clearTimeout(breathCycleTimer);
+    if (phaseTimer) clearInterval(phaseTimer);
+
+    if (phaseLabel) {
+      phaseLabel.textContent = 'Rest';
+      phaseLabel.className = 'uppercase tracking-wider font-semibold text-teal-400';
+    }
+    if (breathActionText) breathActionText.textContent = 'Breathe Normally';
+    if (breathHalo) breathHalo.style.transform = 'scale(1.0)';
+    if (phaseGlow) {
+      phaseGlow.className = 'absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-teal-500/20 via-transparent to-transparent';
+    }
+    if (btnSkipPhase && labelSkipPhase) {
+      btnSkipPhase.classList.remove('hidden');
+      labelSkipPhase.textContent = 'Next Round';
+    }
+    if (iconPlay && iconPause && labelMainAction) {
+      iconPlay.classList.add('hidden');
+      iconPause.classList.remove('hidden');
+      labelMainAction.textContent = 'Pause';
+    }
+
+    audioPlayer.playBreathSound(false);
+
+    runRestLoop();
+  }
+
+  function runRestLoop() {
+    if (phaseTimer) clearInterval(phaseTimer);
+    if (breathCycleTimer) clearTimeout(breathCycleTimer);
+
+    // Gentle normal-breathing halo motion for the whole rest period
+    let expanding = true;
+    breathCycleTimer = window.setInterval(() => {
+      if (breathHalo) {
+        breathHalo.style.transform = expanding ? 'scale(1.18)' : 'scale(1.0)';
+      }
+      expanding = !expanding;
+    }, 2500);
+
+    phaseTimer = window.setInterval(() => {
+      if (isPaused) return;
+
+      elapsedPhaseSeconds--;
+      if (primaryCounter) primaryCounter.textContent = `00:${elapsedPhaseSeconds.toString().padStart(2, '0')}`;
+      if (secondaryCounter) secondaryCounter.textContent = 'Breathe normally & relax';
+
+      updateProgressRing(((REST_SECONDS - elapsedPhaseSeconds) / REST_SECONDS) * 100);
+
+      if (elapsedPhaseSeconds <= 0) {
+        clearInterval(phaseTimer!);
+        if (breathCycleTimer) clearTimeout(breathCycleTimer);
+        startPhaseGuided();
+      }
+    }, 1000);
+  }
+
   function advanceRound() {
     if (currentRound < totalRounds) {
       currentRound++;
       if (currentPreset !== 'beginner' && currentPreset !== 'custom') {
         targetHoldSeconds = baseHoldSeconds + (currentRound - 1) * 10;
       }
-      startPhaseGuided();
+      startPhaseRest();
     } else {
       completeSession();
     }
