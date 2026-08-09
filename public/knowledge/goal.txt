@@ -20,7 +20,7 @@ Every breathing technique on HarmonyBreath receives its own dedicated page featu
 
 ## ARCHITECTURE: DEDICATED TECHNIQUE PAGES
 
-Each breathing method is implemented on its own dedicated route (`/wim-hof`, `/box-breathing`, `/4-7-8`, `/coherent-breathing`, `/nadi-shodhana`, etc.) to provide focused environments optimized for each technique's unique timing, visual rhythm, and instructions.
+Each breathing method is implemented on its own dedicated route (`/wim-hof`, `/box-breathing`, `/4-7-8`, `/diaphragmatic-breathing`, `/nadi-shodhana`, etc.) to provide focused environments optimized for each technique's unique timing, visual rhythm, and instructions.
 
 ### 1. Wim Hof Breathing (`/wim-hof`) — ACTIVE
 * **Purpose**: Energy boost, stress resilience, immune system stimulation, cold adaptation.
@@ -37,22 +37,17 @@ Each breathing method is implemented on its own dedicated route (`/wim-hof`, `/b
 * **Structure**: Inhale (4s), Full Hold (7s), Slow Exhale through mouth (8s).
 * **Key Features**: Guided audio voice prompts, customizable round counts, sleep-mode night visualizer.
 
-### 4. Coherent / Resonant Frequency Breathing (`/coherent-breathing`) — PLANNED
-* **Purpose**: Maximizing Heart Rate Variability (HRV), emotional balance, cardiovascular resonance.
-* **Structure**: Continuous smooth 5.5-second inhale and 5.5-second exhale (approx. 5.5 breaths/minute).
-* **Key Features**: Variable frequency slider (4.5s to 6.5s per phase), ambient music synchronization, smooth sine-wave visualizer.
+### 4. Diaphragmatic / Belly Breathing (`/diaphragmatic-breathing`) — PLANNED
+* **Purpose**: De-stressing, correcting shallow chest breathing habits, lower abdominal activation.
+* **Structure**: Deep abdominal inhales with minimal chest movement.
+* **Key Features**: Dual-ring abdominal expansion visualizer, posture & diaphragm mechanics guide.
 
 ### 5. Nadi Shodhana / Alternate Nostril Breathing (`/nadi-shodhana`) — PLANNED
 * **Purpose**: Hemispheric brain balance, mental clarity, energetic realignment.
 * **Structure**: Alternating airflow between left and right nostrils with optional internal holds.
 * **Key Features**: Step-by-step visual hand position guide, dual-channel airflow indicator.
 
-### 6. Diaphragmatic / Belly Breathing (`/diaphragmatic-breathing`) — PLANNED
-* **Purpose**: De-stressing, correcting shallow chest breathing habits, lower abdominal activation.
-* **Structure**: Deep abdominal inhales with minimal chest movement.
-* **Key Features**: Dual-ring abdominal expansion visualizer, posture & diaphragm mechanics guide.
-
-### 7. Tummo Breathing (`/tummo`) — PLANNED
+### 6. Tummo Breathing (`/tummo`) — PLANNED
 * **Purpose**: Inner heat generation, spiritual focus, deep meditative state (traditional Tibetan technique).
 * **Structure**: Dynamic abdominal contractions combined with upper chest retains and visualization.
 * **Key Features**: Advanced heat visualization graphics, structured safety guidelines.
