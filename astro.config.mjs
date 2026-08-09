@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://harmonybreath.com',
+  trailingSlash: 'always',
   output: 'static',
   vite: {
     plugins: [tailwindcss()],

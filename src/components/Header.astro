@@ -23,8 +23,8 @@
     <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-400">
       <a href="/" class="hover:text-white transition-colors duration-200">Home</a>
       <a href="/#techniques" class="hover:text-white transition-colors duration-200">Techniques</a>
-      <a href="/about" class="hover:text-white transition-colors duration-200">About</a>
-      <a href="/contact" class="hover:text-white transition-colors duration-200">Contact</a>
+      <a href="/about/" class="hover:text-white transition-colors duration-200">About</a>
+      <a href="/contact/" class="hover:text-white transition-colors duration-200">Contact</a>
     </nav>
 
     <!-- Header Actions -->
@@ -111,7 +111,8 @@
   import { audioPlayer } from '../utils/audioPlayer';
 
   const hidePages = ['/', '/about', '/contact', '/privacy', '/terms', '/quotes'];
-  const currentPath = window.location.pathname;
+  const rawPath = window.location.pathname;
+  const currentPath = rawPath.replace(/\/$/, '') || '/';
   if (hidePages.includes(currentPath)) {
     const volumeControl = document.getElementById('volume-control');
     const musicBtn = document.getElementById('choose-music-btn');
