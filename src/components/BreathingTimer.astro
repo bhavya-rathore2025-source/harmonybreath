@@ -199,14 +199,14 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
   // Background Music Storage Key
   const MUSIC_KEY = 'hb_music_selection';
+  const allTracks = [
+    ...musicTracks.guidedBreathing,
+    ...musicTracks.breathOutHold,
+    ...musicTracks.recoveryHold,
+  ];
 
   function getSelectedMusicFilePath(): string {
     const trackId = localStorage.getItem(MUSIC_KEY);
-    const allTracks = [
-      ...musicTracks.guidedBreathing,
-      ...musicTracks.breathOutHold,
-      ...musicTracks.recoveryHold,
-    ];
     if (trackId) {
       const found = allTracks.find(t => t.id === trackId);
       if (found) return found.filePath;
@@ -217,7 +217,13 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
   function playBackgroundMusic() {
     const filePath = getSelectedMusicFilePath();
     if (filePath) {
-      audioPlayer.playMusicTrack(filePath, true);
+      audioPlayer.playMusicTrack(
+        filePath,
+        audioPlayer.isLoopSong(),
+        allTracks,
+        MUSIC_KEY,
+        'hb_music_updated'
+      );
     }
   }
 

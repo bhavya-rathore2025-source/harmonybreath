@@ -142,6 +142,12 @@ import DiaphragmaticMusicSelectionModal from './DiaphragmaticMusicSelectionModal
   const MUSIC_STORAGE_KEY = 'hb_diaphragmatic_music_selection';
   const SETTINGS_STORAGE_KEY = 'hb_diaphragmatic_custom_settings';
 
+  const allTracks = [
+    ...musicTracks.guidedBreathing,
+    ...musicTracks.breathOutHold,
+    ...musicTracks.recoveryHold,
+  ];
+
   type SessionState = 'IDLE' | 'RUNNING' | 'PAUSED' | 'COMPLETED';
 
   let state: SessionState = 'IDLE';
@@ -479,7 +485,13 @@ import DiaphragmaticMusicSelectionModal from './DiaphragmaticMusicSelectionModal
 
     const musicPath = getSelectedMusicFilePath();
     if (musicPath) {
-      audioPlayer.playMusicTrack(musicPath, true);
+      audioPlayer.playMusicTrack(
+        musicPath,
+        audioPlayer.isLoopSong(),
+        allTracks,
+        MUSIC_STORAGE_KEY,
+        'hb_diaphragmatic_music_updated'
+      );
     }
 
     startPhase();

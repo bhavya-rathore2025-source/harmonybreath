@@ -24,8 +24,18 @@
     </div>
 
     <div class="overflow-y-auto flex-1 p-4">
-      <div class="text-center text-xs text-neutral-500 font-mono pb-3 border-b border-neutral-800 mb-4">
-        Pick a track to accompany your relaxation practice
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-neutral-800 mb-4">
+        <div class="text-center sm:text-left text-xs text-neutral-400 font-mono">
+          Pick a track to accompany your relaxation practice
+        </div>
+        <label class="inline-flex items-center gap-2.5 cursor-pointer select-none bg-neutral-900/90 border border-neutral-800 hover:border-neutral-700 px-3 py-1.5 rounded-xl transition-colors shrink-0">
+          <span class="text-xs font-medium text-neutral-200">Loop Song</span>
+          <span class="text-[10px] text-neutral-500 font-mono hidden xs:inline">(Playlist if off)</span>
+          <div class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="diaphragmatic-loop-song-toggle" class="sr-only peer" />
+            <div class="w-9 h-5 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal-500"></div>
+          </div>
+        </label>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="diaphragmatic-tracks-container"></div>
     </div>
@@ -66,6 +76,21 @@
   const closeBtn = document.getElementById('close-diaphragmatic-music-modal');
   const applyBtn = document.getElementById('apply-diaphragmatic-music');
   const container = document.getElementById('diaphragmatic-tracks-container');
+  const loopToggle = document.getElementById('diaphragmatic-loop-song-toggle') as HTMLInputElement | null;
+
+  function syncLoopToggle() {
+    if (loopToggle) {
+      loopToggle.checked = audioPlayer.isLoopSong();
+    }
+  }
+
+  loopToggle?.addEventListener('change', () => {
+    if (loopToggle) {
+      audioPlayer.setLoopSong(loopToggle.checked);
+    }
+  });
+
+  window.addEventListener('hb_loop_song_changed', syncLoopToggle);
 
   function getTrackById(id: string) {
     return allTracks.find(t => t.id === id);
@@ -128,11 +153,17 @@
     audioPlayer.stopPreview();
     if (!modal) return;
     selectedTrackId = localStorage.getItem(STORAGE_KEY) || allTracks[0]?.id || '';
+    syncLoopToggle();
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
     renderTracks();
   }
+
+  window.addEventListener('hb_diaphragmatic_music_updated', () => {
+    selectedTrackId = localStorage.getItem(STORAGE_KEY) || allTracks[0]?.id || '';
+    renderTracks();
+  });
 
   function closeModal() {
     audioPlayer.stopPreview();

@@ -140,6 +140,11 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
   import { saveExerciseStats } from '../utils/stats';
 
   const RELAX_MUSIC_KEY = 'hb_relax_music_selection';
+  const allTracks = [
+    ...musicTracks.guidedBreathing,
+    ...musicTracks.breathOutHold,
+    ...musicTracks.recoveryHold,
+  ];
 
   let inhaleSec = 4;
   let holdSec = 7;
@@ -429,7 +434,13 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
 
     const musicPath = getSelectedMusicFilePath();
     if (musicPath) {
-      audioPlayer.playMusicTrack(musicPath, true);
+      audioPlayer.playMusicTrack(
+        musicPath,
+        audioPlayer.isLoopSong(),
+        allTracks,
+        RELAX_MUSIC_KEY,
+        'hb_relax_music_updated'
+      );
     }
 
     startPhase();

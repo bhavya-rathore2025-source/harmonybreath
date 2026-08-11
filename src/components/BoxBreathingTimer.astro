@@ -143,6 +143,11 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
   import { saveExerciseStats } from '../utils/stats';
 
   const BOX_MUSIC_KEY = 'hb_box_music_selection';
+  const allTracks = [
+    ...musicTracks.guidedBreathing,
+    ...musicTracks.breathOutHold,
+    ...musicTracks.recoveryHold,
+  ];
 
   let phaseDuration = 4;
   let totalCycles = 20;
@@ -338,9 +343,15 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
   function playBackgroundMusic() {
     const filePath = getSelectedMusicFilePath();
     if (filePath) {
-      audioPlayer.playMusicTrack(filePath, true);
+      audioPlayer.playMusicTrack(
+        filePath,
+        audioPlayer.isLoopSong(),
+        allTracks,
+        BOX_MUSIC_KEY,
+        'hb_box_music_updated'
+      );
     } else {
-      audioPlayer.playPhaseTrack('guidedBreathing', true);
+      audioPlayer.playPhaseTrack('guidedBreathing', audioPlayer.isLoopSong());
     }
   }
 

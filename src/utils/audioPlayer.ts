@@ -40,8 +40,50 @@ class ResilientAudioPlayer {
   private isBreathSoundMuted: boolean = false;
   private availabilityCache: Map<string, boolean> = new Map();
 
+  private loopSongKey: string = 'hb_loop_song';
+  private currentPlaylistInfo: {
+    playlist: MusicTrack[];
+    storageKey: string;
+    eventName: string;
+  } | null = null;
+
   constructor(customConfig?: Partial<AudioConfig>) {
     this.config = { ...defaultAudioConfig, ...customConfig };
+  }
+
+  public isLoopSong(): boolean {
+    try {
+      if (typeof localStorage === 'undefined') return true;
+      const stored = localStorage.getItem(this.loopSongKey);
+      return stored === null ? true : stored === 'true';
+    } catch {
+      return true;
+    }
+  }
+
+  public setLoopSong(loop: boolean): void {
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem(this.loopSongKey, loop ? 'true' : 'false');
+      }
+    } catch {
+      // Ignore storage errors
+    }
+
+    if (this.currentAudio) {
+      this.currentAudio.loop = loop;
+      if (!loop) {
+        this.currentAudio.onended = () => this.handleTrackEnded();
+      } else {
+        this.currentAudio.onended = null;
+      }
+    }
+
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('hb_loop_song_changed', {
+        detail: { loopSong: loop }
+      }));
+    }
   }
 
   public setMuted(muted: boolean) {
@@ -282,9 +324,15 @@ class ResilientAudioPlayer {
   }
 
   /**
-   * Play a single music track by file path (for box breathing)
+   * Play a music track by file path with optional playlist auto-advance when loop song is off
    */
-  public async playMusicTrack(filePath: string, loop: boolean = false): Promise<void> {
+  public async playMusicTrack(
+    filePath: string,
+    loopOverride?: boolean,
+    playlist?: MusicTrack[],
+    storageKey?: string,
+    eventName?: string
+  ): Promise<void> {
     this.stop();
     this.stopPreview();
 
@@ -296,11 +344,24 @@ class ResilientAudioPlayer {
       return;
     }
 
+    if (playlist && storageKey && eventName) {
+      this.currentPlaylistInfo = { playlist, storageKey, eventName };
+    }
+
+    const shouldLoop = loopOverride !== undefined ? loopOverride : this.isLoopSong();
+
     try {
       const audio = new Audio(filePath);
       audio.volume = this.config.volume;
       audio.muted = this.isMuted;
-      audio.loop = loop;
+      audio.loop = shouldLoop;
+
+      if (!shouldLoop) {
+        audio.onended = () => this.handleTrackEnded();
+      } else {
+        audio.onended = null;
+      }
+
       this.currentAudio = audio;
 
       audio.onerror = () => {
@@ -312,6 +373,45 @@ class ResilientAudioPlayer {
     } catch (err) {
       console.warn(`[HarmonyBreath Audio] Autoplay prevented for "${filePath}":`, err);
     }
+  }
+
+  private handleTrackEnded(): void {
+    if (this.isLoopSong()) return;
+    if (!this.currentPlaylistInfo) return;
+
+    const { playlist, storageKey, eventName } = this.currentPlaylistInfo;
+    if (!playlist || playlist.length === 0) return;
+
+    let currentTrackId: string | null = null;
+    try {
+      if (typeof localStorage !== 'undefined') {
+        currentTrackId = localStorage.getItem(storageKey);
+      }
+    } catch {
+      // ignore storage error
+    }
+
+    const currentIndex = playlist.findIndex(t => t.id === currentTrackId);
+    const nextIndex = currentIndex >= 0 ? (currentIndex + 1) % playlist.length : 0;
+    const nextTrack = playlist[nextIndex];
+
+    if (!nextTrack) return;
+
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem(storageKey, nextTrack.id);
+      }
+    } catch {
+      // ignore storage error
+    }
+
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent(eventName, {
+        detail: { trackId: nextTrack.id, filePath: nextTrack.filePath }
+      }));
+    }
+
+    this.playMusicTrack(nextTrack.filePath, false, playlist, storageKey, eventName);
   }
 
   /**
