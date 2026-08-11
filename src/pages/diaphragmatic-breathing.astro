@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import DiaphragmaticTimer from '../components/DiaphragmaticTimer.astro';
+import DiaphragmaticSessionPresets from '../components/DiaphragmaticSessionPresets.astro';
+import AnalyticsPanel from '../components/AnalyticsPanel.astro';
+import Footer from '../components/Footer.astro';
+
+const breadcrumb = [
+  { name: 'Home', url: '/' },
+  { name: 'Diaphragmatic Breathing', url: '/diaphragmatic-breathing/' },
+];
+
+const pageSchemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HarmonyBreath — Diaphragmatic Breathing Timer",
+    "alternateName": "HarmonyBreath Guided Belly Breathing App",
+    "description": "Free guided diaphragmatic (belly) breathing timer with visual cues, ambient soundscapes, customizable session presets, and local practice tracking.",
+    "url": "https://harmonybreath.com/diaphragmatic-breathing/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any (Web Browser)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Guided diaphragmatic breathing timer with real-time visual halo cues",
+      "Customizable inhale, hold, exhale, and pause durations",
+      "Preset session options for daily practice, deep relaxation, and bedtime routine",
+      "Ambient soundscape player and audio chime cues",
+      "Private browser-local session analytics with zero data tracking"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HarmonyBreath Diaphragmatic Breathing Timer",
+    "description": "Free online diaphragmatic breathing timer for deep belly breathing exercises. Promotes relaxation, parasympathetic tone, and mindful breathing.",
+    "browserRequirements": "Requires JavaScript",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is diaphragmatic breathing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Diaphragmatic breathing (also known as abdominal or belly breathing) is a deep breathing technique where you engage your diaphragm muscle, allowing your stomach to rise on inhalation and gently fall on exhalation rather than breathing shallowly into the chest."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does diaphragmatic breathing benefit stress relief?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "By expanding the lungs downward into the abdomen, diaphragmatic breathing stimulates the vagus nerve, signaling the body to switch from the sympathetic ('fight or flight') nervous system to the parasympathetic ('rest and digest') state. This lowers heart rate and blood pressure while reducing cortisol levels."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should I practice belly breathing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Practicing 5 to 10 minutes once or twice daily is recommended for building healthy breathing habits. You can also use diaphragmatic breathing whenever you feel anxious, overwhelmed, or before falling asleep."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between chest breathing and belly breathing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Chest breathing relies on intercostal and shoulder muscles, taking shallow breaths into the upper lungs which can worsen anxiety. Belly breathing uses the main respiratory muscle (the diaphragm), drawing oxygen deep into the lower lungs and encouraging full oxygen exchange."
+        }
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Diaphragmatic Breathing Technique & Guided Timer | HarmonyBreath"
+  description="Master diaphragmatic belly breathing with our free online timer. Practice deep abdominal breathing for stress relief, relaxation, and vagal tone improvement."
+  keywords="diaphragmatic breathing, belly breathing, abdominal breathing, deep breathing exercise, breathing timer, vagus nerve breathing, stress relief breathing"
+  canonicalUrl="https://harmonybreath.com/diaphragmatic-breathing/"
+  image="https://harmonybreath.com/og-image.png"
+  schemaData={pageSchemaData}
+  breadcrumb={breadcrumb}
+>
+  <Header />
+
+  <main class="flex-1 hero-gradient-mesh relative">
+    <!-- Top Navigation & Hero Header -->
+    <section class="w-full max-w-4xl mx-auto pt-8 pb-6 px-4 text-center space-y-4">
+      <div class="flex items-center justify-center gap-2 mb-2">
+        <a
+          href="/"
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/80 text-neutral-400 hover:text-white text-xs font-mono transition-colors"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to All Techniques
+        </a>
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-400/30 bg-teal-400/10 text-teal-400 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+          Diaphragmatic / Belly Breath
+        </span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-bold tracking-normal text-white leading-tight">
+        Diaphragmatic Breathing <br />
+        <span class="gradient-text-develop">Free Guided Belly Timer</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light">
+        Ground your nervous system with our free online <strong class="text-neutral-200 font-medium">diaphragmatic breathing timer</strong>. Also known as belly or abdominal breathing, this fundamental practice engages your diaphragm to encourage deep oxygen exchange, ease muscle tension, and lower stress.
+      </p>
+    </section>
+
+    <!-- Main Interactive Diaphragmatic Timer Component -->
+    <DiaphragmaticTimer />
+
+    <!-- Session Presets -->
+    <DiaphragmaticSessionPresets />
+
+    <!-- Analytics Stats Panel -->
+    <AnalyticsPanel exerciseId="diaphragmatic-breathing" />
+
+    <!-- Step-by-Step Technique Guide -->
+    <section class="w-full max-w-4xl mx-auto px-4 py-8">
+      <div class="bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-8 backdrop-blur-xl space-y-6">
+        <div class="flex items-center gap-3 border-b border-neutral-800 pb-4">
+          <div class="w-8 h-8 rounded-full bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white">Understanding Diaphragmatic Breathing</h2>
+        </div>
+
+        <div class="space-y-4 text-xs sm:text-sm text-neutral-300 leading-relaxed">
+          <p>
+            The diaphragm is a large, dome-shaped muscle located at the base of the lungs. When you breathe shallowly into your upper chest, your diaphragm moves very little. In contrast, <strong class="text-white font-medium">diaphragmatic breathing</strong> consciously engages this muscle, pulling it downward so that your lower lungs fill completely and your abdomen expands outward.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+            <div class="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-2">
+              <h3 class="text-sm font-bold text-teal-400 flex items-center gap-2 font-mono">
+                <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+                Step-by-Step Practice Guide
+              </h3>
+              <ol class="list-decimal list-inside space-y-1.5 text-neutral-300 text-xs">
+                <li>Find a comfortable seated position or lie down on your back.</li>
+                <li>Place one hand on your upper chest and the other hand on your belly.</li>
+                <li>Inhale slowly through your nose for 4 seconds, feeling your belly expand outward while your chest remains still.</li>
+                <li>Pause gently for 2 seconds at the top of the inhale.</li>
+                <li>Exhale smoothly through parted lips or nose for 6 seconds, feeling your belly gently collapse inward.</li>
+              </ol>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-2">
+              <h3 class="text-sm font-bold text-cyan-400 flex items-center gap-2 font-mono">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                Physiological Benefits
+              </h3>
+              <ul class="list-disc list-inside space-y-1.5 text-neutral-300 text-xs">
+                <li><strong class="text-white font-medium">Activates the Vagus Nerve:</strong> Stimulates parasympathetic tone to lower heart rate.</li>
+                <li><strong class="text-white font-medium">Reduces Cortisol:</strong> Helps clear stress hormones from the bloodstream.</li>
+                <li><strong class="text-white font-medium">Maximizes Oxygen Delivery:</strong> Improves lower lobe lung ventilation and carbon dioxide clearance.</li>
+                <li><strong class="text-white font-medium">Improves Core Stability:</strong> Strengthens the diaphragm muscle and abdominal wall.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="text-base font-bold text-white pt-4 border-t border-neutral-800">Frequently Asked Questions</h3>
+          
+          <div class="space-y-3 font-sans">
+            <details class="group bg-neutral-900/40 border border-neutral-800/80 rounded-xl p-4 transition-all">
+              <summary class="cursor-pointer font-medium text-white text-xs sm:text-sm flex justify-between items-center list-none">
+                <span>What is the main difference between chest breathing and belly breathing?</span>
+                <span class="text-neutral-500 group-open:rotate-180 transition-transform font-mono">+</span>
+              </summary>
+              <p class="mt-3 text-xs text-neutral-400 leading-relaxed">
+                Chest breathing uses secondary neck and upper chest muscles to lift the ribcage, drawing small volumes of air into upper lungs. Belly breathing uses the diaphragm, pulling air deep into lower lungs where blood flow is richest, producing maximum oxygen absorption and a calming physiological effect.
+              </p>
+            </details>
+
+            <details class="group bg-neutral-900/40 border border-neutral-800/80 rounded-xl p-4 transition-all">
+              <summary class="cursor-pointer font-medium text-white text-xs sm:text-sm flex justify-between items-center list-none">
+                <span>Can I practice diaphragmatic breathing laying down?</span>
+                <span class="text-neutral-500 group-open:rotate-180 transition-transform font-mono">+</span>
+              </summary>
+              <p class="mt-3 text-xs text-neutral-400 leading-relaxed">
+                Yes! Lying flat on your back with knees bent and a pillow under your knees is actually the best position for beginners because gravity helps relax your abdominal wall, making it easier to feel your belly rise and fall.
+              </p>
+            </details>
+
+            <details class="group bg-neutral-900/40 border border-neutral-800/80 rounded-xl p-4 transition-all">
+              <summary class="cursor-pointer font-medium text-white text-xs sm:text-sm flex justify-between items-center list-none">
+                <span>Is diaphragmatic breathing safe for everyone?</span>
+                <span class="text-neutral-500 group-open:rotate-180 transition-transform font-mono">+</span>
+              </summary>
+              <p class="mt-3 text-xs text-neutral-400 leading-relaxed">
+                Diaphragmatic breathing is extremely safe and gentle for nearly everyone. Unlike intense hyperventilation or extreme breath retention techniques, it operates within natural, comfortable respiratory volumes.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

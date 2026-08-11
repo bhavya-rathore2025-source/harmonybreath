@@ -1,0 +1,108 @@
+---
+---
+
+<div class="w-full max-w-4xl mx-auto mb-8 px-4">
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
+    <div>
+      <h3 class="text-sm font-mono text-teal-400 uppercase tracking-widest font-semibold">Session Presets</h3>
+      <p class="text-xs text-neutral-400">Select cycle count and rhythm for your diaphragmatic belly breathing session.</p>
+    </div>
+    <button
+      id="diaphragmatic-custom-settings-btn"
+      type="button"
+      class="flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-xs font-medium text-neutral-300 hover:text-white transition-colors shrink-0"
+    >
+      <svg class="w-3.5 h-3.5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+      </svg>
+      Custom Timing & Cycles
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+    <!-- Preset 1: Standard (4-2-6-0) -->
+    <button
+      data-diaphragmatic-preset="standard"
+      data-inhale="4"
+      data-hold="2"
+      data-exhale="6"
+      data-posthold="0"
+      data-cycles="40"
+      class="diaphragmatic-preset-btn group relative p-4 rounded-xl border border-teal-500/50 bg-teal-500/10 text-left transition-all duration-200 focus:outline-none col-span-1"
+    >
+      <div class="text-xs font-mono text-teal-400 mb-1">Standard (40 Cycles)</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">4-2-6-0</div>
+      <div class="text-[11px] text-neutral-400 mt-1">40 cycles • ~8m 00s</div>
+      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5">Gentle diaphragmatic breathing with a longer exhale.</p>
+    </button>
+
+    <!-- Preset 2: Equal Rhythm (4-0-4-0) -->
+    <button
+      data-diaphragmatic-preset="equal"
+      data-inhale="4"
+      data-hold="0"
+      data-exhale="4"
+      data-posthold="0"
+      data-cycles="60"
+      class="diaphragmatic-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-teal-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1"
+    >
+      <div class="text-xs font-mono text-cyan-400 mb-1">Equal Rhythm (60)</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">4-0-4-0</div>
+      <div class="text-[11px] text-neutral-400 mt-1">60 cycles • ~8m 00s</div>
+      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5">Steady, rhythmic breathing for relaxation and breath awareness.</p>
+    </button>
+
+    <!-- Preset 3: Deep Relax (5-2-7-0) -->
+    <button
+      data-diaphragmatic-preset="deep"
+      data-inhale="5"
+      data-hold="2"
+      data-exhale="7"
+      data-posthold="0"
+      data-cycles="35"
+      class="diaphragmatic-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-teal-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1"
+    >
+      <div class="text-xs font-mono text-emerald-400 mb-1">Deep Relax (35 Cycles)</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">5-2-7-0</div>
+      <div class="text-[11px] text-neutral-400 mt-1">35 cycles • ~8m 10s</div>
+      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5">Slow breathing with an extended exhale.</p>
+    </button>
+
+    <!-- Preset 4: Sleep Prep (4-2-8-0) -->
+    <button
+      data-diaphragmatic-preset="sleep"
+      data-inhale="4"
+      data-hold="2"
+      data-exhale="8"
+      data-posthold="0"
+      data-cycles="40"
+      class="diaphragmatic-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-teal-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1"
+    >
+      <div class="text-xs font-mono text-purple-400 mb-1">Sleep Prep (40)</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">4-2-8-0</div>
+      <div class="text-[11px] text-neutral-400 mt-1">40 cycles • ~9m 20s</div>
+      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5">Gentle breathing with a longer exhale for a calming bedtime routine.</p>
+    </button>
+
+    <!-- Custom -->
+    <button
+      data-diaphragmatic-preset="custom"
+      data-inhale="4"
+      data-hold="2"
+      data-exhale="6"
+      data-posthold="0"
+      data-cycles="40"
+      class="diaphragmatic-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-teal-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1"
+    >
+      <div class="text-xs font-mono text-amber-400 mb-1">Custom</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers flex items-center gap-1">
+        <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+      <div class="text-[11px] text-neutral-400 mt-1">Custom timing & cycles</div>
+      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5">Adjust your own breathing rhythm.</p>
+    </button>
+  </div>
+</div>

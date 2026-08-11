@@ -1,0 +1,147 @@
+---
+---
+
+<div id="diaphragmatic-custom-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
+  <div class="w-full max-w-md bg-neutral-950 border border-neutral-800 rounded-2xl p-6 shadow-2xl space-y-6">
+    <div class="flex items-center justify-between border-b border-neutral-800 pb-4">
+      <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <svg class="w-4 h-4 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        Custom Diaphragmatic Breath Settings
+      </h3>
+      <button id="close-diaphragmatic-custom-modal" class="text-neutral-400 hover:text-white transition-colors" type="button" aria-label="Close modal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="text-xs text-neutral-500 font-mono leading-relaxed -mt-2">
+      Customize the timing of each phase or total cycles for your belly breathing session.
+    </div>
+
+    <!-- Inhale Duration -->
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-mono text-neutral-300">
+        <span>Inhale Duration (Abdominal)</span>
+        <span id="diaphragmatic-custom-inhale-val" class="text-amber-400 font-bold">4s</span>
+      </div>
+      <input
+        type="range"
+        id="diaphragmatic-custom-inhale-input"
+        min="2"
+        max="8"
+        step="1"
+        value="4"
+        class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+      />
+      <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
+        <span>2s</span>
+        <span>8s</span>
+      </div>
+    </div>
+
+    <!-- Hold Duration -->
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-mono text-neutral-300">
+        <span>Inhale Hold Duration</span>
+        <span id="diaphragmatic-custom-hold-val" class="text-cyan-400 font-bold">2s</span>
+      </div>
+      <input
+        type="range"
+        id="diaphragmatic-custom-hold-input"
+        min="0"
+        max="8"
+        step="1"
+        value="2"
+        class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
+      />
+      <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
+        <span>0s</span>
+        <span>8s</span>
+      </div>
+    </div>
+
+    <!-- Exhale Duration -->
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-mono text-neutral-300">
+        <span>Exhale Duration (Relaxed)</span>
+        <span id="diaphragmatic-custom-exhale-val" class="text-teal-400 font-bold">6s</span>
+      </div>
+      <input
+        type="range"
+        id="diaphragmatic-custom-exhale-input"
+        min="3"
+        max="12"
+        step="1"
+        value="6"
+        class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-teal-400"
+      />
+      <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
+        <span>3s</span>
+        <span>12s</span>
+      </div>
+    </div>
+
+    <!-- Post-Exhale Hold Duration -->
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-mono text-neutral-300">
+        <span>Post-Exhale Pause</span>
+        <span id="diaphragmatic-custom-posthold-val" class="text-purple-400 font-bold">0s</span>
+      </div>
+      <input
+        type="range"
+        id="diaphragmatic-custom-posthold-input"
+        min="0"
+        max="6"
+        step="1"
+        value="0"
+        class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-purple-400"
+      />
+      <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
+        <span>0s</span>
+        <span>6s</span>
+      </div>
+    </div>
+
+    <!-- Total Cycles -->
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-mono text-neutral-300">
+        <span>Total Cycles</span>
+        <span id="diaphragmatic-custom-cycles-val" class="text-emerald-400 font-bold">40 Cycles</span>
+      </div>
+      <input
+        type="range"
+        id="diaphragmatic-custom-cycles-input"
+        min="1"
+        max="80"
+        step="1"
+        value="40"
+        class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+      />
+      <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
+        <span>1 Cycle</span>
+        <span>80 Cycles</span>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-end gap-3 border-t border-neutral-800 pt-4">
+      <button
+        id="cancel-diaphragmatic-custom"
+        type="button"
+        class="px-4 py-2 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white text-xs font-medium transition-colors"
+      >
+        Cancel
+      </button>
+      <button
+        id="save-diaphragmatic-custom"
+        type="button"
+        class="px-5 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-black font-semibold text-xs transition-colors"
+      >
+        Apply Custom Rhythm
+      </button>
+    </div>
+  </div>
+</div>

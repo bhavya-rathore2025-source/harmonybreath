@@ -1,0 +1,626 @@
+---
+import DiaphragmaticCustomSettingsModal from './DiaphragmaticCustomSettingsModal.astro';
+import DiaphragmaticMusicSelectionModal from './DiaphragmaticMusicSelectionModal.astro';
+---
+
+<section id="diaphragmatic-timer-section" class="w-full max-w-4xl mx-auto py-8 px-4">
+  <div class="relative w-full bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl overflow-hidden">
+    <div id="diaphragmatic-phase-glow" class="absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-teal-500/20 via-transparent to-transparent"></div>
+
+    <div class="relative z-10 flex items-center justify-between border-b border-neutral-800/60 pb-6 mb-8">
+      <div class="flex items-center gap-3">
+        <span id="diaphragmatic-preset-badge" class="px-3 py-1 rounded-full text-xs font-mono font-medium border border-teal-400/30 bg-teal-400/10 text-teal-400">
+          Standard 40 Cycles
+        </span>
+        <span id="diaphragmatic-cycle-badge" class="text-xs font-mono text-neutral-400">
+          Cycle <span id="diaphragmatic-current-cycle-text" class="text-white font-bold">1</span> of <span id="diaphragmatic-total-cycles-text" class="text-white font-bold">40</span>
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2 text-xs font-mono text-neutral-400">
+        <span id="diaphragmatic-status-indicator" class="w-2 h-2 rounded-full bg-teal-400 animate-ping"></span>
+        <span id="diaphragmatic-phase-label" class="uppercase tracking-wider font-semibold text-teal-400">Ready</span>
+      </div>
+    </div>
+
+    <div class="relative z-10 flex flex-col items-center justify-center my-6">
+      <div class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
+        <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3" class="text-neutral-900" fill="none" />
+          <circle
+            id="diaphragmatic-progress-circle"
+            cx="50"
+            cy="50"
+            r="44"
+            stroke="url(#diaphragmatic-gradient-accent)"
+            stroke-width="3.5"
+            stroke-dasharray="276.46"
+            stroke-dashoffset="0"
+            stroke-linecap="round"
+            class="transition-all duration-300"
+            fill="none"
+          />
+          <defs>
+            <linearGradient id="diaphragmatic-gradient-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#2dd4bf" />
+              <stop offset="50%" stop-color="#10b981" />
+              <stop offset="100%" stop-color="#06b6d4" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <div id="diaphragmatic-breath-halo" class="absolute w-44 h-44 rounded-full bg-gradient-to-tr from-teal-500/20 via-emerald-500/20 to-cyan-500/20 transition-transform duration-[4000ms] ease-in-out scale-100 flex items-center justify-center border border-white/5"></div>
+
+        <div class="relative z-20 flex flex-col items-center text-center">
+          <div id="diaphragmatic-breath-action-text" class="text-xs font-mono uppercase tracking-widest text-teal-400 mb-1">
+            Press Start
+          </div>
+
+          <div id="diaphragmatic-primary-counter" class="text-5xl sm:text-6xl font-bold tracking-normal font-mono-numbers text-white">
+            00:00
+          </div>
+
+          <div id="diaphragmatic-secondary-counter" class="text-xs font-mono text-neutral-400 mt-2">
+            4s In • 2s Hold • 6s Out
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-neutral-500 bg-neutral-900/40 border border-neutral-800/60 px-4 py-2 rounded-full font-mono">
+        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+        <span>Belly Inhale (4s)</span>
+        <span class="text-neutral-700">|</span>
+        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+        <span>Hold (2s)</span>
+        <span class="text-neutral-700">|</span>
+        <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+        <span>Relaxed Exhale (6s)</span>
+      </div>
+    </div>
+
+    <div class="relative z-10 flex flex-wrap items-center justify-center gap-4 mt-8 pt-6 border-t border-neutral-800/60">
+      <button
+        id="diaphragmatic-btn-main-action"
+        type="button"
+        class="flex items-center gap-2 px-8 py-3.5 rounded-full bg-teal-500/90 text-black font-semibold text-sm hover:bg-teal-400 transition-all transform active:scale-95 shadow-xl shadow-teal-500/15"
+      >
+        <svg id="diaphragmatic-icon-play" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="diaphragmatic-icon-pause" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+        <span id="diaphragmatic-label-main-action">Start Session</span>
+      </button>
+
+      <button
+        id="diaphragmatic-btn-skip-phase"
+        type="button"
+        class="hidden flex items-center gap-2 px-6 py-3.5 rounded-full bg-neutral-900 border border-neutral-750 text-neutral-200 hover:text-white hover:bg-neutral-800 text-xs font-mono font-medium transition-all"
+      >
+        <span id="diaphragmatic-label-skip-phase">Skip Phase</span>
+        <svg class="w-3.5 h-3.5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      <button
+        id="diaphragmatic-btn-restart"
+        type="button"
+        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+        title="Restart Session"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+        <span>Reset</span>
+      </button>
+
+      <button
+        id="diaphragmatic-btn-music"
+        type="button"
+        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-300 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+      >
+        <svg class="w-4 h-4 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+        </svg>
+        <span>Music</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Custom Modals -->
+  <DiaphragmaticCustomSettingsModal />
+  <DiaphragmaticMusicSelectionModal />
+</section>
+
+<script>
+  import { audioPlayer } from '../utils/audioPlayer';
+  import { saveExerciseStats } from '../utils/stats';
+  import { musicTracks } from '../config/audioConfig';
+
+  const MUSIC_STORAGE_KEY = 'hb_diaphragmatic_music_selection';
+  const SETTINGS_STORAGE_KEY = 'hb_diaphragmatic_custom_settings';
+
+  type SessionState = 'IDLE' | 'RUNNING' | 'PAUSED' | 'COMPLETED';
+
+  let state: SessionState = 'IDLE';
+
+  let currentPreset = 'standard';
+  let inhaleSec = 4;
+  let holdSec = 2;
+  let exhaleSec = 6;
+  let postholdSec = 0;
+  let totalCycles = 40;
+
+  let currentCycle = 1;
+  let currentPhaseIndex = 0;
+  let phaseElapsed = 0;
+  let tickTimer: ReturnType<typeof setInterval> | null = null;
+
+  function getActivePhases() {
+    const phases: string[] = ['INHALE'];
+    if (holdSec > 0) phases.push('HOLD');
+    phases.push('EXHALE');
+    if (postholdSec > 0) phases.push('POSTHOLD');
+    return phases;
+  }
+
+  // UI DOM Elements
+  const presetBadge = document.getElementById('diaphragmatic-preset-badge');
+  const currentCycleText = document.getElementById('diaphragmatic-current-cycle-text');
+  const totalCyclesText = document.getElementById('diaphragmatic-total-cycles-text');
+  const statusIndicator = document.getElementById('diaphragmatic-status-indicator');
+  const phaseLabel = document.getElementById('diaphragmatic-phase-label');
+  const breathActionText = document.getElementById('diaphragmatic-breath-action-text');
+  const primaryCounter = document.getElementById('diaphragmatic-primary-counter');
+  const secondaryCounter = document.getElementById('diaphragmatic-secondary-counter');
+  const progressCircle = document.getElementById('diaphragmatic-progress-circle') as SVGCircleElement | null;
+  const breathHalo = document.getElementById('diaphragmatic-breath-halo');
+  const phaseGlow = document.getElementById('diaphragmatic-phase-glow');
+
+  const btnMainAction = document.getElementById('diaphragmatic-btn-main-action');
+  const labelMainAction = document.getElementById('diaphragmatic-label-main-action');
+  const iconPlay = document.getElementById('diaphragmatic-icon-play');
+  const iconPause = document.getElementById('diaphragmatic-icon-pause');
+  const btnSkipPhase = document.getElementById('diaphragmatic-btn-skip-phase');
+  const btnRestart = document.getElementById('diaphragmatic-btn-restart');
+  const btnMusic = document.getElementById('diaphragmatic-btn-music');
+
+  const customModalBtn = document.getElementById('diaphragmatic-custom-settings-btn');
+  const customModal = document.getElementById('diaphragmatic-custom-modal');
+  const closeCustomModalBtn = document.getElementById('close-diaphragmatic-custom-modal');
+  const cancelCustomBtn = document.getElementById('cancel-diaphragmatic-custom');
+  const saveCustomBtn = document.getElementById('save-diaphragmatic-custom');
+
+  const customInhaleInput = document.getElementById('diaphragmatic-custom-inhale-input') as HTMLInputElement | null;
+  const customInhaleVal = document.getElementById('diaphragmatic-custom-inhale-val');
+  const customHoldInput = document.getElementById('diaphragmatic-custom-hold-input') as HTMLInputElement | null;
+  const customHoldVal = document.getElementById('diaphragmatic-custom-hold-val');
+  const customExhaleInput = document.getElementById('diaphragmatic-custom-exhale-input') as HTMLInputElement | null;
+  const customExhaleVal = document.getElementById('diaphragmatic-custom-exhale-val');
+  const customPostholdInput = document.getElementById('diaphragmatic-custom-posthold-input') as HTMLInputElement | null;
+  const customPostholdVal = document.getElementById('diaphragmatic-custom-posthold-val');
+  const customCyclesInput = document.getElementById('diaphragmatic-custom-cycles-input') as HTMLInputElement | null;
+  const customCyclesVal = document.getElementById('diaphragmatic-custom-cycles-val');
+
+  function loadSavedSettings() {
+    try {
+      const raw = localStorage.getItem(SETTINGS_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed.inhale) inhaleSec = parsed.inhale;
+        if (parsed.hold !== undefined) holdSec = parsed.hold;
+        if (parsed.exhale) exhaleSec = parsed.exhale;
+        if (parsed.posthold !== undefined) postholdSec = parsed.posthold;
+        if (parsed.cycles) totalCycles = parsed.cycles;
+        if (parsed.preset) currentPreset = parsed.preset;
+      }
+    } catch {
+      // Ignore parse error
+    }
+  }
+
+  function getPhaseDuration(phaseKey: string) {
+    switch (phaseKey) {
+      case 'INHALE': return inhaleSec;
+      case 'HOLD': return holdSec;
+      case 'EXHALE': return exhaleSec;
+      case 'POSTHOLD': return postholdSec;
+      default: return 4;
+    }
+  }
+
+  function getPhaseConfig(phaseKey: string) {
+    switch (phaseKey) {
+      case 'INHALE':
+        return {
+          label: 'Phase 1: Inhale',
+          action: 'Expand Belly (Inhale Nose)',
+          glow: 'from-amber-500/20',
+          labelClass: 'text-amber-400',
+          haloScale: `scale-125 duration-[${inhaleSec * 1000}ms]`,
+        };
+      case 'HOLD':
+        return {
+          label: 'Phase 2: Hold',
+          action: 'Pause Belly Gently',
+          glow: 'from-cyan-500/20',
+          labelClass: 'text-cyan-400',
+          haloScale: 'scale-125 duration-500',
+        };
+      case 'EXHALE':
+        return {
+          label: 'Phase 3: Exhale',
+          action: 'Relax Belly (Exhale Smoothly)',
+          glow: 'from-teal-500/20',
+          labelClass: 'text-teal-400',
+          haloScale: `scale-90 duration-[${exhaleSec * 1000}ms]`,
+        };
+      case 'POSTHOLD':
+        return {
+          label: 'Phase 4: Pause',
+          action: 'Rest at Bottom',
+          glow: 'from-purple-500/20',
+          labelClass: 'text-purple-400',
+          haloScale: 'scale-90 duration-500',
+        };
+      default:
+        return {
+          label: 'Ready',
+          action: 'Press Start',
+          glow: 'from-teal-500/20',
+          labelClass: 'text-teal-400',
+          haloScale: 'scale-100 duration-500',
+        };
+    }
+  }
+
+  function formatTime(sec: number) {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  }
+
+  function updateProgressRing(percent: number) {
+    if (!progressCircle) return;
+    const circumference = 2 * Math.PI * 44;
+    const offset = circumference - (percent / 100) * circumference;
+    progressCircle.style.strokeDashoffset = `${offset}`;
+  }
+
+  function getSelectedMusicFilePath() {
+    try {
+      const trackId = localStorage.getItem(MUSIC_STORAGE_KEY);
+      if (!trackId) return null;
+      const allTracks = [
+        ...musicTracks.guidedBreathing,
+        ...musicTracks.breathOutHold,
+        ...musicTracks.recoveryHold,
+      ];
+      const track = allTracks.find(t => t.id === trackId);
+      return track?.filePath || null;
+    } catch {
+      return null;
+    }
+  }
+
+  function updateUI() {
+    if (presetBadge) {
+      let cad = `${inhaleSec}-${holdSec}-${exhaleSec}`;
+      if (postholdSec > 0) cad += `-${postholdSec}`;
+      else cad += `-0`;
+
+      presetBadge.textContent = currentPreset === 'custom'
+        ? `Custom (${cad})`
+        : `${currentPreset.toUpperCase()} (${cad})`;
+    }
+
+    if (currentCycleText) currentCycleText.textContent = String(currentCycle);
+    if (totalCyclesText) totalCyclesText.textContent = String(totalCycles);
+
+    if (secondaryCounter) {
+      let cadText = `${inhaleSec}s In • ${holdSec}s Hold • ${exhaleSec}s Out`;
+      if (postholdSec > 0) cadText += ` • ${postholdSec}s Pause`;
+      secondaryCounter.textContent = cadText;
+    }
+
+    if (statusIndicator) {
+      statusIndicator.className = state === 'RUNNING' ? 'w-2 h-2 rounded-full bg-teal-400 animate-ping' : 'w-2 h-2 rounded-full bg-teal-400';
+    }
+
+    if (state === 'IDLE') {
+      if (phaseLabel) {
+        phaseLabel.textContent = 'Ready';
+        phaseLabel.className = 'uppercase tracking-wider font-semibold text-teal-400';
+      }
+      if (breathActionText) {
+        breathActionText.textContent = 'Press Start';
+        breathActionText.className = 'text-xs font-mono uppercase tracking-widest text-teal-400 mb-1';
+      }
+      if (primaryCounter) primaryCounter.textContent = formatTime(0);
+      updateProgressRing(0);
+      if (iconPlay) iconPlay.classList.remove('hidden');
+      if (iconPause) iconPause.classList.add('hidden');
+      if (labelMainAction) labelMainAction.textContent = 'Start Session';
+      if (btnSkipPhase) btnSkipPhase.classList.add('hidden');
+      if (breathHalo) breathHalo.className = 'absolute w-44 h-44 rounded-full bg-gradient-to-tr from-teal-500/20 via-emerald-500/20 to-cyan-500/20 transition-transform duration-700 ease-in-out scale-100 flex items-center justify-center border border-white/5';
+      return;
+    }
+
+    if (state === 'COMPLETED') {
+      if (phaseLabel) {
+        phaseLabel.textContent = 'Completed';
+        phaseLabel.className = 'uppercase tracking-wider font-semibold text-emerald-400';
+      }
+      if (breathActionText) {
+        breathActionText.textContent = 'Session Complete!';
+        breathActionText.className = 'text-xs font-mono uppercase tracking-widest text-emerald-400 mb-1';
+      }
+      const totalSecPerCycle = inhaleSec + holdSec + exhaleSec + postholdSec;
+      if (primaryCounter) primaryCounter.textContent = formatTime(totalSecPerCycle * totalCycles);
+      updateProgressRing(100);
+      if (iconPlay) iconPlay.classList.remove('hidden');
+      if (iconPause) iconPause.classList.add('hidden');
+      if (labelMainAction) labelMainAction.textContent = 'Start Again';
+      if (btnSkipPhase) btnSkipPhase.classList.add('hidden');
+      return;
+    }
+
+    const phases = getActivePhases();
+    const currentPhaseKey = phases[currentPhaseIndex];
+    const dur = getPhaseDuration(currentPhaseKey);
+    const cfg = getPhaseConfig(currentPhaseKey);
+
+    if (phaseLabel) {
+      phaseLabel.textContent = cfg.label;
+      phaseLabel.className = `uppercase tracking-wider font-semibold ${cfg.labelClass}`;
+    }
+    if (breathActionText) {
+      breathActionText.textContent = cfg.action;
+      breathActionText.className = `text-xs font-mono uppercase tracking-widest ${cfg.labelClass} mb-1`;
+    }
+
+    const currentSec = Math.min(dur, Math.floor(phaseElapsed));
+    if (primaryCounter) primaryCounter.textContent = formatTime(currentSec);
+
+    const percent = Math.min(100, (phaseElapsed / dur) * 100);
+    updateProgressRing(percent);
+
+    if (phaseGlow) {
+      phaseGlow.className = `absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b ${cfg.glow} via-transparent to-transparent`;
+    }
+
+    if (breathHalo) {
+      breathHalo.className = `absolute w-44 h-44 rounded-full bg-gradient-to-tr from-teal-500/20 via-emerald-500/20 to-cyan-500/20 transition-transform ease-in-out flex items-center justify-center border border-white/5 ${cfg.haloScale}`;
+    }
+
+    if (state === 'RUNNING') {
+      if (iconPlay) iconPlay.classList.add('hidden');
+      if (iconPause) iconPause.classList.remove('hidden');
+      if (labelMainAction) labelMainAction.textContent = 'Pause';
+      if (btnSkipPhase) btnSkipPhase.classList.remove('hidden');
+    } else if (state === 'PAUSED') {
+      if (iconPlay) iconPlay.classList.remove('hidden');
+      if (iconPause) iconPause.classList.add('hidden');
+      if (labelMainAction) labelMainAction.textContent = 'Resume';
+    }
+  }
+
+  function startPhase() {
+    phaseElapsed = 0;
+    audioPlayer.playChime();
+    updateUI();
+  }
+
+  function tick() {
+    if (state !== 'RUNNING') return;
+    const phases = getActivePhases();
+    const currentPhaseKey = phases[currentPhaseIndex];
+    const dur = getPhaseDuration(currentPhaseKey);
+
+    phaseElapsed += 0.2;
+
+    if (phaseElapsed >= dur) {
+      advancePhase();
+    } else {
+      updateUI();
+    }
+  }
+
+  function advancePhase() {
+    const phases = getActivePhases();
+    currentPhaseIndex++;
+    if (currentPhaseIndex >= phases.length) {
+      currentPhaseIndex = 0;
+      currentCycle++;
+      if (currentCycle > totalCycles) {
+        completeSession();
+        return;
+      }
+    }
+    startPhase();
+  }
+
+  function completeSession() {
+    state = 'COMPLETED';
+    if (tickTimer) clearInterval(tickTimer);
+    tickTimer = null;
+    audioPlayer.stop();
+    audioPlayer.playChime();
+
+    saveExerciseStats('diaphragmatic-breathing', { totalRounds: totalCycles });
+    updateUI();
+  }
+
+  function startSession() {
+    if (state === 'RUNNING') {
+      state = 'PAUSED';
+      audioPlayer.pause();
+      if (tickTimer) clearInterval(tickTimer);
+      tickTimer = null;
+      updateUI();
+      return;
+    }
+
+    if (state === 'PAUSED') {
+      state = 'RUNNING';
+      audioPlayer.resume();
+      tickTimer = setInterval(tick, 200);
+      updateUI();
+      return;
+    }
+
+    // IDLE or COMPLETED
+    state = 'RUNNING';
+    currentCycle = 1;
+    currentPhaseIndex = 0;
+    phaseElapsed = 0;
+
+    const musicPath = getSelectedMusicFilePath();
+    if (musicPath) {
+      audioPlayer.playMusicTrack(musicPath, true);
+    }
+
+    startPhase();
+    tickTimer = setInterval(tick, 200);
+    updateUI();
+  }
+
+  function resetSession() {
+    state = 'IDLE';
+    if (tickTimer) clearInterval(tickTimer);
+    tickTimer = null;
+    currentCycle = 1;
+    currentPhaseIndex = 0;
+    phaseElapsed = 0;
+    audioPlayer.stop();
+    updateUI();
+  }
+
+  // Event Listeners
+  btnMainAction?.addEventListener('click', startSession);
+  btnSkipPhase?.addEventListener('click', advancePhase);
+  btnRestart?.addEventListener('click', resetSession);
+
+  btnMusic?.addEventListener('click', () => {
+    window.dispatchEvent(new CustomEvent('open-diaphragmatic-music-modal'));
+  });
+
+  // Presets & Modal Handling
+  document.querySelectorAll('.diaphragmatic-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const presetKey = btn.getAttribute('data-diaphragmatic-preset');
+
+      if (presetKey === 'custom') {
+        openCustomModal();
+        return;
+      }
+
+      currentPreset = presetKey || 'standard';
+      inhaleSec = parseInt(btn.getAttribute('data-inhale') || '4', 10);
+      holdSec = parseInt(btn.getAttribute('data-hold') || '2', 10);
+      exhaleSec = parseInt(btn.getAttribute('data-exhale') || '6', 10);
+      postholdSec = parseInt(btn.getAttribute('data-posthold') || '0', 10);
+      totalCycles = parseInt(btn.getAttribute('data-cycles') || '8', 10);
+
+      localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify({
+        preset: currentPreset,
+        inhale: inhaleSec,
+        hold: holdSec,
+        exhale: exhaleSec,
+        posthold: postholdSec,
+        cycles: totalCycles,
+      }));
+
+      // Update preset card highlights
+      document.querySelectorAll('.diaphragmatic-preset-btn').forEach(b => {
+        const isSelected = b === btn;
+        if (isSelected) {
+          b.className = 'diaphragmatic-preset-btn group relative p-4 rounded-xl border border-teal-500/50 bg-teal-500/10 text-left transition-all duration-200 focus:outline-none col-span-1';
+        } else {
+          b.className = 'diaphragmatic-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-teal-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1';
+        }
+      });
+
+      resetSession();
+    });
+  });
+
+  function openCustomModal() {
+    if (customInhaleInput) customInhaleInput.value = String(inhaleSec);
+    if (customInhaleVal) customInhaleVal.textContent = `${inhaleSec}s`;
+
+    if (customHoldInput) customHoldInput.value = String(holdSec);
+    if (customHoldVal) customHoldVal.textContent = `${holdSec}s`;
+
+    if (customExhaleInput) customExhaleInput.value = String(exhaleSec);
+    if (customExhaleVal) customExhaleVal.textContent = `${exhaleSec}s`;
+
+    if (customPostholdInput) customPostholdInput.value = String(postholdSec);
+    if (customPostholdVal) customPostholdVal.textContent = `${postholdSec}s`;
+
+    if (customCyclesInput) customCyclesInput.value = String(totalCycles);
+    if (customCyclesVal) customCyclesVal.textContent = `${totalCycles} Cycles`;
+
+    customModal?.classList.remove('hidden');
+  }
+
+  function closeCustomModal() {
+    customModal?.classList.add('hidden');
+  }
+
+  customModalBtn?.addEventListener('click', openCustomModal);
+  closeCustomModalBtn?.addEventListener('click', closeCustomModal);
+  cancelCustomBtn?.addEventListener('click', closeCustomModal);
+
+  customInhaleInput?.addEventListener('input', (e) => {
+    const val = (e.target as HTMLInputElement).value;
+    if (customInhaleVal) customInhaleVal.textContent = `${val}s`;
+  });
+
+  customHoldInput?.addEventListener('input', (e) => {
+    const val = (e.target as HTMLInputElement).value;
+    if (customHoldVal) customHoldVal.textContent = `${val}s`;
+  });
+
+  customExhaleInput?.addEventListener('input', (e) => {
+    const val = (e.target as HTMLInputElement).value;
+    if (customExhaleVal) customExhaleVal.textContent = `${val}s`;
+  });
+
+  customPostholdInput?.addEventListener('input', (e) => {
+    const val = (e.target as HTMLInputElement).value;
+    if (customPostholdVal) customPostholdVal.textContent = `${val}s`;
+  });
+
+  customCyclesInput?.addEventListener('input', (e) => {
+    const val = (e.target as HTMLInputElement).value;
+    if (customCyclesVal) customCyclesVal.textContent = `${val} Cycles`;
+  });
+
+  saveCustomBtn?.addEventListener('click', () => {
+    currentPreset = 'custom';
+    inhaleSec = parseInt(customInhaleInput?.value || '4', 10);
+    holdSec = parseInt(customHoldInput?.value || '2', 10);
+    exhaleSec = parseInt(customExhaleInput?.value || '6', 10);
+    postholdSec = parseInt(customPostholdInput?.value || '0', 10);
+    totalCycles = parseInt(customCyclesInput?.value || '40', 10);
+
+    localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify({
+      preset: 'custom',
+      inhale: inhaleSec,
+      hold: holdSec,
+      exhale: exhaleSec,
+      posthold: postholdSec,
+      cycles: totalCycles,
+    }));
+
+    closeCustomModal();
+    resetSession();
+  });
+
+  // Initialization
+  loadSavedSettings();
+  updateUI();
+</script>
