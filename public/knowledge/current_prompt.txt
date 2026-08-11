@@ -1,11 +1,32 @@
-use trailing slashes and Fix the Diaphragmatic Breathing preset cards:
+Is belly breathing good for anxiety?
+What are some natural ways to lower cortisol levels?
+To lower your cortisol levels naturally, focus on getting 7 to 9 hours of quality sleep, eating a whole-food diet rich in magnesium and omega-3s, doing regular low-to-moderate exercise, and practicing deep breathing or mindfulness. 
+How to reduce stress and anxiety?
+Techniques to Reduce Stress and AnxietyTo reduce stress and anxiety, practice deep breathing, move your body daily through exercise or walks, limit caffeine and screen time, maintain a consistent sleep routine, and talk through your worries with supportive people.
+what is belly breathing?
 
-- Standard (4-2-6-0): 8 cycles (~1m 36s) — Gentle diaphragmatic breathing with a longer exhale.
-- Equal Rhythm (4-0-4-0): 10 cycles (~1m 20s) — Steady, rhythmic breathing for relaxation and breath awareness.
-- Deep Relax (5-2-7-0): 8 cycles (~1m 52s) — Slow breathing with an extended exhale.
-- Sleep Prep (4-2-8-0): 12 cycles (~2m 48s) — Gentle breathing with a longer exhale for a calming bedtime routine.
-- Custom: Adjust your own breathing rhythm.
 
-Also fix the Deep Relax duration from 1m 44s to 1m 52s.
-
-Do not make any other changes
+NOTE: Use JSON-LD for FAQ SEO
+example: ```
+ <script type="application/ld+json">
+ {
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [{
+ "@type": "Question",
+ "name": "How to find an apprenticeship?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "<p>We provide an official service to search through available apprenticeships. To get started, create an account here, specify the desired region, and your preferences. You will be able to search through all officially registered open apprenticeships.</p>"
+ }
+ }, {
+ "@type": "Question",
+ "name": "Whom to contact?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "You can contact the apprenticeship office through our official phone hotline above, or with the web-form below. We generally respond to written requests within 7-10 days."
+ }
+ }]
+ }
+ </script>
+```
