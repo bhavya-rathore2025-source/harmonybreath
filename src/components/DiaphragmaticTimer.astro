@@ -504,7 +504,24 @@ import DiaphragmaticMusicSelectionModal from './DiaphragmaticMusicSelectionModal
   btnRestart?.addEventListener('click', resetSession);
 
   btnMusic?.addEventListener('click', () => {
-    window.dispatchEvent(new CustomEvent('open-diaphragmatic-music-modal'));
+    if (typeof (window as any).openDiaphragmaticMusicModal === 'function') {
+      (window as any).openDiaphragmaticMusicModal();
+    } else if (typeof (window as any).openMusicModal === 'function') {
+      (window as any).openMusicModal();
+    } else {
+      window.dispatchEvent(new CustomEvent('open-diaphragmatic-music-modal'));
+    }
+  });
+
+  window.addEventListener('hb_diaphragmatic_music_updated', () => {
+    if (state === 'RUNNING') {
+      const musicPath = getSelectedMusicFilePath();
+      if (musicPath) {
+        audioPlayer.playMusicTrack(musicPath, true);
+      } else {
+        audioPlayer.stop();
+      }
+    }
   });
 
   // Presets & Modal Handling
