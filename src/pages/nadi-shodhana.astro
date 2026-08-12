@@ -1,0 +1,304 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import NadiShodhanaTimer from '../components/NadiShodhanaTimer.astro';
+import NadiSessionPresets from '../components/NadiSessionPresets.astro';
+import AnalyticsPanel from '../components/AnalyticsPanel.astro';
+import Footer from '../components/Footer.astro';
+
+const breadcrumb = [
+  { name: 'Home', url: '/' },
+  { name: 'Nadi Shodhana', url: '/nadi-shodhana' },
+];
+
+const pageSchemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HarmonyBreath — Nadi Shodhana (Alternate Nostril Breathing) Timer",
+    "alternateName": "HarmonyBreath Nadi Shodhana Pranayama App",
+    "description": "Free guided Nadi Shodhana (Alternate Nostril Breathing) timer with visual nostril indicators, customizable rhythms, ambient soundscapes, and local progress tracking.",
+    "url": "https://harmonybreath.com/nadi-shodhana",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any (Web Browser)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Guided alternate nostril breathing timer with active nostril state indicators",
+      "Customizable Nadi Shodhana rhythms (Beginner 4–4, Relaxed 5–5, Equal 6–6, Retention 4-4-4)",
+      "Vishnu Mudra hand positioning guidance and step-by-step nostril cues",
+      "Ambient soundscape player and real-time phase indicators",
+      "Private browser-local session analytics with zero data tracking"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HarmonyBreath Nadi Shodhana Timer",
+    "description": "Free online Nadi Shodhana timer for practicing Alternate Nostril Breathing. A traditional yogic pranayama pattern for focus, stress reduction, and relaxation.",
+    "browserRequirements": "Requires JavaScript",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Nadi Shodhana (Alternate Nostril Breathing)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nadi Shodhana, commonly called Alternate Nostril Breathing, is a traditional yogic pranayama practice in which you alternate breathing through the left and right nostrils in a rhythmic, controlled pattern."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is one complete cycle of Nadi Shodhana?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "One complete cycle consists of 4 main steps: Inhale Left → Exhale Right → Inhale Right → Exhale Left. This sequence alternates airflow between both nostrils."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which hand position (mudra) should I use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In traditional practice (Vishnu Mudra), bring your right hand toward your nose. Use your right thumb to control your right nostril and your right ring finger to control your left nostril."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should beginners hold their breath during Nadi Shodhana?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Breath retention (holding) is optional and not mandatory for beginners. HarmonyBreath defaults to a gentle 4–4 (Inhale 4s / Exhale 4s) non-retention rhythm for safe, comfortable practice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the potential benefits of Alternate Nostril Breathing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cleveland Clinic and research studies note that alternate nostril breathing may help reduce perceived stress, support quiet concentration, and foster mindful breathing awareness."
+        }
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Nadi Shodhana (Alternate Nostril Breathing) Timer & Guide | HarmonyBreath"
+  description="Practice Nadi Shodhana (Alternate Nostril Breathing) with our free online guided timer. Visual nostril indicators, customizable rhythms, and soundscapes for focus & calm."
+  keywords="nadi shodhana, alternate nostril breathing, pranayama timer, breathing exercise for focus, balanced breathing, guided alternate nostril breathing, vishnu mudra"
+  canonicalUrl="https://harmonybreath.com/nadi-shodhana/"
+  image="https://harmonybreath.com/og-image.png"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(pageSchemaData)}></script>
+
+  <Header />
+
+  <main class="flex-1 hero-gradient-mesh relative">
+    <!-- HERO SECTION -->
+    <section class="w-full max-w-4xl mx-auto pt-10 pb-6 px-4 sm:px-6 text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-indigo-400/30 bg-indigo-400/10 text-indigo-400 text-xs font-mono">
+        <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+        Traditional Yogic Pranayama
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
+        Nadi Shodhana <br />
+        <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Alternate Nostril Breathing</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-300 leading-relaxed font-sans font-light">
+        Nadi Shodhana is a traditional yogic breathing practice that alternates airflow between the left and right nostrils. Its slow, rhythmic pattern encourages focused attention and calm, mindful awareness.
+      </p>
+    </section>
+
+    <!-- PRESETS SELECTOR -->
+    <NadiSessionPresets />
+
+    <!-- TIMER INTERFACE -->
+    <NadiShodhanaTimer />
+
+    <!-- ANALYTICS PANEL -->
+    <AnalyticsPanel exerciseId="nadi-shodhana" />
+
+    <!-- DETAILED EDUCATIONAL & TECHNIQUE GUIDE -->
+    <section class="w-full max-w-4xl mx-auto py-12 px-4 border-t border-neutral-900 space-y-12">
+      <!-- 1. Technique Overview -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+          <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-indigo-500/20 text-indigo-400 text-sm font-mono font-bold border border-indigo-500/30">1</span>
+          Understanding Nadi Shodhana
+        </h2>
+        <div class="prose prose-invert max-w-none text-neutral-300 text-sm sm:text-base leading-relaxed space-y-3">
+          <p>
+            In Sanskrit, <strong class="text-white">Nadi Shodhana</strong> is often translated as <em>"channel purification"</em> or <em>"channel cleansing."</em> In traditional yogic philosophy, nadis are described as subtle energy channels, and alternate nostril breathing is practiced to promote systemic balance.
+          </p>
+          <p>
+            In modern wellness, the practice is straightforward and accessible to anyone: you use your hand to selectively close one nostril at a time while maintaining a smooth, quiet breathing rhythm.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2. Step-by-Step Cycle Guide -->
+      <div class="space-y-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+          <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-purple-500/20 text-purple-400 text-sm font-mono font-bold border border-purple-500/30">2</span>
+          How the Alternate Nostril Sequence Works
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-950/60 space-y-2">
+            <div class="text-xs font-mono text-indigo-400 uppercase tracking-wider font-semibold">Phase A — Left to Right</div>
+            <div class="text-lg font-bold text-white">Step 1 & Step 2</div>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Close your right nostril with your thumb and <strong class="text-neutral-200">inhale through your left nostril</strong>. Next, close your left nostril with your ring finger, release your right nostril, and <strong class="text-neutral-200">exhale through your right nostril</strong>.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-950/60 space-y-2">
+            <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider font-semibold">Phase B — Right to Left</div>
+            <div class="text-lg font-bold text-white">Step 3 & Step 4</div>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Keep your left nostril closed and <strong class="text-neutral-200">inhale through your right nostril</strong>. Then close your right nostril with your thumb, release your left nostril, and <strong class="text-neutral-200">exhale through your left nostril</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-neutral-900/60 border border-neutral-800 text-xs font-mono text-neutral-300 flex items-center justify-between">
+          <span>Complete Cycle Pattern:</span>
+          <span class="text-indigo-400 font-bold">Inhale L → Exhale R → Inhale R → Exhale L</span>
+        </div>
+      </div>
+
+      <!-- 3. Vishnu Mudra Hand Position -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+          <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-pink-500/20 text-pink-400 text-sm font-mono font-bold border border-pink-500/30">3</span>
+          Hand Position (Vishnu Mudra)
+        </h2>
+        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/80 space-y-3 text-xs sm:text-sm text-neutral-300 leading-relaxed">
+          <p>
+            To easily alternate nostril closure without straining your hand:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-neutral-300 pl-2">
+            <li><strong class="text-white">Right Thumb:</strong> Used to close the right nostril during left inhales and left exhales.</li>
+            <li><strong class="text-white">Right Ring Finger:</strong> Used to close the left nostril during right exhales and right inhales.</li>
+            <li><strong class="text-white">Index & Middle Fingers:</strong> Can rest gently tucked into your palm or resting on your forehead between your eyebrows.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4. Potential Benefits & Science -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+          <span class="flex items-center justify-center w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 text-sm font-mono font-bold border border-cyan-500/30">4</span>
+          Evidence-Based Benefits & Rationale
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-900/40 space-y-2">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+              Stress Reduction & Calm
+            </h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Alternate nostril breathing encourages a slow, rhythmic respiration rate. Cleveland Clinic notes that alternate nostril breathing may help with stress reduction and relaxation.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-900/40 space-y-2">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+              Enhanced Focus & Concentration
+            </h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Because Nadi Shodhana requires tracking nostril transitions (Left → Right → Right → Left), it serves as a natural anchor for sustained mental focus before work or meditation.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-900/40 space-y-2">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Mindful Breathing Awareness
+            </h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Alternating airflow draws direct attention to breathing mechanics, air temperature, and chest movement, deepening overall breath consciousness.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-neutral-800 bg-neutral-900/40 space-y-2">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-pink-400"></span>
+              Meditation Preparation
+            </h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Practicing 5 minutes of Nadi Shodhana before a meditation or study session prepares the nervous system for quiet, steady attention.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Safety & Disclaimers -->
+      <div class="p-6 rounded-2xl border border-amber-500/30 bg-amber-500/5 space-y-4">
+        <h3 class="text-base font-bold text-amber-300 flex items-center gap-2">
+          <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          Important Safety & Practice Guidelines
+        </h3>
+        <ul class="text-xs text-neutral-300 space-y-2 leading-relaxed list-disc list-inside">
+          <li>Always practice seated comfortably upright in a quiet, safe space.</li>
+          <li><strong class="text-white">Never force or hold your breath beyond comfort:</strong> Retention holds are optional and not necessary for beginners.</li>
+          <li><strong class="text-white">Do not practice while driving or operating machinery:</strong> Breathwork exercises should only be done when fully seated and stationary.</li>
+          <li>Stop immediately if you experience dizziness, lightheadedness, chest tightness, or shortness of breath.</li>
+        </ul>
+      </div>
+
+      <!-- 6. FAQ Accordion Section -->
+      <div class="space-y-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
+              How long should I practice Nadi Shodhana?
+              <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-indigo-400">↓</span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed">
+              Cleveland Clinic recommends practicing alternate nostril breathing for about 5 minutes at a time as a daily wellness or relaxation exercise.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
+              Can I do Nadi Shodhana if I have a blocked nose or cold?
+              <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-indigo-400">↓</span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed">
+              If your nasal passages are heavily congested from a cold or allergies, do not force alternate nostril breathing. Switch to standard diaphragmatic breathing or wait until your nasal passages clear naturally.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
+              When is the best time of day to practice?
+              <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-indigo-400">↓</span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed">
+              Nadi Shodhana works exceptionally well in the morning before starting work, before meditation, during a afternoon break to reset focus, or in the evening to wind down.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

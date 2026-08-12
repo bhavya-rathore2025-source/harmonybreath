@@ -1,0 +1,196 @@
+---
+---
+
+<div id="nadi-custom-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
+  <div class="w-full max-w-md bg-neutral-950 border border-neutral-800 rounded-2xl p-6 shadow-2xl space-y-6">
+    <div class="flex items-center justify-between border-b border-neutral-800 pb-4">
+      <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        Custom Nadi Shodhana Settings
+      </h3>
+      <button id="close-nadi-custom-modal" class="text-neutral-400 hover:text-white transition-colors" type="button" aria-label="Close modal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="text-xs text-neutral-500 font-mono leading-relaxed -mt-2">
+      Customize nostril phase durations and total cycles for your alternate nostril breathing session.
+    </div>
+
+    <!-- Inhale Duration -->
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-mono text-neutral-300">
+        <span>Inhale Duration (per nostril)</span>
+        <span id="nadi-custom-inhale-val" class="text-indigo-400 font-bold">4s</span>
+      </div>
+      <input
+        type="range"
+        id="nadi-custom-inhale-input"
+        min="2"
+        max="10"
+        step="1"
+        value="4"
+        class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-indigo-400"
+      />
+      <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
+        <span>2s</span>
+        <span>10s</span>
+      </div>
+    </div>
+
+    <!-- Optional Retention Hold Duration -->
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-mono text-neutral-300">
+        <span>Optional Retention Hold</span>
+        <span id="nadi-custom-hold-val" class="text-amber-400 font-bold">0s (None)</span>
+      </div>
+      <input
+        type="range"
+        id="nadi-custom-hold-input"
+        min="0"
+        max="10"
+        step="1"
+        value="0"
+        class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+      />
+      <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
+        <span>0s (No Hold)</span>
+        <span>10s</span>
+      </div>
+    </div>
+
+    <!-- Exhale Duration -->
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-mono text-neutral-300">
+        <span>Exhale Duration (per nostril)</span>
+        <span id="nadi-custom-exhale-val" class="text-emerald-400 font-bold">4s</span>
+      </div>
+      <input
+        type="range"
+        id="nadi-custom-exhale-input"
+        min="2"
+        max="10"
+        step="1"
+        value="4"
+        class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+      />
+      <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
+        <span>2s</span>
+        <span>10s</span>
+      </div>
+    </div>
+
+    <!-- Total Cycles -->
+    <div class="space-y-2">
+      <div class="flex justify-between text-xs font-mono text-neutral-300">
+        <span>Total Cycles (Left → Right → Right → Left)</span>
+        <span id="nadi-custom-cycles-val" class="text-purple-400 font-bold">19 Cycles (~5m)</span>
+      </div>
+      <input
+        type="range"
+        id="nadi-custom-cycles-input"
+        min="1"
+        max="50"
+        step="1"
+        value="19"
+        class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-purple-400"
+      />
+      <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
+        <span>1 Cycle</span>
+        <span>50 Cycles</span>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-end gap-3 border-t border-neutral-800 pt-4">
+      <button
+        id="cancel-nadi-custom"
+        type="button"
+        class="px-4 py-2 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white text-xs font-medium transition-colors"
+      >
+        Cancel
+      </button>
+      <button
+        id="save-nadi-custom"
+        type="button"
+        class="px-5 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-semibold text-xs transition-colors"
+      >
+        Apply Custom Rhythm
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('nadi-custom-modal');
+  const closeBtn = document.getElementById('close-nadi-custom-modal');
+  const cancelBtn = document.getElementById('cancel-nadi-custom');
+  const saveBtn = document.getElementById('save-nadi-custom');
+
+  const inhaleInput = document.getElementById('nadi-custom-inhale-input') as HTMLInputElement | null;
+  const holdInput = document.getElementById('nadi-custom-hold-input') as HTMLInputElement | null;
+  const exhaleInput = document.getElementById('nadi-custom-exhale-input') as HTMLInputElement | null;
+  const cyclesInput = document.getElementById('nadi-custom-cycles-input') as HTMLInputElement | null;
+
+  const inhaleVal = document.getElementById('nadi-custom-inhale-val');
+  const holdVal = document.getElementById('nadi-custom-hold-val');
+  const exhaleVal = document.getElementById('nadi-custom-exhale-val');
+  const cyclesVal = document.getElementById('nadi-custom-cycles-val');
+
+  function updateValues() {
+    const inhale = parseInt(inhaleInput?.value || '4', 10);
+    const hold = parseInt(holdInput?.value || '0', 10);
+    const exhale = parseInt(exhaleInput?.value || '4', 10);
+    const cycles = parseInt(cyclesInput?.value || '19', 10);
+
+    if (inhaleVal) inhaleVal.textContent = `${inhale}s`;
+    if (holdVal) holdVal.textContent = hold > 0 ? `${hold}s` : '0s (None)';
+    if (exhaleVal) exhaleVal.textContent = `${exhale}s`;
+
+    const cycleSec = (inhale + hold + exhale) * 2;
+    const totalSec = cycleSec * cycles;
+    const mins = Math.floor(totalSec / 60);
+    const secs = totalSec % 60;
+    const timeStr = mins > 0 ? `(~${mins}m ${secs > 0 ? secs + 's' : ''})` : `(~${secs}s)`;
+
+    if (cyclesVal) cyclesVal.textContent = `${cycles} Cycles ${timeStr}`;
+  }
+
+  inhaleInput?.addEventListener('input', updateValues);
+  holdInput?.addEventListener('input', updateValues);
+  exhaleInput?.addEventListener('input', updateValues);
+  cyclesInput?.addEventListener('input', updateValues);
+
+  function closeModal() {
+    modal?.classList.add('hidden');
+  }
+
+  closeBtn?.addEventListener('click', closeModal);
+  cancelBtn?.addEventListener('click', closeModal);
+
+  saveBtn?.addEventListener('click', () => {
+    const inhale = parseInt(inhaleInput?.value || '4', 10);
+    const hold = parseInt(holdInput?.value || '0', 10);
+    const exhale = parseInt(exhaleInput?.value || '4', 10);
+    const cycles = parseInt(cyclesInput?.value || '19', 10);
+
+    window.dispatchEvent(new CustomEvent('hb_apply_nadi_custom', {
+      detail: { inhale, hold, exhale, cycles }
+    }));
+    closeModal();
+  });
+
+  window.addEventListener('hb_open_nadi_custom_modal', (e: any) => {
+    const { inhale = 4, hold = 0, exhale = 4, cycles = 19 } = e.detail || {};
+    if (inhaleInput) inhaleInput.value = String(inhale);
+    if (holdInput) holdInput.value = String(hold);
+    if (exhaleInput) exhaleInput.value = String(exhale);
+    if (cyclesInput) cyclesInput.value = String(cycles);
+    updateValues();
+    modal?.classList.remove('hidden');
+  });
+</script>
