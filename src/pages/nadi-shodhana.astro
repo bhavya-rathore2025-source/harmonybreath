@@ -18,7 +18,7 @@ const pageSchemaData = [
     "name": "HarmonyBreath — Nadi Shodhana (Alternate Nostril Breathing) Timer",
     "alternateName": "HarmonyBreath Nadi Shodhana Pranayama App",
     "description": "Free guided Nadi Shodhana (Alternate Nostril Breathing) timer with visual nostril indicators, customizable rhythms, ambient soundscapes, and local progress tracking.",
-    "url": "https://harmonybreath.com/nadi-shodhana",
+    "url": "https://harmonybreath.com/nadi-shodhana/",
     "applicationCategory": "HealthApplication",
     "operatingSystem": "Any (Web Browser)",
     "offers": {
@@ -94,12 +94,15 @@ const pageSchemaData = [
 
 <Layout
   title="Nadi Shodhana (Alternate Nostril Breathing) Timer & Guide | HarmonyBreath"
-  description="Practice Nadi Shodhana (Alternate Nostril Breathing) with our free online guided timer. Visual nostril indicators, customizable rhythms, and soundscapes for focus & calm."
-  keywords="nadi shodhana, alternate nostril breathing, pranayama timer, breathing exercise for focus, balanced breathing, guided alternate nostril breathing, vishnu mudra"
+  description="Nadi Shodhana, or Alternate Nostril Breathing, is a traditional yogic breathing practice that alternates airflow between the left and right nostrils. Use our free guided timer with visual nostril cues, customizable rhythms, and soundscapes for relaxation, concentration, and mindful awareness."
+  keywords="nadi shodhana, alternate nostril breathing, anulom vilom, pranayama timer, breathing exercise for focus, balanced breathing, guided alternate nostril breathing, vishnu mudra, channel purification breathing, nadi shodhana benefits"
   canonicalUrl="https://harmonybreath.com/nadi-shodhana/"
   image="https://harmonybreath.com/og-image.png"
+  imageAlt="HarmonyBreath Nadi Shodhana (Alternate Nostril Breathing) guided breathing timer"
+  schemaData={pageSchemaData}
+  breadcrumb={breadcrumb}
+  ogType="website"
 >
-  <script type="application/ld+json" set:html={JSON.stringify(pageSchemaData)}></script>
 
   <Header />
 
@@ -296,6 +299,31 @@ const pageSchemaData = [
             </p>
           </details>
         </div>
+      </div>
+
+      <!-- 7. Related Techniques (Internal Links) -->
+      <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">Explore Other Breathing Techniques</h2>
+        <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+          Looking to round out your breathwork routine? Try another free guided timer from HarmonyBreath:
+        </p>
+        <ul class="space-y-3 text-sm text-neutral-300 leading-relaxed">
+          <li>
+            <a href="/box-breathing/" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">Box Breathing Timer</a> — a balanced four-part rhythm of equal inhale, hold, exhale, and empty hold, favored for calm and composure under pressure.
+          </li>
+          <li>
+            <a href="/4-7-8-breathing/" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">4-7-8 Breathing Timer</a> — a relaxing pattern with a gentle breath hold, often used to wind down before sleep.
+          </li>
+          <li>
+            <a href="/diaphragmatic-breathing/" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">Diaphragmatic Breathing Timer</a> — a foundational belly-breathing practice that pairs well with Nadi Shodhana for full, steady breaths.
+          </li>
+          <li>
+            <a href="/wim-hof/" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">Wim Hof Breathing Timer</a> — an energizing rhythmic practice for those seeking a more invigorating breathwork session.
+          </li>
+        </ul>
+        <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+          Learn more about <a href="/about/" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">HarmonyBreath's mission</a> to make breathwork free and accessible for everyone.
+        </p>
       </div>
     </section>
   </main>
