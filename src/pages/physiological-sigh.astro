@@ -50,10 +50,34 @@ const pageSchemaData = [
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is a physiological sigh?",
+        "name": "What is the Huberman psychological sigh?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A physiological sigh is a natural breathing pattern involving two consecutive inhales followed by a long exhale. After a deep first inhale, you take a second, sharp \"sip\" of air to inflate the lungs completely before a prolonged exhalation that promotes relaxation."
+          "text": "The physiological sigh (often called the psychological sigh) is a fast stress-relief breathing pattern consisting of two quick inhales and one long exhale, popularized by Stanford neuroscientist Dr. Andrew Huberman as the most effective real-time method to lower stress."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the physiological sigh actually work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, scientific research validates its effectiveness. A landmark study from Stanford Medicine demonstrated that practicing cyclic sighing for just 5 minutes a day rapidly reduces anxiety, lowers heart rate and respiratory rate, and improves mood better than mindfulness meditation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many physiological sighs should you do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For immediate stress relief during acute anxiety, performing 1 to 3 physiological sighs is sufficient to quickly calm the nervous system. For sustained mood elevation and long-term stress resilience, practicing cyclic sighing for 5 minutes daily is recommended."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does it use a double inhale?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Taking a second, sharp \"sip\" of air pops open deflated lung air sacs (alveoli) and inflates the lungs completely, maximizing airway volume and gas exchange before initiating an extended, calming exhalation."
         }
       },
       {
@@ -61,31 +85,7 @@ const pageSchemaData = [
         "name": "What is the difference between a physiological sigh and cyclic sighing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The term 'physiological sigh' usually refers to the individual breath sequence of two inhales followed by one long exhale. 'Cyclic sighing' refers to repeating that double-inhale pattern continuously for a period of time, such as 3 to 5 minutes."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why does the physiological sigh use a double inhale?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The lungs contain millions of tiny air sacs called alveoli. Natural sighs help pop open collapsed alveoli to maintain lung function. Taking a second, sharp \"sip\" of air inflates the lungs completely and helps prepare the body for an extended exhalation."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What does scientific research say about cyclic sighing?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A 2023 randomized controlled study from Stanford researchers compared 5-minute daily cyclic sighing with mindfulness meditation and other breathwork. The study found that regular cyclic sighing produced greater improvements in mood and reductions in respiratory rate and physiological arousal."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long should I practice physiological sighing?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The Stanford research protocol used 5 minutes per day for the breathing intervention. That makes 5 minutes a very reasonable target duration, but even a quick 1 to 2 minute session (10 to 15 cycles) can provide an effective stress reset."
+          "text": "A physiological sigh refers to the individual breath cycle of two inhales followed by one long exhale. Cyclic sighing means repeating that double-inhale pattern continuously for a period of time, such as 3 to 5 minutes."
         }
       },
       {
@@ -93,7 +93,7 @@ const pageSchemaData = [
         "name": "Is physiological sighing safe?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Physiological sighing is a safe, natural exercise for most people. Do not force the inhales; if you feel dizzy or lightheaded, stop and return to normal breathing. Never practice breathwork while driving, swimming, or operating machinery."
+          "text": "Physiological sighing is a safe, natural exercise for most people. Take a gentle second sharp sip of air without forcing or straining. If you feel lightheaded, pause and return to normal breathing. Never practice breathwork while driving or operating machinery."
         }
       }
     ]
@@ -299,21 +299,31 @@ const pageSchemaData = [
         <div class="space-y-4">
           <details class="group rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5 transition-all [&_summary::-webkit-details-marker]:hidden">
             <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
-              <span>What is a physiological sigh?</span>
+              <span>What is the Huberman psychological sigh?</span>
               <span class="ml-4 shrink-0 transition-transform duration-200 group-open:-rotate-180 text-emerald-400">↓</span>
             </summary>
             <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans font-light">
-              A physiological sigh is a natural breathing pattern consisting of two consecutive inhales followed by a long exhale. After the initial inhale, you take a second, sharp "sip" of air to inflate the lungs completely before a long, smooth exhalation.
+              The physiological sigh—frequently called the psychological sigh—is a fast-acting stress reduction technique popularized by neuroscientist Dr. Andrew Huberman. It consists of two quick inhales through the nose followed by one long, relaxing exhale through the mouth to rapidly lower autonomic arousal.
             </p>
           </details>
 
           <details class="group rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5 transition-all [&_summary::-webkit-details-marker]:hidden">
             <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
-              <span>What is the difference between physiological sigh and cyclic sighing?</span>
+              <span>Does the physiological sigh actually work?</span>
               <span class="ml-4 shrink-0 transition-transform duration-200 group-open:-rotate-180 text-emerald-400">↓</span>
             </summary>
             <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans font-light">
-              A physiological sigh refers to the individual breath cycle (double inhale + long exhale). Cyclic sighing means performing that cycle repeatedly over a continuous duration (such as 3 to 5 minutes).
+              Yes, scientific evidence confirms its efficacy. A landmark study from Stanford Medicine showed that practicing cyclic sighing for just 5 minutes a day rapidly reduces anxiety, lowers heart rate and respiratory rate, and improves overall mood more effectively than standard mindfulness meditation.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5 transition-all [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
+              <span>How many physiological sighs should you do?</span>
+              <span class="ml-4 shrink-0 transition-transform duration-200 group-open:-rotate-180 text-emerald-400">↓</span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans font-light">
+              For immediate, real-time stress relief during acute tension or anxiety, performing <strong>1 to 3 physiological sighs</strong> is enough to trigger a rapid relaxation response. For long-term stress resilience and sustained mood elevation, practice cyclic sighing for <strong>5 minutes daily</strong>.
             </p>
           </details>
 
@@ -323,27 +333,27 @@ const pageSchemaData = [
               <span class="ml-4 shrink-0 transition-transform duration-200 group-open:-rotate-180 text-emerald-400">↓</span>
             </summary>
             <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans font-light">
-              Taking a second, sharp "sip" of air pops open deflated alveoli sacs and inflates the lungs completely, maximizing airway volume before initiating an extended exhalation.
+              Taking a second, sharp "sip" of air right after the initial inhalation pops open deflated or collapsed lung air sacs (alveoli). This fully inflates the lungs, expands surface area, and maximizes oxygenation and carbon dioxide offloading before the long exhale.
             </p>
           </details>
 
           <details class="group rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5 transition-all [&_summary::-webkit-details-marker]:hidden">
             <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
-              <span>How long should I practice physiological sighing?</span>
+              <span>What is the difference between a physiological sigh and cyclic sighing?</span>
               <span class="ml-4 shrink-0 transition-transform duration-200 group-open:-rotate-180 text-emerald-400">↓</span>
             </summary>
             <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans font-light">
-              The Stanford study examined a 5-minute daily practice protocol. However, even 1 to 3 minutes (10 to 15 cycles) can provide an effective short break for quick stress management.
+              A physiological sigh refers to a single double-inhale and long-exhale breath pattern. Cyclic sighing refers to repeating this double-inhale breathing pattern continuously over a set duration (typically 3 to 5 minutes).
             </p>
           </details>
 
           <details class="group rounded-2xl border border-neutral-800 bg-neutral-900/40 p-5 transition-all [&_summary::-webkit-details-marker]:hidden">
             <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
-              <span>Is there any breathing sound effect on this page?</span>
+              <span>Is physiological sighing safe?</span>
               <span class="ml-4 shrink-0 transition-transform duration-200 group-open:-rotate-180 text-emerald-400">↓</span>
             </summary>
             <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans font-light">
-              No. HarmonyBreath's Physiological Sigh timer uses soft acoustic phase chimes and optional background ambient music, with no voice or heavy breathing sound audio.
+              Yes, physiological sighing is a safe and natural breathwork technique. Gently take the second sharp sip without forcing or straining. If you feel lightheaded, pause and return to your natural rhythm. Never practice breathwork while driving or in water.
             </p>
           </details>
         </div>
