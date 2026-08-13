@@ -386,13 +386,7 @@ import NadiMusicSelectionModal from './NadiMusicSelectionModal.astro';
   }
 
   function playPhaseAudio(phase: PhaseType) {
-    if (phase === 'left-inhale' || phase === 'right-inhale') {
-      audioPlayer.playBreathSound(true, config.inhale);
-    } else if (phase === 'hold-1' || phase === 'hold-2') {
-      audioPlayer.playChime();
-    } else if (phase === 'right-exhale' || phase === 'left-exhale') {
-      audioPlayer.playBreathSound(false, config.exhale);
-    } else if (phase === 'completed') {
+    if (phase !== 'idle') {
       audioPlayer.playChime();
     }
   }
