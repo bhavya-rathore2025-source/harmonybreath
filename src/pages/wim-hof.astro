@@ -6,6 +6,7 @@ import SessionPresets from '../components/SessionPresets.astro';
 import AnalyticsPanel from '../components/AnalyticsPanel.astro';
 import TechniqueGuide from '../components/TechniqueGuide.astro';
 import SafetyModal from '../components/SafetyModal.astro';
+import ExploreOtherTechniques from '../components/ExploreOtherTechniques.astro';
 import Footer from '../components/Footer.astro';
 
 const breadcrumb = [
@@ -127,17 +128,7 @@ const breadcrumb = [
     </section>
 
     <!-- Explore Other Techniques -->
-    <section class="w-full max-w-4xl mx-auto px-4 pb-4">
-      <div class="max-w-3xl mx-auto space-y-5 text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light">
-        <h2 class="text-xl sm:text-2xl font-bold text-white">Explore Other Breathing Techniques</h2>
-        <p>
-          Looking for a different approach? Try our free <a href="/box-breathing/" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">Box Breathing (4-4-4-4) timer</a> — a guided equal-rhythm technique ideal for staying calm, centered, and composed under pressure. Unlike the energizing Wim Hof method, box breathing uses equal durations for inhale, hold, exhale, and empty hold to create a calming square-shaped breathing pattern.
-        </p>
-        <p>
-          Learn more about <a href="/about/" class="text-amber-400 hover:text-amber-300 underline underline-offset-2">HarmonyBreath's mission</a> to make breathwork free and accessible for everyone.
-        </p>
-      </div>
-    </section>
+    <ExploreOtherTechniques current="wim-hof" accent="cyan" />
 
     <!-- FAQ Section with JSON-LD SEO -->
     <section id="faq-section" class="w-full max-w-4xl mx-auto py-16 px-4 border-t border-neutral-900">

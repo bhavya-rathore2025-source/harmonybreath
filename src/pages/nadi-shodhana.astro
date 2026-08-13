@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import NadiShodhanaTimer from '../components/NadiShodhanaTimer.astro';
 import NadiSessionPresets from '../components/NadiSessionPresets.astro';
 import AnalyticsPanel from '../components/AnalyticsPanel.astro';
+import ExploreOtherTechniques from '../components/ExploreOtherTechniques.astro';
 import Footer from '../components/Footer.astro';
 
 const breadcrumb = [
@@ -49,10 +50,34 @@ const pageSchemaData = [
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is Nadi Shodhana (Alternate Nostril Breathing)?",
+        "name": "What is Nadi Shodhana good for?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nadi Shodhana, commonly called Alternate Nostril Breathing, is a traditional yogic pranayama practice in which you alternate breathing through the left and right nostrils in a rhythmic, controlled pattern."
+          "text": "Nadi Shodhana, or alternate nostril breathing, is a yogic breath control technique that calms the mind, lowers stress and anxiety, balances the autonomic nervous system, and improves breath control and focus by alternating airflow through each nostril."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Anulom Vilom and Nadi Shodhan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The main difference between Anulom Vilom and Nadi Shodhan is breath retention (Kumbhaka). Anulom Vilom is a gentle, continuous alternate nostril breathing exercise without holding the breath, ideal for beginners. Nadi Shodhan is an advanced practice that incorporates controlled breath retention and specific ratios to deeply purify the body's energy channels."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many times should I do Nadi Shodhana?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Beginners should practice 5 to 10 rounds per session (or 5 to 15 minutes by time). Experienced practitioners often scale up to 15 to 20 rounds per session. For optimal, consistent results, perform alternate nostril breathing 1 to 2 times daily on an empty stomach."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Nadi Shodhan safe for everyone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Basic alternate nostril breathing without breath holding is safe for most individuals. However, advanced Nadi Shodhan involving breath retention or forced breathing is not safe for everyone, especially those with high blood pressure, heart disease, or recent surgeries. Always practice gently and without strain."
         }
       },
       {
@@ -69,22 +94,6 @@ const pageSchemaData = [
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "In traditional practice (Vishnu Mudra), bring your right hand toward your nose. Use your right thumb to control your right nostril and your right ring finger to control your left nostril."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Should beginners hold their breath during Nadi Shodhana?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Breath retention (holding) is optional and not mandatory for beginners. HarmonyBreath defaults to a gentle 4–4 (Inhale 4s / Exhale 4s) non-retention rhythm for safe, comfortable practice."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What are the potential benefits of Alternate Nostril Breathing?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Cleveland Clinic and research studies note that alternate nostril breathing may help reduce perceived stress, support quiet concentration, and foster mindful breathing awareness."
         }
       }
     ]
@@ -266,66 +275,77 @@ const pageSchemaData = [
       </div>
 
       <!-- 6. FAQ Accordion Section -->
-      <div class="space-y-6">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white">Frequently Asked Questions</h2>
-        <div class="space-y-4">
-          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all">
+      <div id="faq-section" class="space-y-6">
+        <div class="space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white">Frequently Asked Questions</h2>
+          <p class="text-xs sm:text-sm text-neutral-400">Everything you need to know about Nadi Shodhana, its benefits, frequency, and safe practice.</p>
+        </div>
+        <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all open:border-indigo-500/30" open>
             <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
-              How long should I practice Nadi Shodhana?
+              What is Nadi Shodhana good for?
               <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-indigo-400">↓</span>
             </summary>
-            <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              Cleveland Clinic recommends practicing alternate nostril breathing for about 5 minutes at a time as a daily wellness or relaxation exercise.
+            <p class="mt-3 text-xs sm:text-sm text-neutral-300 leading-relaxed">
+              Nadi Shodhana, or alternate nostril breathing, is a yogic breath control practice that clears and calms the mind, lowers stress and anxiety, balances the autonomic nervous system, and improves lung function and mental focus by alternating airflow through each nostril.
             </p>
           </details>
 
-          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all">
+          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all open:border-indigo-500/30">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
+              What is the difference between Anulom Vilom and Nadi Shodhan?
+              <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-indigo-400">↓</span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-neutral-300 leading-relaxed">
+              The main difference between Anulom Vilom and Nadi Shodhan is breath retention (Kumbhaka). Anulom Vilom is a gentle, continuous alternate nostril breathing exercise without holding the breath, making it ideal for beginners. Nadi Shodhan is a more advanced practice that adds controlled breath retention and specific ratios to deeply purify the body's energy channels.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all open:border-indigo-500/30">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
+              How many times should I do Nadi Shodhana?
+              <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-indigo-400">↓</span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-neutral-300 leading-relaxed">
+              You should practice Nadi Shodhana for 5 to 10 rounds per session if you are a beginner, or for a duration of 5 to 15 minutes if you are tracking by time. Experienced practitioners often scale their practice up to 15 to 20 rounds per session. For optimal, consistent results, perform alternate nostril breathing 1 to 2 times daily on an empty stomach.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all open:border-indigo-500/30">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
+              Is Nadi Shodhan safe for everyone?
+              <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-indigo-400">↓</span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-neutral-300 leading-relaxed">
+              Gentle alternate nostril breathing without holding your breath is safe for most individuals. However, advanced Nadi Shodhana involving breath retention or forced breathing is not safe for everyone, specifically people with high blood pressure, heart conditions, or recent surgeries. Always practice without forcing the breath and listen to your body.
+            </p>
+          </details>
+
+          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all open:border-indigo-500/30">
             <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
               Can I do Nadi Shodhana if I have a blocked nose or cold?
               <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-indigo-400">↓</span>
             </summary>
-            <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed">
+            <p class="mt-3 text-xs sm:text-sm text-neutral-300 leading-relaxed">
               If your nasal passages are heavily congested from a cold or allergies, do not force alternate nostril breathing. Switch to standard diaphragmatic breathing or wait until your nasal passages clear naturally.
             </p>
           </details>
 
-          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all">
+          <details class="group rounded-2xl border border-neutral-800 bg-neutral-950/60 p-4 transition-all open:border-indigo-500/30">
             <summary class="flex cursor-pointer items-center justify-between font-medium text-white text-sm sm:text-base">
-              When is the best time of day to practice?
+              Which hand position (mudra) should I use?
               <span class="ml-4 transition-transform duration-200 group-open:rotate-180 text-indigo-400">↓</span>
             </summary>
-            <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              Nadi Shodhana works exceptionally well in the morning before starting work, before meditation, during a afternoon break to reset focus, or in the evening to wind down.
+            <p class="mt-3 text-xs sm:text-sm text-neutral-300 leading-relaxed">
+              In traditional practice (Vishnu Mudra), bring your right hand toward your nose. Use your right thumb to control your right nostril and your right ring finger to control your left nostril.
             </p>
           </details>
         </div>
       </div>
-
-      <!-- 7. Related Techniques (Internal Links) -->
-      <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 space-y-4">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white">Explore Other Breathing Techniques</h2>
-        <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-          Looking to round out your breathwork routine? Try another free guided timer from HarmonyBreath:
-        </p>
-        <ul class="space-y-3 text-sm text-neutral-300 leading-relaxed">
-          <li>
-            <a href="/box-breathing/" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">Box Breathing Timer</a> — a balanced four-part rhythm of equal inhale, hold, exhale, and empty hold, favored for calm and composure under pressure.
-          </li>
-          <li>
-            <a href="/4-7-8-breathing/" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">4-7-8 Breathing Timer</a> — a relaxing pattern with a gentle breath hold, often used to wind down before sleep.
-          </li>
-          <li>
-            <a href="/diaphragmatic-breathing/" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">Diaphragmatic Breathing Timer</a> — a foundational belly-breathing practice that pairs well with Nadi Shodhana for full, steady breaths.
-          </li>
-          <li>
-            <a href="/wim-hof/" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">Wim Hof Breathing Timer</a> — an energizing rhythmic practice for those seeking a more invigorating breathwork session.
-          </li>
-        </ul>
-        <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-          Learn more about <a href="/about/" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">HarmonyBreath's mission</a> to make breathwork free and accessible for everyone.
-        </p>
-      </div>
     </section>
+
+    <!-- Explore Other Techniques -->
+    <ExploreOtherTechniques current="nadi-shodhana" accent="indigo" />
   </main>
 
   <Footer />

@@ -1,0 +1,94 @@
+---
+interface Props {
+  current: 'box-breathing' | 'nadi-shodhana' | 'wim-hof' | '4-7-8-breathing' | 'diaphragmatic-breathing';
+  accent?: 'amber' | 'indigo' | 'blue' | 'teal' | 'cyan';
+}
+
+const { current, accent = 'amber' } = Astro.props;
+
+const allTechniques = [
+  {
+    id: 'box-breathing',
+    title: 'Box Breathing Timer',
+    url: '/box-breathing/',
+    desc: 'a balanced four-part rhythm of equal inhale, hold, exhale, and empty hold, favored for calm and composure under pressure.',
+  },
+  {
+    id: '4-7-8-breathing',
+    title: '4-7-8 Breathing Timer',
+    url: '/4-7-8-breathing/',
+    desc: 'a relaxing pattern with a gentle breath hold (4s in, 7s hold, 8s out), often used to wind down before sleep.',
+  },
+  {
+    id: 'diaphragmatic-breathing',
+    title: 'Diaphragmatic Breathing Timer',
+    url: '/diaphragmatic-breathing/',
+    desc: 'a foundational belly-breathing practice that pairs well with other techniques for full, steady, deep breaths.',
+  },
+  {
+    id: 'nadi-shodhana',
+    title: 'Nadi Shodhana Timer',
+    url: '/nadi-shodhana/',
+    desc: 'a traditional alternate nostril breathing practice to balance energy, quiet the mind, and center focus.',
+  },
+  {
+    id: 'wim-hof',
+    title: 'Wim Hof Breathing Timer',
+    url: '/wim-hof/',
+    desc: 'an energizing rhythmic practice featuring deep breaths followed by retention holds for an invigorating session.',
+  }
+];
+
+const otherTechniques = allTechniques.filter(t => t.id !== current);
+
+const accentClasses: Record<string, string> = {
+  amber: 'text-amber-400 hover:text-amber-300',
+  indigo: 'text-indigo-400 hover:text-indigo-300',
+  blue: 'text-blue-400 hover:text-blue-300',
+  teal: 'text-teal-400 hover:text-teal-300',
+  cyan: 'text-cyan-400 hover:text-cyan-300',
+};
+
+const linkClass = accentClasses[accent] || accentClasses.amber;
+---
+
+<section class="w-full max-w-4xl mx-auto px-4 py-8">
+  <div class="p-6 sm:p-8 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md space-y-5">
+    <div class="space-y-2">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+        Explore Other Breathing Techniques
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans font-light">
+        Looking to round out your breathwork routine? Try another free guided timer from HarmonyBreath:
+      </p>
+    </div>
+
+    <ul class="space-y-3 text-xs sm:text-sm text-neutral-300 leading-relaxed font-sans">
+      {otherTechniques.map((tech) => (
+        <li class="flex items-start gap-2">
+          <span class={`font-bold select-none ${linkClass}`}>•</span>
+          <span>
+            <a
+              href={tech.url}
+              class={`${linkClass} underline underline-offset-2 font-medium transition-colors`}
+            >
+              {tech.title}
+            </a>
+            {' '}— {tech.desc}
+          </span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="pt-2 border-t border-neutral-900 text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans font-light">
+      Learn more about{' '}
+      <a
+        href="/about/"
+        class={`${linkClass} underline underline-offset-2 font-medium transition-colors`}
+      >
+        HarmonyBreath's mission
+      </a>
+      {' '}to make breathwork free and accessible for everyone.
+    </div>
+  </div>
+</section>

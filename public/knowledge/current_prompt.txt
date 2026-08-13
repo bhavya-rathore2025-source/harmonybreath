@@ -1,11 +1,18 @@
-add seo friendly FAQ section for belly breathing page replacing previous ones:
+add seo friendly FAQ section for these below questions for nadi shodhana page: answers are for your reference do not copy paste
 
-Is belly breathing good for anxiety?
-What are some natural ways to lower cortisol levels?
-To lower your cortisol levels naturally, focus on getting 7 to 9 hours of quality sleep, eating a whole-food diet rich in magnesium and omega-3s, doing regular low-to-moderate exercise, and practicing deep breathing or mindfulness. 
-How to reduce stress and anxiety?
-Techniques to Reduce Stress and AnxietyTo reduce stress and anxiety, practice deep breathing, move your body daily through exercise or walks, limit caffeine and screen time, maintain a consistent sleep routine, and talk through your worries with supportive people.
-what is belly breathing?
+What is Nadi Shodhana good for?
+AI Overview
+Nadi Shodhana, or alternate nostril breathing, is a yogic breath control practice that clears and calms the mind, lowers stress and anxiety, balances the nervous system, and improves lung function by alternating airflow through each nostril. 
+What is the difference between Anulom Vilom and Nadi Shodhan?
+AI Overview
+The main difference between Anulom Vilom and Nadi Shodhan is breath retention (Kumbhaka). Anulom Vilom is a gentle, continuous alternate nostril breathing exercise without holding the breath, making it ideal for beginners. Nadi Shodhan is a more advanced practice that adds controlled breath retention and specific ratios to deeply purify the energy channels.
+How many times should I do Nadi Shodhana?
+AI Overview
+You should practice Nadi Shodhana for 5 to 10 rounds per session if you are a beginner, or for a duration of 5 to 15 minutes if you are tracking by time. Experienced practitioners often scale their practice up to 15 to 20 rounds per session. For optimal, consistent results, this alternate nostril breathing technique should be performed 1 to 2 times daily on an empty stomach
+Is Nadi Shodhan safe for everyone?
+AI Overview
+No, Nadi Shodhana (alternate nostril breathing) is not completely safe for everyone if practiced with breath retention or forced breathing, specifically for individuals with high blood pressure, heart disease, or recent surgeries. While the gentle, basic version without holding the breath is safe for most, certain health conditions require strict caution. 
+
 
 
 NOTE: Use JSON-LD for FAQ SEO
