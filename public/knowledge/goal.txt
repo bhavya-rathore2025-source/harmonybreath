@@ -47,10 +47,10 @@ Each breathing method is implemented on its own dedicated route (`/wim-hof`, `/b
 * **Structure**: Alternating airflow between left and right nostrils with optional internal holds.
 * **Key Features**: Step-by-step visual hand position guide, dual-channel airflow indicator.
 
-### 6. Tummo Breathing (`/tummo`) — PLANNED
-* **Purpose**: Inner heat generation, spiritual focus, deep meditative state (traditional Tibetan technique).
-* **Structure**: Dynamic abdominal contractions combined with upper chest retains and visualization.
-* **Key Features**: Advanced heat visualization graphics, structured safety guidelines.
+### 6. Physiological Sigh / Cyclic Sighing (`/physiological-sigh`) — LIVE
+* **Purpose**: Rapid stress reduction, lower respiratory rate, mood regulation (Stanford 2023 protocol).
+* **Structure**: Double nasal inhale (first inhale + top-up inhale) followed by extended mouth exhalation.
+* **Key Features**: Guided visual halo & progress ring, evidence-backed presets, customizable timings, zero breathing sounds.
 
 ---
 
@@ -66,4 +66,4 @@ Each breathing method is implemented on its own dedicated route (`/wim-hof`, `/b
 
 ## DISCLAIMER
 
-HarmonyBreath is an educational and wellness application. It does not provide medical diagnosis, treatment, or cure. All high-intensity techniques (such as Wim Hof Breathing or Tummo) must be practiced in safe environments sitting or lying down.
+HarmonyBreath is an educational and wellness application. It does not provide medical diagnosis, treatment, or cure. All breathwork techniques must be practiced in safe environments sitting or lying down.

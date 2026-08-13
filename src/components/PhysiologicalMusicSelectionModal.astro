@@ -1,0 +1,206 @@
+---
+---
+
+<div id="sigh-music-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+  <div class="relative w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950/95 shadow-2xl">
+    <div class="flex items-center justify-between border-b border-neutral-800 px-4 sm:px-6 py-3 sm:py-4 shrink-0">
+      <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+        </svg>
+        Choose Calming Background Music
+      </h2>
+      <p class="hidden sm:block text-xs text-neutral-500 font-mono">Select a track for your Physiological Sigh session</p>
+      <button
+        id="close-sigh-music-modal"
+        type="button"
+        class="p-2 rounded-lg hover:bg-neutral-800 text-neutral-400 hover:text-white transition-colors shrink-0"
+        aria-label="Close music selection"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="overflow-y-auto flex-1 p-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-neutral-800 mb-4">
+        <div class="text-center sm:text-left text-xs text-neutral-400 font-mono">
+          Pick a track to accompany your cyclic sighing practice
+        </div>
+        <label class="inline-flex items-center gap-2.5 cursor-pointer select-none bg-neutral-900/90 border border-neutral-800 hover:border-neutral-700 px-3 py-1.5 rounded-xl transition-colors shrink-0">
+          <span class="text-xs font-medium text-neutral-200">Loop Song</span>
+          <span class="text-[10px] text-neutral-500 font-mono hidden xs:inline">(Playlist if off)</span>
+          <div class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="sigh-loop-song-toggle" class="sr-only peer" />
+            <div class="w-9 h-5 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
+          </div>
+        </label>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="sigh-tracks-container"></div>
+    </div>
+
+    <div class="flex items-center justify-between border-t border-neutral-800 px-4 sm:px-6 py-3 sm:py-4 bg-neutral-900/50 shrink-0 gap-3">
+      <div class="hidden sm:flex items-center gap-2 text-xs text-neutral-500">
+        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Settings saved automatically</span>
+      </div>
+      <button
+        id="apply-sigh-music"
+        type="button"
+        class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-sm transition-colors"
+      >
+        Apply & Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { musicTracks } from '../config/audioConfig';
+  import { audioPlayer } from '../utils/audioPlayer';
+
+  const STORAGE_KEY = 'hb_sigh_music_selection';
+
+  const allTracks = [
+    ...musicTracks.guidedBreathing,
+    ...musicTracks.breathOutHold,
+    ...musicTracks.recoveryHold,
+  ];
+
+  let selectedTrackId = localStorage.getItem(STORAGE_KEY) || allTracks[0]?.id || '';
+
+  const modal = document.getElementById('sigh-music-modal');
+  const closeBtn = document.getElementById('close-sigh-music-modal');
+  const applyBtn = document.getElementById('apply-sigh-music');
+  const container = document.getElementById('sigh-tracks-container');
+  const loopToggle = document.getElementById('sigh-loop-song-toggle') as HTMLInputElement | null;
+
+  function syncLoopToggle() {
+    if (loopToggle) {
+      loopToggle.checked = audioPlayer.isLoopSong();
+    }
+  }
+
+  loopToggle?.addEventListener('change', () => {
+    if (loopToggle) {
+      audioPlayer.setLoopSong(loopToggle.checked);
+    }
+  });
+
+  window.addEventListener('hb_loop_song_changed', syncLoopToggle);
+
+  function getTrackById(id: string) {
+    return allTracks.find(t => t.id === id);
+  }
+
+  function renderTracks() {
+    if (!container) return;
+    container.innerHTML = allTracks.map(track => {
+      const isSelected = track.id === selectedTrackId;
+      return `
+        <button
+          type="button"
+          class="music-track-card relative group p-4 rounded-xl border-2 transition-all duration-200 ${isSelected ? 'border-emerald-400 bg-emerald-400/10' : 'border-neutral-800 bg-neutral-900/50 hover:border-neutral-700'}"
+          data-track-id="${track.id}"
+          aria-pressed="${isSelected}"
+        >
+          <div class="absolute top-2 right-2">
+            <svg class="w-5 h-5 ${isSelected ? 'text-emerald-400' : 'hidden'}" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center ${isSelected ? 'bg-emerald-400/20' : 'bg-neutral-800/50'}">
+              <svg class="w-5 h-5 ${isSelected ? 'text-emerald-400' : 'text-neutral-500'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="text-sm font-medium text-white truncate">${track.name}</h4>
+              <p class="text-xs text-neutral-400 mt-0.5 truncate">${track.description}</p>
+            </div>
+          </div>
+          ${isSelected ? '<span class="absolute bottom-2 right-2 text-xs font-mono text-emerald-400">Selected</span>' : ''}
+        </button>
+      `;
+    }).join('');
+
+    container.querySelectorAll<HTMLButtonElement>('.music-track-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const trackId = card.dataset.trackId || '';
+        selectedTrackId = trackId;
+        localStorage.setItem(STORAGE_KEY, trackId);
+        renderTracks();
+
+        const track = getTrackById(trackId);
+        if (track) {
+          audioPlayer.previewTrack(track.phase as any, trackId);
+        }
+
+        window.dispatchEvent(new CustomEvent('hb_sigh_music_updated', {
+          detail: { trackId },
+        }));
+      });
+    });
+  }
+
+  function openModal() {
+    audioPlayer.stopPreview();
+    if (!modal) return;
+    selectedTrackId = localStorage.getItem(STORAGE_KEY) || allTracks[0]?.id || '';
+    syncLoopToggle();
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+    renderTracks();
+  }
+
+  window.addEventListener('hb_sigh_music_updated', () => {
+    selectedTrackId = localStorage.getItem(STORAGE_KEY) || allTracks[0]?.id || '';
+    renderTracks();
+  });
+
+  function closeModal() {
+    audioPlayer.stopPreview();
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn?.addEventListener('click', closeModal);
+  applyBtn?.addEventListener('click', closeModal);
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+
+  (window as any).openSighMusicModal = openModal;
+  (window as any).openMusicModal = openModal;
+</script>
+
+<style>
+  .music-track-card:focus-visible {
+    outline: 2px solid #34d399;
+    outline-offset: 2px;
+  }
+  #sigh-tracks-container::-webkit-scrollbar {
+    width: 4px;
+  }
+  #sigh-tracks-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #sigh-tracks-container::-webkit-scrollbar-thumb {
+    background-color: #404040;
+    border-radius: 4px;
+  }
+</style>
