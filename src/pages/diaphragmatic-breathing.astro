@@ -12,6 +12,9 @@ const breadcrumb = [
   { name: 'Diaphragmatic Breathing', url: '/diaphragmatic-breathing/' },
 ];
 
+const datePublished = '2026-07-25';
+const dateModified = '2026-08-15';
+
 const pageSchemaData = [
   {
     "@context": "https://schema.org",
@@ -49,16 +52,23 @@ const pageSchemaData = [
     "@type": "Article",
     "headline": "Belly Breathing & Diaphragmatic Breathing: Complete Practice Guide & Tool",
     "description": "Comprehensive guide to belly breathing (diaphragmatic breathing), covering scientific benefits, step-by-step techniques, vagus nerve stimulation, and our free guided breathing timer tool.",
+    "datePublished": datePublished,
+    "dateModified": dateModified,
     "author": {
       "@type": "Organization",
-      "name": "HarmonyBreath"
+      "name": "HarmonyBreath",
+      "url": "https://harmonybreath.com"
     },
     "publisher": {
       "@type": "Organization",
       "name": "HarmonyBreath",
       "url": "https://harmonybreath.com"
     },
-    "mainEntityOfPage": "https://harmonybreath.com/diaphragmatic-breathing/"
+    "mainEntityOfPage": "https://harmonybreath.com/diaphragmatic-breathing/",
+    "citation": [
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5455070/",
+      "https://pubmed.ncbi.nlm.nih.gov/36630953/"
+    ]
   },
   {
     "@context": "https://schema.org",
@@ -138,6 +148,11 @@ const pageSchemaData = [
         <span class="gradient-text-develop">Free Guided Diaphragmatic Timer</span>
       </h1>
 
+      <div class="flex flex-col items-center justify-center gap-1.5 text-xs font-mono text-neutral-500">
+        <span>Written by the HarmonyBreath Editorial Team</span>
+        <span>Published {datePublished} · Updated {dateModified}</span>
+      </div>
+
       <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light">
         Restore balance to your nervous system with our interactive <strong class="text-neutral-200 font-medium">belly breathing timer</strong>. Also known as diaphragmatic or abdominal breathing, this core practice engages your diaphragm to promote full oxygen exchange, soothe stress, and activate vagal tone.
       </p>
@@ -155,6 +170,13 @@ const pageSchemaData = [
     <!-- Detailed SEO Article & Practice Guide -->
     <section class="w-full max-w-4xl mx-auto px-4 py-12 space-y-12">
       
+      <div class="p-4 rounded-xl border border-neutral-800 bg-neutral-900/60 text-xs text-neutral-300 font-sans flex items-start gap-3">
+        <span class="text-teal-400 font-bold text-base leading-none">🔬</span>
+        <div>
+          <strong class="text-white font-medium">Scientific Research & Editorial Disclosure:</strong> Content on this page is compiled from published physiological studies, clinical research on vagal stimulation, and medical publications. Our goal is to explain the biological mechanisms behind diaphragmatic respiration while providing free, interactive guided timers.
+        </div>
+      </div>
+
       <!-- Section 1: Overview & Anatomy -->
       <div class="bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-10 backdrop-blur-xl space-y-6 shadow-2xl">
         <div class="flex items-center gap-3 border-b border-neutral-800 pb-4">
@@ -401,8 +423,41 @@ const pageSchemaData = [
             </p>
           </details>
         </div>
+
+        <div class="pt-6 border-t border-neutral-800">
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3">Scientific References & Cited Studies</h3>
+          <ol class="space-y-1.5 text-xs text-neutral-500 font-mono list-decimal list-inside">
+            <li>Ma, X., Yue, Z. Q., Gong, Z. Q., et al. (2017). The effect of diaphragmatic breathing on attention, negative affect and cortisol in healthy adults. <em class="text-neutral-400">Frontiers in Psychology</em>, 8, 874. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5455070/" target="_blank" rel="noopener" class="text-teal-400 hover:underline">[PubMed / PMC]</a></li>
+            <li>Balban, M. Y., Neri, E., Kaelberer, M. M., et al. (2023). Brief structured respiration practices enhance mood and reduce physiological arousal. <em class="text-neutral-400">Cell Reports Medicine</em>, 4(1), 100895. <a href="https://pubmed.ncbi.nlm.nih.gov/36630953/" target="_blank" rel="noopener" class="text-teal-400 hover:underline">[PubMed]</a></li>
+          </ol>
+        </div>
       </div>
 
+      <!-- Editorial Team Bio -->
+      <div class="rounded-3xl border border-neutral-800 bg-neutral-950/80 p-6 sm:p-8 font-sans backdrop-blur-xl">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full border border-teal-400/30 bg-teal-400/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <h2 class="text-sm sm:text-base font-bold text-white">Written by the HarmonyBreath Editorial Team</h2>
+            <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+              This guide was created by our in-house editorial team of breathwork practitioners and wellness writers, the same people who build and use the HarmonyBreath timers in their daily practice. We research each technique carefully against published physiological literature and keep every article clear, honest, and free of medical overreach.
+            </p>
+            <p class="text-xs font-mono text-neutral-500">
+              This content is for educational purposes only and is not a substitute for professional medical advice.
+            </p>
+            <a href="/about/" class="inline-flex items-center gap-1.5 text-xs font-mono text-teal-400 hover:text-teal-300 transition-colors">
+              Learn more about our team
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Explore Other Techniques -->

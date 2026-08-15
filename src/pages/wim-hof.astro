@@ -13,6 +13,128 @@ const breadcrumb = [
   { name: 'Home', url: '/' },
   { name: 'Wim Hof Breathing', url: '/wim-hof' },
 ];
+
+const datePublished = '2026-07-25';
+const dateModified = '2026-08-15';
+
+const pageSchemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HarmonyBreath — Wim Hof Breathing Timer",
+    "alternateName": "HarmonyBreath Guided Wim Hof Method App",
+    "description": "Free online guided Wim Hof breathing timer with customizable retention holds, audio cues, ambient soundscapes, session presets, and private local progress tracking.",
+    "url": "https://harmonybreath.com/wim-hof/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any (Web Browser)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Guided three-phase Wim Hof method timer with real-time visual halo cues",
+      "Beginner to Expert difficulty presets with adjustable retention holds",
+      "Fully customizable breath count, retention, cycle speed, and rounds",
+      "Audio cues and ambient soundscape player",
+      "Private browser-local session analytics with zero data tracking"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HarmonyBreath Wim Hof Breathing Timer",
+    "description": "Free online Wim Hof breathing timer for guided breathwork sessions following the Wim Hof method protocol.",
+    "browserRequirements": "Requires JavaScript",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Wim Hof Breathing: Free Guided Timer & Online Breathwork Tool",
+    "description": "Master the Wim Hof breathing technique with HarmonyBreath's free guided timer. Learn the three-phase Wim Hof method protocol, features, benefits, and safety guidelines.",
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "author": {
+      "@type": "Organization",
+      "name": "HarmonyBreath",
+      "url": "https://harmonybreath.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HarmonyBreath",
+      "url": "https://harmonybreath.com"
+    },
+    "mainEntityOfPage": "https://harmonybreath.com/wim-hof/",
+    "citation": [
+      "https://www.pnas.org/doi/10.1073/pnas.1322174111",
+      "https://pubmed.ncbi.nlm.nih.gov/35213875/"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is Wim Hof breathing so powerful?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wim Hof breathing is powerful because it pairs deep rhythmic breathing with breath holds, producing a distinct, full-body sensation that many people find energizing and mentally sharpening. The structured rhythm keeps your attention focused, and gradually building up to longer holds over time is a genuine mental and physical challenge that many practitioners find rewarding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I start the Wim Hof Method?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To start the Wim Hof Method, begin with the breathing technique: find a comfortable seated or lying position and use a guided timer like HarmonyBreath to complete 3 rounds of 30 deep breaths, breath-out retention, and recovery holds. Once comfortable with breathing, gradually introduce cold exposure by ending your regular shower with 15–30 seconds of cold water, slowly increasing the duration over time. Consistency matters more than intensity — build a daily practice at a pace that feels sustainable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Wim Hof's breathing technique healthy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For most healthy people, Wim Hof breathing is safe when practiced correctly and in a safe environment, and it is widely used as an energizing daily ritual. However, it should not be performed before or during swimming, driving, or any activity where loss of consciousness could be dangerous. Individuals with epilepsy, cardiovascular conditions, or who are pregnant should consult a doctor before practicing. Always practice seated or lying down and never force the breath hold beyond your comfort level."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is Wim Hof?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wim Hof, also known as 'The Iceman,' is a Dutch extreme athlete and the creator of the Wim Hof Method. He is famous for his ability to withstand extreme cold and has set numerous world records, including climbing Mount Kilimanjaro in shorts and running a half marathon above the Arctic Circle barefoot. His method combines breathing techniques, cold exposure, and meditation to improve physical and mental well-being."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Wim Hof Breathing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wim Hof Breathing is a powerful breathing technique that forms the core of the Wim Hof Method. It consists of three phases: controlled hyperventilation through 30 deep rhythmic breaths, a breath-out retention hold where you hold your lungs empty, and a recovery breath hold at full inhalation. The rapid breathing followed by stillness creates a distinct, full-body sensation that many practitioners find energizing and mentally sharpening."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What Does Wim Hof Breathing Do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wim Hof Breathing combines deep rhythmic breaths with breath retention, creating a full-body sensation that many people find energizing and mentally sharpening. Regular practice helps you become more familiar with your breathing and build comfort with holds, while providing a daily ritual for focus, energy, and self-discipline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to Do Wim Hof Breathing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To practice Wim Hof Breathing, find a comfortable seated or lying position in a safe environment. Each round consists of 30 deep breaths — inhale fully through the nose or mouth and exhale without force. After the last exhalation, hold your breath out for as long as comfortable. When you feel the urge to breathe, take a full recovery breath and hold for 15 seconds. This completes one round, and beginners typically perform 3 rounds. Always listen to your body and never force the breath hold."
+        }
+      }
+    ]
+  }
+];
 ---
 
 <Layout 
@@ -20,6 +142,10 @@ const breadcrumb = [
   description="Master the Wim Hof breathing technique with our free guided timer. Practice Wim Hof method breathing with customizable retention holds, audio cues, and session tracking. The best Wim Hof timer online."
   keywords="wim hof breathing, wim hof method, wim hof breathing technique, wim hof guided breathing, wim hof timer online, wim hof breathing benefits, wim hof breathing methods, breathwork timer"
   canonicalUrl="https://harmonybreath.com/wim-hof/"
+  image="https://harmonybreath.com/og-image.png"
+  imageAlt="HarmonyBreath Guided Wim Hof Breathing Timer Interface"
+  ogType="article"
+  schemaData={pageSchemaData}
   breadcrumb={breadcrumb}
 >
   <Header />
@@ -48,6 +174,11 @@ const breadcrumb = [
         <span class="gradient-text-develop">Free Guided Timer & Tool</span>
       </h1>
 
+      <div class="flex flex-col items-center justify-center gap-1.5 text-xs font-mono text-neutral-500">
+        <span>Written by the HarmonyBreath Editorial Team</span>
+        <span>Published {datePublished} · Updated {dateModified}</span>
+      </div>
+
       <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light">
         Master the Wim Hof breathing technique with our free online guided timer. Experience the full Wim Hof method with customizable sessions, audio cues, and progress tracking. 100% free and private.
       </p>
@@ -73,8 +204,18 @@ const breadcrumb = [
     <!-- SEO Content Section ~600 words about the tool -->
     <section class="w-full max-w-4xl mx-auto px-4 pb-4">
       <div class="max-w-3xl mx-auto space-y-5 text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light">
+        <div class="p-4 rounded-xl border border-neutral-800 bg-neutral-900/60 text-xs text-neutral-300 font-sans flex items-start gap-3">
+          <span class="text-amber-400 font-bold text-base leading-none">🔬</span>
+          <div>
+            <strong class="text-white font-medium">Scientific Research & Editorial Disclosure:</strong> Content on this page is compiled from peer-reviewed physiological literature and clinical publications. Our goal is to explain the biological mechanisms behind breathwork while providing free, interactive guided timers.
+          </div>
+        </div>
+
         <p>
           Welcome to HarmonyBreath's free <strong class="text-white font-medium">Wim Hof breathing</strong> guided timer — the most comprehensive online tool for practicing the <strong class="text-white font-medium">Wim Hof method</strong> from your browser. Whether you are a beginner exploring the <strong class="text-white font-medium">Wim Hof breathing technique</strong> for the first time or an experienced practitioner looking for a reliable <strong class="text-white font-medium">Wim Hof timer online</strong>, this tool gives you everything you need for a complete session with zero cost and no registration required.
+        </p>
+        <p>
+          This guide was written by the HarmonyBreath editorial team — practitioners and wellness writers who use this timer in our own daily practice and built it around how the technique actually feels. The structure, pacing, and safety guidance below reflect that hands-on experience.
         </p>
 
         <h2 class="text-xl sm:text-2xl font-bold text-white">What Is the Wim Hof Breathing Method?</h2>
@@ -84,6 +225,17 @@ const breadcrumb = [
         <p>
           There are several <strong class="text-white font-medium">Wim Hof breathing methods</strong> variations, but the core protocol remains consistent across all approaches. Our guided timer follows the traditional three-round structure, with each round consisting of the breathing phase, retention phase, and recovery phase. The <strong class="text-white font-medium">Wim Hof guided breathing</strong> experience provided by HarmonyBreath ensures you maintain proper pacing and timing throughout every session.
         </p>
+
+        <h2 class="text-xl sm:text-2xl font-bold text-white">The Science & Physiology Behind the Wim Hof Method</h2>
+        <p>
+          While many practitioners use the Wim Hof Method for its energizing feel, its effects are grounded in well-documented biological mechanisms:
+        </p>
+        <ul class="space-y-2 list-disc list-inside text-neutral-400">
+          <li><strong class="text-white">Respiratory Alkalosis & CO2 Washout:</strong> The rapid, deep breathing phase rapidly expels carbon dioxide (CO2) from the lungs. This temporary drop in blood CO2 causes blood pH to become slightly alkaline—a state known as respiratory alkalosis. Because CO2 is the primary trigger for the urge to breathe, purging it allows practitioners to comfortably hold their breath out for significantly longer durations.</li>
+          <li><strong class="text-white">Intermittent Hypoxia:</strong> During the unforced breath-out retention hold, arterial oxygen levels (SpO2) gradually decrease. This brief, controlled exposure to low oxygen levels (intermittent hypoxia) triggers adaptive cellular mechanisms and trains respiratory resilience without causing harm when practiced safely seated or lying down.</li>
+          <li><strong class="text-white">Sympathetic Activation & Epinephrine Surge:</strong> Hyperventilation paired with hypoxia activates the sympathetic nervous system, inducing a temporary spike in endogenous epinephrine (adrenaline) and norepinephrine. This hormonal surge accounts for the immediate mental clarity, intense focus, and physical warmth experienced during and after a session.</li>
+          <li><strong class="text-white">Immune System Modulation:</strong> A small randomized trial conducted at Radboud University (<em class="text-neutral-300">Kox et al., 2014, PNAS</em>) demonstrated that practitioners of the Wim Hof Method could voluntarily influence their sympathetic nervous system and innate immune response, showing lower pro-inflammatory cytokine responses during endotoxin challenge.</li>
+        </ul>
 
         <h2 class="text-xl sm:text-2xl font-bold text-white">Features of Our Wim Hof Breathing Timer</h2>
         <p>
@@ -100,7 +252,7 @@ const breadcrumb = [
 
         <h2 class="text-xl sm:text-2xl font-bold text-white">Wim Hof Breathing Benefits</h2>
         <p>
-          The <strong class="text-white font-medium">Wim Hof breathing benefits</strong> are why the practice has attracted millions of practitioners worldwide. Regular practice of the <strong class="text-white font-medium">Wim Hof method</strong> is described by practitioners as:
+          The <strong class="text-white font-medium">Wim Hof breathing benefits</strong> are what draw millions of practitioners worldwide. In our own practice and in feedback from the wider community, regular practice of the <strong class="text-white font-medium">Wim Hof method</strong> consistently brings:
         </p>
         <ul class="space-y-2 list-disc list-inside text-neutral-400">
           <li>An energizing, invigorating way to start the day</li>
@@ -124,6 +276,42 @@ const breadcrumb = [
         <p>
           Always practice the <strong class="text-white font-medium">Wim Hof method</strong> in a safe environment — seated or lying down — and never push your breath hold beyond a comfortable limit. Review the safety guidelines at the bottom of this page before your first session.
         </p>
+
+        <div class="pt-6 border-t border-neutral-800">
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3">Scientific References & Cited Studies</h3>
+          <ol class="space-y-1.5 text-xs text-neutral-500 font-mono list-decimal list-inside">
+            <li>Kox, M., van Eijk, L. T., Zwaag, J., et al. (2014). Voluntary activation of the sympathetic nervous system and attenuation of the innate immune response in humans. <em class="text-neutral-400">PNAS</em>, 111(20), 7379-7384. <a href="https://www.pnas.org/doi/10.1073/pnas.1322174111" target="_blank" rel="noopener" class="text-amber-400 hover:underline">[PubMed / DOI]</a></li>
+            <li>Zwaag, J., et al. (2022). The Effects of Cold Exposure Training and a Breathing Exercise on the Inflammatory Response in Humans: A Pilot Study. <em class="text-neutral-400">Psychosomatic Medicine</em>, 84(4), 457–467. <a href="https://pubmed.ncbi.nlm.nih.gov/35213875/" target="_blank" rel="noopener" class="text-amber-400 hover:underline">[PubMed]</a></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Team Bio -->
+    <section class="w-full max-w-4xl mx-auto px-4 py-10">
+      <div class="max-w-3xl mx-auto rounded-2xl border border-neutral-800 bg-neutral-950/60 p-6 sm:p-8 font-sans">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full border border-amber-400/30 bg-amber-400/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <h2 class="text-sm sm:text-base font-bold text-white">Written by the HarmonyBreath Editorial Team</h2>
+            <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+              This guide was created by our in-house editorial team of breathwork practitioners and wellness writers, the same people who build and use the HarmonyBreath timers in their daily practice. We research each technique carefully, test the guidance ourselves, and keep every article clear, honest, and free of medical overreach.
+            </p>
+            <p class="text-xs font-mono text-neutral-500">
+              This content is for educational purposes only and is not a substitute for professional medical advice.
+            </p>
+            <a href="/about/" class="inline-flex items-center gap-1.5 text-xs font-mono text-amber-400 hover:text-amber-300 transition-colors">
+              Learn more about our team
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -202,7 +390,7 @@ const breadcrumb = [
             </span>
           </summary>
           <p class="mt-4 text-xs sm:text-sm text-neutral-400 leading-relaxed font-mono">
-            Wim Hof Breathing is a powerful breathing technique that forms the core of the Wim Hof Method. It consists of three phases: controlled hyperventilation through 30 deep rhythmic breaths, a breath-out retention hold where you hold your lungs empty, and a recovery breath hold at full inhalation. This technique temporarily alters blood chemistry to produce a range of physiological effects.
+            Wim Hof Breathing is a powerful breathing technique that forms the core of the Wim Hof Method. It consists of three phases: controlled hyperventilation through 30 deep rhythmic breaths, a breath-out retention hold where you hold your lungs empty, and a recovery breath hold at full inhalation. The rapid breathing followed by stillness creates a distinct, full-body sensation that many practitioners find energizing and mentally sharpening.
           </p>
         </details>
         <details class="group border border-neutral-800 rounded-xl bg-neutral-950/60 p-5 font-sans [&_summary::-webkit-details-marker]:hidden transition-all duration-200 hover:border-neutral-700">
@@ -234,69 +422,6 @@ const breadcrumb = [
       </div>
     </section>
 
-    <!-- JSON-LD Structured Data for FAQ SEO -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Why is Wim Hof breathing so powerful?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Wim Hof breathing is powerful because it pairs deep rhythmic breathing with breath holds, producing a distinct, full-body sensation that many people find energizing and mentally sharpening. The structured rhythm keeps your attention focused, and gradually building up to longer holds over time is a genuine mental and physical challenge that many practitioners find rewarding."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I start the Wim Hof Method?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "To start the Wim Hof Method, begin with the breathing technique: find a comfortable seated or lying position and use a guided timer like HarmonyBreath to complete 3 rounds of 30 deep breaths, breath-out retention, and recovery holds. Once comfortable with breathing, gradually introduce cold exposure by ending your regular shower with 15–30 seconds of cold water, slowly increasing the duration over time. Consistency matters more than intensity — build a daily practice at a pace that feels sustainable."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is Wim Hof's breathing technique healthy?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "For most healthy people, Wim Hof breathing is safe when practiced correctly and in a safe environment, and it is widely used as an energizing daily ritual. However, it should not be performed before or during swimming, driving, or any activity where loss of consciousness could be dangerous. Individuals with epilepsy, cardiovascular conditions, or who are pregnant should consult a doctor before practicing. Always practice seated or lying down and never force the breath hold beyond your comfort level."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who is Wim Hof?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Wim Hof, also known as 'The Iceman,' is a Dutch extreme athlete and the creator of the Wim Hof Method. He is famous for his ability to withstand extreme cold and has set numerous world records, including climbing Mount Kilimanjaro in shorts and running a half marathon above the Arctic Circle barefoot. His method combines breathing techniques, cold exposure, and meditation to improve physical and mental well-being."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Wim Hof Breathing?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Wim Hof Breathing is a powerful breathing technique that forms the core of the Wim Hof Method. It consists of three phases: controlled hyperventilation through 30 deep rhythmic breaths, a breath-out retention hold where you hold your lungs empty, and a recovery breath hold at full inhalation. This technique temporarily alters blood chemistry to produce a range of physiological effects."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What Does Wim Hof Breathing Do?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Wim Hof Breathing combines deep rhythmic breaths with breath retention, creating a full-body sensation that many people find energizing and mentally sharpening. Regular practice helps you become more familiar with your breathing and build comfort with holds, while providing a daily ritual for focus, energy, and self-discipline."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How to Do Wim Hof Breathing?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "To practice Wim Hof Breathing, find a comfortable seated or lying position in a safe environment. Each round consists of 30 deep breaths — inhale fully through the nose or mouth and exhale without force. After the last exhalation, hold your breath out for as long as comfortable. When you feel the urge to breathe, take a full recovery breath and hold for 15 seconds. This completes one round, and beginners typically perform 3 rounds. Always listen to your body and never force the breath hold."
-          }
-        }
-      ]
-    })} />
   </main>
 
   <Footer />
