@@ -20,11 +20,14 @@ const {
   description = 'Free online guided breathing timers for Wim Hof, Box Breathing, 4-7-8, and more. Practice breathwork techniques with audio cues, customizable sessions, and local progress tracking. 100% free & private.',
   image = 'https://harmonybreath.com/og-image.png',
   imageAlt = 'HarmonyBreath Guided Breathing App',
-  canonicalUrl = 'https://harmonybreath.com/',
+  canonicalUrl: customCanonicalUrl,
   keywords = 'guided breathing timer, breathing exercises, breathwork timer, wim hof breathing, box breathing, 4-7-8 breathing, calming breathing, breathing techniques, free breathwork app',
   robots = 'index, follow',
   ogType = 'website',
 } = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.href : 'https://harmonybreath.com';
+const canonicalUrl = customCanonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
 
 const defaultSchemaData = [
   {
