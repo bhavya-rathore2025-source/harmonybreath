@@ -290,9 +290,66 @@ import NadiMusicSelectionModal from './NadiMusicSelectionModal.astro';
     }
   }
 
+  let lastPhase: PhaseType | '' = '';
+
+  function triggerHaloPhaseAnimation(phase: PhaseType) {
+    if (!breathHalo) return;
+    const dur = getPhaseDuration(phase);
+
+    switch (phase) {
+      case 'idle':
+        breathHalo.className = 'absolute w-44 h-44 rounded-full bg-gradient-to-tr from-indigo-500/20 via-purple-500/20 to-pink-500/20 flex items-center justify-center border border-white/5';
+        breathHalo.style.transitionProperty = 'transform';
+        breathHalo.style.transitionDuration = '500ms';
+        breathHalo.style.transitionTimingFunction = 'ease-in-out';
+        breathHalo.style.transform = 'scale(1.0)';
+        break;
+
+      case 'left-inhale':
+      case 'right-inhale':
+        breathHalo.className = 'absolute w-44 h-44 rounded-full bg-indigo-500/30 flex items-center justify-center border border-indigo-400/20';
+        breathHalo.style.transitionProperty = 'transform';
+        breathHalo.style.transitionDuration = `${dur * 1000}ms`;
+        breathHalo.style.transitionTimingFunction = 'ease-in-out';
+        breathHalo.style.transform = 'scale(1.35)';
+        break;
+
+      case 'hold-1':
+      case 'hold-2':
+        breathHalo.className = 'absolute w-44 h-44 rounded-full bg-amber-500/20 flex items-center justify-center border border-amber-400/20';
+        breathHalo.style.transitionProperty = 'transform';
+        breathHalo.style.transitionDuration = `${dur * 1000}ms`;
+        breathHalo.style.transitionTimingFunction = 'ease-in-out';
+        breathHalo.style.transform = 'scale(1.35)';
+        break;
+
+      case 'right-exhale':
+      case 'left-exhale':
+        breathHalo.className = 'absolute w-44 h-44 rounded-full bg-emerald-500/30 flex items-center justify-center border border-emerald-400/20';
+        breathHalo.style.transitionProperty = 'transform';
+        breathHalo.style.transitionDuration = `${dur * 1000}ms`;
+        breathHalo.style.transitionTimingFunction = 'ease-in-out';
+        breathHalo.style.transform = 'scale(0.85)';
+        break;
+
+      case 'completed':
+        breathHalo.className = 'absolute w-44 h-44 rounded-full bg-emerald-500/30 flex items-center justify-center border border-emerald-400/30';
+        breathHalo.style.transitionProperty = 'transform';
+        breathHalo.style.transitionDuration = '700ms';
+        breathHalo.style.transitionTimingFunction = 'ease-in-out';
+        breathHalo.style.transform = 'scale(1.05)';
+        break;
+    }
+  }
+
   function updateUI() {
     if (totalCyclesText) totalCyclesText.textContent = String(config.cycles);
     if (currentCycleText) currentCycleText.textContent = String(currentCycle);
+
+    if (currentPhase !== lastPhase) {
+      triggerHaloPhaseAnimation(currentPhase);
+      lastPhase = currentPhase;
+    }
 
     const timingSummary = config.hold > 0
       ? `In ${config.inhale}s • Hold ${config.hold}s • Out ${config.exhale}s`
@@ -323,7 +380,6 @@ import NadiMusicSelectionModal from './NadiMusicSelectionModal.astro';
         if (actionText) actionText.textContent = 'PRESS START';
         if (phaseLabel) phaseLabel.textContent = 'READY';
         if (instructionGuidance) instructionGuidance.textContent = 'Sit comfortably upright with your right hand near your nose.';
-        if (breathHalo) breathHalo.className = 'absolute w-44 h-44 rounded-full bg-gradient-to-tr from-indigo-500/20 via-purple-500/20 to-pink-500/20 transition-transform duration-700 scale-100 border border-white/5';
         if (phaseGlow) phaseGlow.className = 'absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-indigo-500/20 via-transparent to-transparent';
         updateNostrilVisuals('open', 'open');
         break;
@@ -332,7 +388,6 @@ import NadiMusicSelectionModal from './NadiMusicSelectionModal.astro';
         if (actionText) { actionText.textContent = 'LEFT INHALE'; actionText.className = 'text-xs sm:text-sm font-mono uppercase tracking-widest text-indigo-400 mb-1 font-bold'; }
         if (phaseLabel) { phaseLabel.textContent = 'LEFT INHALE'; phaseLabel.className = 'uppercase tracking-wider font-semibold text-indigo-400'; }
         if (instructionGuidance) instructionGuidance.textContent = '👉 Close right nostril with THUMB. Inhale gently through left nostril.';
-        if (breathHalo) breathHalo.className = `absolute w-44 h-44 rounded-full bg-indigo-500/30 transition-transform ease-linear scale-125 border border-indigo-400/20`;
         if (phaseGlow) phaseGlow.className = 'absolute inset-0 opacity-30 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-indigo-500/30 via-indigo-900/10 to-transparent';
         updateNostrilVisuals('inhale', 'closed');
         break;
@@ -342,7 +397,6 @@ import NadiMusicSelectionModal from './NadiMusicSelectionModal.astro';
         if (actionText) { actionText.textContent = 'HOLD BREATH'; actionText.className = 'text-xs sm:text-sm font-mono uppercase tracking-widest text-amber-400 mb-1 font-bold'; }
         if (phaseLabel) { phaseLabel.textContent = 'RETENTION HOLD'; phaseLabel.className = 'uppercase tracking-wider font-semibold text-amber-400'; }
         if (instructionGuidance) instructionGuidance.textContent = '🔒 Close both nostrils gently with thumb and ring finger.';
-        if (breathHalo) breathHalo.className = 'absolute w-44 h-44 rounded-full bg-amber-500/20 transition-transform duration-500 scale-125 border border-amber-400/20';
         if (phaseGlow) phaseGlow.className = 'absolute inset-0 opacity-30 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-amber-500/20 via-transparent to-transparent';
         updateNostrilVisuals('closed', 'closed');
         break;
@@ -351,7 +405,6 @@ import NadiMusicSelectionModal from './NadiMusicSelectionModal.astro';
         if (actionText) { actionText.textContent = 'RIGHT EXHALE'; actionText.className = 'text-xs sm:text-sm font-mono uppercase tracking-widest text-emerald-400 mb-1 font-bold'; }
         if (phaseLabel) { phaseLabel.textContent = 'RIGHT EXHALE'; phaseLabel.className = 'uppercase tracking-wider font-semibold text-emerald-400'; }
         if (instructionGuidance) instructionGuidance.textContent = '👉 Keep left nostril closed with RING FINGER. Exhale through right nostril.';
-        if (breathHalo) breathHalo.className = `absolute w-44 h-44 rounded-full bg-emerald-500/30 transition-transform ease-linear scale-90 border border-emerald-400/20`;
         if (phaseGlow) phaseGlow.className = 'absolute inset-0 opacity-30 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-emerald-500/30 via-emerald-900/10 to-transparent';
         updateNostrilVisuals('closed', 'exhale');
         break;
@@ -360,7 +413,6 @@ import NadiMusicSelectionModal from './NadiMusicSelectionModal.astro';
         if (actionText) { actionText.textContent = 'RIGHT INHALE'; actionText.className = 'text-xs sm:text-sm font-mono uppercase tracking-widest text-indigo-400 mb-1 font-bold'; }
         if (phaseLabel) { phaseLabel.textContent = 'RIGHT INHALE'; phaseLabel.className = 'uppercase tracking-wider font-semibold text-indigo-400'; }
         if (instructionGuidance) instructionGuidance.textContent = '👉 Keep left nostril closed. Inhale gently through right nostril.';
-        if (breathHalo) breathHalo.className = `absolute w-44 h-44 rounded-full bg-indigo-500/30 transition-transform ease-linear scale-125 border border-indigo-400/20`;
         if (phaseGlow) phaseGlow.className = 'absolute inset-0 opacity-30 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-indigo-500/30 via-indigo-900/10 to-transparent';
         updateNostrilVisuals('closed', 'inhale');
         break;
@@ -369,7 +421,6 @@ import NadiMusicSelectionModal from './NadiMusicSelectionModal.astro';
         if (actionText) { actionText.textContent = 'LEFT EXHALE'; actionText.className = 'text-xs sm:text-sm font-mono uppercase tracking-widest text-emerald-400 mb-1 font-bold'; }
         if (phaseLabel) { phaseLabel.textContent = 'LEFT EXHALE'; phaseLabel.className = 'uppercase tracking-wider font-semibold text-emerald-400'; }
         if (instructionGuidance) instructionGuidance.textContent = '👉 Close right nostril with THUMB. Exhale slowly through left nostril.';
-        if (breathHalo) breathHalo.className = `absolute w-44 h-44 rounded-full bg-emerald-500/30 transition-transform ease-linear scale-90 border border-emerald-400/20`;
         if (phaseGlow) phaseGlow.className = 'absolute inset-0 opacity-30 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-emerald-500/30 via-emerald-900/10 to-transparent';
         updateNostrilVisuals('exhale', 'closed');
         break;
@@ -378,7 +429,6 @@ import NadiMusicSelectionModal from './NadiMusicSelectionModal.astro';
         if (actionText) { actionText.textContent = 'SESSION COMPLETE'; actionText.className = 'text-xs sm:text-sm font-mono uppercase tracking-widest text-emerald-400 mb-1 font-bold'; }
         if (phaseLabel) { phaseLabel.textContent = 'FINISHED'; phaseLabel.className = 'uppercase tracking-wider font-semibold text-emerald-400'; }
         if (instructionGuidance) instructionGuidance.textContent = '✨ Wonderful practice! Rest and observe your calm, balanced breathing.';
-        if (breathHalo) breathHalo.className = 'absolute w-44 h-44 rounded-full bg-emerald-500/30 transition-transform duration-700 scale-105 border border-emerald-400/30';
         if (phaseGlow) phaseGlow.className = 'absolute inset-0 opacity-40 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-emerald-500/40 via-transparent to-transparent';
         updateNostrilVisuals('open', 'open');
         break;
@@ -467,6 +517,7 @@ import NadiMusicSelectionModal from './NadiMusicSelectionModal.astro';
     if (currentPhase === 'idle' || currentPhase === 'completed') {
       currentCycle = 1;
       currentPhase = 'left-inhale';
+      lastPhase = '';
       elapsedPhaseSec = 0;
       playPhaseAudio(currentPhase);
     }
@@ -505,6 +556,7 @@ import NadiMusicSelectionModal from './NadiMusicSelectionModal.astro';
   function resetSession() {
     stopTimer();
     currentPhase = 'idle';
+    lastPhase = '';
     currentCycle = 1;
     elapsedPhaseSec = 0;
     if (btnSkipPhase) btnSkipPhase.classList.add('hidden');
