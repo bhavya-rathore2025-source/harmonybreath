@@ -126,11 +126,23 @@ const pageSchemaData = [
 
   <main class="flex-1 hero-gradient-mesh relative">
     <!-- Top Navigation & Hero Header -->
-    <section class="w-full max-w-4xl mx-auto pt-8 pb-6 px-4 text-center space-y-4">
-      <div class="flex items-center justify-center gap-2 mb-2">
+    <section class="relative w-full max-w-4xl mx-auto pt-14 pb-10 px-4 text-center space-y-5 overflow-hidden">
+      <!-- Ambient background imagery -->
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <img
+          src="https://picsum.photos/seed/harmonybreath-belly/1920/1080"
+          alt=""
+          class="absolute inset-0 w-full h-full object-cover opacity-[0.07]"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/40 to-transparent"></div>
+      </div>
+      <div class="animate-breath absolute left-1/2 top-10 -translate-x-1/2 w-[24rem] h-[24rem] rounded-full bg-teal-500/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative flex flex-wrap items-center justify-center gap-2">
         <a
           href="/"
-          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/80 text-neutral-400 hover:text-white text-xs font-mono transition-colors"
+          class="focus-ring inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/80 text-neutral-400 hover:text-white text-xs font-mono transition-colors"
         >
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -143,17 +155,17 @@ const pageSchemaData = [
         </span>
       </div>
 
-      <h1 class="text-4xl sm:text-6xl font-bold tracking-normal text-white leading-tight">
+      <h1 class="relative text-4xl sm:text-6xl font-bold tracking-tight text-white leading-tight text-balance">
         Belly Breathing Exercises <br />
-        <span class="gradient-text-develop">Free Guided Diaphragmatic Timer</span>
+        <span class="gradient-text-preview">Free Guided Diaphragmatic Timer</span>
       </h1>
 
-      <div class="flex flex-col items-center justify-center gap-1.5 text-xs font-mono text-neutral-500">
+      <div class="relative flex flex-col items-center justify-center gap-1.5 text-xs font-mono text-neutral-500">
         <span>Written by the HarmonyBreath Editorial Team</span>
         <span>Published {datePublished} · Updated {dateModified}</span>
       </div>
 
-      <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light">
+      <p class="relative max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light text-pretty">
         Restore balance to your nervous system with our interactive <strong class="text-neutral-200 font-medium">belly breathing timer</strong>. Also known as diaphragmatic or abdominal breathing, this core practice engages your diaphragm to promote full oxygen exchange, soothe stress, and activate vagal tone.
       </p>
     </section>
@@ -168,62 +180,73 @@ const pageSchemaData = [
     <AnalyticsPanel exerciseId="diaphragmatic-breathing" />
 
     <!-- Detailed SEO Article & Practice Guide -->
-    <section class="w-full max-w-4xl mx-auto px-4 py-12 space-y-12">
-      
-      <div class="p-4 rounded-xl border border-neutral-800 bg-neutral-900/60 text-xs text-neutral-300 font-sans flex items-start gap-3">
-        <span class="text-teal-400 font-bold text-base leading-none">🔬</span>
+    <section class="w-full max-w-4xl mx-auto px-4 py-16 space-y-16">
+
+      <div class="reveal p-5 rounded-2xl border border-neutral-800 bg-neutral-900/50 text-xs text-neutral-300 font-sans flex items-start gap-3 backdrop-blur-md">
+        <span class="text-teal-400 font-bold text-base leading-none shrink-0 mt-0.5">🔬</span>
         <div>
           <strong class="text-white font-medium">Scientific Research & Editorial Disclosure:</strong> Content on this page is compiled from published physiological studies, clinical research on vagal stimulation, and medical publications. Our goal is to explain the biological mechanisms behind diaphragmatic respiration while providing free, interactive guided timers.
         </div>
       </div>
 
       <!-- Section 1: Overview & Anatomy -->
-      <div class="bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-10 backdrop-blur-xl space-y-6 shadow-2xl">
-        <div class="flex items-center gap-3 border-b border-neutral-800 pb-4">
-          <div class="w-10 h-10 rounded-2xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-400 font-mono text-sm font-bold">
-            01
-          </div>
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Understanding Belly Breathing & Diaphragmatic Anatomy</h2>
-            <p class="text-xs text-neutral-400 font-mono">The Foundations of Deep Abdominal Respiration</p>
-          </div>
-        </div>
+      <section class="reveal relative">
+        <div class="absolute -left-24 top-10 w-64 h-64 bg-teal-500/[0.06] rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-        <div class="space-y-4 text-sm text-neutral-300 leading-relaxed font-sans">
-          <p>
-            <strong class="text-white font-semibold">Belly breathing</strong>—medically referred to as <strong class="text-teal-300">diaphragmatic breathing</strong> or abdominal breathing—is an essential breathwork technique designed to re-train the body to use its primary muscle of respiration: the diaphragm. Located directly below the lungs, the diaphragm is a dome-shaped muscular sheet that separates the thoracic cavity from the abdominal space.
-          </p>
-          <p>
-            In modern daily life, chronic stress, poor desk posture, and fast-paced environments lead many people into habitual <strong class="text-white font-medium">thoracic chest breathing</strong>. Shallow chest breathing relies heavily on secondary neck and upper chest muscles (such as the sternocleidomastoids and intercostals), drawing small volumes of air into only the upper portion of the lungs. In contrast, diaphragmatic belly breathing consciously pulls the diaphragm downward during inhalation, creating a natural vacuum that draws air deep into the lower lung lobes where blood capillaries are most concentrated.
-          </p>
-          <p>
-            As the diaphragm descends into the abdomen, it pushes the abdominal organs forward, causing your belly to gently expand outward like a filling balloon. On exhalation, the diaphragm relaxes upward, causing the abdomen to drop naturally. This mechanical movement maximizes pulmonary gas exchange, purges trapped carbon dioxide, and restores efficient respiratory mechanics.
-          </p>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div class="lg:col-span-4">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="w-8 h-8 rounded-xl bg-teal-500/15 border border-teal-400/25 text-teal-400 font-mono text-xs font-bold flex items-center justify-center">01</span>
+              <p class="text-xs font-mono text-teal-400 tracking-wide">The Foundations of Deep Abdominal Respiration</p>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight text-balance">Understanding Belly Breathing & Diaphragmatic Anatomy</h2>
+
+            <div class="hidden lg:flex mt-12 items-center justify-center" aria-hidden="true">
+              <div class="relative w-44 h-44">
+                <div class="absolute inset-0 rounded-full border border-teal-400/15"></div>
+                <div class="absolute inset-5 rounded-full border border-teal-400/20"></div>
+                <div class="absolute inset-10 rounded-full border border-teal-400/25 bg-teal-500/5"></div>
+                <div class="absolute inset-[4.5rem] rounded-full bg-teal-400/15 blur-md"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 lg:col-start-6 space-y-5 text-sm text-neutral-300 leading-relaxed font-sans text-pretty">
+            <p>
+              <strong class="text-white font-semibold">Belly breathing</strong>—medically referred to as <strong class="text-teal-300">diaphragmatic breathing</strong> or abdominal breathing—is an essential breathwork technique designed to re-train the body to use its primary muscle of respiration: the diaphragm. Located directly below the lungs, the diaphragm is a dome-shaped muscular sheet that separates the thoracic cavity from the abdominal space.
+            </p>
+            <p>
+              In modern daily life, chronic stress, poor desk posture, and fast-paced environments lead many people into habitual <strong class="text-white font-medium">thoracic chest breathing</strong>. Shallow chest breathing relies heavily on secondary neck and upper chest muscles (such as the sternocleidomastoids and intercostals), drawing small volumes of air into only the upper portion of the lungs. In contrast, diaphragmatic belly breathing consciously pulls the diaphragm downward during inhalation, creating a natural vacuum that draws air deep into the lower lung lobes where blood capillaries are most concentrated.
+            </p>
+            <p>
+              As the diaphragm descends into the abdomen, it pushes the abdominal organs forward, causing your belly to gently expand outward like a filling balloon. On exhalation, the diaphragm relaxes upward, causing the abdomen to drop naturally. This mechanical movement maximizes pulmonary gas exchange, purges trapped carbon dioxide, and restores efficient respiratory mechanics.
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
 
       <!-- Section 2: About the Interactive Tool -->
-      <div class="bg-gradient-to-br from-neutral-950 via-neutral-900/90 to-neutral-950 border border-teal-500/20 rounded-3xl p-6 sm:p-10 backdrop-blur-xl space-y-6 shadow-2xl relative overflow-hidden">
-        <div class="absolute -right-20 -top-20 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <section class="reveal relative rounded-3xl border border-teal-500/15 bg-gradient-to-br from-neutral-950 via-neutral-900/60 to-neutral-950 p-6 sm:p-10 backdrop-blur-xl overflow-hidden">
+        <div class="absolute -right-24 -top-24 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+        <div class="absolute -left-24 -bottom-24 w-72 h-72 bg-cyan-500/[0.05] rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+        <div class="noise-overlay absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true"></div>
 
-        <div class="flex items-center gap-3 border-b border-neutral-800 pb-4">
-          <div class="w-10 h-10 rounded-2xl bg-teal-400/20 border border-teal-400/40 flex items-center justify-center text-teal-400 font-mono text-sm font-bold">
-            02
+        <div class="relative mb-8">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-8 h-8 rounded-xl bg-teal-500/15 border border-teal-400/25 text-teal-400 font-mono text-xs font-bold flex items-center justify-center">02</span>
+            <p class="text-xs font-mono text-teal-400 tracking-wide">Features & Interactive Features of the Online Timer</p>
           </div>
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">About Our Guided Belly Breathing Tool</h2>
-            <p class="text-xs text-neutral-400 font-mono">Features & Interactive Features of the Online Timer</p>
-          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight text-balance">About Our Guided Belly Breathing Tool</h2>
         </div>
 
-        <div class="space-y-4 text-sm text-neutral-300 leading-relaxed font-sans">
-          <p>
+        <div class="relative space-y-4 text-sm text-neutral-300 leading-relaxed font-sans text-pretty">
+          <p class="max-w-2xl">
             Our web-based <strong class="text-white font-semibold">Guided Belly Breathing Timer</strong> is designed to make diaphragmatic breathwork effortless, intuitive, and highly effective for practitioners of all experience levels. Instead of mentally counting seconds or watching a strict clock, our interactive tool handles the timing so you can focus 100% on relaxing your body.
           </p>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-            <div class="p-5 rounded-2xl bg-neutral-950/60 border border-neutral-800/80 space-y-2">
-              <div class="flex items-center gap-2 text-teal-400 font-bold text-sm font-mono">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 my-8">
+            <div class="md:col-span-7 p-6 rounded-2xl bg-neutral-950/60 border border-neutral-800/80 hover:border-teal-500/30 transition-colors duration-300">
+              <div class="flex items-center gap-2 text-teal-400 font-bold text-sm font-mono mb-3">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -235,8 +258,8 @@ const pageSchemaData = [
               </p>
             </div>
 
-            <div class="p-5 rounded-2xl bg-neutral-950/60 border border-neutral-800/80 space-y-2">
-              <div class="flex items-center gap-2 text-cyan-400 font-bold text-sm font-mono">
+            <div class="md:col-span-5 md:mt-10 p-6 rounded-2xl bg-neutral-950/60 border border-neutral-800/80 hover:border-teal-500/30 transition-colors duration-300">
+              <div class="flex items-center gap-2 text-teal-400 font-bold text-sm font-mono mb-3">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>
@@ -247,8 +270,8 @@ const pageSchemaData = [
               </p>
             </div>
 
-            <div class="p-5 rounded-2xl bg-neutral-950/60 border border-neutral-800/80 space-y-2">
-              <div class="flex items-center gap-2 text-blue-400 font-bold text-sm font-mono">
+            <div class="md:col-span-5 p-6 rounded-2xl bg-neutral-950/60 border border-neutral-800/80 hover:border-teal-500/30 transition-colors duration-300">
+              <div class="flex items-center gap-2 text-teal-400 font-bold text-sm font-mono mb-3">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                 </svg>
@@ -259,8 +282,8 @@ const pageSchemaData = [
               </p>
             </div>
 
-            <div class="p-5 rounded-2xl bg-neutral-950/60 border border-neutral-800/80 space-y-2">
-              <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm font-mono">
+            <div class="md:col-span-7 md:mt-10 p-6 rounded-2xl bg-neutral-950/60 border border-neutral-800/80 hover:border-teal-500/30 transition-colors duration-300">
+              <div class="flex items-center gap-2 text-teal-400 font-bold text-sm font-mono mb-3">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
@@ -272,23 +295,21 @@ const pageSchemaData = [
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- Section 3: Scientific Benefits -->
-      <div class="bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-10 backdrop-blur-xl space-y-6 shadow-2xl">
-        <div class="flex items-center gap-3 border-b border-neutral-800 pb-4">
-          <div class="w-10 h-10 rounded-2xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-mono text-sm font-bold">
-            03
-          </div>
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Scientific & Physiological Benefits</h2>
-            <p class="text-xs text-neutral-400 font-mono">Vagus Nerve Stimulation & Stress Reduction</p>
-          </div>
-        </div>
+      <section class="reveal relative">
+        <div class="absolute -right-24 top-20 w-72 h-72 bg-teal-500/[0.05] rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-neutral-300">
-          <div class="space-y-3">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-xl bg-teal-500/15 border border-teal-400/25 text-teal-400 font-mono text-xs font-bold flex items-center justify-center">03</span>
+          <p class="text-xs font-mono text-teal-400 tracking-wide">Vagus Nerve Stimulation & Stress Reduction</p>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight text-balance mb-8">Scientific & Physiological Benefits</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm text-neutral-300">
+          <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md hover:border-teal-500/30 transition-colors duration-300">
+            <h3 class="text-base font-bold text-white flex items-center gap-2 mb-3">
               <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
               Vagus Nerve Activation
             </h3>
@@ -297,9 +318,9 @@ const pageSchemaData = [
             </p>
           </div>
 
-          <div class="space-y-3">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+          <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md md:mt-10 hover:border-teal-500/30 transition-colors duration-300">
+            <h3 class="text-base font-bold text-white flex items-center gap-2 mb-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
               Cortisol & Anxiety Reduction
             </h3>
             <p class="text-xs text-neutral-400 leading-relaxed">
@@ -307,9 +328,9 @@ const pageSchemaData = [
             </p>
           </div>
 
-          <div class="space-y-3">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
+          <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md hover:border-teal-500/30 transition-colors duration-300">
+            <h3 class="text-base font-bold text-white flex items-center gap-2 mb-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
               Optimal Oxygen Delivery
             </h3>
             <p class="text-xs text-neutral-400 leading-relaxed">
@@ -317,9 +338,9 @@ const pageSchemaData = [
             </p>
           </div>
 
-          <div class="space-y-3">
-            <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
+          <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md md:mt-10 hover:border-teal-500/30 transition-colors duration-300">
+            <h3 class="text-base font-bold text-white flex items-center gap-2 mb-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
               Core Stability & Digestive Health
             </h3>
             <p class="text-xs text-neutral-400 leading-relaxed">
@@ -327,114 +348,112 @@ const pageSchemaData = [
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- Section 4: Step-by-Step Practice Guide -->
-      <div class="bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-10 backdrop-blur-xl space-y-6 shadow-2xl">
-        <div class="flex items-center gap-3 border-b border-neutral-800 pb-4">
-          <div class="w-10 h-10 rounded-2xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-400 font-mono text-sm font-bold">
-            04
+      <section class="reveal relative">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-xl bg-teal-500/15 border border-teal-400/25 text-teal-400 font-mono text-xs font-bold flex items-center justify-center">04</span>
+          <p class="text-xs font-mono text-teal-400 tracking-wide">Proper Posture, Hand Placement & Rhythm Execution</p>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight text-balance mb-8">Step-by-Step Belly Breathing Technique Guide</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 text-sm text-neutral-300 font-sans">
+          <div class="p-6 rounded-3xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md hover:border-teal-500/40 hover:-translate-y-0.5 transition-all duration-300">
+            <div class="w-9 h-9 rounded-xl bg-teal-500/15 border border-teal-400/25 text-teal-400 font-mono font-bold flex items-center justify-center text-xs mb-4">Step 1</div>
+            <h3 class="text-base font-bold text-white mb-2">Find Your Position</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Sit upright in a supportive chair with feet flat on the ground, or lie flat on your back (supine position) with knees bent and supported by a pillow. Relax your shoulders away from your ears.
+            </p>
           </div>
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Step-by-Step Belly Breathing Technique Guide</h2>
-            <p class="text-xs text-neutral-400 font-mono">Proper Posture, Hand Placement & Rhythm Execution</p>
+
+          <div class="p-6 rounded-3xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md md:mt-10 hover:border-teal-500/40 hover:-translate-y-0.5 transition-all duration-300">
+            <div class="w-9 h-9 rounded-xl bg-teal-500/15 border border-teal-400/25 text-teal-400 font-mono font-bold flex items-center justify-center text-xs mb-4">Step 2</div>
+            <h3 class="text-base font-bold text-white mb-2">Place Your Hands</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Place one hand on your upper chest and the other hand on your belly just below your ribcage. This tactile feedback ensures you engage your diaphragm rather than lifting your chest.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md md:mt-20 hover:border-teal-500/40 hover:-translate-y-0.5 transition-all duration-300">
+            <div class="w-9 h-9 rounded-xl bg-teal-500/15 border border-teal-400/25 text-teal-400 font-mono font-bold flex items-center justify-center text-xs mb-4">Step 3</div>
+            <h3 class="text-base font-bold text-white mb-2">Follow the Timer</h3>
+            <p class="text-xs text-neutral-400 leading-relaxed">
+              Start our guided timer tool. Inhale deeply through your nose for 4 seconds, feeling your stomach expand outward against your hand while your chest stays completely still. Exhale smoothly for 6 seconds.
+            </p>
           </div>
         </div>
-
-        <div class="space-y-6 text-sm text-neutral-300 font-sans">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-3">
-              <div class="w-8 h-8 rounded-xl bg-teal-500/20 text-teal-400 font-mono font-bold flex items-center justify-center text-xs">Step 1</div>
-              <h3 class="text-base font-bold text-white">Find Your Position</h3>
-              <p class="text-xs text-neutral-400 leading-relaxed">
-                Sit upright in a supportive chair with feet flat on the ground, or lie flat on your back (supine position) with knees bent and supported by a pillow. Relax your shoulders away from your ears.
-              </p>
-            </div>
-
-            <div class="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-3">
-              <div class="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 font-mono font-bold flex items-center justify-center text-xs">Step 2</div>
-              <h3 class="text-base font-bold text-white">Place Your Hands</h3>
-              <p class="text-xs text-neutral-400 leading-relaxed">
-                Place one hand on your upper chest and the other hand on your belly just below your ribcage. This tactile feedback ensures you engage your diaphragm rather than lifting your chest.
-              </p>
-            </div>
-
-            <div class="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-3">
-              <div class="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 font-mono font-bold flex items-center justify-center text-xs">Step 3</div>
-              <h3 class="text-base font-bold text-white">Follow the Timer</h3>
-              <p class="text-xs text-neutral-400 leading-relaxed">
-                Start our guided timer tool. Inhale deeply through your nose for 4 seconds, feeling your stomach expand outward against your hand while your chest stays completely still. Exhale smoothly for 6 seconds.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
 
       <!-- Section 5: FAQs -->
-      <div class="bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-10 backdrop-blur-xl space-y-6 shadow-2xl">
-        <div class="flex items-center gap-3 border-b border-neutral-800 pb-4">
-          <div class="w-10 h-10 rounded-2xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center text-purple-400 font-mono text-sm font-bold">
-            05
-          </div>
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Frequently Asked Questions About Belly Breathing</h2>
-            <p class="text-xs text-neutral-400 font-mono">Expert Answers for Common Practice & Health Questions</p>
-          </div>
+      <section class="reveal relative">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-xl bg-teal-500/15 border border-teal-400/25 text-teal-400 font-mono text-xs font-bold flex items-center justify-center">05</span>
+          <p class="text-xs font-mono text-teal-400 tracking-wide">Expert Answers for Common Practice & Health Questions</p>
         </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight text-balance mb-8">Frequently Asked Questions About Belly Breathing</h2>
 
         <div class="space-y-4 font-sans">
-          <details class="group bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-5 transition-all">
-            <summary class="cursor-pointer font-semibold text-white text-sm sm:text-base flex justify-between items-center list-none">
+          <details class="group p-5 sm:p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-teal-500/30 hover:border-neutral-700 transition-all duration-300">
+            <summary class="cursor-pointer font-semibold text-white text-sm sm:text-base flex justify-between items-center list-none gap-4">
               <span>Is belly breathing good for anxiety?</span>
-              <span class="text-neutral-500 group-open:rotate-180 transition-transform font-mono text-lg">+</span>
+              <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
             </summary>
-            <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed">
+            <p class="mt-4 text-xs sm:text-sm text-neutral-400 leading-relaxed">
               Yes, belly breathing (diaphragmatic breathing) is highly effective for reducing anxiety. By activating the vagus nerve and stimulating the parasympathetic nervous system, belly breathing slows your heart rate, lowers blood pressure, and sends signals to your brain that you are safe, quickly calming anxious thoughts and physical tension.
             </p>
           </details>
 
-          <details class="group bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-5 transition-all">
-            <summary class="cursor-pointer font-semibold text-white text-sm sm:text-base flex justify-between items-center list-none">
+          <details class="group p-5 sm:p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-teal-500/30 hover:border-neutral-700 transition-all duration-300">
+            <summary class="cursor-pointer font-semibold text-white text-sm sm:text-base flex justify-between items-center list-none gap-4">
               <span>What are some natural ways to lower cortisol levels?</span>
-              <span class="text-neutral-500 group-open:rotate-180 transition-transform font-mono text-lg">+</span>
+              <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
             </summary>
-            <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed">
+            <p class="mt-4 text-xs sm:text-sm text-neutral-400 leading-relaxed">
               To lower your cortisol levels naturally, focus on getting 7 to 9 hours of quality sleep, eating a whole-food diet rich in magnesium and omega-3s, doing regular low-to-moderate exercise, and practicing deep breathing or mindfulness.
             </p>
           </details>
 
-          <details class="group bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-5 transition-all">
-            <summary class="cursor-pointer font-semibold text-white text-sm sm:text-base flex justify-between items-center list-none">
+          <details class="group p-5 sm:p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-teal-500/30 hover:border-neutral-700 transition-all duration-300">
+            <summary class="cursor-pointer font-semibold text-white text-sm sm:text-base flex justify-between items-center list-none gap-4">
               <span>How to reduce stress and anxiety?</span>
-              <span class="text-neutral-500 group-open:rotate-180 transition-transform font-mono text-lg">+</span>
+              <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
             </summary>
-            <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed">
+            <p class="mt-4 text-xs sm:text-sm text-neutral-400 leading-relaxed">
               To reduce stress and anxiety, practice deep breathing, move your body daily through exercise or walks, limit caffeine and screen time, maintain a consistent sleep routine, and talk through your worries with supportive people.
             </p>
           </details>
 
-          <details class="group bg-neutral-900/50 border border-neutral-800/80 rounded-2xl p-5 transition-all">
-            <summary class="cursor-pointer font-semibold text-white text-sm sm:text-base flex justify-between items-center list-none">
+          <details class="group p-5 sm:p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-teal-500/30 hover:border-neutral-700 transition-all duration-300">
+            <summary class="cursor-pointer font-semibold text-white text-sm sm:text-base flex justify-between items-center list-none gap-4">
               <span>What is belly breathing?</span>
-              <span class="text-neutral-500 group-open:rotate-180 transition-transform font-mono text-lg">+</span>
+              <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
             </summary>
-            <p class="mt-3 text-xs sm:text-sm text-neutral-400 leading-relaxed">
+            <p class="mt-4 text-xs sm:text-sm text-neutral-400 leading-relaxed">
               Belly breathing, also known as diaphragmatic breathing or abdominal breathing, is a deep respiratory technique that actively engages the diaphragm muscle. During belly breathing, your abdomen expands on the inhale and gently lowers on the exhale, drawing oxygen deep into the lower lung chambers instead of shallowly expanding the chest.
             </p>
           </details>
         </div>
 
-        <div class="pt-6 border-t border-neutral-800">
+        <div class="pt-8 border-t border-neutral-800 mt-8">
           <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3">Scientific References & Cited Studies</h3>
           <ol class="space-y-1.5 text-xs text-neutral-500 font-mono list-decimal list-inside">
             <li>Ma, X., Yue, Z. Q., Gong, Z. Q., et al. (2017). The effect of diaphragmatic breathing on attention, negative affect and cortisol in healthy adults. <em class="text-neutral-400">Frontiers in Psychology</em>, 8, 874. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5455070/" target="_blank" rel="noopener" class="text-teal-400 hover:underline">[PubMed / PMC]</a></li>
             <li>Balban, M. Y., Neri, E., Kaelberer, M. M., et al. (2023). Brief structured respiration practices enhance mood and reduce physiological arousal. <em class="text-neutral-400">Cell Reports Medicine</em>, 4(1), 100895. <a href="https://pubmed.ncbi.nlm.nih.gov/36630953/" target="_blank" rel="noopener" class="text-teal-400 hover:underline">[PubMed]</a></li>
           </ol>
         </div>
-      </div>
+      </section>
 
       <!-- Editorial Team Bio -->
-      <div class="rounded-3xl border border-neutral-800 bg-neutral-950/80 p-6 sm:p-8 font-sans backdrop-blur-xl">
+      <div class="reveal rounded-3xl border border-neutral-800 bg-neutral-950/60 p-6 sm:p-8 font-sans backdrop-blur-md">
         <div class="flex items-start gap-4">
           <div class="flex-shrink-0 w-12 h-12 rounded-full border border-teal-400/30 bg-teal-400/10 flex items-center justify-center">
             <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -449,7 +468,7 @@ const pageSchemaData = [
             <p class="text-xs font-mono text-neutral-500">
               This content is for educational purposes only and is not a substitute for professional medical advice.
             </p>
-            <a href="/about/" class="inline-flex items-center gap-1.5 text-xs font-mono text-teal-400 hover:text-teal-300 transition-colors">
+            <a href="/about/" class="focus-ring inline-flex items-center gap-1.5 text-xs font-mono text-teal-400 hover:text-teal-300 transition-colors">
               Learn more about our team
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -466,3 +485,23 @@ const pageSchemaData = [
 
   <Footer />
 </Layout>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach((el) => observer.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('reveal-visible'));
+    }
+  }
+</script>
