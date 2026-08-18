@@ -125,11 +125,14 @@ const pageSchemaData = [
   <Header />
 
   <main class="flex-1 hero-gradient-mesh relative">
-    <section class="w-full max-w-4xl mx-auto pt-8 pb-6 px-4 text-center space-y-4">
-      <div class="flex items-center justify-center gap-2 mb-2">
+    <section class="relative w-full max-w-4xl mx-auto pt-14 pb-10 px-4 text-center space-y-5">
+      <div class="breath-square absolute left-0 right-0 mx-auto top-16 w-[26rem] h-[26rem] sm:w-[34rem] sm:h-[34rem] rounded-[3rem] border border-dashed border-amber-400/15 pointer-events-none"></div>
+      <div class="breath-square-pulse absolute left-0 right-0 mx-auto top-16 w-[19rem] h-[19rem] sm:w-[24rem] sm:h-[24rem] rounded-[2.5rem] border border-amber-400/10 pointer-events-none"></div>
+
+      <div class="relative flex flex-wrap items-center justify-center gap-2">
         <a
           href="/"
-          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/80 text-neutral-400 hover:text-white text-xs font-mono transition-colors"
+          class="focus-ring inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/80 text-neutral-400 hover:text-white text-xs font-mono transition-colors"
         >
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -142,17 +145,17 @@ const pageSchemaData = [
         </span>
       </div>
 
-      <h1 class="text-4xl sm:text-6xl font-bold tracking-normal text-white leading-tight">
+      <h1 class="relative text-4xl sm:text-6xl font-bold tracking-tight text-white leading-tight text-balance">
         Box Breathing <br />
         <span class="gradient-text-develop">Free Guided 4-4-4-4 Timer</span>
       </h1>
 
-      <div class="flex flex-col items-center justify-center gap-1.5 text-xs font-mono text-neutral-500">
+      <div class="relative flex flex-col items-center justify-center gap-1.5 text-xs font-mono text-neutral-500">
         <span>Written by the HarmonyBreath Editorial Team</span>
         <span>Published {datePublished} · Updated {dateModified}</span>
       </div>
 
-      <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light">
+      <p class="relative max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 leading-relaxed font-sans font-light text-pretty">
         Master box breathing (square breathing) with our free guided timer. Equal inhale, hold, exhale, and empty hold — customizable from 2 to 10 seconds per phase. Used by tactical operators and athletes to reset composure under stress. 100% free and private.
       </p>
     </section>
@@ -173,11 +176,13 @@ const pageSchemaData = [
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
-        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-amber-500/40 transition-all duration-300">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">01</div>
+      <div class="relative grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-12">
+        <div class="hidden md:block absolute inset-x-10 top-1/2 -translate-y-1/2 border-t border-dashed border-amber-400/15 pointer-events-none"></div>
+
+        <div class="reveal relative p-6 sm:p-7 rounded-3xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-amber-500/40 hover:bg-neutral-900/40 hover:-translate-y-0.5 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">01</div>
           <h4 class="text-lg font-bold text-white mb-2">Inhale</h4>
-          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4 text-pretty">
             Breathe in slowly and deeply through your nose. Fill your lungs completely over the full duration.
           </p>
           <ul class="text-xs font-mono text-neutral-500 space-y-1">
@@ -187,10 +192,10 @@ const pageSchemaData = [
           </ul>
         </div>
 
-        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-cyan-500/40 transition-all duration-300">
-          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">02</div>
+        <div class="reveal relative p-6 sm:p-7 rounded-3xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-amber-500/40 hover:bg-neutral-900/40 hover:-translate-y-0.5 transition-all duration-300 md:mt-14">
+          <div class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">02</div>
           <h4 class="text-lg font-bold text-white mb-2">Hold (Full)</h4>
-          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4 text-pretty">
             Hold your breath gently after the inhale. Keep your lungs full without straining or tensing up.
           </p>
           <ul class="text-xs font-mono text-neutral-500 space-y-1">
@@ -200,10 +205,10 @@ const pageSchemaData = [
           </ul>
         </div>
 
-        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-blue-500/40 transition-all duration-300">
-          <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">03</div>
+        <div class="reveal relative p-6 sm:p-7 rounded-3xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-amber-500/40 hover:bg-neutral-900/40 hover:-translate-y-0.5 transition-all duration-300 md:-mt-14">
+          <div class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">03</div>
           <h4 class="text-lg font-bold text-white mb-2">Exhale</h4>
-          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4 text-pretty">
             Exhale slowly and completely through your mouth. Empty your lungs over the full duration.
           </p>
           <ul class="text-xs font-mono text-neutral-500 space-y-1">
@@ -213,10 +218,10 @@ const pageSchemaData = [
           </ul>
         </div>
 
-        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-purple-500/40 transition-all duration-300">
-          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">04</div>
+        <div class="reveal relative p-6 sm:p-7 rounded-3xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md group hover:border-amber-500/40 hover:bg-neutral-900/40 hover:-translate-y-0.5 transition-all duration-300 md:mt-14">
+          <div class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono font-bold flex items-center justify-center mb-4 text-sm">04</div>
           <h4 class="text-lg font-bold text-white mb-2">Hold (Empty)</h4>
-          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
+          <p class="text-xs text-neutral-400 leading-relaxed mb-4 text-pretty">
             Hold your breath after the exhale with lungs empty. Stay calm and relaxed before beginning the next inhale.
           </p>
           <ul class="text-xs font-mono text-neutral-500 space-y-1">
@@ -227,23 +232,24 @@ const pageSchemaData = [
         </div>
       </div>
 
-      <div class="p-8 rounded-2xl border border-neutral-800 bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950">
-        <h4 class="text-sm font-mono text-amber-400 uppercase tracking-widest mb-4">Benefits</h4>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-medium text-neutral-300">
-          <div class="flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+      <div class="reveal relative p-8 rounded-3xl border border-neutral-800 bg-gradient-to-r from-neutral-950 via-neutral-900 to-neutral-950 overflow-hidden">
+        <div class="noise-overlay absolute inset-0 opacity-[0.03] pointer-events-none"></div>
+        <h4 class="relative text-sm font-mono text-amber-400 uppercase tracking-widest mb-4">Benefits</h4>
+        <div class="relative grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-medium text-neutral-300">
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-neutral-900/50 border border-neutral-800/80">
+            <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
             Calm & Composure
           </div>
-          <div class="flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-neutral-900/50 border border-neutral-800/80">
+            <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
             Improved Focus
           </div>
-          <div class="flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-neutral-900/50 border border-neutral-800/80">
+            <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
             Steady Rhythm
           </div>
-          <div class="flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-neutral-900/50 border border-neutral-800/80">
+            <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
             Everyday Stress Relief
           </div>
         </div>
@@ -254,7 +260,7 @@ const pageSchemaData = [
     <section id="box-about-section" class="w-full max-w-4xl mx-auto py-16 px-4 border-t border-neutral-900">
       <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
         <h2 class="text-xs font-mono uppercase tracking-widest text-amber-400">About Box Breathing</h2>
-        <h3 class="text-3xl font-bold text-white sm:text-4xl">
+        <h3 class="text-3xl font-bold text-white sm:text-4xl text-balance">
           What Is Box Breathing? Understanding the Box Breathing Meaning
         </h3>
         <p class="text-sm text-neutral-400">
@@ -262,7 +268,7 @@ const pageSchemaData = [
         </p>
       </div>
 
-      <div class="space-y-8 text-sm text-neutral-300 leading-relaxed">
+      <div class="space-y-8 text-sm text-neutral-300 leading-relaxed text-pretty">
         <div class="p-4 rounded-xl border border-neutral-800 bg-neutral-900/60 text-xs text-neutral-300 font-sans flex items-start gap-3">
           <span class="text-amber-400 font-bold text-base leading-none">🔬</span>
           <div>
@@ -270,7 +276,7 @@ const pageSchemaData = [
           </div>
         </div>
 
-        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+        <div class="reveal p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
           <p class="mb-4">
             <strong class="text-white">What is box breathing?</strong> Box breathing, also known as square breathing or 4-4-4-4 breathing, is a structured breathwork technique where each phase of the breath cycle — inhale, hold, exhale, and hold empty — lasts for an equal duration. The <strong class="text-white">box breathing meaning</strong> comes from the visual representation: four equal sides forming a perfect square. This balanced structure makes it one of the most accessible breathing exercises for both beginners and experienced practitioners.
           </p>
@@ -282,7 +288,7 @@ const pageSchemaData = [
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+        <div class="reveal p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
           <h4 class="text-lg font-bold text-white mb-3">The Science & Physiology of Box Breathing (Sama Vritti)</h4>
           <p class="mb-4">
             Box breathing originates from the ancient yogic practice of <em class="text-neutral-200">Sama Vritti Pranayama</em> (equal-ratio respiration). Modern neuroscience and physiology explain why equal-duration breathing is so effective for stress regulation:
@@ -294,7 +300,7 @@ const pageSchemaData = [
           </ul>
         </div>
 
-        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+        <div class="reveal p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
           <h4 class="text-lg font-bold text-white mb-3">The Box Breathing Exercise: How to Practice & Practical Tips</h4>
           <p class="mb-4">
             The <strong class="text-white">box breathing exercise</strong> follows a simple cycle. Sit comfortably, set your timer, and begin. Breathe in slowly through your nose, filling your lungs completely. Hold gently without strain. Exhale steadily through your mouth, emptying fully. Hold with lungs empty, staying calm before the next cycle.
@@ -307,7 +313,7 @@ const pageSchemaData = [
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+        <div class="reveal p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
           <h4 class="text-lg font-bold text-white mb-3">Box Breathing for Calm: A Steady Rhythm Under Pressure</h4>
           <p class="mb-4">
             <strong class="text-white">Box breathing for calm</strong> is one of the most recommended techniques in performance and high-pressure settings. When stress builds, breathing often becomes shallow and quick. Box breathing gives you a slow, even, four-part pattern to follow — giving your mind a single rhythm instead of racing thoughts.
@@ -320,7 +326,7 @@ const pageSchemaData = [
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+        <div class="reveal p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
           <h4 class="text-lg font-bold text-white mb-3">Why Our Box Breathing Timer Stands Out</h4>
           <p class="mb-4">
             Our <strong class="text-white">box breathing exercise</strong> tool is purpose-built for this technique. The interface is minimal and distraction-free, honoring the meditative nature of the practice while providing the guidance you need. Features include customizable durations from 2 to 10 seconds, preset and custom modes, integrated ambient audio tracks, detailed session analytics, and complete privacy — everything runs locally with no registration or data collection.
@@ -342,7 +348,7 @@ const pageSchemaData = [
 
     <!-- Editorial Team Bio -->
     <section class="w-full max-w-4xl mx-auto px-4 py-10">
-      <div class="max-w-3xl mx-auto rounded-2xl border border-neutral-800 bg-neutral-950/60 p-6 sm:p-8 font-sans">
+      <div class="max-w-3xl mx-auto reveal rounded-2xl border border-neutral-800 bg-neutral-950/60 p-6 sm:p-8 font-sans">
         <div class="flex items-start gap-4">
           <div class="flex-shrink-0 w-12 h-12 rounded-full border border-amber-400/30 bg-amber-400/10 flex items-center justify-center">
             <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -375,7 +381,7 @@ const pageSchemaData = [
     <section id="box-faq-section" class="w-full max-w-4xl mx-auto py-16 px-4 border-t border-neutral-900">
       <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
         <h2 class="text-xs font-mono uppercase tracking-widest text-amber-400">FAQ</h2>
-        <h3 class="text-3xl font-bold text-white sm:text-4xl">
+        <h3 class="text-3xl font-bold text-white sm:text-4xl text-balance">
           Frequently Asked Questions About Box Breathing
         </h3>
         <p class="text-sm text-neutral-400">
@@ -383,8 +389,8 @@ const pageSchemaData = [
         </p>
       </div>
 
-      <div class="space-y-4">
-        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-amber-500/30 transition-all duration-300" open>
+      <div class="reveal space-y-4">
+        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-amber-500/30 hover:border-neutral-700 transition-all duration-300" open>
           <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base">
             <span>What is a box breathing method?</span>
             <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -398,8 +404,8 @@ const pageSchemaData = [
           </div>
         </details>
 
-        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-cyan-500/30 transition-all duration-300">
-          <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base">
+        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-amber-500/30 hover:border-neutral-700 transition-all duration-300">
+          <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base text-pretty">
             <span>Is box breathing good or bad for you?</span>
             <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -412,8 +418,8 @@ const pageSchemaData = [
           </div>
         </details>
 
-        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-blue-500/30 transition-all duration-300">
-          <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base">
+        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-amber-500/30 hover:border-neutral-700 transition-all duration-300">
+          <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base text-pretty">
             <span>How to do box breathing?</span>
             <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -426,8 +432,8 @@ const pageSchemaData = [
           </div>
         </details>
 
-        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-purple-500/30 transition-all duration-300">
-          <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base">
+        <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-amber-500/30 hover:border-neutral-700 transition-all duration-300">
+          <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base text-pretty">
             <span>Who invented box breathing?</span>
             <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -444,7 +450,7 @@ const pageSchemaData = [
 
     <!-- Safety Section -->
     <section id="box-safety-section" class="w-full max-w-4xl mx-auto py-12 px-4 border-t border-neutral-900">
-      <div class="bg-red-950/20 border border-red-500/30 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+      <div class="reveal bg-red-950/20 border border-red-500/30 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-8 h-8 rounded-lg bg-red-500/20 border border-red-500/30 text-red-400 flex items-center justify-center font-bold">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -488,3 +494,23 @@ const pageSchemaData = [
 
   <Footer />
 </Layout>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach((el) => observer.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('reveal-visible'));
+    }
+  }
+</script>

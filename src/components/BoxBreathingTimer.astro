@@ -3,8 +3,9 @@ import BoxCustomSettingsModal from './BoxCustomSettingsModal.astro';
 import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
 ---
 
-<section id="box-timer-section" class="w-full max-w-4xl mx-auto py-8 px-4">
-  <div class="relative w-full bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl overflow-hidden">
+<section id="box-timer-section" class="reveal w-full max-w-4xl mx-auto py-8 px-4">
+  <div class="relative w-full gradient-border-glow bg-neutral-950/80 rounded-3xl p-6 sm:p-10 card-glow backdrop-blur-xl">
+    <div class="noise-overlay absolute inset-0 opacity-[0.04] pointer-events-none"></div>
     <div id="box-phase-glow" class="absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-amber-500/20 via-transparent to-transparent"></div>
 
     <div class="relative z-10 flex items-center justify-between border-b border-neutral-800/60 pb-6 mb-8">
@@ -25,6 +26,8 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
 
     <div class="relative z-10 flex flex-col items-center justify-center my-6">
       <div class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
+        <div class="breath-square absolute inset-2 rounded-2xl border border-dashed border-amber-400/25 pointer-events-none"></div>
+        <div class="breath-square-pulse absolute -inset-1 rounded-[1.75rem] border border-amber-400/10 pointer-events-none"></div>
         <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3" class="text-neutral-900" fill="none" />
           <circle
@@ -85,7 +88,7 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       <button
         id="box-btn-main-action"
         type="button"
-        class="flex items-center gap-2 px-8 py-3.5 rounded-full bg-amber-400/90 text-neutral-950 font-semibold text-sm hover:bg-amber-300 transition-all transform active:scale-95 shadow-xl shadow-amber-500/15"
+        class="focus-ring flex items-center gap-2 px-8 py-3.5 rounded-full bg-amber-400/90 text-neutral-950 font-semibold text-sm hover:bg-amber-300 transition-all transform active:scale-95 shadow-xl shadow-amber-500/15"
       >
         <svg id="box-icon-play" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M8 5v14l11-7z"/>
@@ -99,7 +102,7 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       <button
         id="box-btn-skip-phase"
         type="button"
-        class="hidden flex items-center gap-2 px-6 py-3.5 rounded-full bg-neutral-900 border border-neutral-750 text-neutral-200 hover:text-white hover:bg-neutral-800 text-xs font-mono font-medium transition-all"
+        class="focus-ring hidden flex items-center gap-2 px-6 py-3.5 rounded-full bg-neutral-900 border border-neutral-750 text-neutral-200 hover:text-white hover:bg-neutral-800 text-xs font-mono font-medium transition-all"
       >
         <span id="box-label-skip-phase">Skip Phase</span>
         <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -110,7 +113,7 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       <button
         id="box-btn-restart"
         type="button"
-        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+        class="focus-ring flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
         title="Restart Session"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,7 +125,7 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       <button
         id="box-btn-music"
         type="button"
-        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+        class="focus-ring flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
         title="Change Background Music"
       >
         <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -262,6 +265,13 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       phaseDuration = parseFloat(target.dataset.duration || '4');
       totalCycles = parseInt(target.dataset.cycles || '20', 10);
 
+      document.querySelectorAll('.box-preset-btn').forEach((b) => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      target.classList.add('is-active');
+      target.setAttribute('aria-pressed', 'true');
+
       updatePresetUI();
       resetSession();
     });
@@ -294,6 +304,14 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       currentPreset = 'custom';
       phaseDuration = parseFloat(customDurationInput.value);
       totalCycles = parseInt(customCyclesInput.value, 10);
+
+      document.querySelectorAll('.box-preset-btn').forEach((b) => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      const customBtn = document.querySelector('.box-preset-btn[data-box-preset="custom"]');
+      customBtn?.classList.add('is-active');
+      customBtn?.setAttribute('aria-pressed', 'true');
 
       updatePresetUI();
       resetSession();
@@ -524,6 +542,10 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       // Ignore localStorage errors
     }
   }
-
   resetSession();
+
+  const activePresetBtn = document.querySelector(`.box-preset-btn[data-box-preset="${currentPreset}"]`);
+  activePresetBtn?.classList.add('is-active');
+  activePresetBtn?.setAttribute('aria-pressed', 'true');
+
 </script>

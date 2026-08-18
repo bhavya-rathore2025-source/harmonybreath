@@ -1,16 +1,16 @@
 ---
 ---
 
-<div class="w-full max-w-4xl mx-auto mb-8">
-  <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
-    <div>
+<div class="reveal w-full max-w-4xl mx-auto mb-8">
+  <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
+    <div class="space-y-1.5">
       <h3 class="text-sm font-mono text-amber-400 uppercase tracking-widest">Session Presets</h3>
       <p class="text-xs text-neutral-400">All four phases stay equal. Start with 4s and progress when comfortable.</p>
     </div>
     <button
       id="box-custom-settings-btn"
       type="button"
-      class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 text-xs font-medium text-neutral-300 hover:text-white transition-colors"
+      class="focus-ring inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 hover:border-neutral-700 text-xs font-medium text-neutral-300 hover:text-white transition-all duration-200 active:scale-95"
     >
       <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -19,16 +19,21 @@
     </button>
   </div>
 
-  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     <!-- Standard 4s -->
     <button
       data-box-preset="standard-4s"
       data-duration="4"
       data-cycles="20"
-      class="box-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-amber-500/50 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-2 sm:col-span-1"
+      class="box-preset-btn focus-ring group relative p-5 sm:p-6 rounded-2xl border bg-neutral-950/60 text-left transition-all duration-300 active:scale-[0.98] flex flex-col justify-between gap-4"
+      aria-pressed="true"
     >
-      <div class="text-xs font-mono text-amber-400 mb-1">Standard 4s</div>
-      <div class="text-2xl font-bold text-white font-mono-numbers">4-4-4-4</div>
+      <span class="box-preset-active-mark absolute -top-px -right-px w-3 h-3 rounded-full bg-amber-400 shadow-lg shadow-amber-500/40 pointer-events-none hidden"></span>
+      <div class="flex items-start justify-between gap-3">
+        <div class="text-xs font-mono text-amber-400 mb-1">Standard 4s</div>
+        <span class="box-preset-active-label text-[10px] font-mono uppercase tracking-widest text-amber-400 opacity-0 transition-opacity duration-300">Active</span>
+      </div>
+      <div class="text-3xl font-bold text-white font-mono-numbers">4-4-4-4</div>
       <div class="text-[11px] text-neutral-400 mt-1">4s per phase • 20 cycles</div>
     </button>
 
@@ -37,11 +42,16 @@
       data-box-preset="custom"
       data-duration="4"
       data-cycles="20"
-      class="box-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-amber-500/50 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-2 sm:col-span-1"
+      class="box-preset-btn focus-ring group relative p-5 sm:p-6 rounded-2xl border bg-neutral-950/60 text-left transition-all duration-300 active:scale-[0.98] flex flex-col justify-between gap-4"
+      aria-pressed="false"
     >
-      <div class="text-xs font-mono text-amber-400 mb-1">Custom</div>
-      <div class="text-2xl font-bold text-white font-mono-numbers">
-        <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <span class="box-preset-active-mark absolute -top-px -right-px w-3 h-3 rounded-full bg-amber-400 shadow-lg shadow-amber-500/40 pointer-events-none hidden"></span>
+      <div class="flex items-start justify-between gap-3">
+        <div class="text-xs font-mono text-amber-400 mb-1">Custom</div>
+        <span class="box-preset-active-label text-[10px] font-mono uppercase tracking-widest text-amber-400 opacity-0 transition-opacity duration-300">Active</span>
+      </div>
+      <div class="text-3xl font-bold text-white font-mono-numbers">
+        <svg class="w-7 h-7 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
@@ -50,3 +60,27 @@
     </button>
   </div>
 </div>
+
+<style>
+  .box-preset-btn {
+    border-color: #292524;
+  }
+
+  .box-preset-btn:hover {
+    border-color: rgba(212, 165, 116, 0.5);
+    background-color: rgba(28, 25, 23, 0.6);
+  }
+
+  .box-preset-btn.is-active {
+    border-color: rgba(212, 165, 116, 0.55);
+    background-color: rgba(212, 165, 116, 0.08);
+    box-shadow: 0 0 0 1px rgba(212, 165, 116, 0.2) inset,
+      0 14px 34px -18px rgba(212, 165, 116, 0.25);
+  }
+
+  .box-preset-btn.is-active .box-preset-active-mark,
+  .box-preset-btn.is-active .box-preset-active-label {
+    opacity: 1;
+    display: block;
+  }
+</style>
