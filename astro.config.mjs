@@ -7,6 +7,13 @@ export default defineConfig({
   site: 'https://harmonybreath.com',
   trailingSlash: 'always',
   output: 'static',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es', 'de', 'fr', 'pt', 'ja', 'it'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

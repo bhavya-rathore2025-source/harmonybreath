@@ -1,0 +1,128 @@
+---
+import { languages, languageMeta, defaultLang, type SupportedLanguage } from '../i18n/ui';
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+
+interface Props {
+  techniqueSlug?: string;
+  class?: string;
+}
+
+const { techniqueSlug, class: extraClass = '' } = Astro.props;
+const currentLang = getLangFromUrl(Astro.url);
+const currentMeta = languageMeta[currentLang] || languageMeta[defaultLang];
+
+// Determine the clean route path to translate
+let basePath = techniqueSlug;
+if (!basePath) {
+  // Extract route from pathname (stripping current language if present)
+  const segments = Astro.url.pathname.split('/').filter(Boolean);
+  if (segments.length > 0 && segments[0] in languages) {
+    segments.shift();
+  }
+  basePath = segments.join('/');
+}
+---
+
+<div class={`relative inline-block text-left ${extraClass}`} id="language-picker-container">
+  <button
+    type="button"
+    id="lang-picker-btn"
+    class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 hover:border-neutral-700 text-xs font-mono text-neutral-300 hover:text-white transition-all shadow-sm backdrop-blur-md cursor-pointer"
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-label="Select language"
+  >
+    <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <span class="text-xs">{currentMeta.flag}</span>
+    <span class="font-medium">{currentMeta.nativeName}</span>
+    <svg class="w-3 h-3 text-neutral-400 transition-transform duration-200 group-aria-expanded:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div
+    id="lang-picker-dropdown"
+    class="hidden absolute right-0 mt-2 w-44 rounded-2xl bg-neutral-950/95 border border-neutral-800 shadow-2xl backdrop-blur-xl py-1.5 z-50 animate-in fade-in zoom-in-95 duration-150"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="lang-picker-btn"
+  >
+    <div class="px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-neutral-400 border-b border-neutral-900">
+      Select Language
+    </div>
+    {Object.entries(languages).map(([code, label]) => {
+      const loc = code as SupportedLanguage;
+      const meta = languageMeta[loc];
+      const isSelected = loc === currentLang;
+      const targetUrl = useTranslatedPath(currentLang)(basePath || '', loc);
+
+      return (
+        <a
+          href={targetUrl}
+          role="menuitem"
+          class={`flex items-center justify-between px-3 py-2 text-xs transition-colors ${
+            isSelected
+              ? 'bg-amber-500/15 text-amber-300 font-semibold'
+              : 'text-neutral-300 hover:bg-neutral-900 hover:text-white'
+          }`}
+          hreflang={loc}
+        >
+          <span class="flex items-center gap-2.5">
+            <span class="text-sm">{meta.flag}</span>
+            <span>{meta.nativeName}</span>
+          </span>
+          {isSelected && (
+            <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          )}
+        </a>
+      );
+    })}
+  </div>
+</div>
+
+<script>
+  function setupLangPicker() {
+    const btn = document.getElementById('lang-picker-btn');
+    const dropdown = document.getElementById('lang-picker-dropdown');
+    const container = document.getElementById('language-picker-container');
+
+    if (!btn || !dropdown || !container) return;
+
+    function toggleMenu() {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', (!isExpanded).toString());
+      dropdown.classList.toggle('hidden', isExpanded);
+    }
+
+    function closeMenu() {
+      btn.setAttribute('aria-expanded', 'false');
+      dropdown.classList.add('hidden');
+    }
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!container.contains(e.target as Node)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
+  }
+
+  // Setup on initial load and page changes
+  setupLangPicker();
+  document.addEventListener('astro:page-load', setupLangPicker);
+</script>

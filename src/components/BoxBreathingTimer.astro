@@ -198,36 +198,53 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
 
   const btnMusic = document.getElementById('box-btn-music');
 
-  const phaseConfig = {
-    INHALE: {
-      label: 'Phase 1: Inhale',
-      action: 'Breathe In Slowly',
-      glow: 'from-amber-500/20',
-      labelClass: 'text-amber-400',
-      haloScale: '1.25',
+  const localizedPhaseConfigs: Record<string, any> = {
+    en: {
+      INHALE: { label: 'Phase 1: Inhale', action: 'Breathe In Slowly', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Phase 2: Hold (Full)', action: 'Hold Gently', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Phase 3: Exhale', action: 'Breathe Out Slowly', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Phase 4: Hold (Empty)', action: 'Stay Relaxed', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
     },
-    HOLD_FULL: {
-      label: 'Phase 2: Hold (Full)',
-      action: 'Hold Gently',
-      glow: 'from-cyan-500/20',
-      labelClass: 'text-cyan-400',
-      haloScale: '1.25',
+    es: {
+      INHALE: { label: 'Fase 1: Inhala', action: 'Inhala Lentamente', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Fase 2: Mantén (Lleno)', action: 'Retén Suavemente', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Fase 3: Exhala', action: 'Exhala Despacio', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Fase 4: Mantén (Vacío)', action: 'Permanece Relajado', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
     },
-    EXHALE: {
-      label: 'Phase 3: Exhale',
-      action: 'Breathe Out Slowly',
-      glow: 'from-blue-500/20',
-      labelClass: 'text-blue-400',
-      haloScale: '0.95',
+    de: {
+      INHALE: { label: 'Phase 1: Einatmen', action: 'Langsam Einatmen', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Phase 2: Halten (Voll)', action: 'Sanft Anhalten', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Phase 3: Ausatmen', action: 'Ruhig Ausatmen', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Phase 4: Halten (Leer)', action: 'Entspannt Bleiben', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
     },
-    HOLD_EMPTY: {
-      label: 'Phase 4: Hold (Empty)',
-      action: 'Stay Relaxed',
-      glow: 'from-purple-500/20',
-      labelClass: 'text-purple-400',
-      haloScale: '0.95',
+    fr: {
+      INHALE: { label: 'Phase 1 : Inspirez', action: 'Inspirez Lentement', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Phase 2 : Maintenez', action: 'Gardez l’Air Doucement', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Phase 3 : Expirez', action: 'Expirez Calmement', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Phase 4 : Poumons vides', action: 'Restez Détendu', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
+    },
+    pt: {
+      INHALE: { label: 'Fase 1: Inspire', action: 'Inspire Devagar', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Fase 2: Segure (Cheio)', action: 'Segure com Calma', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Fase 3: Expire', action: 'Expire com Calma', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Fase 4: Segure (Vazio)', action: 'Mantenha-se Relaxado', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
+    },
+    ja: {
+      INHALE: { label: 'フェーズ 1: 吸う', action: 'ゆっくり息を吸う', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'フェーズ 2: 止める', action: '穏やかに息を止める', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'フェーズ 3: 吐く', action: '静かに息を吐き切る', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'フェーズ 4: 止める（空）', action: '力を抜いて待つ', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
+    },
+    it: {
+      INHALE: { label: 'Fase 1: Inspira', action: 'Inspira Lentamente', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Fase 2: Trattieni (Pieno)', action: 'Trattieni con Dolcezza', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Fase 3: Espira', action: 'Espira con Calma', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Fase 4: Trattieni a vuoto', action: 'Resta Rilassato', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
     },
   };
+
+  const activeLang = document.documentElement.lang || 'en';
+  const phaseConfig = localizedPhaseConfigs[activeLang] || localizedPhaseConfigs.en;
 
   function formatTime(sec) {
     const m = Math.floor(sec / 60);

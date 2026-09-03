@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent.astro';
+import { getLangFromUrl } from '../i18n/utils';
+import { languageMeta, type SupportedLanguage } from '../i18n/ui';
 
 interface Props {
   title?: string;
@@ -13,6 +15,8 @@ interface Props {
   breadcrumb?: { name: string; url: string }[];
   robots?: string;
   ogType?: string;
+  lang?: string;
+  hreflangLinks?: { lang: string; href: string }[];
 }
 
 const {
@@ -24,7 +28,12 @@ const {
   keywords = 'guided breathing timer, breathing exercises, breathwork timer, wim hof breathing, box breathing, 4-7-8 breathing, calming breathing, breathing techniques, free breathwork app',
   robots = 'index, follow',
   ogType = 'website',
+  lang: customLang,
+  hreflangLinks,
 } = Astro.props;
+
+const currentLang = (customLang || getLangFromUrl(Astro.url)) as SupportedLanguage;
+const ogLocale = languageMeta[currentLang]?.ogLocale || 'en_US';
 
 const siteUrl = Astro.site ? Astro.site.href : 'https://harmonybreath.com';
 const canonicalUrl = customCanonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
@@ -70,7 +79,7 @@ const breadcrumb = Astro.props.breadcrumb;
 ---
 
 <!doctype html>
-<html lang="en" class="dark scroll-smooth">
+<html lang={currentLang} class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -81,6 +90,9 @@ const breadcrumb = Astro.props.breadcrumb;
     <meta name="apple-mobile-web-app-title" content="Breath" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href={canonicalUrl} />
+    {hreflangLinks && hreflangLinks.map((link) => (
+      <link rel="alternate" hreflang={link.lang} href={link.href} />
+    ))}
     
     <!-- Primary Meta Tags -->
     <title>{title}</title>
@@ -102,7 +114,7 @@ const breadcrumb = Astro.props.breadcrumb;
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={imageAlt} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:site_name" content="HarmonyBreath" />
 
     <!-- Twitter -->

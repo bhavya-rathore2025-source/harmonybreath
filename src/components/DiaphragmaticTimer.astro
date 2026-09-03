@@ -238,43 +238,99 @@ import DiaphragmaticMusicSelectionModal from './DiaphragmaticMusicSelectionModal
   }
 
   function getPhaseConfig(phaseKey: string) {
+    const lang = document.documentElement.lang || 'en';
+    const translations: Record<string, Record<string, { label: string; action: string }>> = {
+      en: {
+        INHALE: { label: 'Phase 1: Inhale', action: 'Expand Belly (Inhale Nose)' },
+        HOLD: { label: 'Phase 2: Hold', action: 'Pause Belly Gently' },
+        EXHALE: { label: 'Phase 3: Exhale', action: 'Relax Belly (Exhale Smoothly)' },
+        POSTHOLD: { label: 'Phase 4: Pause', action: 'Rest at Bottom' },
+        DEFAULT: { label: 'Ready', action: 'Press Start' },
+      },
+      es: {
+        INHALE: { label: 'Fase 1: Inhala', action: 'Expande el Vientre (Por la Nariz)' },
+        HOLD: { label: 'Fase 2: Mantén', action: 'Pausa Suavemente' },
+        EXHALE: { label: 'Fase 3: Exhala', action: 'Relaja el Vientre (Exhala Despacio)' },
+        POSTHOLD: { label: 'Fase 4: Descanso', action: 'Descansa en Vacío' },
+        DEFAULT: { label: 'Listo', action: 'Presiona Iniciar' },
+      },
+      de: {
+        INHALE: { label: 'Phase 1: Einatmen', action: 'Bauch dehnen (Durch die Nase)' },
+        HOLD: { label: 'Phase 2: Halten', action: 'Sanft anhalten' },
+        EXHALE: { label: 'Phase 3: Ausatmen', action: 'Bauch senken (Ruhig ausatmen)' },
+        POSTHOLD: { label: 'Phase 4: Pause', action: 'In Ruhe verweilen' },
+        DEFAULT: { label: 'Bereit', action: 'Start drücken' },
+      },
+      fr: {
+        INHALE: { label: 'Phase 1 : Inspirez', action: 'Gonflez le Ventre (Par le Nez)' },
+        HOLD: { label: 'Phase 2 : Maintenez', action: 'Pause Douce' },
+        EXHALE: { label: 'Phase 3 : Expirez', action: 'Dégonflez le Ventre (Expirez)' },
+        POSTHOLD: { label: 'Phase 4 : Repos', action: 'Repos Poumons Vides' },
+        DEFAULT: { label: 'Prêt', action: 'Appuyez sur Démarrer' },
+      },
+      pt: {
+        INHALE: { label: 'Fase 1: Inspire', action: 'Expanda a Barriga (Pelo Nariz)' },
+        HOLD: { label: 'Fase 2: Segure', action: 'Pausa Suave' },
+        EXHALE: { label: 'Fase 3: Expire', action: 'Relaxe a Barriga (Expire Devagar)' },
+        POSTHOLD: { label: 'Fase 4: Descanso', action: 'Descanse Vazio' },
+        DEFAULT: { label: 'Pronto', action: 'Pressione Iniciar' },
+      },
+      ja: {
+        INHALE: { label: 'フェーズ 1: 吸う', action: 'お腹を膨らませて息を吸う' },
+        HOLD: { label: 'フェーズ 2: 止める', action: '穏やかに息を保つ' },
+        EXHALE: { label: 'フェーズ 3: 吐く', action: 'お腹をへこませて息を吐く' },
+        POSTHOLD: { label: 'フェーズ 4: 休息', action: '静かに息を止めて休む' },
+        DEFAULT: { label: '準備完了', action: '開始ボタンを押す' },
+      },
+      it: {
+        INHALE: { label: 'Fase 1: Inspira', action: 'Gonfia la Pancia (Dal Naso)' },
+        HOLD: { label: 'Fase 2: Trattieni', action: 'Pausa Dolce' },
+        EXHALE: { label: 'Fase 3: Espira', action: 'Sgonfia la Pancia (Espira Piano)' },
+        POSTHOLD: { label: 'Fase 4: Riposo', action: 'Rilassati a Vuoto' },
+        DEFAULT: { label: 'Pronto', action: 'Premi Avvia' },
+      },
+    };
+
+    const currentT = translations[lang] || translations.en;
+    const t = currentT[phaseKey] || currentT.DEFAULT;
+
     switch (phaseKey) {
       case 'INHALE':
         return {
-          label: 'Phase 1: Inhale',
-          action: 'Expand Belly (Inhale Nose)',
+          label: t.label,
+          action: t.action,
           glow: 'from-amber-500/20',
           labelClass: 'text-amber-400',
           haloScale: `scale-125 duration-[${inhaleSec * 1000}ms]`,
         };
       case 'HOLD':
         return {
-          label: 'Phase 2: Hold',
-          action: 'Pause Belly Gently',
+          label: t.label,
+          action: t.action,
           glow: 'from-cyan-500/20',
           labelClass: 'text-cyan-400',
           haloScale: 'scale-125 duration-500',
         };
       case 'EXHALE':
         return {
-          label: 'Phase 3: Exhale',
-          action: 'Relax Belly (Exhale Smoothly)',
+          label: t.label,
+          action: t.action,
           glow: 'from-teal-500/20',
           labelClass: 'text-teal-400',
           haloScale: `scale-90 duration-[${exhaleSec * 1000}ms]`,
         };
       case 'POSTHOLD':
         return {
-          label: 'Phase 4: Pause',
-          action: 'Rest at Bottom',
+          label: t.label,
+          action: t.action,
           glow: 'from-purple-500/20',
           labelClass: 'text-purple-400',
           haloScale: 'scale-90 duration-500',
         };
       default:
         return {
-          label: 'Ready',
-          action: 'Press Start',
+          label: t.label,
+          action: t.action,
           glow: 'from-teal-500/20',
           labelClass: 'text-teal-400',
           haloScale: 'scale-100 duration-500',
