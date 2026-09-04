@@ -32,6 +32,11 @@
     --accent-warm: #d4a574;
   }
 
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
   body {
     background-color: var(--canvas);
     color: var(--ink);
@@ -42,6 +47,17 @@
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+  }
+
+  p, span, a, li {
+    overflow-wrap: break-word;
   }
 }
 

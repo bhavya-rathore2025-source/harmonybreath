@@ -320,19 +320,19 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
     <div id="phase-glow" class="absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent"></div>
 
     <!-- Top Status Bar: Round & Mode -->
-    <div class="relative z-10 flex items-center justify-between border-b border-neutral-800/60 pb-6 mb-8">
-      <div class="flex items-center gap-3">
-        <span id="preset-badge" class="px-3 py-1 rounded-full text-xs font-mono font-medium border border-amber-400/30 bg-amber-400/10 text-amber-400">
+    <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-neutral-800/60 pb-6 mb-8">
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <span id="preset-badge" class="px-3 py-1 rounded-full text-xs font-mono font-medium border border-amber-400/30 bg-amber-400/10 text-amber-400 max-w-full break-words">
           {currentI18n.presetNames.beginner} (60{currentI18n.holdSuffix})
         </span>
-        <span id="round-badge" class="text-xs font-mono text-neutral-400">
+        <span id="round-badge" class="text-xs font-mono text-neutral-400 whitespace-nowrap">
           {currentI18n.roundPrefix} <span id="current-round-text" class="text-white font-bold">1</span> {currentI18n.roundOf} <span id="total-rounds-text" class="text-white font-bold">3</span>
         </span>
       </div>
 
-      <div class="flex items-center gap-2 text-xs font-mono text-neutral-400">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span id="phase-label" class="uppercase tracking-wider font-semibold text-emerald-400">{currentI18n.ready}</span>
+      <div class="flex items-center gap-2 text-xs font-mono text-neutral-400 shrink-0">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
+        <span id="phase-label" class="uppercase tracking-wider font-semibold text-emerald-400 break-words">{currentI18n.ready}</span>
       </div>
     </div>
 
@@ -395,30 +395,30 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
     </div>
 
     <!-- Timer Controls -->
-    <div class="relative z-10 flex flex-wrap items-center justify-center gap-4 mt-8 pt-6 border-t border-neutral-800/60">
+    <div class="relative z-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 pt-6 border-t border-neutral-800/60">
       <!-- Primary Play / Pause / Start Button -->
       <button
         id="btn-main-action"
         type="button"
-        class="flex items-center gap-2 px-8 py-3.5 rounded-full bg-amber-400/90 text-neutral-950 font-semibold text-sm hover:bg-amber-300 transition-all transform active:scale-95 shadow-xl shadow-amber-500/15 cursor-pointer"
+        class="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-amber-400/90 text-neutral-950 font-semibold text-xs sm:text-sm hover:bg-amber-300 transition-all transform active:scale-95 shadow-xl shadow-amber-500/15 cursor-pointer max-w-full"
       >
-        <svg id="icon-play" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <svg id="icon-play" class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
           <path d="M8 5v14l11-7z"/>
         </svg>
-        <svg id="icon-pause" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24">
+        <svg id="icon-pause" class="w-4 h-4 hidden shrink-0" fill="currentColor" viewBox="0 0 24 24">
           <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
         </svg>
-        <span id="label-main-action">{currentI18n.btnStart}</span>
+        <span id="label-main-action" class="break-words text-center">{currentI18n.btnStart}</span>
       </button>
 
       <!-- Skip / Force Hold Transition Button -->
       <button
         id="btn-skip-phase"
         type="button"
-        class="hidden flex items-center gap-2 px-6 py-3.5 rounded-full bg-neutral-900 border border-neutral-750 text-neutral-200 hover:text-white hover:bg-neutral-800 text-xs font-mono font-medium transition-all cursor-pointer"
+        class="hidden flex items-center justify-center gap-2 px-4 sm:px-6 py-3 sm:py-3.5 rounded-full bg-neutral-900 border border-neutral-750 text-neutral-200 hover:text-white hover:bg-neutral-800 text-xs font-mono font-medium transition-all cursor-pointer max-w-full text-center"
       >
-        <span id="label-skip-phase">{currentI18n.btnFinishBreaths}</span>
-        <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <span id="label-skip-phase" class="break-words">{currentI18n.btnFinishBreaths}</span>
+        <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/>
         </svg>
       </button>

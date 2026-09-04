@@ -1,4 +1,95 @@
 ---
+import type { SupportedLanguage } from '../i18n/types';
+
+export interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const translations: Record<SupportedLanguage, {
+  title: string;
+  desc: string;
+  durationLabel: string;
+  durationHint: string;
+  cyclesLabel: string;
+  cyclesHint: string;
+  applyBtn: string;
+  cyclesSuffix: string;
+}> = {
+  en: {
+    title: 'Custom Box Breathing Settings',
+    desc: 'All four phases (inhale, hold, exhale, hold empty) stay equal. Increasing one increases all.',
+    durationLabel: 'Phase Duration',
+    durationHint: 'Duration of each phase: Inhale • Hold • Exhale • Hold Empty',
+    cyclesLabel: 'Total Cycles',
+    cyclesHint: 'One cycle = Inhale + Hold + Exhale + Hold Empty',
+    applyBtn: 'Apply Custom Session',
+    cyclesSuffix: 'Cycles',
+  },
+  es: {
+    title: 'Ajustes de Respiración Cuadrada Personalizada',
+    desc: 'Las cuatro fases (inhalar, retener, exhalar, retener en vacío) son iguales. Aumentar una aumenta todas.',
+    durationLabel: 'Duración por Fase',
+    durationHint: 'Duración de cada fase: Inhalar • Retener • Exhalar • Retener en vacío',
+    cyclesLabel: 'Ciclos Totales',
+    cyclesHint: 'Un ciclo = Inhalar + Retener + Exhalar + Retener en vacío',
+    applyBtn: 'Aplicar Sesión Personalizada',
+    cyclesSuffix: 'Ciclos',
+  },
+  de: {
+    title: 'Individuelle Box-Breathing-Einstellungen',
+    desc: 'Alle vier Phasen (Einatmen, Halten, Ausatmen, Halten) bleiben gleich lang. Eine Verlängerung verlängert alle.',
+    durationLabel: 'Phasendauer',
+    durationHint: 'Dauer jeder Phase: Einatmen • Halten • Ausatmen • Leer halten',
+    cyclesLabel: 'Gesamte Zyklen',
+    cyclesHint: 'Ein Zyklus = Einatmen + Halten + Ausatmen + Leer halten',
+    applyBtn: 'Einstellungen Übernehmen',
+    cyclesSuffix: 'Zyklen',
+  },
+  fr: {
+    title: 'Paramètres Personnalisés de Respiration Carrée',
+    desc: 'Les quatre phases (inspiration, rétention, expiration, rétention à vide) restent égales.',
+    durationLabel: 'Durée par Phase',
+    durationHint: 'Durée de chaque phase : Inspiration • Rétention • Expiration • Rétention vide',
+    cyclesLabel: 'Cycles Totaux',
+    cyclesHint: 'Un cycle = Inspiration + Rétention + Expiration + Rétention vide',
+    applyBtn: 'Appliquer la Séance',
+    cyclesSuffix: 'Cycles',
+  },
+  pt: {
+    title: 'Configurações de Respiração Quadrada Personalizada',
+    desc: 'As quatro fases (inspirar, segurar, expirar, segurar sem ar) permanecem iguais.',
+    durationLabel: 'Duração da Fase',
+    durationHint: 'Duração de cada fase: Inspirar • Segurar • Expirar • Segurar sem ar',
+    cyclesLabel: 'Ciclos Totais',
+    cyclesHint: 'Um ciclo = Inspirar + Segurar + Expirar + Segurar sem ar',
+    applyBtn: 'Aplicar Sessão Personalizada',
+    cyclesSuffix: 'Ciclos',
+  },
+  ja: {
+    title: 'ボックス呼吸法のカスタム設定',
+    desc: '4つのフェーズ（吸う・止める・吐く・止める）はすべて同じ長さです。1つを変更するとすべて連動します。',
+    durationLabel: 'フェーズ時間',
+    durationHint: '各フェーズの長さ：吸う • 止める • 吐く • 止める（空）',
+    cyclesLabel: '合計サイクル数',
+    cyclesHint: '1サイクル = 吸う + 止める + 吐く + 止める（空）',
+    applyBtn: 'カスタム設定を適用',
+    cyclesSuffix: 'サイクル',
+  },
+  it: {
+    title: 'Impostazioni Personalizzate Respirazione Quadrata',
+    desc: 'Tutte e quattro le fasi (inspira, trattieni, espira, trattieni a vuoto) sono uguali.',
+    durationLabel: 'Durata della Fase',
+    durationHint: 'Durata di ogni fase: Inspira • Trattieni • Espira • Trattieni a vuoto',
+    cyclesLabel: 'Cicli Totali',
+    cyclesHint: 'Un ciclo = Inspira + Trattieni + Espira + Trattieni a vuoto',
+    applyBtn: 'Applica Sessione Personalizzata',
+    cyclesSuffix: 'Cicli',
+  },
+};
+
+const t = translations[lang] || translations.en;
 ---
 
 <div id="box-custom-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
@@ -9,9 +100,9 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
-        Custom Box Breathing Settings
+        {t.title}
       </h3>
-      <button id="close-box-custom-modal" class="focus-ring p-1.5 -m-1.5 text-neutral-400 hover:text-white transition-colors rounded-lg" aria-label="Close custom settings">
+      <button id="close-box-custom-modal" class="focus-ring p-1.5 -m-1.5 text-neutral-400 hover:text-white transition-colors rounded-lg cursor-pointer" aria-label="Close custom settings">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -19,12 +110,12 @@
     </div>
 
     <div class="text-xs text-neutral-500 font-mono leading-relaxed -mt-2">
-      All four phases (inhale, hold, exhale, hold empty) stay equal. Increasing one increases all.
+      {t.desc}
     </div>
 
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Phase Duration</span>
+        <span>{t.durationLabel}</span>
         <span id="box-custom-duration-val" class="text-amber-400 font-bold">4s</span>
       </div>
       <input
@@ -40,13 +131,13 @@
         <span>2s</span>
         <span>10s</span>
       </div>
-      <p class="text-[10px] text-neutral-500 font-mono">Duration of each phase: Inhale • Hold • Exhale • Hold Empty</p>
+      <p class="text-[10px] text-neutral-500 font-mono">{t.durationHint}</p>
     </div>
 
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Total Cycles</span>
-        <span id="box-custom-cycles-val" class="text-amber-400 font-bold">20 Cycles</span>
+        <span>{t.cyclesLabel}</span>
+        <span id="box-custom-cycles-val" class="text-amber-400 font-bold" data-suffix={t.cyclesSuffix}>20 {t.cyclesSuffix}</span>
       </div>
       <input
         type="range"
@@ -58,19 +149,19 @@
         class="focus-ring w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
       />
       <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
-        <span>5 Cycles</span>
-        <span>50 Cycles</span>
+        <span>5 {t.cyclesSuffix}</span>
+        <span>50 {t.cyclesSuffix}</span>
       </div>
-      <p class="text-[10px] text-neutral-500 font-mono">One cycle = Inhale + Hold + Exhale + Hold Empty</p>
+      <p class="text-[10px] text-neutral-500 font-mono">{t.cyclesHint}</p>
     </div>
 
     <div class="pt-4 flex gap-3">
       <button
         id="apply-box-custom"
         type="button"
-        class="focus-ring flex-1 py-2.5 rounded-xl bg-amber-400/90 text-neutral-950 font-semibold text-xs hover:bg-amber-300 transition-all active:scale-[0.98] shadow-lg shadow-amber-500/10"
+        class="focus-ring flex-1 py-2.5 rounded-xl bg-amber-400/90 text-neutral-950 font-semibold text-xs hover:bg-amber-300 transition-all active:scale-[0.98] shadow-lg shadow-amber-500/10 cursor-pointer"
       >
-        Apply Custom Session
+        {t.applyBtn}
       </button>
     </div>
   </div>

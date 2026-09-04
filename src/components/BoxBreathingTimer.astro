@@ -1,26 +1,280 @@
 ---
+import type { SupportedLanguage } from '../i18n/types';
 import BoxCustomSettingsModal from './BoxCustomSettingsModal.astro';
 import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
+
+export interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const boxTimerI18n: Record<SupportedLanguage, {
+  presetStandard: string;
+  presetCustom: string;
+  cyclePrefix: string;
+  cycleOf: string;
+  ready: string;
+  pressStart: string;
+  perPhase: string;
+  complete: string;
+  completedDirective: string;
+  completedCyclesTemplate: string;
+  btnStart: string;
+  btnPause: string;
+  btnResume: string;
+  btnReset: string;
+  btnMusic: string;
+  btnStartNew: string;
+  btnSkipPhase: string;
+  nextCycle: string;
+  inhalePill: string;
+  holdPill: string;
+  exhalePill: string;
+  holdEmptyPill: string;
+  phases: {
+    INHALE: { label: string; action: string; labelClass: string; glow: string; haloScale: string };
+    HOLD_FULL: { label: string; action: string; labelClass: string; glow: string; haloScale: string };
+    EXHALE: { label: string; action: string; labelClass: string; glow: string; haloScale: string };
+    HOLD_EMPTY: { label: string; action: string; labelClass: string; glow: string; haloScale: string };
+  };
+}> = {
+  en: {
+    presetStandard: 'Standard 4s',
+    presetCustom: 'Custom',
+    cyclePrefix: 'Cycle',
+    cycleOf: 'of',
+    ready: 'Ready',
+    pressStart: 'Press Start',
+    perPhase: 's per phase',
+    complete: 'Session Complete 🎉',
+    completedDirective: 'Well done! Practice recorded.',
+    completedCyclesTemplate: 'Completed {n} Cycles',
+    btnStart: 'Start Session',
+    btnPause: 'Pause',
+    btnResume: 'Resume',
+    btnReset: 'Reset',
+    btnMusic: 'Music',
+    btnStartNew: 'Start New Session',
+    btnSkipPhase: 'Skip Phase',
+    nextCycle: 'Next Cycle',
+    inhalePill: 'Inhale',
+    holdPill: 'Hold',
+    exhalePill: 'Exhale',
+    holdEmptyPill: 'Hold',
+    phases: {
+      INHALE: { label: 'Phase 1: Inhale', action: 'Breathe In Slowly', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Phase 2: Hold (Full)', action: 'Hold Gently', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Phase 3: Exhale', action: 'Breathe Out Slowly', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Phase 4: Hold (Empty)', action: 'Stay Relaxed', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
+    },
+  },
+  es: {
+    presetStandard: 'Estándar 4s',
+    presetCustom: 'Personalizado',
+    cyclePrefix: 'Ciclo',
+    cycleOf: 'de',
+    ready: 'Listo',
+    pressStart: 'Presiona Iniciar',
+    perPhase: 's por fase',
+    complete: '¡Sesión Completada! 🎉',
+    completedDirective: '¡Excelente! Práctica registrada.',
+    completedCyclesTemplate: 'Completados {n} Ciclos',
+    btnStart: 'Comenzar Sesión',
+    btnPause: 'Pausar',
+    btnResume: 'Continuar',
+    btnReset: 'Reiniciar',
+    btnMusic: 'Música',
+    btnStartNew: 'Nueva Sesión',
+    btnSkipPhase: 'Saltar Fase',
+    nextCycle: 'Siguiente Ciclo',
+    inhalePill: 'Inhala',
+    holdPill: 'Retén',
+    exhalePill: 'Exhala',
+    holdEmptyPill: 'Retén sin Aire',
+    phases: {
+      INHALE: { label: 'Fase 1: Inhala', action: 'Inhala Lentamente', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Fase 2: Mantén (Lleno)', action: 'Retén Suavemente', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Fase 3: Exhala', action: 'Exhala Despacio', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Fase 4: Mantén (Vacío)', action: 'Permanece Relajado', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
+    },
+  },
+  de: {
+    presetStandard: 'Standard 4s',
+    presetCustom: 'Benutzerdefiniert',
+    cyclePrefix: 'Zyklus',
+    cycleOf: 'von',
+    ready: 'Bereit',
+    pressStart: 'Start drücken',
+    perPhase: 's pro Phase',
+    complete: 'Sitzung Abgeschlossen 🎉',
+    completedDirective: 'Sehr gut! Übung gespeichert.',
+    completedCyclesTemplate: '{n} Zyklen abgeschlossen',
+    btnStart: 'Sitzung Starten',
+    btnPause: 'Pause',
+    btnResume: 'Fortsetzen',
+    btnReset: 'Neu starten',
+    btnMusic: 'Musik',
+    btnStartNew: 'Neue Sitzung',
+    btnSkipPhase: 'Phase überspringen',
+    nextCycle: 'Nächster Zyklus',
+    inhalePill: 'Einatmen',
+    holdPill: 'Halten',
+    exhalePill: 'Ausatmen',
+    holdEmptyPill: 'Halten (Leer)',
+    phases: {
+      INHALE: { label: 'Phase 1: Einatmen', action: 'Langsam Einatmen', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Phase 2: Halten (Voll)', action: 'Sanft Anhalten', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Phase 3: Ausatmen', action: 'Ruhig Ausatmen', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Phase 4: Halten (Leer)', action: 'Entspannt Bleiben', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
+    },
+  },
+  fr: {
+    presetStandard: 'Standard 4s',
+    presetCustom: 'Personnalisé',
+    cyclePrefix: 'Cycle',
+    cycleOf: 'sur',
+    ready: 'Prêt',
+    pressStart: 'Appuyez sur Démarrer',
+    perPhase: 's par phase',
+    complete: 'Session Terminée 🎉',
+    completedDirective: 'Bravo ! Pratique enregistrée.',
+    completedCyclesTemplate: '{n} cycles terminés',
+    btnStart: 'Démarrer la Séance',
+    btnPause: 'Pause',
+    btnResume: 'Reprendre',
+    btnReset: 'Recommencer',
+    btnMusic: 'Musique',
+    btnStartNew: 'Nouvelle Séance',
+    btnSkipPhase: 'Passer la phase',
+    nextCycle: 'Cycle Suivant',
+    inhalePill: 'Inspiration',
+    holdPill: 'Rétention',
+    exhalePill: 'Expiration',
+    holdEmptyPill: 'Poumons vides',
+    phases: {
+      INHALE: { label: 'Phase 1 : Inspirez', action: 'Inspirez Lentement', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Phase 2 : Maintenez', action: 'Gardez l’Air Doucement', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Phase 3 : Expirez', action: 'Expirez Calmement', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Phase 4 : Poumons vides', action: 'Restez Détendu', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
+    },
+  },
+  pt: {
+    presetStandard: 'Padrão 4s',
+    presetCustom: 'Personalizado',
+    cyclePrefix: 'Ciclo',
+    cycleOf: 'de',
+    ready: 'Pronto',
+    pressStart: 'Pressione Iniciar',
+    perPhase: 's por fase',
+    complete: 'Sessão Concluída 🎉',
+    completedDirective: 'Muito bem! Prática registrada.',
+    completedCyclesTemplate: '{n} ciclos concluídos',
+    btnStart: 'Iniciar Sessão',
+    btnPause: 'Pausar',
+    btnResume: 'Continuar',
+    btnReset: 'Reiniciar',
+    btnMusic: 'Música',
+    btnStartNew: 'Nova Sessão',
+    btnSkipPhase: 'Pular Fase',
+    nextCycle: 'Próximo Ciclo',
+    inhalePill: 'Inspirar',
+    holdPill: 'Segurar',
+    exhalePill: 'Expirar',
+    holdEmptyPill: 'Segurar sem ar',
+    phases: {
+      INHALE: { label: 'Fase 1: Inspire', action: 'Inspire Devagar', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Fase 2: Segure (Cheio)', action: 'Segure com Calma', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Fase 3: Expire', action: 'Expire com Calma', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Fase 4: Segure (Vazio)', action: 'Mantenha-se Relaxado', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
+    },
+  },
+  ja: {
+    presetStandard: '標準 4秒',
+    presetCustom: 'カスタム',
+    cyclePrefix: 'サイクル',
+    cycleOf: '/',
+    ready: '準備完了',
+    pressStart: 'スタートを押す',
+    perPhase: '秒 / フェーズ',
+    complete: 'セッション完了 🎉',
+    completedDirective: 'お疲れ様でした！記録されました。',
+    completedCyclesTemplate: '{n} サイクル完了',
+    btnStart: 'セッション開始',
+    btnPause: '一時停止',
+    btnResume: '再開',
+    btnReset: 'やり直す',
+    btnMusic: '音楽',
+    btnStartNew: '新しいセッション',
+    btnSkipPhase: 'フェーズをスキップ',
+    nextCycle: '次のサイクル',
+    inhalePill: '吸う',
+    holdPill: '止める',
+    exhalePill: '吐く',
+    holdEmptyPill: '止める（空）',
+    phases: {
+      INHALE: { label: 'フェーズ 1: 吸う', action: 'ゆっくり息を吸う', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'フェーズ 2: 止める', action: '穏やかに息を止める', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'フェーズ 3: 吐く', action: '静かに息を吐き切る', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'フェーズ 4: 止める（空）', action: '力を抜いて待つ', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
+    },
+  },
+  it: {
+    presetStandard: 'Standard 4s',
+    presetCustom: 'Personalizzato',
+    cyclePrefix: 'Ciclo',
+    cycleOf: 'di',
+    ready: 'Pronto',
+    pressStart: 'Premi Avvia',
+    perPhase: 's per fase',
+    complete: 'Sessione Completata 🎉',
+    completedDirective: 'Ottimo lavoro! Pratica salvata.',
+    completedCyclesTemplate: 'Completati {n} Cicli',
+    btnStart: 'Inizia Sessione',
+    btnPause: 'Pausa',
+    btnResume: 'Riprendi',
+    btnReset: 'Riavvia',
+    btnMusic: 'Musica',
+    btnStartNew: 'Nuova Sessione',
+    btnSkipPhase: 'Salta Fase',
+    nextCycle: 'Prossimo Ciclo',
+    inhalePill: 'Inspira',
+    holdPill: 'Trattieni',
+    exhalePill: 'Espira',
+    holdEmptyPill: 'Trattieni a vuoto',
+    phases: {
+      INHALE: { label: 'Fase 1: Inspira', action: 'Inspira Lentamente', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+      HOLD_FULL: { label: 'Fase 2: Trattieni (Pieno)', action: 'Trattieni con Dolcezza', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+      EXHALE: { label: 'Fase 3: Espira', action: 'Espira con Calma', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+      HOLD_EMPTY: { label: 'Fase 4: Trattieni a vuoto', action: 'Resta Rilassato', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
+    },
+  },
+};
+
+const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
 ---
 
 <section id="box-timer-section" class="reveal w-full max-w-4xl mx-auto py-8 px-4">
+  <!-- Hidden JSON dictionary for client script hydration -->
+  <script id="hb-box-timer-i18n" type="application/json" set:html={JSON.stringify(currentI18n)} />
+
   <div class="relative w-full border border-white/15 bg-neutral-950/80 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-2xl overflow-hidden shadow-amber-950/20">
     <div class="noise-overlay absolute inset-0 opacity-[0.04] pointer-events-none"></div>
     <div id="box-phase-glow" class="absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-amber-500/20 via-transparent to-transparent"></div>
 
-    <div class="relative z-10 flex items-center justify-between border-b border-neutral-800/60 pb-6 mb-8">
-      <div class="flex items-center gap-3">
-        <span id="box-preset-badge" class="px-3 py-1 rounded-full text-xs font-mono font-medium border border-amber-400/30 bg-amber-400/10 text-amber-400">
-          Standard 4s
+    <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-neutral-800/60 pb-6 mb-8">
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <span id="box-preset-badge" class="px-3 py-1 rounded-full text-xs font-mono font-medium border border-amber-400/30 bg-amber-400/10 text-amber-400 max-w-full break-words">
+          {currentI18n.presetStandard}
         </span>
-        <span id="box-cycle-badge" class="text-xs font-mono text-neutral-400">
-          Cycle <span id="box-current-cycle-text" class="text-white font-bold">1</span> of <span id="box-total-cycles-text" class="text-white font-bold">20</span>
+        <span id="box-cycle-badge" class="text-xs font-mono text-neutral-400 whitespace-nowrap">
+          {currentI18n.cyclePrefix} <span id="box-current-cycle-text" class="text-white font-bold">1</span> {currentI18n.cycleOf} <span id="box-total-cycles-text" class="text-white font-bold">20</span>
         </span>
       </div>
 
-      <div class="flex items-center gap-2 text-xs font-mono text-neutral-400">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span id="box-phase-label" class="uppercase tracking-wider font-semibold text-emerald-400">Ready</span>
+      <div class="flex items-center gap-2 text-xs font-mono text-neutral-400 shrink-0">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
+        <span id="box-phase-label" class="uppercase tracking-wider font-semibold text-emerald-400 break-words">{currentI18n.ready}</span>
       </div>
     </div>
 
@@ -56,7 +310,7 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
 
         <div class="relative z-20 flex flex-col items-center text-center">
           <div id="box-breath-action-text" class="text-xs font-mono uppercase tracking-widest text-amber-400 mb-1">
-            Press Start
+            {currentI18n.pressStart}
           </div>
 
           <div id="box-primary-counter" class="text-5xl sm:text-6xl font-bold tracking-normal font-mono-numbers text-white">
@@ -64,48 +318,48 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
           </div>
 
           <div id="box-secondary-counter" class="text-xs font-mono text-neutral-400 mt-2">
-            4s per phase
+            4{currentI18n.perPhase}
           </div>
         </div>
       </div>
 
       <div class="mt-6 flex items-center gap-3 text-xs text-neutral-500 bg-neutral-900/40 border border-neutral-800/60 px-4 py-2 rounded-full font-mono">
         <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-        <span>Inhale</span>
+        <span>{currentI18n.inhalePill}</span>
         <span class="text-neutral-700">|</span>
         <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-        <span>Hold</span>
+        <span>{currentI18n.holdPill}</span>
         <span class="text-neutral-700">|</span>
         <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-        <span>Exhale</span>
+        <span>{currentI18n.exhalePill}</span>
         <span class="text-neutral-700">|</span>
         <span class="w-2 h-2 rounded-full bg-purple-400"></span>
-        <span>Hold</span>
+        <span>{currentI18n.holdEmptyPill}</span>
       </div>
     </div>
 
-    <div class="relative z-10 flex flex-wrap items-center justify-center gap-4 mt-8 pt-6 border-t border-neutral-800/60">
+    <div class="relative z-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 pt-6 border-t border-neutral-800/60">
       <button
         id="box-btn-main-action"
         type="button"
-        class="focus-ring flex items-center gap-2 px-8 py-3.5 rounded-full bg-amber-400/90 text-neutral-950 font-semibold text-sm hover:bg-amber-300 transition-all transform active:scale-95 shadow-xl shadow-amber-500/15"
+        class="focus-ring flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-amber-400/90 text-neutral-950 font-semibold text-xs sm:text-sm hover:bg-amber-300 transition-all transform active:scale-95 shadow-xl shadow-amber-500/15 cursor-pointer max-w-full"
       >
-        <svg id="box-icon-play" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <svg id="box-icon-play" class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
           <path d="M8 5v14l11-7z"/>
         </svg>
-        <svg id="box-icon-pause" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24">
+        <svg id="box-icon-pause" class="w-4 h-4 hidden shrink-0" fill="currentColor" viewBox="0 0 24 24">
           <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
         </svg>
-        <span id="box-label-main-action">Start Session</span>
+        <span id="box-label-main-action" class="break-words text-center">{currentI18n.btnStart}</span>
       </button>
 
       <button
         id="box-btn-skip-phase"
         type="button"
-        class="focus-ring hidden flex items-center gap-2 px-6 py-3.5 rounded-full bg-neutral-900 border border-neutral-750 text-neutral-200 hover:text-white hover:bg-neutral-800 text-xs font-mono font-medium transition-all"
+        class="focus-ring hidden flex items-center justify-center gap-2 px-4 sm:px-6 py-3 sm:py-3.5 rounded-full bg-neutral-900 border border-neutral-750 text-neutral-200 hover:text-white hover:bg-neutral-800 text-xs font-mono font-medium transition-all cursor-pointer max-w-full text-center"
       >
-        <span id="box-label-skip-phase">Skip Phase</span>
-        <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <span id="box-label-skip-phase" class="break-words">{currentI18n.btnSkipPhase}</span>
+        <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
         </svg>
       </button>
@@ -113,37 +367,41 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       <button
         id="box-btn-restart"
         type="button"
-        class="focus-ring flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+        class="focus-ring flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all cursor-pointer"
         title="Restart Session"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
-        <span>Reset</span>
+        <span>{currentI18n.btnReset}</span>
       </button>
 
       <button
         id="box-btn-music"
         type="button"
-        class="focus-ring flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+        class="focus-ring flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all cursor-pointer"
         title="Change Background Music"
       >
         <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
         </svg>
-        <span>Music</span>
+        <span>{currentI18n.btnMusic}</span>
       </button>
     </div>
   </div>
 </section>
 
-<BoxCustomSettingsModal />
+<BoxCustomSettingsModal lang={lang} />
 <BoxMusicSelectionModal />
 
 <script>
   import { audioPlayer } from '../utils/audioPlayer';
   import { musicTracks } from '../config/audioConfig';
   import { saveExerciseStats } from '../utils/stats';
+
+  // Hydrate client translations
+  const i18nScriptEl = document.getElementById('hb-box-timer-i18n');
+  const t = i18nScriptEl ? JSON.parse(i18nScriptEl.textContent || '{}') : {};
 
   const BOX_MUSIC_KEY = 'hb_box_music_selection';
   const allTracks = [
@@ -158,17 +416,17 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
 
   let currentPreset = 'standard-4s';
 
-  const PHASES = ['INHALE', 'HOLD_FULL', 'EXHALE', 'HOLD_EMPTY'];
+  const PHASES = ['INHALE', 'HOLD_FULL', 'EXHALE', 'HOLD_EMPTY'] as const;
   let currentPhaseIndex = 0;
   let phaseElapsed = 0;
 
   let phase = 'IDLE';
   let isPaused = false;
 
-  let phaseTimer = null;
-  let tickTimer = null;
+  let phaseTimer: number | null = null;
+  let tickTimer: number | null = null;
 
-  const progressCircle = document.getElementById('box-progress-circle');
+  const progressCircle = document.getElementById('box-progress-circle') as SVGCircleElement | null;
   const breathHalo = document.getElementById('box-breath-halo');
   const phaseGlow = document.getElementById('box-phase-glow');
   const phaseLabel = document.getElementById('box-phase-label');
@@ -191,84 +449,38 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
   const customSettingsBtn = document.getElementById('box-custom-settings-btn');
   const closeCustomModal = document.getElementById('close-box-custom-modal');
   const applyCustom = document.getElementById('apply-box-custom');
-  const customDurationInput = document.getElementById('box-custom-duration-input');
+  const customDurationInput = document.getElementById('box-custom-duration-input') as HTMLInputElement | null;
   const customDurationVal = document.getElementById('box-custom-duration-val');
-  const customCyclesInput = document.getElementById('box-custom-cycles-input');
+  const customCyclesInput = document.getElementById('box-custom-cycles-input') as HTMLInputElement | null;
   const customCyclesVal = document.getElementById('box-custom-cycles-val');
 
   const btnMusic = document.getElementById('box-btn-music');
 
-  const localizedPhaseConfigs: Record<string, any> = {
-    en: {
-      INHALE: { label: 'Phase 1: Inhale', action: 'Breathe In Slowly', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
-      HOLD_FULL: { label: 'Phase 2: Hold (Full)', action: 'Hold Gently', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
-      EXHALE: { label: 'Phase 3: Exhale', action: 'Breathe Out Slowly', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
-      HOLD_EMPTY: { label: 'Phase 4: Hold (Empty)', action: 'Stay Relaxed', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
-    },
-    es: {
-      INHALE: { label: 'Fase 1: Inhala', action: 'Inhala Lentamente', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
-      HOLD_FULL: { label: 'Fase 2: Mantén (Lleno)', action: 'Retén Suavemente', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
-      EXHALE: { label: 'Fase 3: Exhala', action: 'Exhala Despacio', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
-      HOLD_EMPTY: { label: 'Fase 4: Mantén (Vacío)', action: 'Permanece Relajado', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
-    },
-    de: {
-      INHALE: { label: 'Phase 1: Einatmen', action: 'Langsam Einatmen', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
-      HOLD_FULL: { label: 'Phase 2: Halten (Voll)', action: 'Sanft Anhalten', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
-      EXHALE: { label: 'Phase 3: Ausatmen', action: 'Ruhig Ausatmen', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
-      HOLD_EMPTY: { label: 'Phase 4: Halten (Leer)', action: 'Entspannt Bleiben', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
-    },
-    fr: {
-      INHALE: { label: 'Phase 1 : Inspirez', action: 'Inspirez Lentement', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
-      HOLD_FULL: { label: 'Phase 2 : Maintenez', action: 'Gardez l’Air Doucement', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
-      EXHALE: { label: 'Phase 3 : Expirez', action: 'Expirez Calmement', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
-      HOLD_EMPTY: { label: 'Phase 4 : Poumons vides', action: 'Restez Détendu', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
-    },
-    pt: {
-      INHALE: { label: 'Fase 1: Inspire', action: 'Inspire Devagar', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
-      HOLD_FULL: { label: 'Fase 2: Segure (Cheio)', action: 'Segure com Calma', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
-      EXHALE: { label: 'Fase 3: Expire', action: 'Expire com Calma', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
-      HOLD_EMPTY: { label: 'Fase 4: Segure (Vazio)', action: 'Mantenha-se Relaxado', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
-    },
-    ja: {
-      INHALE: { label: 'フェーズ 1: 吸う', action: 'ゆっくり息を吸う', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
-      HOLD_FULL: { label: 'フェーズ 2: 止める', action: '穏やかに息を止める', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
-      EXHALE: { label: 'フェーズ 3: 吐く', action: '静かに息を吐き切る', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
-      HOLD_EMPTY: { label: 'フェーズ 4: 止める（空）', action: '力を抜いて待つ', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
-    },
-    it: {
-      INHALE: { label: 'Fase 1: Inspira', action: 'Inspira Lentamente', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
-      HOLD_FULL: { label: 'Fase 2: Trattieni (Pieno)', action: 'Trattieni con Dolcezza', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
-      EXHALE: { label: 'Fase 3: Espira', action: 'Espira con Calma', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
-      HOLD_EMPTY: { label: 'Fase 4: Trattieni a vuoto', action: 'Resta Rilassato', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
-    },
+  const phaseConfig = t.phases || {
+    INHALE: { label: 'Phase 1: Inhale', action: 'Breathe In Slowly', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
+    HOLD_FULL: { label: 'Phase 2: Hold (Full)', action: 'Hold Gently', glow: 'from-cyan-500/20', labelClass: 'text-cyan-400', haloScale: '1.25' },
+    EXHALE: { label: 'Phase 3: Exhale', action: 'Breathe Out Slowly', glow: 'from-blue-500/20', labelClass: 'text-blue-400', haloScale: '0.95' },
+    HOLD_EMPTY: { label: 'Phase 4: Hold (Empty)', action: 'Stay Relaxed', glow: 'from-purple-500/20', labelClass: 'text-purple-400', haloScale: '0.95' },
   };
 
-  const activeLang = document.documentElement.lang || 'en';
-  const phaseConfig = localizedPhaseConfigs[activeLang] || localizedPhaseConfigs.en;
-
-  function formatTime(sec) {
+  function formatTime(sec: number): string {
     const m = Math.floor(sec / 60);
     const s = sec % 60;
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   }
 
-  function updateProgressRing(percent) {
+  function updateProgressRing(percent: number) {
     if (!progressCircle) return;
     const circumference = 2 * Math.PI * 44;
     const offset = circumference - (percent / 100) * circumference;
     progressCircle.style.strokeDashoffset = `${offset}`;
   }
 
-  function getSelectedMusicFilePath() {
+  function getSelectedMusicFilePath(): string | null {
     try {
       const trackId = localStorage.getItem(BOX_MUSIC_KEY);
       if (!trackId) return null;
-      const allTracks = [
-        ...musicTracks.guidedBreathing,
-        ...musicTracks.breathOutHold,
-        ...musicTracks.recoveryHold,
-      ];
-      const track = allTracks.find(t => t.id === trackId);
+      const track = allTracks.find(item => item.id === trackId);
       return track?.filePath || null;
     } catch {
       return null;
@@ -277,7 +489,7 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
 
   document.querySelectorAll('.box-preset-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      const target = e.currentTarget;
+      const target = e.currentTarget as HTMLElement;
       currentPreset = target.dataset.boxPreset || 'standard-4s';
       phaseDuration = parseFloat(target.dataset.duration || '4');
       totalCycles = parseInt(target.dataset.cycles || '20', 10);
@@ -297,13 +509,13 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
   function updatePresetUI() {
     if (presetBadge) {
       let badgeText = currentPreset === 'standard-4s'
-        ? `Standard 4s (${phaseDuration}s)`
-        : `Custom (${phaseDuration}s)`;
+        ? `${t.presetStandard || 'Standard 4s'} (${phaseDuration}s)`
+        : `${t.presetCustom || 'Custom'} (${phaseDuration}s)`;
       presetBadge.textContent = badgeText;
     }
     if (totalCyclesText) totalCyclesText.textContent = String(totalCycles);
     if (currentCycleText) currentCycleText.textContent = String(currentCycle);
-    if (secondaryCounter) secondaryCounter.textContent = `${phaseDuration}s per phase`;
+    if (secondaryCounter) secondaryCounter.textContent = `${phaseDuration}${t.perPhase || 's per phase'}`;
   }
 
   customSettingsBtn?.addEventListener('click', () => customModal?.classList.remove('hidden'));
@@ -313,7 +525,10 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
     if (customDurationVal && customDurationInput) customDurationVal.textContent = `${customDurationInput.value}s`;
   });
   customCyclesInput?.addEventListener('input', () => {
-    if (customCyclesVal && customCyclesInput) customCyclesVal.textContent = `${customCyclesInput.value} Cycles`;
+    if (customCyclesVal && customCyclesInput) {
+      const suffix = customCyclesVal.getAttribute('data-suffix') || 'Cycles';
+      customCyclesVal.textContent = `${customCyclesInput.value} ${suffix}`;
+    }
   });
 
   applyCustom?.addEventListener('click', () => {
@@ -353,10 +568,10 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
   btnRestart?.addEventListener('click', () => resetSession());
 
   btnMusic?.addEventListener('click', () => {
-    window.openBoxMusicModal?.();
+    (window as any).openBoxMusicModal?.();
   });
 
-  window.addEventListener('hb_box_music_updated', (e) => {
+  window.addEventListener('hb_box_music_updated', () => {
     if (phase === 'IDLE' || phase === 'COMPLETE') return;
     const filePath = getSelectedMusicFilePath();
     if (filePath) {
@@ -398,7 +613,7 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.remove('hidden');
       iconPause.classList.add('hidden');
-      labelMainAction.textContent = 'Resume';
+      labelMainAction.textContent = t.btnResume || 'Resume';
     }
   }
 
@@ -408,7 +623,7 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.add('hidden');
       iconPause.classList.remove('hidden');
-      labelMainAction.textContent = 'Pause';
+      labelMainAction.textContent = t.btnPause || 'Pause';
     }
     runPhaseTimer();
   }
@@ -418,7 +633,8 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
     isPaused = false;
     phaseElapsed = 0;
 
-    const cfg = phaseConfig[PHASES[currentPhaseIndex]];
+    const currentKey = PHASES[currentPhaseIndex];
+    const cfg = phaseConfig[currentKey] || phaseConfig.INHALE;
     const phaseTotal = PHASES.length;
 
     if (phaseLabel) {
@@ -434,18 +650,20 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       breathHalo.style.transform = `scale(${cfg.haloScale})`;
     }
     if (currentCycleText) currentCycleText.textContent = String(currentCycle);
-    if (secondaryCounter) secondaryCounter.textContent = `${PHASES[currentPhaseIndex].replace('_', ' ')} — ${phaseDuration}s`;
+    if (secondaryCounter) secondaryCounter.textContent = `${cfg.label} — ${phaseDuration}s`;
 
     if (btnSkipPhase && labelSkipPhase) {
       btnSkipPhase.classList.remove('hidden');
       const nextPhaseIdx = (currentPhaseIndex + 1) % phaseTotal;
-      labelSkipPhase.textContent = nextPhaseIdx === 0 ? 'Next Cycle' : PHASES[nextPhaseIdx].replace('_', ' ').replace('FULL', '(Full)');
+      const nextKey = PHASES[nextPhaseIdx];
+      const nextCfg = phaseConfig[nextKey] || phaseConfig.INHALE;
+      labelSkipPhase.textContent = nextPhaseIdx === 0 ? (t.nextCycle || 'Next Cycle') : nextCfg.label;
     }
 
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.add('hidden');
       iconPause.classList.remove('hidden');
-      labelMainAction.textContent = 'Pause';
+      labelMainAction.textContent = t.btnPause || 'Pause';
     }
 
     updateCounter();
@@ -463,7 +681,7 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       updateCounter();
 
       if (phaseElapsed >= phaseDuration) {
-        clearInterval(phaseTimer);
+        if (phaseTimer) clearInterval(phaseTimer);
         audioPlayer.playChime();
         advancePhase();
       }
@@ -502,18 +720,21 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
     audioPlayer.stop();
 
     if (phaseLabel) {
-      phaseLabel.textContent = 'Session Complete';
+      phaseLabel.textContent = t.complete || 'Session Complete 🎉';
       phaseLabel.className = 'uppercase tracking-wider font-semibold text-emerald-400';
     }
-    if (breathActionText) breathActionText.textContent = 'Great Job!';
+    if (breathActionText) breathActionText.textContent = t.completedDirective || 'Great Job! Practice Logged.';
     if (primaryCounter) primaryCounter.textContent = 'DONE';
-    if (secondaryCounter) secondaryCounter.textContent = `Completed ${totalCycles} Cycles`;
+    if (secondaryCounter) {
+      secondaryCounter.textContent = (t.completedCyclesTemplate || 'Completed {n} Cycles')
+        .replace('{n}', String(totalCycles));
+    }
     if (breathHalo) breathHalo.style.transform = 'scale(1.0)';
     if (btnSkipPhase) btnSkipPhase.classList.add('hidden');
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.remove('hidden');
       iconPause.classList.add('hidden');
-      labelMainAction.textContent = 'Start New Session';
+      labelMainAction.textContent = t.btnStartNew || 'Start New Session';
     }
     updateProgressRing(100);
     saveSessionStats();
@@ -533,18 +754,18 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
     phaseElapsed = 0;
 
     if (phaseLabel) {
-      phaseLabel.textContent = 'Ready';
+      phaseLabel.textContent = t.ready || 'Ready';
       phaseLabel.className = 'uppercase tracking-wider font-semibold text-emerald-400';
     }
-    if (breathActionText) breathActionText.textContent = 'Press Start';
+    if (breathActionText) breathActionText.textContent = t.pressStart || 'Press Start';
     if (primaryCounter) primaryCounter.textContent = '00:00';
-    if (secondaryCounter) secondaryCounter.textContent = `${phaseDuration}s per phase`;
+    if (secondaryCounter) secondaryCounter.textContent = `${phaseDuration}${t.perPhase || 's per phase'}`;
     if (breathHalo) breathHalo.style.transform = 'scale(1.0)';
     if (btnSkipPhase) btnSkipPhase.classList.add('hidden');
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.remove('hidden');
       iconPause.classList.add('hidden');
-      labelMainAction.textContent = 'Start Session';
+      labelMainAction.textContent = t.btnStart || 'Start Session';
     }
     updateProgressRing(0);
     updatePresetUI();
@@ -559,10 +780,10 @@ import BoxMusicSelectionModal from './BoxMusicSelectionModal.astro';
       // Ignore localStorage errors
     }
   }
+
   resetSession();
 
   const activePresetBtn = document.querySelector(`.box-preset-btn[data-box-preset="${currentPreset}"]`);
   activePresetBtn?.classList.add('is-active');
   activePresetBtn?.setAttribute('aria-pressed', 'true');
-
 </script>

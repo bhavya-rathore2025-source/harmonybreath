@@ -1,21 +1,112 @@
 ---
+import type { SupportedLanguage } from '../i18n/types';
+
+export interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const translations: Record<SupportedLanguage, {
+  title: string;
+  desc: string;
+  customBtn: string;
+  standardLabel: string;
+  standardDesc: string;
+  customLabel: string;
+  customDesc: string;
+  activeLabel: string;
+}> = {
+  en: {
+    title: 'Session Presets',
+    desc: 'All four phases stay equal. Start with 4s and progress when comfortable.',
+    customBtn: 'Custom Settings',
+    standardLabel: 'Standard 4s',
+    standardDesc: '4s per phase • 20 cycles',
+    customLabel: 'Custom',
+    customDesc: '2s–10s per phase',
+    activeLabel: 'Active',
+  },
+  es: {
+    title: 'Modos de Sesión',
+    desc: 'Las cuatro fases son iguales. Comienza con 4s y progresa cuando te sientas cómodo.',
+    customBtn: 'Ajustes Personalizados',
+    standardLabel: 'Estándar 4s',
+    standardDesc: '4s por fase • 20 ciclos',
+    customLabel: 'Personalizado',
+    customDesc: '2s–10s por fase',
+    activeLabel: 'Activo',
+  },
+  de: {
+    title: 'Sitzungs-Voreinstellungen',
+    desc: 'Alle vier Phasen bleiben gleich. Beginne mit 4s und steigere dich nach Bedarf.',
+    customBtn: 'Benutzerdefiniert',
+    standardLabel: 'Standard 4s',
+    standardDesc: '4s pro Phase • 20 Zyklen',
+    customLabel: 'Benutzerdefiniert',
+    customDesc: '2s–10s pro Phase',
+    activeLabel: 'Aktiv',
+  },
+  fr: {
+    title: 'Préréglages de Séance',
+    desc: 'Les quatre temps restent identiques. Commencez à 4s et progressez à votre rythme.',
+    customBtn: 'Paramètres Personnalisés',
+    standardLabel: 'Standard 4s',
+    standardDesc: '4s par phase • 20 cycles',
+    customLabel: 'Personnalisé',
+    customDesc: '2s–10s par phase',
+    activeLabel: 'Actif',
+  },
+  pt: {
+    title: 'Predefinições de Sessão',
+    desc: 'Todas as quatro fases são iguais. Comece com 4s e avance com calma.',
+    customBtn: 'Configurações Personalizadas',
+    standardLabel: 'Padrão 4s',
+    standardDesc: '4s por fase • 20 ciclos',
+    customLabel: 'Personalizado',
+    customDesc: '2s–10s por fase',
+    activeLabel: 'Ativo',
+  },
+  ja: {
+    title: 'プリセット設定',
+    desc: '4つのフェーズは均等です。まずは4秒から始め、慣れたら時間を調整してください。',
+    customBtn: 'カスタム設定',
+    standardLabel: '標準 4秒',
+    standardDesc: '各フェーズ4秒 • 20サイクル',
+    customLabel: 'カスタム',
+    customDesc: '各フェーズ2〜10秒',
+    activeLabel: '選択中',
+  },
+  it: {
+    title: 'Preset di Sessione',
+    desc: 'Tutte e quattro le fasi sono uguali. Inizia con 4s e progredisci con calma.',
+    customBtn: 'Impostazioni Personalizzate',
+    standardLabel: 'Standard 4s',
+    standardDesc: '4s per fase • 20 cicli',
+    customLabel: 'Personalizzato',
+    customDesc: '2s–10s per fase',
+    activeLabel: 'Attivo',
+  },
+};
+
+const t = translations[lang] || translations.en;
 ---
 
 <div class="reveal w-full max-w-4xl mx-auto mb-8">
   <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
     <div class="space-y-1.5">
-      <h3 class="text-sm font-mono text-amber-400 uppercase tracking-widest">Session Presets</h3>
-      <p class="text-xs text-neutral-400">All four phases stay equal. Start with 4s and progress when comfortable.</p>
+      <h3 class="text-sm font-mono text-amber-400 uppercase tracking-widest">{t.title}</h3>
+      <p class="text-xs text-neutral-400">{t.desc}</p>
     </div>
     <button
       id="box-custom-settings-btn"
       type="button"
-      class="focus-ring inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 hover:border-neutral-700 text-xs font-medium text-neutral-300 hover:text-white transition-all duration-200 active:scale-95"
+      class="focus-ring inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-neutral-800 bg-neutral-900/80 hover:bg-neutral-800 hover:border-neutral-700 text-xs font-medium text-neutral-300 hover:text-white transition-all duration-200 active:scale-95 cursor-pointer"
     >
       <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
       </svg>
-      Custom Settings
+      {t.customBtn}
     </button>
   </div>
 
@@ -25,16 +116,16 @@
       data-box-preset="standard-4s"
       data-duration="4"
       data-cycles="20"
-      class="box-preset-btn focus-ring group relative p-5 sm:p-6 rounded-2xl border bg-neutral-950/60 text-left transition-all duration-300 active:scale-[0.98] flex flex-col justify-between gap-4"
+      class="box-preset-btn focus-ring group relative p-5 sm:p-6 rounded-2xl border bg-neutral-950/60 text-left transition-all duration-300 active:scale-[0.98] flex flex-col justify-between gap-4 cursor-pointer"
       aria-pressed="true"
     >
       <span class="box-preset-active-mark absolute -top-px -right-px w-3 h-3 rounded-full bg-amber-400 shadow-lg shadow-amber-500/40 pointer-events-none hidden"></span>
       <div class="flex items-start justify-between gap-3">
-        <div class="text-xs font-mono text-amber-400 mb-1">Standard 4s</div>
-        <span class="box-preset-active-label text-[10px] font-mono uppercase tracking-widest text-amber-400 opacity-0 transition-opacity duration-300">Active</span>
+        <div class="text-xs font-mono text-amber-400 mb-1">{t.standardLabel}</div>
+        <span class="box-preset-active-label text-[10px] font-mono uppercase tracking-widest text-amber-400 opacity-0 transition-opacity duration-300">{t.activeLabel}</span>
       </div>
       <div class="text-3xl font-bold text-white font-mono-numbers">4-4-4-4</div>
-      <div class="text-[11px] text-neutral-400 mt-1">4s per phase • 20 cycles</div>
+      <div class="text-[11px] text-neutral-400 mt-1">{t.standardDesc}</div>
     </button>
 
     <!-- Custom -->
@@ -42,13 +133,13 @@
       data-box-preset="custom"
       data-duration="4"
       data-cycles="20"
-      class="box-preset-btn focus-ring group relative p-5 sm:p-6 rounded-2xl border bg-neutral-950/60 text-left transition-all duration-300 active:scale-[0.98] flex flex-col justify-between gap-4"
+      class="box-preset-btn focus-ring group relative p-5 sm:p-6 rounded-2xl border bg-neutral-950/60 text-left transition-all duration-300 active:scale-[0.98] flex flex-col justify-between gap-4 cursor-pointer"
       aria-pressed="false"
     >
       <span class="box-preset-active-mark absolute -top-px -right-px w-3 h-3 rounded-full bg-amber-400 shadow-lg shadow-amber-500/40 pointer-events-none hidden"></span>
       <div class="flex items-start justify-between gap-3">
-        <div class="text-xs font-mono text-amber-400 mb-1">Custom</div>
-        <span class="box-preset-active-label text-[10px] font-mono uppercase tracking-widest text-amber-400 opacity-0 transition-opacity duration-300">Active</span>
+        <div class="text-xs font-mono text-amber-400 mb-1">{t.customLabel}</div>
+        <span class="box-preset-active-label text-[10px] font-mono uppercase tracking-widest text-amber-400 opacity-0 transition-opacity duration-300">{t.activeLabel}</span>
       </div>
       <div class="text-3xl font-bold text-white font-mono-numbers">
         <svg class="w-7 h-7 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,7 +147,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       </div>
-      <div class="text-[11px] text-neutral-400 mt-1">2s–10s per phase</div>
+      <div class="text-[11px] text-neutral-400 mt-1">{t.customDesc}</div>
     </button>
   </div>
 </div>
