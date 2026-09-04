@@ -1,11 +1,20 @@
 ---
+import type { SupportedLanguage } from '../i18n/ui';
+import { nadiShodhanaI18n } from '../i18n/nadi-shodhana';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = (nadiShodhanaI18n[lang] || nadiShodhanaI18n.en).presets;
 ---
 
-<div class="w-full max-w-4xl mx-auto mb-8 px-4">
+<div class="w-full max-w-4xl mx-auto mb-8 px-4" data-cycles-template={t.cyclesTemplate}>
   <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
-    <div>
-      <h3 class="text-sm font-mono text-indigo-400 uppercase tracking-widest font-semibold">Session Presets</h3>
-      <p class="text-xs text-neutral-400">Select rhythm and nostril timing for your Nadi Shodhana practice.</p>
+    <div class="text-center sm:text-left">
+      <h3 class="text-sm font-mono text-indigo-400 uppercase tracking-widest font-semibold">{t.sectionTitle}</h3>
+      <p class="text-xs text-neutral-400 mt-0.5">{t.sectionSubtitle}</p>
     </div>
     <button
       id="nadi-custom-settings-btn"
@@ -15,7 +24,7 @@
       <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
       </svg>
-      Custom Timing & Cycles
+      <span>{t.customBtn}</span>
     </button>
   </div>
 
@@ -29,10 +38,10 @@
       data-cycles="19"
       class="nadi-preset-btn group relative p-4 rounded-xl border border-indigo-500/50 bg-indigo-500/10 text-left transition-all duration-200 focus:outline-none col-span-1"
     >
-      <div class="text-xs font-mono text-indigo-400 mb-1">Beginner (Default)</div>
-      <div class="text-2xl font-bold text-white font-mono-numbers">4–4</div>
-      <div class="text-[11px] text-neutral-400 mt-1">19 cycles • ~5m 04s</div>
-      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5">Gentle 4s In / 4s Out without holds. Ideal starting pace.</p>
+      <div class="text-xs font-mono text-indigo-400 mb-1 break-words">{t.beginner.name}</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">{t.beginner.badge}</div>
+      <div class="text-[11px] text-neutral-400 mt-1">{t.beginner.rhythm}</div>
+      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5 leading-relaxed break-words">{t.beginner.desc}</p>
     </button>
 
     <!-- Preset 2: Relaxed 5–5 -->
@@ -44,10 +53,10 @@
       data-cycles="15"
       class="nadi-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-indigo-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1"
     >
-      <div class="text-xs font-mono text-cyan-400 mb-1">Relaxed</div>
-      <div class="text-2xl font-bold text-white font-mono-numbers">5–5</div>
-      <div class="text-[11px] text-neutral-400 mt-1">15 cycles • ~5m 00s</div>
-      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5">Slower 5s rhythm to foster tranquility and mental calm.</p>
+      <div class="text-xs font-mono text-cyan-400 mb-1 break-words">{t.relaxed.name}</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">{t.relaxed.badge}</div>
+      <div class="text-[11px] text-neutral-400 mt-1">{t.relaxed.rhythm}</div>
+      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5 leading-relaxed break-words">{t.relaxed.desc}</p>
     </button>
 
     <!-- Preset 3: Equal Rhythm 6–6 -->
@@ -59,10 +68,10 @@
       data-cycles="12"
       class="nadi-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-indigo-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1"
     >
-      <div class="text-xs font-mono text-emerald-400 mb-1">Equal Rhythm</div>
-      <div class="text-2xl font-bold text-white font-mono-numbers">6–6</div>
-      <div class="text-[11px] text-neutral-400 mt-1">12 cycles • ~4m 48s</div>
-      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5">Deep, smooth 6s cadence for focused meditation prep.</p>
+      <div class="text-xs font-mono text-emerald-400 mb-1 break-words">{t.equal.name}</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">{t.equal.badge}</div>
+      <div class="text-[11px] text-neutral-400 mt-1">{t.equal.rhythm}</div>
+      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5 leading-relaxed break-words">{t.equal.desc}</p>
     </button>
 
     <!-- Preset 4: With Retention 4-4-4 -->
@@ -74,10 +83,10 @@
       data-cycles="12"
       class="nadi-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-indigo-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1"
     >
-      <div class="text-xs font-mono text-amber-400 mb-1">With Retention</div>
-      <div class="text-2xl font-bold text-white font-mono-numbers">4-4-4</div>
-      <div class="text-[11px] text-neutral-400 mt-1">12 cycles • ~4m 48s</div>
-      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5">Adds gentle 4s breath holds between nostril transitions.</p>
+      <div class="text-xs font-mono text-amber-400 mb-1 break-words">{t.retention.name}</div>
+      <div class="text-2xl font-bold text-white font-mono-numbers">{t.retention.badge}</div>
+      <div class="text-[11px] text-neutral-400 mt-1">{t.retention.rhythm}</div>
+      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5 leading-relaxed break-words">{t.retention.desc}</p>
     </button>
 
     <!-- Preset 5: Custom -->
@@ -90,14 +99,14 @@
       data-cycles="19"
       class="nadi-preset-btn group relative p-4 rounded-xl border border-neutral-800 bg-neutral-950/60 hover:border-indigo-500/40 hover:bg-neutral-900/60 text-left transition-all duration-200 focus:outline-none col-span-1"
     >
-      <div class="text-xs font-mono text-purple-400 mb-1">Custom</div>
+      <div class="text-xs font-mono text-purple-400 mb-1 break-words">{t.custom.name}</div>
       <div class="text-2xl font-bold text-white font-mono-numbers flex items-center gap-1">
         <svg class="w-6 h-6 inline-block text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
         </svg>
       </div>
-      <div id="nadi-custom-subtitle" class="text-[11px] text-neutral-400 mt-1">Configurable timing</div>
-      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5">Define your custom nostril durations and session target.</p>
+      <div id="nadi-custom-subtitle" class="text-[11px] text-neutral-400 mt-1 truncate">{t.custom.desc}</div>
+      <p class="text-[11px] text-neutral-400 mt-1.5 border-t border-neutral-800/60 pt-1.5 leading-relaxed break-words">{t.custom.desc}</p>
     </button>
   </div>
 </div>
@@ -106,6 +115,8 @@
   const presetBtns = document.querySelectorAll('.nadi-preset-btn');
   const customModalBtn = document.getElementById('nadi-custom-settings-btn');
   const customPresetCard = document.getElementById('nadi-custom-preset-card');
+  const container = document.querySelector('[data-cycles-template]');
+  const cyclesTemplate = container?.getAttribute('data-cycles-template') || '{n} cycles';
 
   let currentSettings = {
     preset: 'beginner',
@@ -166,7 +177,8 @@
     const customSubtitle = document.getElementById('nadi-custom-subtitle');
     if (customSubtitle) {
       const timingStr = hold > 0 ? `${inhale}-${hold}-${exhale}` : `${inhale}–${exhale}`;
-      customSubtitle.textContent = `${timingStr} • ${cycles} cycles`;
+      const cyclesStr = cyclesTemplate.replace('{n}', String(cycles));
+      customSubtitle.textContent = `${timingStr} • ${cyclesStr}`;
     }
 
     window.dispatchEvent(new CustomEvent('hb_nadi_preset_changed', {

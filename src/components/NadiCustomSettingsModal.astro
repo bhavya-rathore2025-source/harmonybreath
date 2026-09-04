@@ -1,32 +1,47 @@
 ---
+import type { SupportedLanguage } from '../i18n/ui';
+import { nadiShodhanaI18n } from '../i18n/nadi-shodhana';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = (nadiShodhanaI18n[lang] || nadiShodhanaI18n.en).customModal;
 ---
 
-<div id="nadi-custom-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
+<div
+  id="nadi-custom-modal"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4"
+  data-no-hold={t.noHoldText}
+  data-sec-suffix={t.secondsSuffix}
+  data-cycles-suffix={t.cyclesSuffix}
+>
   <div class="w-full max-w-md bg-neutral-950 border border-neutral-800 rounded-2xl p-6 shadow-2xl space-y-6">
     <div class="flex items-center justify-between border-b border-neutral-800 pb-4">
-      <h3 class="text-base font-bold text-white flex items-center gap-2">
-        <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <h3 class="text-base font-bold text-white flex items-center gap-2 break-words">
+        <svg class="w-4 h-4 text-indigo-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
-        Custom Nadi Shodhana Settings
+        <span>{t.title}</span>
       </h3>
-      <button id="close-nadi-custom-modal" class="text-neutral-400 hover:text-white transition-colors" type="button" aria-label="Close modal">
+      <button id="close-nadi-custom-modal" class="text-neutral-400 hover:text-white transition-colors p-1" type="button" aria-label="Close modal">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
 
-    <div class="text-xs text-neutral-500 font-mono leading-relaxed -mt-2">
-      Customize nostril phase durations and total cycles for your alternate nostril breathing session.
+    <div class="text-xs text-neutral-400 font-sans leading-relaxed -mt-2 break-words">
+      {t.desc}
     </div>
 
     <!-- Inhale Duration -->
     <div class="space-y-2">
-      <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Inhale Duration (per nostril)</span>
-        <span id="nadi-custom-inhale-val" class="text-indigo-400 font-bold">4s</span>
+      <div class="flex justify-between text-xs font-mono text-neutral-300 gap-2">
+        <span class="break-words">{t.inhaleLabel}</span>
+        <span id="nadi-custom-inhale-val" class="text-indigo-400 font-bold shrink-0">4{t.secondsSuffix}</span>
       </div>
       <input
         type="range"
@@ -38,16 +53,16 @@
         class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-indigo-400"
       />
       <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
-        <span>2s</span>
-        <span>10s</span>
+        <span>2{t.secondsSuffix}</span>
+        <span>10{t.secondsSuffix}</span>
       </div>
     </div>
 
     <!-- Optional Retention Hold Duration -->
     <div class="space-y-2">
-      <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Optional Retention Hold</span>
-        <span id="nadi-custom-hold-val" class="text-amber-400 font-bold">0s (None)</span>
+      <div class="flex justify-between text-xs font-mono text-neutral-300 gap-2">
+        <span class="break-words">{t.holdLabel}</span>
+        <span id="nadi-custom-hold-val" class="text-amber-400 font-bold shrink-0">{t.noHoldText}</span>
       </div>
       <input
         type="range"
@@ -59,16 +74,16 @@
         class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
       />
       <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
-        <span>0s (No Hold)</span>
-        <span>10s</span>
+        <span>{t.noHoldText}</span>
+        <span>10{t.secondsSuffix}</span>
       </div>
     </div>
 
     <!-- Exhale Duration -->
     <div class="space-y-2">
-      <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Exhale Duration (per nostril)</span>
-        <span id="nadi-custom-exhale-val" class="text-emerald-400 font-bold">4s</span>
+      <div class="flex justify-between text-xs font-mono text-neutral-300 gap-2">
+        <span class="break-words">{t.exhaleLabel}</span>
+        <span id="nadi-custom-exhale-val" class="text-emerald-400 font-bold shrink-0">4{t.secondsSuffix}</span>
       </div>
       <input
         type="range"
@@ -80,16 +95,16 @@
         class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
       />
       <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
-        <span>2s</span>
-        <span>10s</span>
+        <span>2{t.secondsSuffix}</span>
+        <span>10{t.secondsSuffix}</span>
       </div>
     </div>
 
     <!-- Total Cycles -->
     <div class="space-y-2">
-      <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Total Cycles (Left → Right → Right → Left)</span>
-        <span id="nadi-custom-cycles-val" class="text-purple-400 font-bold">19 Cycles (~5m)</span>
+      <div class="flex justify-between text-xs font-mono text-neutral-300 gap-2">
+        <span class="break-words">{t.cyclesLabel}</span>
+        <span id="nadi-custom-cycles-val" class="text-purple-400 font-bold shrink-0">19 {t.cyclesSuffix} (~5m)</span>
       </div>
       <input
         type="range"
@@ -101,25 +116,25 @@
         class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-purple-400"
       />
       <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
-        <span>1 Cycle</span>
-        <span>50 Cycles</span>
+        <span>1 {t.cyclesSuffix}</span>
+        <span>50 {t.cyclesSuffix}</span>
       </div>
     </div>
 
-    <div class="flex items-center justify-end gap-3 border-t border-neutral-800 pt-4">
+    <div class="flex items-center justify-end gap-3 border-t border-neutral-800 pt-4 flex-wrap">
       <button
         id="cancel-nadi-custom"
         type="button"
         class="px-4 py-2 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-300 hover:text-white text-xs font-medium transition-colors"
       >
-        Cancel
+        {t.cancelBtn}
       </button>
       <button
         id="save-nadi-custom"
         type="button"
         class="px-5 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-semibold text-xs transition-colors"
       >
-        Apply Custom Rhythm
+        {t.applyBtn}
       </button>
     </div>
   </div>
@@ -141,15 +156,19 @@
   const exhaleVal = document.getElementById('nadi-custom-exhale-val');
   const cyclesVal = document.getElementById('nadi-custom-cycles-val');
 
+  const secSuffix = modal?.getAttribute('data-sec-suffix') || 's';
+  const noHoldStr = modal?.getAttribute('data-no-hold') || '0s (None)';
+  const cyclesSuffix = modal?.getAttribute('data-cycles-suffix') || 'Cycles';
+
   function updateValues() {
     const inhale = parseInt(inhaleInput?.value || '4', 10);
     const hold = parseInt(holdInput?.value || '0', 10);
     const exhale = parseInt(exhaleInput?.value || '4', 10);
     const cycles = parseInt(cyclesInput?.value || '19', 10);
 
-    if (inhaleVal) inhaleVal.textContent = `${inhale}s`;
-    if (holdVal) holdVal.textContent = hold > 0 ? `${hold}s` : '0s (None)';
-    if (exhaleVal) exhaleVal.textContent = `${exhale}s`;
+    if (inhaleVal) inhaleVal.textContent = `${inhale}${secSuffix}`;
+    if (holdVal) holdVal.textContent = hold > 0 ? `${hold}${secSuffix}` : noHoldStr;
+    if (exhaleVal) exhaleVal.textContent = `${exhale}${secSuffix}`;
 
     const cycleSec = (inhale + hold + exhale) * 2;
     const totalSec = cycleSec * cycles;
@@ -157,7 +176,7 @@
     const secs = totalSec % 60;
     const timeStr = mins > 0 ? `(~${mins}m ${secs > 0 ? secs + 's' : ''})` : `(~${secs}s)`;
 
-    if (cyclesVal) cyclesVal.textContent = `${cycles} Cycles ${timeStr}`;
+    if (cyclesVal) cyclesVal.textContent = `${cycles} ${cyclesSuffix} ${timeStr}`;
   }
 
   inhaleInput?.addEventListener('input', updateValues);

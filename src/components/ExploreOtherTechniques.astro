@@ -253,7 +253,7 @@ const translations: Record<SupportedLanguage, {
 const t = translations[lang] || translations.en;
 
 // Techniques with localized page support
-const multilingualTechniques = new Set(['box-breathing', 'diaphragmatic-breathing', 'wim-hof', '4-7-8-breathing', 'physiological-sigh']);
+const multilingualTechniques = new Set(['box-breathing', 'diaphragmatic-breathing', 'wim-hof', '4-7-8-breathing', 'physiological-sigh', 'nadi-shodhana']);
 
 function getTechniqueUrl(id: string): string {
   if (lang !== 'en' && multilingualTechniques.has(id)) {
