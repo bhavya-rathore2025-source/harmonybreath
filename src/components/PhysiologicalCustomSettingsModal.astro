@@ -1,17 +1,116 @@
 ---
+import type { SupportedLanguage } from '../i18n/ui';
+
+export interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const modalI18n: Record<SupportedLanguage, {
+  title: string;
+  desc: string;
+  inhale1: string;
+  inhale2: string;
+  exhale: string;
+  totalCycles: string;
+  cyclesUnit: string;
+  singleCycleUnit: string;
+  applyBtn: string;
+}> = {
+  en: {
+    title: 'Custom Physiological Sigh Settings',
+    desc: 'Customize the double inhale, prolonged exhale, and total cycles for your session.',
+    inhale1: 'First Inhale (Nose)',
+    inhale2: 'Second Inhale / Sharp Sip (Nose)',
+    exhale: 'Long Exhale (Mouth)',
+    totalCycles: 'Total Cycles',
+    cyclesUnit: 'Cycles',
+    singleCycleUnit: 'Cycle',
+    applyBtn: 'Apply Custom Session',
+  },
+  es: {
+    title: 'Ajustes Personalizados del Suspiro Fisiológico',
+    desc: 'Personaliza la doble inhalación, la exhalación prolongada y los ciclos totales de tu sesión.',
+    inhale1: 'Primera Inhalación (Nariz)',
+    inhale2: 'Segunda Inhalación Rápida (Nariz)',
+    exhale: 'Exhalación Larga (Boca)',
+    totalCycles: 'Ciclos Totales',
+    cyclesUnit: 'Ciclos',
+    singleCycleUnit: 'Ciclo',
+    applyBtn: 'Aplicar Sesión Personalizada',
+  },
+  de: {
+    title: 'Individuelle Einstellungen: Physiologischer Seufzer',
+    desc: 'Passe das doppelte Einatmen, das lange Ausatmen und die Gesamtzahl der Zyklen individuell an.',
+    inhale1: 'Erstes Einatmen (Nase)',
+    inhale2: 'Zweites kurzes Einatmen (Nase)',
+    exhale: 'Langes Ausatmen (Mund)',
+    totalCycles: 'Gesamtzyklen',
+    cyclesUnit: 'Zyklen',
+    singleCycleUnit: 'Zyklus',
+    applyBtn: 'Individuelle Sitzung Starten',
+  },
+  fr: {
+    title: 'Paramètres Personnalisés du Soupir Physiologique',
+    desc: 'Personnalisez la double inspiration, l\'expiration prolongée et le nombre de cycles.',
+    inhale1: 'Première Inspiration (Nez)',
+    inhale2: 'Deuxième Inspiration Courte (Nez)',
+    exhale: 'Longue Expiration (Bouche)',
+    totalCycles: 'Nombre de Cycles',
+    cyclesUnit: 'Cycles',
+    singleCycleUnit: 'Cycle',
+    applyBtn: 'Appliquer la Session Personnalisée',
+  },
+  pt: {
+    title: 'Configurações Personalizadas do Suspiro Fisiológico',
+    desc: 'Personalize a dupla inalação, a expiração prolongada e o total de ciclos da sua sessão.',
+    inhale1: 'Primeira Inalação (Nariz)',
+    inhale2: 'Segunda Inalação Rápida (Nariz)',
+    exhale: 'Expiração Prolongada (Boca)',
+    totalCycles: 'Ciclos Totais',
+    cyclesUnit: 'Ciclos',
+    singleCycleUnit: 'Ciclo',
+    applyBtn: 'Aplicar Sessão Personalizada',
+  },
+  ja: {
+    title: '生理的ため息 カスタム設定',
+    desc: '2段階の吸気、長時間の呼気、および合計サイクル数を自由にカスタマイズできます。',
+    inhale1: '1回目の吸気（鼻）',
+    inhale2: '2回目の鋭い吸気（鼻）',
+    exhale: '長い呼気・ため息（口）',
+    totalCycles: '合計サイクル数',
+    cyclesUnit: 'サイクル',
+    singleCycleUnit: 'サイクル',
+    applyBtn: 'カスタム設定を適用する',
+  },
+  it: {
+    title: 'Impostazioni Personalizzate Sospiro Fisiologico',
+    desc: 'Personalizza la doppia inspirazione, l\'espirazione prolungata e i cicli totali della sessione.',
+    inhale1: 'Prima Inspirazione (Naso)',
+    inhale2: 'Seconda Inspirazione Breve (Naso)',
+    exhale: 'Lunga Espirazione (Bocca)',
+    totalCycles: 'Cicli Totali',
+    cyclesUnit: 'Cicli',
+    singleCycleUnit: 'Ciclo',
+    applyBtn: 'Applica Sessione Personalizzata',
+  },
+};
+
+const t = modalI18n[lang] || modalI18n.en;
 ---
 
 <div id="sigh-custom-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
   <div class="w-full max-w-md bg-neutral-950 border border-neutral-800 rounded-2xl p-6 shadow-2xl space-y-6">
     <div class="flex items-center justify-between border-b border-neutral-800 pb-4">
       <h3 class="text-base font-bold text-white flex items-center gap-2">
-        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
-        Custom Physiological Sigh Settings
+        <span>{t.title}</span>
       </h3>
-      <button id="close-sigh-custom-modal" class="text-neutral-400 hover:text-white transition-colors">
+      <button id="close-sigh-custom-modal" class="text-neutral-400 hover:text-white transition-colors" aria-label="Close modal">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -19,13 +118,13 @@
     </div>
 
     <div class="text-xs text-neutral-500 font-mono leading-relaxed -mt-2">
-      Customize the double inhale, prolonged exhale, and total cycles for your session.
+      {t.desc}
     </div>
 
     <!-- First Inhale Duration -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>First Inhale (Nose)</span>
+        <span>{t.inhale1}</span>
         <span id="sigh-custom-inhale1-val" class="text-emerald-400 font-bold">3s</span>
       </div>
       <input
@@ -46,7 +145,7 @@
     <!-- Second Inhale (Sharp Sip) Duration -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Second Inhale / Sharp Sip (Nose)</span>
+        <span>{t.inhale2}</span>
         <span id="sigh-custom-inhale2-val" class="text-cyan-400 font-bold">1s</span>
       </div>
       <input
@@ -67,7 +166,7 @@
     <!-- Exhale Duration -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Long Exhale (Mouth)</span>
+        <span>{t.exhale}</span>
         <span id="sigh-custom-exhale-val" class="text-teal-400 font-bold">6s</span>
       </div>
       <input
@@ -88,8 +187,8 @@
     <!-- Total Cycles -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Total Cycles</span>
-        <span id="sigh-custom-cycles-val" class="text-indigo-400 font-bold">10 Cycles</span>
+        <span>{t.totalCycles}</span>
+        <span id="sigh-custom-cycles-val" class="text-indigo-400 font-bold" data-cycles-unit={t.cyclesUnit} data-single-unit={t.singleCycleUnit}>10 {t.cyclesUnit}</span>
       </div>
       <input
         type="range"
@@ -101,8 +200,8 @@
         class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-indigo-400"
       />
       <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
-        <span>1 Cycle</span>
-        <span>50 Cycles</span>
+        <span>1 {t.singleCycleUnit}</span>
+        <span>50 {t.cyclesUnit}</span>
       </div>
     </div>
 
@@ -112,7 +211,7 @@
         type="button"
         class="flex-1 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs transition-colors shadow-lg shadow-emerald-500/10"
       >
-        Apply Custom Session
+        {t.applyBtn}
       </button>
     </div>
   </div>
