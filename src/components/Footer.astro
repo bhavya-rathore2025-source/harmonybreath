@@ -1,23 +1,35 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang: propLang } = Astro.props;
+const currentLang = propLang || getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const homeUrl = currentLang === 'en' ? '/' : `/${currentLang}/`;
+const techniquesUrl = currentLang === 'en' ? '/#techniques' : `/${currentLang}/#techniques`;
 ---
 
 <footer class="relative z-10 w-full border-t border-white/10 bg-neutral-950/90 backdrop-blur-xl py-12 mt-auto">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/10">
-      <div class="flex items-center gap-2">
-        <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-amber-400 via-amber-600 to-amber-700 p-[1px]">
+      <a href={homeUrl} class="flex items-center gap-2 group">
+        <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-amber-400 via-amber-600 to-amber-700 p-[1px] group-hover:scale-105 transition-transform">
           <div class="w-full h-full bg-black rounded-full flex items-center justify-center">
             <span class="w-2 h-2 rounded-full bg-amber-400"></span>
           </div>
         </div>
         <span class="font-bold text-white text-base">Harmony<span class="text-amber-400">Breath</span></span>
-      </div>
+      </a>
 
       <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-300 font-mono">
-        <a href="/" class="hover:text-white transition-colors">Home</a>
-        <a href="/#techniques" class="hover:text-white transition-colors">Techniques</a>
-        <a href="/about/" class="hover:text-white transition-colors">About</a>
-        <a href="/contact/" class="hover:text-white transition-colors">Contact</a>
+        <a href={homeUrl} class="hover:text-white transition-colors">{t('nav.home')}</a>
+        <a href={techniquesUrl} class="hover:text-white transition-colors">{t('nav.techniques')}</a>
+        <a href="/about/" class="hover:text-white transition-colors">{t('nav.about')}</a>
+        <a href="/contact/" class="hover:text-white transition-colors">{t('nav.contact')}</a>
         <a href="/privacy/" class="hover:text-white transition-colors">Privacy</a>
         <a href="/terms/" class="hover:text-white transition-colors">Terms</a>
       </div>

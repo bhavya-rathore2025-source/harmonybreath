@@ -28,18 +28,18 @@ export function useTranslatedPath(lang: SupportedLanguage) {
   };
 }
 
-export function getHreflangLinks(techniqueSlug: string, siteUrl: string = 'https://harmonybreath.com') {
+export function getHreflangLinks(techniqueSlug: string = '', siteUrl: string = 'https://harmonybreath.com') {
   const cleanBase = siteUrl.replace(/\/+$/, '');
   const cleanSlug = techniqueSlug.replace(/^\/+|\/+$/g, '');
 
   const links: { lang: string; href: string }[] = [
     {
       lang: 'x-default',
-      href: `${cleanBase}/${cleanSlug}/`,
+      href: cleanSlug ? `${cleanBase}/${cleanSlug}/` : `${cleanBase}/`,
     },
     {
       lang: 'en',
-      href: `${cleanBase}/${cleanSlug}/`,
+      href: cleanSlug ? `${cleanBase}/${cleanSlug}/` : `${cleanBase}/`,
     },
   ];
 
@@ -47,7 +47,7 @@ export function getHreflangLinks(techniqueSlug: string, siteUrl: string = 'https
   for (const loc of otherLocales) {
     links.push({
       lang: loc,
-      href: `${cleanBase}/${loc}/${cleanSlug}/`,
+      href: cleanSlug ? `${cleanBase}/${loc}/${cleanSlug}/` : `${cleanBase}/${loc}/`,
     });
   }
 

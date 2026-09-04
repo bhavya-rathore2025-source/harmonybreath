@@ -1,11 +1,23 @@
 ---
 import LanguagePicker from './LanguagePicker.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang: propLang } = Astro.props;
+const currentLang = propLang || getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const homeUrl = currentLang === 'en' ? '/' : `/${currentLang}/`;
+const techniquesUrl = currentLang === 'en' ? '/#techniques' : `/${currentLang}/#techniques`;
 ---
 
 <header class="sticky top-0 z-50 w-full border-b border-neutral-900 bg-neutral-950/80 backdrop-blur-xl">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <!-- Brand Logo -->
-    <a href="/" class="flex items-center gap-2.5 group">
+    <a href={homeUrl} class="flex items-center gap-2.5 group">
       <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-400 via-amber-600 to-amber-700 p-[1px] shadow-lg shadow-amber-500/10 group-hover:scale-105 transition-transform duration-300">
         <div class="w-full h-full bg-black rounded-full flex items-center justify-center">
           <svg class="w-4 h-4 text-amber-400 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -22,10 +34,10 @@ import LanguagePicker from './LanguagePicker.astro';
 
     <!-- Nav Items -->
     <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-400">
-      <a href="/" class="hover:text-white transition-colors duration-200">Home</a>
-      <a href="/#techniques" class="hover:text-white transition-colors duration-200">Techniques</a>
-      <a href="/about/" class="hover:text-white transition-colors duration-200">About</a>
-      <a href="/contact/" class="hover:text-white transition-colors duration-200">Contact</a>
+      <a href={homeUrl} class="hover:text-white transition-colors duration-200">{t('nav.home')}</a>
+      <a href={techniquesUrl} class="hover:text-white transition-colors duration-200">{t('nav.techniques')}</a>
+      <a href="/about/" class="hover:text-white transition-colors duration-200">{t('nav.about')}</a>
+      <a href="/contact/" class="hover:text-white transition-colors duration-200">{t('nav.contact')}</a>
     </nav>
 
     <!-- Header Actions -->
@@ -117,7 +129,8 @@ import LanguagePicker from './LanguagePicker.astro';
   const hidePages = ['/', '/about', '/contact', '/privacy', '/terms', '/quotes'];
   const rawPath = window.location.pathname;
   const currentPath = rawPath.replace(/\/$/, '') || '/';
-  if (hidePages.includes(currentPath)) {
+  const isHomePage = currentPath === '/' || /^\/(es|de|fr|pt|ja|it)$/.test(currentPath);
+  if (isHomePage || hidePages.includes(currentPath)) {
     const volumeControl = document.getElementById('volume-control');
     const musicBtn = document.getElementById('choose-music-btn');
     if (volumeControl) volumeControl.classList.add('hidden');
@@ -207,8 +220,8 @@ import LanguagePicker from './LanguagePicker.astro';
   // Choose Music Button
   const chooseMusicBtn = document.getElementById('choose-music-btn') as HTMLButtonElement | null;
   chooseMusicBtn?.addEventListener('click', () => {
-    if (typeof window.openMusicModal === 'function') {
-      window.openMusicModal();
+    if (typeof (window as any).openMusicModal === 'function') {
+      (window as any).openMusicModal();
     }
   });
 </script>

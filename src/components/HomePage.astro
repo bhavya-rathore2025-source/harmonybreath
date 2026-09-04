@@ -1,0 +1,402 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { homeI18n } from '../i18n/home';
+import { getHreflangLinks } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const content = homeI18n[lang] || homeI18n.en;
+
+const siteUrl = 'https://harmonybreath.com';
+const canonicalUrl = lang === 'en' ? `${siteUrl}/` : `${siteUrl}/${lang}/`;
+const hreflangLinks = getHreflangLinks('', siteUrl);
+
+const pageSchemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "HarmonyBreath",
+    "url": "https://harmonybreath.com/",
+    "inLanguage": lang,
+    "description": content.metaDescription,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "HarmonyBreath",
+    "url": "https://harmonybreath.com",
+    "logo": "https://harmonybreath.com/favicon-96x96.png",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": content.catalogTitle,
+    "description": content.catalogDescription,
+    "numberOfItems": content.techniques.length,
+    "itemListElement": content.techniques.map((item, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "name": item.name,
+      "description": item.desc,
+      "url": `${siteUrl}${lang === 'en' ? `/${item.slug}/` : `/${lang}/${item.slug}/`}`,
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": `HarmonyBreath — ${content.heroTitleLine1} ${content.heroTitleLine2}`,
+    "alternateName": "HarmonyBreath Guided Breathwork App",
+    "description": content.metaDescription,
+    "url": canonicalUrl,
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any (Web Browser)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+    },
+    "featureList": [
+      "Guided timers for Wim Hof, Box Breathing, 4-7-8, Diaphragmatic, Nadi Shodhana, and Physiological Sigh",
+      "Customizable phase durations and session presets",
+      "Audio cues and ambient soundscapes",
+      "Local progress tracking and session history",
+      "100% free, privacy-first, zero data tracking",
+    ],
+  },
+];
+
+const colorStyles = {
+  cyan: {
+    cardHover: 'hover:border-cyan-400/50 shadow-cyan-950/20',
+    titleHover: 'group-hover:text-cyan-300',
+    badge: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30',
+    goalValue: 'text-cyan-300',
+    btn: 'bg-cyan-400 hover:bg-cyan-300 text-black shadow-cyan-500/20',
+  },
+  amber: {
+    cardHover: 'hover:border-amber-400/50 shadow-amber-950/20',
+    titleHover: 'group-hover:text-amber-300',
+    badge: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
+    goalValue: 'text-amber-300',
+    btn: 'bg-amber-400 hover:bg-amber-300 text-black shadow-amber-500/20',
+  },
+  blue: {
+    cardHover: 'hover:border-blue-400/50 shadow-blue-950/20',
+    titleHover: 'group-hover:text-blue-300',
+    badge: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
+    goalValue: 'text-blue-300',
+    btn: 'bg-blue-400 hover:bg-blue-300 text-black shadow-blue-500/20',
+  },
+  teal: {
+    cardHover: 'hover:border-teal-400/50 shadow-teal-950/20',
+    titleHover: 'group-hover:text-teal-300',
+    badge: 'bg-teal-500/20 text-teal-300 border-teal-500/30',
+    goalValue: 'text-teal-300',
+    btn: 'bg-teal-400 hover:bg-teal-300 text-black shadow-teal-500/20',
+  },
+  purple: {
+    cardHover: 'hover:border-purple-400/50 shadow-purple-950/20',
+    titleHover: 'group-hover:text-purple-300',
+    badge: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+    goalValue: 'text-purple-300',
+    btn: 'bg-purple-400 hover:bg-purple-300 text-black shadow-purple-500/20',
+  },
+  emerald: {
+    cardHover: 'hover:border-emerald-400/50 shadow-emerald-950/20',
+    titleHover: 'group-hover:text-emerald-300',
+    badge: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+    goalValue: 'text-emerald-300',
+    btn: 'bg-emerald-400 hover:bg-emerald-300 text-black shadow-emerald-500/20',
+  },
+};
+
+const featureColors = {
+  cyan: 'bg-cyan-500/20 border-cyan-400/30 text-cyan-300',
+  purple: 'bg-purple-500/20 border-purple-400/30 text-purple-300',
+  blue: 'bg-blue-500/20 border-blue-400/30 text-blue-300',
+  emerald: 'bg-emerald-500/20 border-emerald-400/30 text-emerald-300',
+};
+---
+
+<Layout 
+  title={content.metaTitle}
+  description={content.metaDescription}
+  keywords={content.keywords}
+  canonicalUrl={canonicalUrl}
+  lang={lang}
+  hreflangLinks={hreflangLinks}
+  schemaData={pageSchemaData}
+>
+  <Header lang={lang} />
+
+  <main class="flex-1 bg-[#06080d] text-white relative selection:bg-amber-500/30 selection:text-amber-200">
+    <!-- Fixed Persistent Atmospheric Background Image -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <img 
+        src="/Home-page.png" 
+        alt="" 
+        class="w-full h-full object-cover object-center filter brightness-[0.7] contrast-110 saturate-110 scale-105"
+      />
+      <!-- Page-wide Gradient & Radial Ambient Overlays -->
+      <div class="absolute inset-0 bg-gradient-to-b from-neutral-950/85 via-neutral-950/55 to-[#06080d]/95"></div>
+      <div class="absolute inset-0 bg-radial from-amber-500/15 via-transparent to-transparent"></div>
+      <div class="absolute inset-0 noise-overlay opacity-15"></div>
+    </div>
+
+    <!-- Scrolling Page Content Container -->
+    <div class="relative z-10 w-full">
+      <!-- HERO SECTION -->
+      <section class="w-full max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-12 flex flex-col items-center">
+        <!-- Floating Glass Nav Pill Bar -->
+        <header class="w-full max-w-4xl mx-auto mb-10 sm:mb-14">
+          <nav class="flex flex-wrap items-center justify-between gap-3 p-2 sm:px-4 sm:py-2.5 rounded-2xl sm:rounded-full border border-white/15 bg-neutral-950/80 backdrop-blur-2xl shadow-2xl shadow-amber-950/30">
+            <!-- Brand Badge -->
+            <div class="flex items-center gap-2.5 px-3 py-1 shrink-0">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse shadow-[0_0_12px_#fbbf24] shrink-0"></span>
+              <span class="text-xs sm:text-sm font-bold tracking-wider text-white uppercase font-mono">
+                HARMONY<span class="text-amber-400">BREATH</span>
+              </span>
+            </div>
+
+            <!-- Jump Links (Pills) -->
+            <div class="hidden md:flex items-center gap-1 text-xs font-mono font-medium text-neutral-300">
+              <a href="#techniques" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.catalog}</a>
+              <a href="#benefits" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.benefits}</a>
+              <a href="/quotes/" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.motivation}</a>
+              <a href="/about/" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.about}</a>
+              <a href="/contact/" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.contact}</a>
+            </div>
+
+            <!-- Header Action Buttons -->
+            <div class="flex items-center gap-2 shrink-0">
+              <a 
+                href="#techniques" 
+                class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-950 bg-white hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+              >
+                <span>{content.jumpLinks.exploreCatalog}</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+            </div>
+          </nav>
+        </header>
+
+        <!-- Hero Headline & Subtitle -->
+        <div class="text-center space-y-6 max-w-4xl mx-auto w-full">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-white text-[11px] sm:text-xs font-mono tracking-wide max-w-full overflow-hidden text-ellipsis">
+            <svg class="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span class="truncate">{content.heroBadge}</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.12] text-balance drop-shadow-xl break-words">
+            {content.heroTitleLine1} <br class="hidden sm:inline" />
+            <span>{content.heroTitleLine2}</span>
+          </h1>
+
+          <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-neutral-300 font-light leading-relaxed text-pretty break-words">
+            {content.heroSubtitle}
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <a 
+              href="#techniques" 
+              class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-neutral-950 hover:bg-neutral-200 font-semibold text-xs sm:text-sm transition-all shadow-xl shadow-white/10 text-center"
+            >
+              {content.heroExploreBtn}
+            </a>
+            <a 
+              href="/quotes/" 
+              class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/20 bg-neutral-950/70 hover:bg-white/10 text-white font-medium text-xs sm:text-sm backdrop-blur-md transition-all text-center"
+            >
+              {content.heroQuotesBtn}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECHNIQUES CATALOG GRID -->
+      <section id="techniques" class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-16 scroll-mt-20">
+        <div class="text-center space-y-3 mb-12">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-amber-400">{content.catalogSectionBadge}</h2>
+          <h3 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight break-words">
+            {content.catalogTitle}
+          </h3>
+          <p class="text-neutral-300 max-w-2xl mx-auto text-xs sm:text-sm md:text-base font-light break-words">
+            {content.catalogDescription}
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {content.techniques.map((item) => {
+            const st = colorStyles[item.color] || colorStyles.cyan;
+            const techniqueHref = lang === 'en' ? `/${item.slug}/` : `/${lang}/${item.slug}/`;
+
+            return (
+              <div class={`rounded-3xl border border-white/15 bg-neutral-950/80 p-6 sm:p-7 flex flex-col justify-between space-y-6 ${st.cardHover} backdrop-blur-2xl transition-all duration-300 group shadow-2xl hover:-translate-y-1`}>
+                <div class="space-y-4">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class={`px-3 py-1 rounded-full text-[10px] font-mono uppercase font-semibold border ${st.badge} shrink-0`}>
+                      {item.badge}
+                    </span>
+                    <span class="text-xs text-neutral-400 font-mono truncate text-right">
+                      {item.category}
+                    </span>
+                  </div>
+
+                  <h3 class={`text-xl sm:text-2xl font-bold text-white ${st.titleHover} transition-colors break-words`}>
+                    {item.name}
+                  </h3>
+
+                  <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light break-words">
+                    {item.desc}
+                  </p>
+
+                  <div class="space-y-2 text-xs font-mono text-neutral-400 pt-3 border-t border-white/10">
+                    <div class="flex flex-wrap items-center justify-between gap-1">
+                      <span>{item.cadenceLabel}</span>
+                      <span class="text-white font-medium text-right">{item.cadenceValue}</span>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-between gap-1">
+                      <span>{item.goalLabel}</span>
+                      <span class={`${st.goalValue} font-semibold text-right`}>{item.goalValue}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <a 
+                  href={techniqueHref} 
+                  class={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl ${st.btn} font-bold text-xs transition-all shadow-lg text-center`}
+                >
+                  {item.buttonText}
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <!-- WHY PRACTICE SECTION -->
+      <section id="benefits" class="w-full max-w-6xl mx-auto px-4 sm:px-6 py-16 scroll-mt-20">
+        <div class="text-center space-y-3 mb-12">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-amber-400">{content.benefitsSectionBadge}</h2>
+          <h3 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight break-words">
+            {content.benefitsTitle}
+          </h3>
+          <p class="text-neutral-300 max-w-2xl mx-auto text-xs sm:text-sm md:text-base font-light break-words">
+            {content.benefitsDescription}
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {content.features.map((feat) => {
+            const colorClass = featureColors[feat.color] || featureColors.cyan;
+
+            return (
+              <div class="p-6 sm:p-8 rounded-3xl border border-white/15 bg-neutral-950/80 backdrop-blur-2xl space-y-4 shadow-2xl">
+                <div class={`w-12 h-12 rounded-2xl ${colorClass} border flex items-center justify-center font-bold font-mono text-lg shrink-0`}>
+                  {feat.num}
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-white break-words">
+                  {feat.title}
+                </h3>
+                <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed font-light break-words">
+                  {feat.desc}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <!-- CALL TO ACTION BANNER -->
+      <section class="w-full max-w-5xl mx-auto px-4 sm:px-6 my-16">
+        <div class="rounded-3xl border border-white/15 bg-neutral-950/85 backdrop-blur-2xl p-6 sm:p-10 md:p-14 text-center space-y-6 relative overflow-hidden shadow-2xl shadow-amber-950/20">
+          <div class="max-w-2xl mx-auto space-y-4">
+            <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight break-words">
+              {content.ctaTitle}
+            </h2>
+            <p class="text-neutral-300 text-xs sm:text-sm md:text-base font-light leading-relaxed break-words">
+              {content.ctaDesc}
+            </p>
+            <p class="text-neutral-400 text-xs sm:text-sm md:text-base font-light italic break-words">
+              {content.ctaNote}
+            </p>
+          </div>
+
+          <div>
+            <a 
+              href="#techniques" 
+              class="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-white text-neutral-950 font-bold text-xs sm:text-sm hover:bg-neutral-200 transition-all shadow-xl shadow-white/20"
+            >
+              <span>{content.ctaBtn}</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 15l-7-7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- INFO PAGES GRID -->
+      <section class="w-full max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+        <div class="text-center space-y-3 mb-10">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-amber-400">{content.infoSectionBadge}</h2>
+          <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight break-words">
+            {content.infoTitle}
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {content.infoCards.map((card, idx) => (
+            <a 
+              href={card.href} 
+              class="group rounded-3xl border border-white/15 bg-neutral-950/80 p-6 hover:border-amber-400/50 backdrop-blur-2xl transition-all duration-300 space-y-3 shadow-xl flex flex-col justify-between"
+            >
+              <div class="space-y-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-amber-300 group-hover:scale-110 transition-transform shrink-0">
+                  {idx === 0 && (
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  )}
+                  {idx === 1 && (
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  )}
+                  {idx === 2 && (
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  )}
+                  {idx === 3 && (
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  )}
+                </div>
+                <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors break-words">
+                  {card.title}
+                </h3>
+                <p class="text-xs text-neutral-400 leading-relaxed font-light break-words">
+                  {card.desc}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>
