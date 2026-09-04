@@ -1,51 +1,284 @@
 ---
+import type { SupportedLanguage } from '../i18n/ui';
+
 interface Props {
   current: 'box-breathing' | 'nadi-shodhana' | 'wim-hof' | '4-7-8-breathing' | 'diaphragmatic-breathing' | 'physiological-sigh';
   accent?: 'amber' | 'indigo' | 'blue' | 'teal' | 'cyan' | 'emerald';
+  lang?: SupportedLanguage;
 }
 
-const { current, accent = 'amber' } = Astro.props;
+const { current, accent = 'amber', lang = 'en' } = Astro.props;
 
-const allTechniques = [
-  {
-    id: 'box-breathing',
-    title: 'Box Breathing Timer',
-    url: '/box-breathing/',
-    desc: 'a balanced four-part rhythm of equal inhale, hold, exhale, and empty hold, favored for calm and composure under pressure.',
+const translations: Record<SupportedLanguage, {
+  heading: string;
+  subheading: string;
+  footerPre: string;
+  footerLink: string;
+  footerPost: string;
+  techniques: Record<string, { title: string; desc: string }>;
+}> = {
+  en: {
+    heading: 'Explore Other Breathing Techniques',
+    subheading: 'Looking to round out your breathwork routine? Try another free guided timer from HarmonyBreath:',
+    footerPre: 'Learn more about',
+    footerLink: "HarmonyBreath's mission",
+    footerPost: 'to make breathwork free and accessible for everyone.',
+    techniques: {
+      'box-breathing': {
+        title: 'Box Breathing Timer',
+        desc: 'a balanced four-part rhythm of equal inhale, hold, exhale, and empty hold, favored for calm and composure under pressure.',
+      },
+      '4-7-8-breathing': {
+        title: '4-7-8 Breathing Timer',
+        desc: 'a relaxing pattern with a gentle breath hold (4s in, 7s hold, 8s out), often used to wind down before sleep.',
+      },
+      'physiological-sigh': {
+        title: 'Physiological Sigh Timer',
+        desc: 'an evidence-backed double-inhale and long-exhale protocol designed for rapid stress relief and mood elevation.',
+      },
+      'diaphragmatic-breathing': {
+        title: 'Diaphragmatic Breathing Timer',
+        desc: 'a foundational belly-breathing practice that pairs well with other techniques for full, steady, deep breaths.',
+      },
+      'nadi-shodhana': {
+        title: 'Nadi Shodhana Timer',
+        desc: 'a traditional alternate nostril breathing practice to balance energy, quiet the mind, and center focus.',
+      },
+      'wim-hof': {
+        title: 'Wim Hof Breathing Timer',
+        desc: 'an energizing rhythmic practice featuring deep breaths followed by retention holds for an invigorating session.',
+      },
+    },
   },
-  {
-    id: '4-7-8-breathing',
-    title: '4-7-8 Breathing Timer',
-    url: '/4-7-8-breathing/',
-    desc: 'a relaxing pattern with a gentle breath hold (4s in, 7s hold, 8s out), often used to wind down before sleep.',
+  es: {
+    heading: 'Explora Otras Técnicas de Respiración',
+    subheading: '¿Quieres enriquecer tu rutina de respiración consciente? Prueba otro temporizador guiado gratuito de HarmonyBreath:',
+    footerPre: 'Conoce más sobre',
+    footerLink: 'la misión de HarmonyBreath',
+    footerPost: 'para hacer que la respiración consciente sea gratuita y accesible para todos.',
+    techniques: {
+      'box-breathing': {
+        title: 'Temporizador de Respiración Cuadrada',
+        desc: 'un ritmo equilibrado de cuatro tiempos iguales (inhalar, retener, exhalar y retener en vacío) ideal para la calma y el enfoque.',
+      },
+      '4-7-8-breathing': {
+        title: 'Temporizador de Respiración 4-7-8',
+        desc: 'un patrón relajante con exhalación prolongada (4s dentro, 7s retención, 8s fuera) diseñado para conciliar el sueño.',
+      },
+      'physiological-sigh': {
+        title: 'Temporizador de Suspiro Fisiológico',
+        desc: 'protocolo de doble inhalación y exhalación larga con respaldo científico para alivio rápido del estrés.',
+      },
+      'diaphragmatic-breathing': {
+        title: 'Temporizador de Respiración Diafragmática',
+        desc: 'respiración abdominal profunda para estimular el nervio vago y lograr una relajación plena.',
+      },
+      'nadi-shodhana': {
+        title: 'Temporizador Nadi Shodhana',
+        desc: 'respiración alterna por las fosas nasales para equilibrar la energía y calmar la mente.',
+      },
+      'wim-hof': {
+        title: 'Temporizador de Respiración Wim Hof',
+        desc: 'respiraciones profundas y rítmicas seguidas de apneas reconfortantes para una vitalidad total.',
+      },
+    },
   },
-  {
-    id: 'physiological-sigh',
-    title: 'Physiological Sigh Timer',
-    url: '/physiological-sigh/',
-    desc: 'an evidence-backed double-inhale and long-exhale protocol designed for rapid stress relief and mood elevation.',
+  de: {
+    heading: 'Entdecke weitere Atemtechniken',
+    subheading: 'Möchtest du deine Atempraxis erweitern? Probiere einen weiteren kostenlosen geführten Timer von HarmonyBreath aus:',
+    footerPre: 'Erfahre mehr über',
+    footerLink: 'die Mission von HarmonyBreath',
+    footerPost: 'Atemarbeit für alle Menschen frei und zugänglich zu machen.',
+    techniques: {
+      'box-breathing': {
+        title: 'Box-Breathing Timer',
+        desc: 'ein ausgewogener Vier-Takt-Rhythmus (Einatmen, Halten, Ausatmen, Halten) für Fokus und Ruhe unter Druck.',
+      },
+      '4-7-8-breathing': {
+        title: '4-7-8 Atem-Timer',
+        desc: 'ein beruhigendes Atemmuster (4s ein, 7s halten, 8s aus), ideal zum Entspannen vor dem Einschlafen.',
+      },
+      'physiological-sigh': {
+        title: 'Physiologischer Seufzer Timer',
+        desc: 'wissenschaftlich fundiertes Doppel-Einatmen mit langer Ausatmung für sofortigen Stressabbau.',
+      },
+      'diaphragmatic-breathing': {
+        title: 'Zwerchfellatmung Timer',
+        desc: 'fundamentale Bauchatmung zur Aktivierung des Vagusnervs und für tiefe innere Ruhe.',
+      },
+      'nadi-shodhana': {
+        title: 'Nadi-Shodhana Timer',
+        desc: 'traditionelle Wechselatmung für emotionale Ausgeglichenheit und zentrierten Fokus.',
+      },
+      'wim-hof': {
+        title: 'Wim-Hof-Atmung Timer',
+        desc: 'energetisierende rhythmische Atemzüge mit Atemanhalten für Vitalität und Wachheit.',
+      },
+    },
   },
-  {
-    id: 'diaphragmatic-breathing',
-    title: 'Diaphragmatic Breathing Timer',
-    url: '/diaphragmatic-breathing/',
-    desc: 'a foundational belly-breathing practice that pairs well with other techniques for full, steady, deep breaths.',
+  fr: {
+    heading: 'Découvrez d’Autres Techniques de Respiration',
+    subheading: 'Envie d’enrichir votre routine respiratoire ? Essayez un autre minuteur guidé gratuit d’HarmonyBreath :',
+    footerPre: 'En savoir plus sur',
+    footerLink: 'la mission d’HarmonyBreath',
+    footerPost: 'pour rendre la respiration consciente accessible à tous.',
+    techniques: {
+      'box-breathing': {
+        title: 'Minuteur Respiration Carrée',
+        desc: 'un rythme équilibré en 4 temps égaux (inspiration, rétention, expiration, rétention vide) pour garder son calme.',
+      },
+      '4-7-8-breathing': {
+        title: 'Minuteur Respiration 4-7-8',
+        desc: 'un schéma sédatif avec apnée (4s inspire, 7s apnée, 8s expire), parfait pour trouver le sommeil.',
+      },
+      'physiological-sigh': {
+        title: 'Minuteur Soupir Physiologique',
+        desc: 'protocole validé par la science de double inspiration et longue expiration pour réduire le stress instantanément.',
+      },
+      'diaphragmatic-breathing': {
+        title: 'Minuteur Respiration Diaphragmatique',
+        desc: 'respiration ventrale essentielle pour stimuler le nerf vague et apaiser le rythme cardiaque.',
+      },
+      'nadi-shodhana': {
+        title: 'Minuteur Nadi Shodhana',
+        desc: 'respiration par narines alternées issue du yoga pour équilibrer l’esprit et clarifier les pensées.',
+      },
+      'wim-hof': {
+        title: 'Minuteur Respiration Wim Hof',
+        desc: 'séance énergisante alliant respirations amples et rétentions poumons vides pour booster le tonus.',
+      },
+    },
   },
-  {
-    id: 'nadi-shodhana',
-    title: 'Nadi Shodhana Timer',
-    url: '/nadi-shodhana/',
-    desc: 'a traditional alternate nostril breathing practice to balance energy, quiet the mind, and center focus.',
+  pt: {
+    heading: 'Explore Outras Técnicas de Respiração',
+    subheading: 'Quer complementar sua rotina de respiração? Experimente outro temporizador guiado gratuito do HarmonyBreath:',
+    footerPre: 'Saiba mais sobre',
+    footerLink: 'a missão do HarmonyBreath',
+    footerPost: 'de tornar a respiração consciente gratuita e acessível a todos.',
+    techniques: {
+      'box-breathing': {
+        title: 'Temporizador Respiração Quadrada',
+        desc: 'um ritmo equilibrado em 4 fases iguais (inalar, reter, exalar e pausar) para foco e compostura.',
+      },
+      '4-7-8-breathing': {
+        title: 'Temporizador Respiração 4-7-8',
+        desc: 'um padrão relaxante com retenção suave (4s dentro, 7s segurar, 8s fora) ideal para dormir melhor.',
+      },
+      'physiological-sigh': {
+        title: 'Temporizador Suspiro Fisiológico',
+        desc: 'dupla inalação com longa exalação comprovada pela neurociência para alívio imediato do estresse.',
+      },
+      'diaphragmatic-breathing': {
+        title: 'Temporizador Respiração Diafragmática',
+        desc: 'a respiração abdominal fundamental para relaxamento profundo e ativação do nervo vago.',
+      },
+      'nadi-shodhana': {
+        title: 'Temporizador Nadi Shodhana',
+        desc: 'respiração alternada pelas narinas para equilibrar a energia e centrar a atenção mental.',
+      },
+      'wim-hof': {
+        title: 'Temporizador Respiração Wim Hof',
+        desc: 'prática revigorante com respirações profundas e apneias prazerosas para despertar o corpo.',
+      },
+    },
   },
-  {
-    id: 'wim-hof',
-    title: 'Wim Hof Breathing Timer',
-    url: '/wim-hof/',
-    desc: 'an energizing rhythmic practice featuring deep breaths followed by retention holds for an invigorating session.',
+  ja: {
+    heading: '他の呼吸法を体験する',
+    subheading: '毎日のブレスワーク習慣をさらに充実させたいですか？HarmonyBreathの他の無料ガイドタイマーもお試しください：',
+    footerPre: '',
+    footerLink: 'HarmonyBreathのミッション',
+    footerPost: 'について詳しく知る。誰もが無料で呼吸法を実践できる環境を目指しています。',
+    techniques: {
+      'box-breathing': {
+        title: 'ボックス呼吸法タイマー',
+        desc: '4秒ずつ吸う・止める・吐く・止めるを繰り返す四角形のリズム。プレッシャー下での冷静さと集中力をもたらします。',
+      },
+      '4-7-8-breathing': {
+        title: '4-7-8 呼吸法タイマー',
+        desc: '4秒吸って7秒止め8秒で吐き出す、就寝前の深いリラックスと入眠に適した呼吸法。',
+      },
+      'physiological-sigh': {
+        title: '生理的ため息タイマー',
+        desc: '2回吸って長く吐く、科学的エビデンスに裏付けられた即効性の高いストレス解消プロトコル。',
+      },
+      'diaphragmatic-breathing': {
+        title: '腹式呼吸（横隔膜呼吸）タイマー',
+        desc: '迷走神経を刺激し、心身を深く落ち着かせるすべての呼吸法の基本となる腹式呼吸。',
+      },
+      'nadi-shodhana': {
+        title: 'ナディ・ショーダナ（片鼻呼吸）タイマー',
+        desc: '左右の鼻腔を交互に使って呼吸し、自律神経のバランスを整え心を澄ませる伝統的なヨガの技法。',
+      },
+      'wim-hof': {
+        title: 'ヴィム・ホフ呼吸法タイマー',
+        desc: '深いリズミカルな呼吸と息止めを組み合わせ、心身に活力とエネルギーを吹き込む呼吸法。',
+      },
+    },
+  },
+  it: {
+    heading: 'Esplora Altre Tecniche di Respirazione',
+    subheading: 'Vuoi arricchire la tua routine di respirazione? Prova un altro timer guidato gratuito di HarmonyBreath:',
+    footerPre: 'Scopri di più sulla',
+    footerLink: 'missione di HarmonyBreath',
+    footerPost: 'per rendere il breathwork gratuito e accessibile a tutti.',
+    techniques: {
+      'box-breathing': {
+        title: 'Timer Respirazione Quadrata',
+        desc: 'un ritmo bilanciato in 4 tempi uguali (inspira, trattieni, espira, trattieni a vuoto) per calma e compostezza.',
+      },
+      '4-7-8-breathing': {
+        title: 'Timer Respirazione 4-7-8',
+        desc: 'uno schema rilassante (4s dentro, 7s apnea, 8s fuori), ideale per sciogliere le tensioni prima di dormire.',
+      },
+      'physiological-sigh': {
+        title: 'Timer Sospiro Fisiologico',
+        desc: 'doppia inspirazione ed espirazione prolungata validata dalla scienza per un sollievo rapido dallo stress.',
+      },
+      'diaphragmatic-breathing': {
+        title: 'Timer Respirazione Diaframmatica',
+        desc: 'respirazione ventrale fondamentale per stimolare il nervo vago e rallentare i battiti cardiaci.',
+      },
+      'nadi-shodhana': {
+        title: 'Timer Nadi Shodhana',
+        desc: 'respirazione a narici alternate per riequilibrare l’energia e centrare la mente.',
+      },
+      'wim-hof': {
+        title: 'Timer Respirazione Wim Hof',
+        desc: 'pratica energizzante con respiri profondi e apnee distensive per risvegliare vitalità e difese.',
+      },
+    },
+  },
+};
+
+const t = translations[lang] || translations.en;
+
+// Techniques with localized page support
+const multilingualTechniques = new Set(['box-breathing', 'diaphragmatic-breathing', 'wim-hof']);
+
+function getTechniqueUrl(id: string): string {
+  if (lang !== 'en' && multilingualTechniques.has(id)) {
+    return `/${lang}/${id}/`;
   }
+  return `/${id}/`;
+}
+
+const allTechniqueIds: Array<'box-breathing' | '4-7-8-breathing' | 'physiological-sigh' | 'diaphragmatic-breathing' | 'nadi-shodhana' | 'wim-hof'> = [
+  'box-breathing',
+  '4-7-8-breathing',
+  'physiological-sigh',
+  'diaphragmatic-breathing',
+  'nadi-shodhana',
+  'wim-hof',
 ];
 
-const otherTechniques = allTechniques.filter(t => t.id !== current);
+const otherTechniques = allTechniqueIds
+  .filter(id => id !== current)
+  .map(id => ({
+    id,
+    title: t.techniques[id]?.title || translations.en.techniques[id].title,
+    desc: t.techniques[id]?.desc || translations.en.techniques[id].desc,
+    url: getTechniqueUrl(id),
+  }));
 
 const accentClasses: Record<string, string> = {
   amber: 'text-amber-400 hover:text-amber-300',
@@ -63,10 +296,10 @@ const linkClass = accentClasses[accent] || accentClasses.amber;
   <div class="p-6 sm:p-8 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md space-y-5">
     <div class="space-y-2">
       <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-        Explore Other Breathing Techniques
+        {t.heading}
       </h2>
       <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans font-light">
-        Looking to round out your breathwork routine? Try another free guided timer from HarmonyBreath:
+        {t.subheading}
       </p>
     </div>
 
@@ -88,14 +321,14 @@ const linkClass = accentClasses[accent] || accentClasses.amber;
     </ul>
 
     <div class="pt-2 border-t border-neutral-900 text-xs sm:text-sm text-neutral-400 leading-relaxed font-sans font-light">
-      Learn more about{' '}
+      {t.footerPre}{' '}
       <a
         href="/about/"
         class={`${linkClass} underline underline-offset-2 font-medium transition-colors`}
       >
-        HarmonyBreath's mission
+        {t.footerLink}
       </a>
-      {' '}to make breathwork free and accessible for everyone.
+      {' '}{t.footerPost}
     </div>
   </div>
 </section>

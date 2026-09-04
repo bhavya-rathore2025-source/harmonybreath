@@ -1,4 +1,111 @@
 ---
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const modalTranslations: Record<SupportedLanguage, {
+  title: string;
+  guidedBreaths: string;
+  breathTime: string;
+  breathTimeDesc: string;
+  holdTarget: string;
+  totalRounds: string;
+  applyBtn: string;
+  breathsUnit: string;
+  secondsUnit: string;
+  roundsUnit: string;
+}> = {
+  en: {
+    title: 'Custom Session Settings',
+    guidedBreaths: 'Guided Breaths',
+    breathTime: 'Breath Time',
+    breathTimeDesc: 'Duration of one complete breath cycle (inhale + exhale)',
+    holdTarget: 'Breath-Out Hold Target',
+    totalRounds: 'Total Rounds',
+    applyBtn: 'Apply Custom Session',
+    breathsUnit: 'Breaths',
+    secondsUnit: 'Seconds',
+    roundsUnit: 'Rounds',
+  },
+  es: {
+    title: 'Configuración de Sesión Personalizada',
+    guidedBreaths: 'Respiraciones Guiadas',
+    breathTime: 'Tiempo por Respiración',
+    breathTimeDesc: 'Duración de un ciclo completo (inhalación + exhalación)',
+    holdTarget: 'Objetivo de Retención sin Aire',
+    totalRounds: 'Rondas Totales',
+    applyBtn: 'Aplicar Sesión Personalizada',
+    breathsUnit: 'Respiraciones',
+    secondsUnit: 'Segundos',
+    roundsUnit: 'Rondas',
+  },
+  de: {
+    title: 'Benutzerdefinierte Sitzung',
+    guidedBreaths: 'Geführte Atemzüge',
+    breathTime: 'Atemzyklus-Dauer',
+    breathTimeDesc: 'Dauer eines vollständigen Atemzyklus (Ein- + Ausatmen)',
+    holdTarget: 'Ziel-Haltezeit (Atemausatmung)',
+    totalRounds: 'Rundenanzahl',
+    applyBtn: 'Einstellungen Übernehmen',
+    breathsUnit: 'Atemzüge',
+    secondsUnit: 'Sekunden',
+    roundsUnit: 'Runden',
+  },
+  fr: {
+    title: 'Paramètres Personnalisés',
+    guidedBreaths: 'Souffles Guidés',
+    breathTime: 'Durée du Cycle',
+    breathTimeDesc: 'Durée d’un cycle respiratoire complet (inspiration + expiration)',
+    holdTarget: 'Objectif d’Apnée Poumons Vides',
+    totalRounds: 'Nombre de Cycles',
+    applyBtn: 'Appliquer les Paramètres',
+    breathsUnit: 'Souffles',
+    secondsUnit: 'Secondes',
+    roundsUnit: 'Cycles',
+  },
+  pt: {
+    title: 'Configuração Personalizada',
+    guidedBreaths: 'Respirações Guiadas',
+    breathTime: 'Tempo por Respiração',
+    breathTimeDesc: 'Duração de um ciclo completo (inalação + exalação)',
+    holdTarget: 'Meta de Retenção sem Ar',
+    totalRounds: 'Rodadas Totais',
+    applyBtn: 'Aplicar Sessão Personalizada',
+    breathsUnit: 'Respirações',
+    secondsUnit: 'Segundos',
+    roundsUnit: 'Rodadas',
+  },
+  ja: {
+    title: 'カスタムセッション設定',
+    guidedBreaths: '深呼吸の回数',
+    breathTime: '呼吸スピード',
+    breathTimeDesc: '1回の呼吸サイクル（吸気＋呼気）の秒数',
+    holdTarget: '目標の息止め時間',
+    totalRounds: 'ラウンド数',
+    applyBtn: 'カスタム設定を適用する',
+    breathsUnit: '回',
+    secondsUnit: '秒',
+    roundsUnit: 'ラウンド',
+  },
+  it: {
+    title: 'Impostazioni Personalizzate',
+    guidedBreaths: 'Respiri Guidati',
+    breathTime: 'Tempo di Respirazione',
+    breathTimeDesc: 'Durata di un ciclo completo (inspiro + espiro)',
+    holdTarget: 'Target Apnea a Polmoni Vuoti',
+    totalRounds: 'Round Totali',
+    applyBtn: 'Applica Impostazioni',
+    breathsUnit: 'Respiri',
+    secondsUnit: 'Secondi',
+    roundsUnit: 'Round',
+  },
+};
+
+const m = modalTranslations[lang] || modalTranslations.en;
 ---
 
 <div id="custom-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
@@ -9,9 +116,9 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
-        Custom Session Settings
+        {m.title}
       </h3>
-      <button id="close-custom-modal" class="text-neutral-400 hover:text-white transition-colors">
+      <button id="close-custom-modal" class="text-neutral-400 hover:text-white transition-colors cursor-pointer">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -21,8 +128,8 @@
     <!-- Breath Count Slider -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Guided Breaths</span>
-        <span id="custom-breaths-val" class="text-cyan-400 font-bold">30 Breaths</span>
+        <span>{m.guidedBreaths}</span>
+        <span id="custom-breaths-val" class="text-cyan-400 font-bold" data-unit={m.breathsUnit}>30 {m.breathsUnit}</span>
       </div>
       <input 
         type="range" 
@@ -34,15 +141,15 @@
         class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
       />
       <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
-        <span>15 Breaths</span>
-        <span>60 Breaths</span>
+        <span>15 {m.breathsUnit}</span>
+        <span>60 {m.breathsUnit}</span>
       </div>
     </div>
 
-    <!-- Breath Time Slider (NEW) -->
+    <!-- Breath Time Slider -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Breath Time</span>
+        <span>{m.breathTime}</span>
         <span id="custom-breath-time-val" class="text-amber-400 font-bold">3.0s</span>
       </div>
       <input 
@@ -58,14 +165,14 @@
         <span>2.5s</span>
         <span>6s</span>
       </div>
-      <p class="text-[10px] text-neutral-500 font-mono">Duration of one complete breath cycle (inhale + exhale)</p>
+      <p class="text-[10px] text-neutral-500 font-mono">{m.breathTimeDesc}</p>
     </div>
 
     <!-- Breath-out Hold Slider -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Breath-Out Hold Target</span>
-        <span id="custom-hold-val" class="text-blue-400 font-bold">90 Seconds</span>
+        <span>{m.holdTarget}</span>
+        <span id="custom-hold-val" class="text-blue-400 font-bold" data-unit={m.secondsUnit}>90 {m.secondsUnit}</span>
       </div>
       <input 
         type="range" 
@@ -85,8 +192,8 @@
     <!-- Number of Rounds Slider -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Total Rounds</span>
-        <span id="custom-rounds-val" class="text-purple-400 font-bold">3 Rounds</span>
+        <span>{m.totalRounds}</span>
+        <span id="custom-rounds-val" class="text-purple-400 font-bold" data-unit={m.roundsUnit}>3 {m.roundsUnit}</span>
       </div>
       <input 
         type="range" 
@@ -98,18 +205,18 @@
         class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-purple-400"
       />
       <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
-        <span>1 Round</span>
-        <span>10 Rounds</span>
+        <span>1 {m.roundsUnit}</span>
+        <span>10 {m.roundsUnit}</span>
       </div>
     </div>
 
     <div class="pt-4 flex gap-3">
       <button 
-        id="apply-custom-settings"
+        id="apply-custom-settings" 
         type="button" 
-        class="flex-1 py-2.5 rounded-xl bg-amber-400/90 text-neutral-950 font-semibold text-xs hover:bg-amber-300 transition-colors shadow-lg shadow-amber-500/10"
+        class="flex-1 py-2.5 rounded-xl bg-amber-400/90 text-neutral-950 font-semibold text-xs hover:bg-amber-300 transition-colors shadow-lg shadow-amber-500/10 cursor-pointer"
       >
-        Apply Custom Session
+        {m.applyBtn}
       </button>
     </div>
   </div>

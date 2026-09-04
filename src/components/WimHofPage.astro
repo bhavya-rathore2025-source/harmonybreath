@@ -202,17 +202,17 @@ const pageSchemaData = [
 
       <!-- Main Interactive Breathing Timer Component -->
       <div id="timer-section" class="relative z-10 max-w-4xl mx-auto px-4 scroll-mt-20">
-        <BreathingTimer />
+        <BreathingTimer lang={lang} />
       </div>
 
       <!-- Difficulty Presets -->
       <div id="presets" class="scroll-mt-20">
-        <SessionPresets />
+        <SessionPresets lang={lang} />
       </div>
 
       <!-- Analytics Stats Panel -->
       <div id="analytics" class="scroll-mt-20">
-        <AnalyticsPanel exerciseId="wim-hof" />
+        <AnalyticsPanel exerciseId="wim-hof" lang={lang} />
       </div>
 
       <!-- Step-by-Step Technique Guide -->
@@ -469,7 +469,7 @@ const pageSchemaData = [
       </section>
 
       <!-- Explore Other Techniques -->
-      <ExploreOtherTechniques current="wim-hof" accent="cyan" />
+      <ExploreOtherTechniques current="wim-hof" accent="cyan" lang={lang} />
 
       <!-- FAQ Section with JSON-LD SEO -->
       <section id="faq-section" class="w-full max-w-4xl mx-auto py-16 px-4 border-t border-neutral-900 scroll-mt-20">

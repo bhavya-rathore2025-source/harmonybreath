@@ -1,9 +1,319 @@
 ---
 import CustomSettingsModal from './CustomSettingsModal.astro';
 import MusicSelectionModal from './MusicSelectionModal.astro';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const timerI18nData: Record<SupportedLanguage, {
+  presetNames: Record<string, string>;
+  holdSuffix: string;
+  roundPrefix: string;
+  roundOf: string;
+  ready: string;
+  phase1: string;
+  phase2: string;
+  phase3: string;
+  rest: string;
+  complete: string;
+  pressStart: string;
+  inhaleDeep: string;
+  relaxExhale: string;
+  holdEmpty: string;
+  recoveryHold: string;
+  breatheNormally: string;
+  completedDirective: string;
+  breathsTotalTemplate: string;
+  breathProgressTemplate: string;
+  holdProgressTemplate: string;
+  holdRecovery: string;
+  breatheRelax: string;
+  completedSummaryTemplate: string;
+  tip1: string;
+  tip2: string;
+  tip3: string;
+  btnStart: string;
+  btnPause: string;
+  btnResume: string;
+  btnReset: string;
+  btnMusic: string;
+  btnStartNew: string;
+  btnFinishBreaths: string;
+  btnInhaleRecovery: string;
+  btnNextRound: string;
+}> = {
+  en: {
+    presetNames: { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced', expert: 'Expert', custom: 'Custom' },
+    holdSuffix: 's Hold',
+    roundPrefix: 'Round',
+    roundOf: 'of',
+    ready: 'Ready',
+    phase1: 'Phase 1: Guided Breathing',
+    phase2: 'Phase 2: Breath-Out Hold',
+    phase3: 'Phase 3: Recovery Breath',
+    rest: 'Rest',
+    complete: 'Session Complete 🎉',
+    pressStart: 'Press Start',
+    inhaleDeep: 'Inhale Deep',
+    relaxExhale: 'Relax Exhale',
+    holdEmpty: 'Gently Exhale & Retention Hold',
+    recoveryHold: 'Deep Inhale & Hold 15s',
+    breatheNormally: 'Breathe Normally',
+    completedDirective: 'Great Job! Practice Logged.',
+    breathsTotalTemplate: '{n} Breaths Total',
+    breathProgressTemplate: 'Breath {cur} of {total}',
+    holdProgressTemplate: 'Target: {s}s (Hold relaxed)',
+    holdRecovery: 'Hold recovery breath',
+    breatheRelax: 'Breathe normally & relax',
+    completedSummaryTemplate: 'Completed {n} Rounds',
+    tip1: 'Inhale deep & relaxed. Relax the exhale.',
+    tip2: 'Slightly faster pace. Breathe like a rolling wave.',
+    tip3: 'Faster rhythmic breathing. Keep inhales deep and continuous.',
+    btnStart: 'Start Session',
+    btnPause: 'Pause',
+    btnResume: 'Resume',
+    btnReset: 'Reset',
+    btnMusic: 'Music',
+    btnStartNew: 'Start New Session',
+    btnFinishBreaths: 'Finish Breaths & Hold',
+    btnInhaleRecovery: 'Inhale Recovery',
+    btnNextRound: 'Next Round',
+  },
+  es: {
+    presetNames: { beginner: 'Principiante', intermediate: 'Intermedio', advanced: 'Avanzado', expert: 'Experto', custom: 'Personalizado' },
+    holdSuffix: 's Retención',
+    roundPrefix: 'Ronda',
+    roundOf: 'de',
+    ready: 'Listo',
+    phase1: 'Fase 1: Respiración Guiada',
+    phase2: 'Fase 2: Retención en Vacío',
+    phase3: 'Fase 3: Respiración de Recuperación',
+    rest: 'Descanso',
+    complete: '¡Sesión Completada! 🎉',
+    pressStart: 'Presiona Iniciar',
+    inhaleDeep: 'Inhala Profundo',
+    relaxExhale: 'Suelta el Aire',
+    holdEmpty: 'Exhala Suave y Retén sin Aire',
+    recoveryHold: 'Inhala Pleno y Retén 15s',
+    breatheNormally: 'Respira con Normalidad',
+    completedDirective: '¡Excelente práctica registrada!',
+    breathsTotalTemplate: '{n} respiraciones en total',
+    breathProgressTemplate: 'Respiración {cur} de {total}',
+    holdProgressTemplate: 'Objetivo: {s}s (retén relajado)',
+    holdRecovery: 'Mantén la respiración de recuperación',
+    breatheRelax: 'Respira normalmente y relájate',
+    completedSummaryTemplate: 'Completadas {n} rondas',
+    tip1: 'Inhala profundo y relajado. Suelta la exhalación.',
+    tip2: 'Ritmo algo más ágil. Respira como una ola fluida.',
+    tip3: 'Respiración rítmica y dinámica. Inhalaciones profundas.',
+    btnStart: 'Comenzar Sesión',
+    btnPause: 'Pausar',
+    btnResume: 'Continuar',
+    btnReset: 'Reiniciar',
+    btnMusic: 'Música',
+    btnStartNew: 'Nueva Sesión',
+    btnFinishBreaths: 'Terminar e Iniciar Retención',
+    btnInhaleRecovery: 'Inhalar Recuperación',
+    btnNextRound: 'Siguiente Ronda',
+  },
+  de: {
+    presetNames: { beginner: 'Anfänger', intermediate: 'Mittelstufe', advanced: 'Fortgeschritten', expert: 'Experte', custom: 'Individuell' },
+    holdSuffix: 's Halten',
+    roundPrefix: 'Runde',
+    roundOf: 'von',
+    ready: 'Bereit',
+    phase1: 'Phase 1: Geführtes Atmen',
+    phase2: 'Phase 2: Atemanhalten (Retention)',
+    phase3: 'Phase 3: Erholungsatemzug',
+    rest: 'Pause',
+    complete: 'Sitzung Beendet 🎉',
+    pressStart: 'Start drücken',
+    inhaleDeep: 'Tief Einatmen',
+    relaxExhale: 'Locker Ausatmen',
+    holdEmpty: 'Sanft Ausatmen & Atem anhalten',
+    recoveryHold: 'Tief Einatmen & 15s Halten',
+    breatheNormally: 'Ganz normal atmen',
+    completedDirective: 'Großartige Arbeit! Sitzung gespeichert.',
+    breathsTotalTemplate: '{n} Atemzüge insgesamt',
+    breathProgressTemplate: 'Atemzug {cur} von {total}',
+    holdProgressTemplate: 'Ziel: {s}s (entspannt halten)',
+    holdRecovery: 'Erholungsatem halten',
+    breatheRelax: 'Ganz normal atmen & entspannen',
+    completedSummaryTemplate: '{n} Runden abgeschlossen',
+    tip1: 'Tief und entspannt einatmen. Locker ausatmen.',
+    tip2: 'Etwas zügiger. Atme wie eine fließende Welle.',
+    tip3: 'Fließend rhythmisch. Halte die Einatmung tief und stetig.',
+    btnStart: 'Sitzung Starten',
+    btnPause: 'Pause',
+    btnResume: 'Fortsetzen',
+    btnReset: 'Zurücksetzen',
+    btnMusic: 'Musik',
+    btnStartNew: 'Neue Sitzung',
+    btnFinishBreaths: 'Atemzüge beenden & Halten',
+    btnInhaleRecovery: 'Erholungsatemzug',
+    btnNextRound: 'Nächste Runde',
+  },
+  fr: {
+    presetNames: { beginner: 'Débutant', intermediate: 'Intermédiaire', advanced: 'Avancé', expert: 'Expert', custom: 'Personnalisé' },
+    holdSuffix: 's Apnée',
+    roundPrefix: 'Cycle',
+    roundOf: 'sur',
+    ready: 'Prêt',
+    phase1: 'Phase 1 : Respiration Guidée',
+    phase2: 'Phase 2 : Rétention Poumons Vides',
+    phase3: 'Phase 3 : Souffle de Récupération',
+    rest: 'Repos',
+    complete: 'Séance Terminée 🎉',
+    pressStart: 'Appuyez sur Démarrer',
+    inhaleDeep: 'Inspirez Amplement',
+    relaxExhale: 'Relâchez le Souffle',
+    holdEmpty: 'Expirez et Retenez Poumons Vides',
+    recoveryHold: 'Inspirez et Bloquez 15s',
+    breatheNormally: 'Respirez Normalement',
+    completedDirective: 'Bravo ! Séance enregistrée.',
+    breathsTotalTemplate: '{n} souffles au total',
+    breathProgressTemplate: 'Souffle {cur} sur {total}',
+    holdProgressTemplate: 'Objectif : {s}s (apnée détendue)',
+    holdRecovery: 'Maintenez le souffle de récupération',
+    breatheRelax: 'Respirez normalement et détendez-vous',
+    completedSummaryTemplate: '{n} cycles terminés',
+    tip1: 'Inspirez amplement et sans tension. Relâchez l’expiration.',
+    tip2: 'Rythme un peu plus soutenu. Respirez comme une vague fluide.',
+    tip3: 'Cadence dynamique. Gardez des inspirations profondes et continues.',
+    btnStart: 'Démarrer la Séance',
+    btnPause: 'Pause',
+    btnResume: 'Reprendre',
+    btnReset: 'Réinitialiser',
+    btnMusic: 'Musique',
+    btnStartNew: 'Nouvelle Séance',
+    btnFinishBreaths: 'Passer à l’Apnée',
+    btnInhaleRecovery: 'Inspirer Récupération',
+    btnNextRound: 'Cycle Suivant',
+  },
+  pt: {
+    presetNames: { beginner: 'Iniciante', intermediate: 'Intermediário', advanced: 'Avançado', expert: 'Especialista', custom: 'Personalizado' },
+    holdSuffix: 's Retenção',
+    roundPrefix: 'Rodada',
+    roundOf: 'de',
+    ready: 'Pronto',
+    phase1: 'Fase 1: Respiração Guiada',
+    phase2: 'Fase 2: Retenção sem Ar',
+    phase3: 'Fase 3: Respiração de Recuperação',
+    rest: 'Descanso',
+    complete: 'Sessão Concluída 🎉',
+    pressStart: 'Pressione Iniciar',
+    inhaleDeep: 'Inspire Profundo',
+    relaxExhale: 'Solte o Ar',
+    holdEmpty: 'Exale e Segure sem Ar',
+    recoveryHold: 'Inale Profundo e Segure 15s',
+    breatheNormally: 'Respire Normalmente',
+    completedDirective: 'Ótimo trabalho! Sessão gravada.',
+    breathsTotalTemplate: '{n} respirações no total',
+    breathProgressTemplate: 'Respiração {cur} de {total}',
+    holdProgressTemplate: 'Meta: {s}s (segure relaxado)',
+    holdRecovery: 'Segure o ar de recuperação',
+    breatheRelax: 'Respire normalmente e relaxe',
+    completedSummaryTemplate: '{n} rodadas concluídas',
+    tip1: 'Inspire profundo e relaxado. Solte o ar suavemente.',
+    tip2: 'Ritmo um pouco mais rápido. Respire como uma onda suave.',
+    tip3: 'Respiração rítmica e energética. Mantenha inalações amplas.',
+    btnStart: 'Iniciar Sessão',
+    btnPause: 'Pausar',
+    btnResume: 'Continuar',
+    btnReset: 'Reiniciar',
+    btnMusic: 'Música',
+    btnStartNew: 'Nova Sessão',
+    btnFinishBreaths: 'Finalizar e Segurar sem Ar',
+    btnInhaleRecovery: 'Inalar Recuperação',
+    btnNextRound: 'Próxima Rodada',
+  },
+  ja: {
+    presetNames: { beginner: '初級者', intermediate: '中級者', advanced: '上級者', expert: 'エキスパート', custom: 'カスタム' },
+    holdSuffix: '秒 息止め',
+    roundPrefix: 'ラウンド',
+    roundOf: '/',
+    ready: '準備完了',
+    phase1: 'フェーズ 1: ガイド付き深呼吸',
+    phase2: 'フェーズ 2: 息止め（リテンション）',
+    phase3: 'フェーズ 3: 回復の深呼吸',
+    rest: '休憩',
+    complete: 'セッション完了 🎉',
+    pressStart: 'スタートを押す',
+    inhaleDeep: '深く吸い込む',
+    relaxExhale: '息を吐き出す',
+    holdEmpty: '自然に吐いて息止め',
+    recoveryHold: '深く吸って15秒キープ',
+    breatheNormally: '普通の呼吸に戻す',
+    completedDirective: '素晴らしい！記録を保存しました。',
+    breathsTotalTemplate: '合計 {n} 回の呼吸',
+    breathProgressTemplate: '呼吸 {cur} / {total}',
+    holdProgressTemplate: '目標: {s}秒 (無理せず保持)',
+    holdRecovery: '回復の呼吸をキープ',
+    breatheRelax: '自然に呼吸してリラックス',
+    completedSummaryTemplate: '{n} ラウンド完了',
+    tip1: 'リラックスして深く吸い込み、自然に息を吐き出します。',
+    tip2: '少しテンポアップ。寄せては返す波のようにリズミカルに。',
+    tip3: 'ダイナミックなリズム。深い吸気を途切れなく保ちましょう。',
+    btnStart: 'セッション開始',
+    btnPause: '一時停止',
+    btnResume: '再開',
+    btnReset: 'リセット',
+    btnMusic: '音楽',
+    btnStartNew: '新しいセッション',
+    btnFinishBreaths: '息止め（リテンション）へ',
+    btnInhaleRecovery: '回復の深呼吸へ',
+    btnNextRound: '次のラウンドへ',
+  },
+  it: {
+    presetNames: { beginner: 'Principiante', intermediate: 'Intermedio', advanced: 'Avanzato', expert: 'Esperto', custom: 'Personalizzato' },
+    holdSuffix: 's Apnea',
+    roundPrefix: 'Round',
+    roundOf: 'di',
+    ready: 'Pronto',
+    phase1: 'Fase 1: Respirazione Guidata',
+    phase2: 'Fase 2: Apnea a Polmoni Vuoti',
+    phase3: 'Fase 3: Respiro di Recupero',
+    rest: 'Riposo',
+    complete: 'Sessione Completata 🎉',
+    pressStart: 'Premi Inizia',
+    inhaleDeep: 'Inspira Profondamente',
+    relaxExhale: 'Rilascia l\'Espiro',
+    holdEmpty: 'Espira e Trattieni',
+    recoveryHold: 'Inspira a Fondo e Trattieni 15s',
+    breatheNormally: 'Respira Normalmente',
+    completedDirective: 'Ottimo lavoro! Sessione registrata.',
+    breathsTotalTemplate: '{n} respiri totali',
+    breathProgressTemplate: 'Respiro {cur} di {total}',
+    holdProgressTemplate: 'Target: {s}s (apnea rilassata)',
+    holdRecovery: 'Trattieni il respiro di recupero',
+    breatheRelax: 'Respira normalmente e rilassati',
+    completedSummaryTemplate: '{n} round completati',
+    tip1: 'Inspira a fondo e rilassato. Rilascia l\'espirazione.',
+    tip2: 'Ritmo un po\' più sostenuto. Respira come un\'onda continua.',
+    tip3: 'Respirazione ritmica ed energica. Mantieni inspirazioni profonde.',
+    btnStart: 'Inizia Sessione',
+    btnPause: 'Pausa',
+    btnResume: 'Riprendi',
+    btnReset: 'Ripristina',
+    btnMusic: 'Musica',
+    btnStartNew: 'Nuova Sessione',
+    btnFinishBreaths: 'Concludi e Trattieni',
+    btnInhaleRecovery: 'Inspira Recupero',
+    btnNextRound: 'Prossimo Round',
+  },
+};
+
+const currentI18n = timerI18nData[lang] || timerI18nData.en;
 ---
 
 <section id="timer-section" class="w-full max-w-4xl mx-auto py-8 px-4">
+  <!-- Hidden JSON for client script localization -->
+  <script id="hb-timer-i18n" type="application/json" set:html={JSON.stringify(currentI18n)}></script>
+
   <!-- Main Timer Control Box -->
   <div class="relative w-full bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl overflow-hidden">
     <!-- Background Ambient Glow -->
@@ -13,16 +323,16 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     <div class="relative z-10 flex items-center justify-between border-b border-neutral-800/60 pb-6 mb-8">
       <div class="flex items-center gap-3">
         <span id="preset-badge" class="px-3 py-1 rounded-full text-xs font-mono font-medium border border-amber-400/30 bg-amber-400/10 text-amber-400">
-          Beginner Preset
+          {currentI18n.presetNames.beginner} (60{currentI18n.holdSuffix})
         </span>
         <span id="round-badge" class="text-xs font-mono text-neutral-400">
-          Round <span id="current-round-text" class="text-white font-bold">1</span> of <span id="total-rounds-text" class="text-white font-bold">3</span>
+          {currentI18n.roundPrefix} <span id="current-round-text" class="text-white font-bold">1</span> {currentI18n.roundOf} <span id="total-rounds-text" class="text-white font-bold">3</span>
         </span>
       </div>
 
       <div class="flex items-center gap-2 text-xs font-mono text-neutral-400">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span id="phase-label" class="uppercase tracking-wider font-semibold text-emerald-400">Ready</span>
+        <span id="phase-label" class="uppercase tracking-wider font-semibold text-emerald-400">{currentI18n.ready}</span>
       </div>
     </div>
 
@@ -63,7 +373,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
         <div class="relative z-20 flex flex-col items-center text-center">
           <!-- Breath In / Out Directive Text -->
           <div id="breath-action-text" class="text-xs font-mono uppercase tracking-widest text-amber-400 mb-1">
-            Press Start
+            {currentI18n.pressStart}
           </div>
 
           <!-- Primary Counter -->
@@ -73,14 +383,14 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
           <!-- Secondary Sub-label (Breath count or status) -->
           <div id="secondary-counter" class="text-xs font-mono text-neutral-400 mt-2">
-            30 Breaths Total
+            {currentI18n.breathsTotalTemplate.replace('{n}', '30')}
           </div>
         </div>
       </div>
 
       <!-- Breathing Style Visual Tip -->
       <div id="technique-tip" class="mt-6 text-xs text-neutral-400 bg-neutral-900/40 border border-neutral-800/60 px-4 py-2 rounded-full font-mono text-center max-w-sm">
-        <span id="tip-text">Inhale deep & relaxed. Relax the exhale.</span>
+        <span id="tip-text">{currentI18n.tip1}</span>
       </div>
     </div>
 
@@ -90,7 +400,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       <button
         id="btn-main-action"
         type="button"
-        class="flex items-center gap-2 px-8 py-3.5 rounded-full bg-amber-400/90 text-neutral-950 font-semibold text-sm hover:bg-amber-300 transition-all transform active:scale-95 shadow-xl shadow-amber-500/15"
+        class="flex items-center gap-2 px-8 py-3.5 rounded-full bg-amber-400/90 text-neutral-950 font-semibold text-sm hover:bg-amber-300 transition-all transform active:scale-95 shadow-xl shadow-amber-500/15 cursor-pointer"
       >
         <svg id="icon-play" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M8 5v14l11-7z"/>
@@ -98,18 +408,18 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
         <svg id="icon-pause" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24">
           <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
         </svg>
-        <span id="label-main-action">Start Session</span>
+        <span id="label-main-action">{currentI18n.btnStart}</span>
       </button>
 
       <!-- Skip / Force Hold Transition Button -->
       <button
         id="btn-skip-phase"
         type="button"
-        class="hidden flex items-center gap-2 px-6 py-3.5 rounded-full bg-neutral-900 border border-neutral-750 text-neutral-200 hover:text-white hover:bg-neutral-800 text-xs font-mono font-medium transition-all"
+        class="hidden flex items-center gap-2 px-6 py-3.5 rounded-full bg-neutral-900 border border-neutral-750 text-neutral-200 hover:text-white hover:bg-neutral-800 text-xs font-mono font-medium transition-all cursor-pointer"
       >
-        <span id="label-skip-phase">Finish Breaths & Hold</span>
+        <span id="label-skip-phase">{currentI18n.btnFinishBreaths}</span>
         <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/>
         </svg>
       </button>
 
@@ -117,83 +427,81 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       <button
         id="btn-restart"
         type="button"
-        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all cursor-pointer"
         title="Restart Session"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
         </svg>
-        <span>Reset</span>
+        <span>{currentI18n.btnReset}</span>
       </button>
 
       <!-- Music Button -->
       <button
         id="btn-music"
         type="button"
-        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all cursor-pointer"
         title="Change Background Music"
       >
         <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/>
         </svg>
-        <span>Music</span>
+        <span>{currentI18n.btnMusic}</span>
       </button>
     </div>
   </div>
 </section>
 
 <!-- Custom Settings Modal Integration -->
-<CustomSettingsModal />
+<CustomSettingsModal lang={lang} />
 
 <!-- Music Selection Modal Integration -->
 <MusicSelectionModal />
 
 <script>
   import { audioPlayer } from '../utils/audioPlayer';
-  import { defaultAudioConfig, musicTracks } from '../config/audioConfig';
+  import { musicTracks } from '../config/audioConfig';
   import { saveExerciseStats } from '../utils/stats';
 
-  // openMusicModal is defined by MusicSelectionModal.astro's own script
-  // which properly calls renderTracks() before showing the modal.
+  // Load localized dictionary
+  const i18nScriptEl = document.getElementById('hb-timer-i18n');
+  const t = i18nScriptEl ? JSON.parse(i18nScriptEl.textContent || '{}') : {};
 
-// State Variables
+  // Session State Defaults (Beginner Preset: 30 breaths, 60s hold, 3 rounds)
   let currentPreset = 'beginner';
+  let targetBreaths = 30;
   let targetHoldSeconds = 60;
   let baseHoldSeconds = 60;
-  let targetBreaths = 30;
   let totalRounds = 3;
   let currentRound = 1;
+  let customBreathTime: number | null = null; // null = use default round progression
 
-  // Breath timing configuration - progressive pace per round
-  let customBreathTime = null; // Custom breath cycle time in seconds (from custom settings)
-  
-  function getBreathTiming(round: number): { inhale: number; exhale: number; total: number } {
-    // If custom breath time is set, use it
-    if (customBreathTime) {
-      const inhale = customBreathTime * 0.6; // 60% inhale, 40% exhale ratio
-      const exhale = customBreathTime * 0.4;
-      return { inhale, exhale, total: customBreathTime };
-    }
-    
-    // Progressive breathing pace for built-in presets
-    if (round === 1) {
-      return { inhale: 2.5, exhale: 1.5, total: 4.0 };
-    } else if (round === 2) {
-      return { inhale: 2.0, exhale: 1.0, total: 3.0 };
-    } else {
-      return { inhale: 1.5, exhale: 1.0, total: 2.5 };
-    }
-  }
-
-  const roundTips: Record<number, string> = {
-    1: 'Slow, deep, and relaxed breathing.',
-    2: 'Increase the pace slightly. Keep each breath deep and controlled.',
-    3: 'Fast, deep, and rhythmic breathing. Stay relaxed and never force the exhale.',
+  // Default breath cycle timing per round (seconds)
+  const defaultRoundTimings: Record<number, { inhale: number; exhale: number }> = {
+    1: { inhale: 2.5, exhale: 1.5 }, // 4.0s total cycle
+    2: { inhale: 2.0, exhale: 1.0 }, // 3.0s total cycle
+    3: { inhale: 1.5, exhale: 1.0 }, // 2.5s total cycle
   };
 
+  function getBreathTiming(round: number): { inhale: number; exhale: number } {
+    if (customBreathTime !== null) {
+      const inhale = Math.round((customBreathTime * 0.6) * 10) / 10;
+      const exhale = Math.round((customBreathTime - inhale) * 10) / 10;
+      return { inhale, exhale };
+    }
+    return defaultRoundTimings[Math.min(round, 3)] || defaultRoundTimings[3];
+  }
+
   function updateTip(round: number) {
-    if (techniqueTip) {
-      techniqueTip.textContent = roundTips[round] || roundTips[3] || 'Inhale deep & relaxed. Relax the exhale.';
+    if (!techniqueTip) return;
+    if (customBreathTime !== null) {
+      techniqueTip.textContent = `${t.tip1 || 'Inhale deep & relaxed.'} (${customBreathTime}s)`;
+    } else if (round === 1) {
+      techniqueTip.textContent = t.tip1 || 'Inhale deep & relaxed. Relax the exhale.';
+    } else if (round === 2) {
+      techniqueTip.textContent = t.tip2 || 'Slightly faster pace. Breathe like a rolling wave.';
+    } else {
+      techniqueTip.textContent = t.tip3 || 'Faster rhythmic breathing. Keep inhales deep and continuous.';
     }
   }
 
@@ -208,7 +516,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
   function getSelectedMusicFilePath(): string {
     const trackId = localStorage.getItem(MUSIC_KEY);
     if (trackId) {
-      const found = allTracks.find(t => t.id === trackId);
+      const found = allTracks.find(track => track.id === trackId);
       if (found) return found.filePath;
     }
     return musicTracks.guidedBreathing[0]?.filePath || '/audio/guided-breathing.mp3';
@@ -311,9 +619,11 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
   function updatePresetUI() {
     if (presetBadge) {
-      let badgeText = `${currentPreset.toUpperCase()} (${baseHoldSeconds}s Hold`;
+      const presetLocalized = (t.presetNames && t.presetNames[currentPreset]) || currentPreset.toUpperCase();
+      const holdSuffix = t.holdSuffix || 's Hold';
+      let badgeText = `${presetLocalized} (${baseHoldSeconds}${holdSuffix}`;
       if (currentPreset !== 'beginner' && currentPreset !== 'custom') {
-        badgeText += ` +10s/round`;
+        badgeText += ` +10s`;
       }
       badgeText += ')';
       presetBadge.textContent = badgeText;
@@ -326,14 +636,18 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
   customSettingsBtn?.addEventListener('click', () => customModal?.classList.remove('hidden'));
   closeCustomModal?.addEventListener('click', () => customModal?.classList.add('hidden'));
 
+  const breathsUnit = customBreathsVal?.dataset.unit || 'Breaths';
+  const secondsUnit = customHoldVal?.dataset.unit || 'Seconds';
+  const roundsUnit = customRoundsVal?.dataset.unit || 'Rounds';
+
   customBreathsInput?.addEventListener('input', () => {
-    if (customBreathsVal && customBreathsInput) customBreathsVal.textContent = `${customBreathsInput.value} Breaths`;
+    if (customBreathsVal && customBreathsInput) customBreathsVal.textContent = `${customBreathsInput.value} ${breathsUnit}`;
   });
   customHoldInput?.addEventListener('input', () => {
-    if (customHoldVal && customHoldInput) customHoldVal.textContent = `${customHoldInput.value} Seconds`;
+    if (customHoldVal && customHoldInput) customHoldVal.textContent = `${customHoldInput.value} ${secondsUnit}`;
   });
   customRoundsInput?.addEventListener('input', () => {
-    if (customRoundsVal && customRoundsInput) customRoundsVal.textContent = `${customRoundsInput.value} Rounds`;
+    if (customRoundsVal && customRoundsInput) customRoundsVal.textContent = `${customRoundsInput.value} ${roundsUnit}`;
   });
   customBreathTimeInput?.addEventListener('input', () => {
     if (customBreathTimeVal && customBreathTimeInput) customBreathTimeVal.textContent = `${customBreathTimeInput.value}s`;
@@ -400,7 +714,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.remove('hidden');
       iconPause.classList.add('hidden');
-      labelMainAction.textContent = 'Resume';
+      labelMainAction.textContent = t.btnResume || 'Resume';
     }
   }
 
@@ -410,7 +724,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.add('hidden');
       iconPause.classList.remove('hidden');
-      labelMainAction.textContent = 'Pause';
+      labelMainAction.textContent = t.btnPause || 'Pause';
     }
 
     if (phase === 'GUIDED') {
@@ -433,7 +747,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     updateTip(currentRound);
 
     if (phaseLabel) {
-      phaseLabel.textContent = 'Phase 1: Guided Breathing';
+      phaseLabel.textContent = t.phase1 || 'Phase 1: Guided Breathing';
       phaseLabel.className = 'uppercase tracking-wider font-semibold text-cyan-400';
     }
     if (phaseGlow) {
@@ -442,12 +756,12 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     if (currentRoundText) currentRoundText.textContent = String(currentRound);
     if (btnSkipPhase && labelSkipPhase) {
       btnSkipPhase.classList.remove('hidden');
-      labelSkipPhase.textContent = 'Finish Breaths & Hold';
+      labelSkipPhase.textContent = t.btnFinishBreaths || 'Finish Breaths & Hold';
     }
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.add('hidden');
       iconPause.classList.remove('hidden');
-      labelMainAction.textContent = 'Pause';
+      labelMainAction.textContent = t.btnPause || 'Pause';
     }
 
     runGuidedLoop();
@@ -468,9 +782,13 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
       if (isInhaling) {
         isInhaling = false;
         breathCount++;
-        if (breathActionText) breathActionText.textContent = 'Inhale Deep';
+        if (breathActionText) breathActionText.textContent = t.inhaleDeep || 'Inhale Deep';
         if (breathHalo) breathHalo.style.transform = 'scale(1.25)';
-        if (secondaryCounter) secondaryCounter.textContent = `Breath ${breathCount} of ${targetBreaths}`;
+        if (secondaryCounter) {
+          secondaryCounter.textContent = (t.breathProgressTemplate || 'Breath {cur} of {total}')
+            .replace('{cur}', String(breathCount))
+            .replace('{total}', String(targetBreaths));
+        }
         if (primaryCounter) primaryCounter.textContent = `${breathCount} / ${targetBreaths}`;
 
         updateProgressRing((breathCount / targetBreaths) * 100);
@@ -478,7 +796,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
         audioPlayer.playBreathSound(true);
       } else {
         isInhaling = true;
-        if (breathActionText) breathActionText.textContent = 'Relax Exhale';
+        if (breathActionText) breathActionText.textContent = t.relaxExhale || 'Relax Exhale';
         if (breathHalo) breathHalo.style.transform = 'scale(0.95)';
 
         audioPlayer.playBreathSound(false);
@@ -507,22 +825,22 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     if (phaseTimer) clearInterval(phaseTimer);
 
     if (phaseLabel) {
-      phaseLabel.textContent = 'Phase 2: Breath-Out Hold';
+      phaseLabel.textContent = t.phase2 || 'Phase 2: Breath-Out Hold';
       phaseLabel.className = 'uppercase tracking-wider font-semibold text-blue-400';
     }
-    if (breathActionText) breathActionText.textContent = 'Gently Exhale & Retention Hold';
+    if (breathActionText) breathActionText.textContent = t.holdEmpty || 'Gently Exhale & Retention Hold';
     if (breathHalo) breathHalo.style.transform = 'scale(1.0)';
     if (phaseGlow) {
       phaseGlow.className = 'absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-amber-500/20 via-transparent to-transparent';
     }
     if (btnSkipPhase && labelSkipPhase) {
       btnSkipPhase.classList.remove('hidden');
-      labelSkipPhase.textContent = 'Inhale Recovery';
+      labelSkipPhase.textContent = t.btnInhaleRecovery || 'Inhale Recovery';
     }
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.add('hidden');
       iconPause.classList.remove('hidden');
-      labelMainAction.textContent = 'Pause';
+      labelMainAction.textContent = t.btnPause || 'Pause';
     }
 
     runHoldLoop();
@@ -536,7 +854,10 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
       elapsedPhaseSeconds++;
       if (primaryCounter) primaryCounter.textContent = formatTime(elapsedPhaseSeconds);
-      if (secondaryCounter) secondaryCounter.textContent = `Target: ${targetHoldSeconds}s (Hold relaxed)`;
+      if (secondaryCounter) {
+        secondaryCounter.textContent = (t.holdProgressTemplate || 'Target: {s}s (Hold relaxed)')
+          .replace('{s}', String(targetHoldSeconds));
+      }
 
       const progressPct = Math.min(100, (elapsedPhaseSeconds / targetHoldSeconds) * 100);
       updateProgressRing(progressPct);
@@ -558,22 +879,22 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     if (phaseTimer) clearInterval(phaseTimer);
 
     if (phaseLabel) {
-      phaseLabel.textContent = 'Phase 3: Recovery Breath';
+      phaseLabel.textContent = t.phase3 || 'Phase 3: Recovery Breath';
       phaseLabel.className = 'uppercase tracking-wider font-semibold text-purple-400';
     }
-    if (breathActionText) breathActionText.textContent = 'Deep Inhale & Hold 15s';
+    if (breathActionText) breathActionText.textContent = t.recoveryHold || 'Deep Inhale & Hold 15s';
     if (breathHalo) breathHalo.style.transform = 'scale(1.2)';
     if (phaseGlow) {
       phaseGlow.className = 'absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-emerald-500/20 via-transparent to-transparent';
     }
     if (btnSkipPhase && labelSkipPhase) {
       btnSkipPhase.classList.remove('hidden');
-      labelSkipPhase.textContent = 'Next Round';
+      labelSkipPhase.textContent = t.btnNextRound || 'Next Round';
     }
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.add('hidden');
       iconPause.classList.remove('hidden');
-      labelMainAction.textContent = 'Pause';
+      labelMainAction.textContent = t.btnPause || 'Pause';
     }
 
     audioPlayer.playBreathSound(true);
@@ -589,7 +910,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
       elapsedPhaseSeconds--;
       if (primaryCounter) primaryCounter.textContent = `00:${elapsedPhaseSeconds.toString().padStart(2, '0')}`;
-      if (secondaryCounter) secondaryCounter.textContent = 'Hold recovery breath';
+      if (secondaryCounter) secondaryCounter.textContent = t.holdRecovery || 'Hold recovery breath';
 
       updateProgressRing(((15 - elapsedPhaseSeconds) / 15) * 100);
 
@@ -611,22 +932,22 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     if (phaseTimer) clearInterval(phaseTimer);
 
     if (phaseLabel) {
-      phaseLabel.textContent = 'Rest';
+      phaseLabel.textContent = t.rest || 'Rest';
       phaseLabel.className = 'uppercase tracking-wider font-semibold text-teal-400';
     }
-    if (breathActionText) breathActionText.textContent = 'Breathe Normally';
+    if (breathActionText) breathActionText.textContent = t.breatheNormally || 'Breathe Normally';
     if (breathHalo) breathHalo.style.transform = 'scale(1.0)';
     if (phaseGlow) {
       phaseGlow.className = 'absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-teal-500/20 via-transparent to-transparent';
     }
     if (btnSkipPhase && labelSkipPhase) {
       btnSkipPhase.classList.remove('hidden');
-      labelSkipPhase.textContent = 'Next Round';
+      labelSkipPhase.textContent = t.btnNextRound || 'Next Round';
     }
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.add('hidden');
       iconPause.classList.remove('hidden');
-      labelMainAction.textContent = 'Pause';
+      labelMainAction.textContent = t.btnPause || 'Pause';
     }
 
     audioPlayer.playBreathSound(false);
@@ -652,7 +973,7 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
 
       elapsedPhaseSeconds--;
       if (primaryCounter) primaryCounter.textContent = `00:${elapsedPhaseSeconds.toString().padStart(2, '0')}`;
-      if (secondaryCounter) secondaryCounter.textContent = 'Breathe normally & relax';
+      if (secondaryCounter) secondaryCounter.textContent = t.breatheRelax || 'Breathe normally & relax';
 
       updateProgressRing(((REST_SECONDS - elapsedPhaseSeconds) / REST_SECONDS) * 100);
 
@@ -682,17 +1003,20 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     audioPlayer.stop();
 
     if (phaseLabel) {
-      phaseLabel.textContent = 'Session Complete 🎉';
+      phaseLabel.textContent = t.complete || 'Session Complete 🎉';
       phaseLabel.className = 'uppercase tracking-wider font-semibold text-emerald-400';
     }
-    if (breathActionText) breathActionText.textContent = 'Great Job! Practice Logged.';
+    if (breathActionText) breathActionText.textContent = t.completedDirective || 'Great Job! Practice Logged.';
     if (primaryCounter) primaryCounter.textContent = 'DONE';
-    if (secondaryCounter) secondaryCounter.textContent = `Completed ${totalRounds} Rounds`;
+    if (secondaryCounter) {
+      secondaryCounter.textContent = (t.completedSummaryTemplate || 'Completed {n} Rounds')
+        .replace('{n}', String(totalRounds));
+    }
     if (btnSkipPhase) btnSkipPhase.classList.add('hidden');
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.remove('hidden');
       iconPause.classList.add('hidden');
-      labelMainAction.textContent = 'Start New Session';
+      labelMainAction.textContent = t.btnStartNew || 'Start New Session';
     }
     updateProgressRing(100);
     saveSessionStats();
@@ -713,19 +1037,22 @@ import MusicSelectionModal from './MusicSelectionModal.astro';
     targetHoldSeconds = baseHoldSeconds;
 
     if (phaseLabel) {
-      phaseLabel.textContent = 'Ready';
+      phaseLabel.textContent = t.ready || 'Ready';
       phaseLabel.className = 'uppercase tracking-wider font-semibold text-emerald-400';
     }
-    if (breathActionText) breathActionText.textContent = 'Press Start';
+    if (breathActionText) breathActionText.textContent = t.pressStart || 'Press Start';
     updateTip(1);
     if (primaryCounter) primaryCounter.textContent = '00:00';
-    if (secondaryCounter) secondaryCounter.textContent = `${targetBreaths} Breaths Total`;
+    if (secondaryCounter) {
+      secondaryCounter.textContent = (t.breathsTotalTemplate || '{n} Breaths Total')
+        .replace('{n}', String(targetBreaths));
+    }
     if (breathHalo) breathHalo.style.transform = 'scale(1.0)';
     if (btnSkipPhase) btnSkipPhase.classList.add('hidden');
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.remove('hidden');
       iconPause.classList.add('hidden');
-      labelMainAction.textContent = 'Start Session';
+      labelMainAction.textContent = t.btnStart || 'Start Session';
     }
     updateProgressRing(0);
     updatePresetUI();

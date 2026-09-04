@@ -1,9 +1,96 @@
 ---
+import type { SupportedLanguage } from '../i18n/types';
+
 export interface Props {
   exerciseId: string;
+  lang?: SupportedLanguage;
 }
 
-const { exerciseId } = Astro.props;
+const { exerciseId, lang = 'en' } = Astro.props;
+
+const labels: Record<SupportedLanguage, {
+  title: string;
+  privacy: string;
+  totalSessions: string;
+  completedExercises: string;
+  totalRounds: string;
+  breathCycles: string;
+  personalBest: string;
+  maxRetention: string;
+}> = {
+  en: {
+    title: 'Your Practice Stats',
+    privacy: 'Stored Locally (Private)',
+    totalSessions: 'Total Sessions',
+    completedExercises: 'Completed exercises',
+    totalRounds: 'Total Rounds',
+    breathCycles: 'Breath cycles completed',
+    personalBest: 'Personal Best Hold',
+    maxRetention: 'Max retention record'
+  },
+  es: {
+    title: 'Tus Estadísticas de Práctica',
+    privacy: 'Almacenado Localmente (Privado)',
+    totalSessions: 'Sesiones Totales',
+    completedExercises: 'Ejercicios completados',
+    totalRounds: 'Rondas Totales',
+    breathCycles: 'Ciclos de respiración completados',
+    personalBest: 'Mejor Retención Personal',
+    maxRetention: 'Récord de apnea'
+  },
+  de: {
+    title: 'Deine Übungsstatistiken',
+    privacy: 'Lokal Gespeichert (Privat)',
+    totalSessions: 'Gesamte Sitzungen',
+    completedExercises: 'Abgeschlossene Übungen',
+    totalRounds: 'Gesamte Runden',
+    breathCycles: 'Atemzyklen abgeschlossen',
+    personalBest: 'Persönliche Bestzeit',
+    maxRetention: 'Maximaler Halterekord'
+  },
+  fr: {
+    title: 'Vos Statistiques de Pratique',
+    privacy: 'Stocké Localement (Privé)',
+    totalSessions: 'Sessions Totales',
+    completedExercises: 'Exercices terminés',
+    totalRounds: 'Cycles Totaux',
+    breathCycles: 'Cycles respiratoires achevés',
+    personalBest: 'Meilleure Rétention',
+    maxRetention: 'Record d’apnée'
+  },
+  pt: {
+    title: 'Suas Estatísticas de Prática',
+    privacy: 'Armazenado Localmente (Privado)',
+    totalSessions: 'Sessões Totais',
+    completedExercises: 'Exercícios concluídos',
+    totalRounds: 'Ciclos Totais',
+    breathCycles: 'Ciclos respiratórios concluídos',
+    personalBest: 'Melhor Retenção Pessoal',
+    maxRetention: 'Recorde de retenção'
+  },
+  ja: {
+    title: 'あなたの練習統計',
+    privacy: 'ローカル保存（プライベート）',
+    totalSessions: '総セッション数',
+    completedExercises: '完了した練習',
+    totalRounds: '総ラウンド数',
+    breathCycles: '完了した呼吸サイクル',
+    personalBest: '自己ベスト息止め時間',
+    maxRetention: '最長息止め記録'
+  },
+  it: {
+    title: 'Le Tue Statistiche di Pratica',
+    privacy: 'Salvato Localmente (Privato)',
+    totalSessions: 'Sessioni Totali',
+    completedExercises: 'Esercizi completati',
+    totalRounds: 'Rund Totali',
+    breathCycles: 'Cicli respiratori completati',
+    personalBest: 'Migliore Apnea Personale',
+    maxRetention: 'Record di ritenzione'
+  }
+};
+
+const l = labels[lang] || labels.en;
 ---
 
 <div class="w-full max-w-4xl mx-auto my-8 px-4" data-exercise-id={exerciseId}>
@@ -13,31 +100,31 @@ const { exerciseId } = Astro.props;
         <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        <h3 class="text-sm font-mono text-white uppercase tracking-wider font-semibold">Your Practice Stats</h3>
+        <h3 class="text-sm font-mono text-white uppercase tracking-wider font-semibold">{l.title}</h3>
       </div>
-      <span class="text-[11px] font-mono text-neutral-500">Stored Locally (Private)</span>
+      <span class="text-[11px] font-mono text-neutral-500">{l.privacy}</span>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
       <!-- Total Sessions -->
       <div class="p-4 rounded-xl bg-neutral-900/40 border border-neutral-800/80">
-        <div class="text-xs font-mono text-neutral-400">Total Sessions</div>
+        <div class="text-xs font-mono text-neutral-400">{l.totalSessions}</div>
         <div id="stat-sessions" class="text-3xl font-extrabold text-white font-mono-numbers mt-1">0</div>
-        <div class="text-[10px] text-neutral-500 mt-1">Completed exercises</div>
+        <div class="text-[10px] text-neutral-500 mt-1">{l.completedExercises}</div>
       </div>
 
       <!-- Total Rounds -->
       <div class="p-4 rounded-xl bg-neutral-900/40 border border-neutral-800/80">
-        <div class="text-xs font-mono text-neutral-400">Total Rounds</div>
+        <div class="text-xs font-mono text-neutral-400">{l.totalRounds}</div>
         <div id="stat-rounds" class="text-3xl font-extrabold text-cyan-400 font-mono-numbers mt-1">0</div>
-        <div class="text-[10px] text-neutral-500 mt-1">Breath cycles completed</div>
+        <div class="text-[10px] text-neutral-500 mt-1">{l.breathCycles}</div>
       </div>
 
       <!-- Best Retention Hold -->
       <div id="best-hold-card" class="p-4 rounded-xl bg-neutral-900/40 border border-neutral-800/80">
-        <div class="text-xs font-mono text-neutral-400">Personal Best Hold</div>
+        <div class="text-xs font-mono text-neutral-400">{l.personalBest}</div>
         <div id="stat-best-hold" class="text-3xl font-extrabold text-purple-400 font-mono-numbers mt-1">0s</div>
-        <div class="text-[10px] text-neutral-500 mt-1">Max retention record</div>
+        <div class="text-[10px] text-neutral-500 mt-1">{l.maxRetention}</div>
       </div>
     </div>
   </div>
