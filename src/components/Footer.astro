@@ -12,6 +12,7 @@ const t = useTranslations(currentLang);
 const homeUrl = currentLang === 'en' ? '/' : `/${currentLang}/`;
 const techniquesUrl = currentLang === 'en' ? '/#techniques' : `/${currentLang}/#techniques`;
 const aboutUrl = currentLang === 'en' ? '/about/' : `/${currentLang}/about/`;
+const contactUrl = currentLang === 'en' ? '/contact/' : `/${currentLang}/contact/`;
 ---
 
 <footer class="relative z-10 w-full border-t border-white/10 bg-neutral-950/90 backdrop-blur-xl py-12 mt-auto">
@@ -30,7 +31,7 @@ const aboutUrl = currentLang === 'en' ? '/about/' : `/${currentLang}/about/`;
         <a href={homeUrl} class="hover:text-white transition-colors">{t('nav.home')}</a>
         <a href={techniquesUrl} class="hover:text-white transition-colors">{t('nav.techniques')}</a>
         <a href={aboutUrl} class="hover:text-white transition-colors">{t('nav.about')}</a>
-        <a href="/contact/" class="hover:text-white transition-colors">{t('nav.contact')}</a>
+        <a href={contactUrl} class="hover:text-white transition-colors">{t('nav.contact')}</a>
         <a href="/privacy/" class="hover:text-white transition-colors">Privacy</a>
         <a href="/terms/" class="hover:text-white transition-colors">Terms</a>
       </div>

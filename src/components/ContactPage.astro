@@ -1,0 +1,203 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { contactI18n } from '../i18n/contact';
+import { getHreflangLinks } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const content = contactI18n[lang] || contactI18n.en;
+
+const siteUrl = 'https://harmonybreath.com';
+const canonicalUrl = lang === 'en' ? `${siteUrl}/contact/` : `${siteUrl}/${lang}/contact/`;
+const homeUrl = lang === 'en' ? `${siteUrl}/` : `${siteUrl}/${lang}/`;
+const hreflangLinks = getHreflangLinks('contact', siteUrl);
+
+const pageSchemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": content.metaTitle,
+    "description": content.metaDescription,
+    "url": canonicalUrl,
+    "inLanguage": lang,
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "HarmonyBreath",
+      "url": siteUrl,
+      "logo": `${siteUrl}/favicon-96x96.png`,
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": content.emailAddress,
+        "contactType": "Customer Support",
+        "availableLanguage": ["en", "es", "de", "fr", "pt", "ja", "it"]
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "HarmonyBreath",
+    "url": siteUrl,
+    "logo": `${siteUrl}/favicon-96x96.png`,
+    "description": content.metaDescription,
+    "email": content.emailAddress
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": lang === 'en' ? 'Home' : (lang === 'es' ? 'Inicio' : lang === 'de' ? 'Startseite' : lang === 'fr' ? 'Accueil' : lang === 'pt' ? 'Início' : lang === 'ja' ? 'ホーム' : 'Home'),
+        "item": homeUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": content.breadcrumbName,
+        "item": canonicalUrl
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title={content.metaTitle}
+  description={content.metaDescription}
+  keywords={content.keywords}
+  canonicalUrl={canonicalUrl}
+  lang={lang}
+  hreflangLinks={hreflangLinks}
+  schemaData={pageSchemaData}
+>
+  <Header lang={lang} />
+
+  <main class="flex-1 hero-gradient-mesh relative selection:bg-amber-500/30 selection:text-amber-200">
+    <section class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <div class="text-center space-y-4 mb-12">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400 text-xs font-mono uppercase tracking-wider">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+          {content.badge}
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-bold text-white tracking-tight break-words">
+          {content.title}
+        </h1>
+        <p class="text-neutral-400 max-w-2xl mx-auto text-sm sm:text-base font-sans font-light leading-relaxed break-words">
+          {content.subtitle}
+        </p>
+      </div>
+
+      <div class="max-w-2xl mx-auto">
+        <form 
+          action="https://formspree.io/f/xrenjllv" 
+          method="POST"
+          class="space-y-6"
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label for="name" class="block text-xs font-mono text-neutral-400 uppercase tracking-wider">
+                {content.nameLabel}
+              </label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name"
+                required
+                class="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-amber-400/50 focus:ring-1 focus:ring-amber-400/20 transition-all"
+                placeholder={content.namePlaceholder}
+              />
+            </div>
+            <div class="space-y-2">
+              <label for="email" class="block text-xs font-mono text-neutral-400 uppercase tracking-wider">
+                {content.emailLabel}
+              </label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email"
+                required
+                class="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-amber-400/50 focus:ring-1 focus:ring-amber-400/20 transition-all"
+                placeholder={content.emailPlaceholder}
+              />
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label for="subject" class="block text-xs font-mono text-neutral-400 uppercase tracking-wider">
+              {content.subjectLabel}
+            </label>
+            <select 
+              id="subject" 
+              name="subject"
+              required
+              class="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-white text-sm focus:outline-none focus:border-amber-400/50 focus:ring-1 focus:ring-amber-400/20 transition-all"
+            >
+              <option value="" disabled selected class="text-neutral-500">{content.subjectPlaceholder}</option>
+              <option value="general">{content.subjectOptions.general}</option>
+              <option value="feedback">{content.subjectOptions.feedback}</option>
+              <option value="bug">{content.subjectOptions.bug}</option>
+              <option value="feature">{content.subjectOptions.feature}</option>
+              <option value="privacy">{content.subjectOptions.privacy}</option>
+              <option value="other">{content.subjectOptions.other}</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label for="message" class="block text-xs font-mono text-neutral-400 uppercase tracking-wider">
+              {content.messageLabel}
+            </label>
+            <textarea 
+              id="message" 
+              name="message"
+              rows="6"
+              required
+              class="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-neutral-900/60 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-amber-400/50 focus:ring-1 focus:ring-amber-400/20 transition-all resize-y"
+              placeholder={content.messagePlaceholder}
+            ></textarea>
+          </div>
+
+          <button 
+            type="submit"
+            class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-amber-400/90 text-neutral-950 font-bold text-sm hover:bg-amber-300 transition-all shadow-xl shadow-amber-500/10 cursor-pointer"
+          >
+            {content.submitBtn}
+          </button>
+
+          <p class="text-[11px] text-neutral-500 text-center font-mono leading-relaxed">
+            {content.disclaimer}
+          </p>
+        </form>
+
+        <div class="mt-16 pt-12 border-t border-neutral-900 text-center space-y-4">
+          <h2 class="text-xl sm:text-2xl font-bold text-white">
+            {content.reachTitle}
+          </h2>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-neutral-400 font-mono">
+            <a 
+              href={`mailto:${content.emailAddress}`}
+              class="flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors"
+            >
+              <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span>{content.emailAddress}</span>
+            </a>
+          </div>
+          <p class="text-xs text-neutral-500 font-mono">
+            {content.responseNotice}
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

@@ -1,40 +1,38 @@
-Use the official Astro i18n recipe guide (https://docs.astro.build/en/recipes/i18n/) to implement complete multi-language support for the About Us Page (/about/) on HarmonyBreath across all 7 languages (en, es, de, fr, pt, ja, it), matching the structure established in the home and technique pages so it ranks on international global keywords.
+Use the official Astro i18n recipe guide (https://docs.astro.build/en/recipes/i18n/) to implement complete multi-language support for the Contact Us Page (/contact/) on HarmonyBreath across all 7 languages (en, es, de, fr, pt, ja, it), matching the structure established across all localized pages so it ranks on international global keywords.
 
 ### Scope & Requirements based on Astro i18n Recipe:
 
 1. **Routing & Architecture (https://docs.astro.build/en/recipes/i18n/)**:
-   - Follow the Astro i18n dynamic routing pattern using `src/pages/[lang]/about.astro`.
+   - Follow the Astro i18n dynamic routing pattern using `src/pages/[lang]/contact.astro`.
    - Implement `getStaticPaths()` for all non-default languages: `['es', 'de', 'fr', 'pt', 'ja', 'it']`.
-   - Refactor `src/pages/about.astro` into a reusable component `src/components/AboutPage.astro` that accepts `lang?: SupportedLanguage`.
-   - Keep default language (`en`) at root `/about/` delegating to `<AboutPage lang="en" />`.
+   - Refactor `src/pages/contact.astro` into a reusable component `src/components/ContactPage.astro` that accepts `lang?: SupportedLanguage`.
+   - Keep default language (`en`) at root `/contact/` delegating to `<ContactPage lang="en" />`.
 
 2. **International SEO & Hreflang Markup (per Astro i18n Recipe)**:
-   - Add `<link rel="canonical">` pointing to the localized URL (`https://harmonybreath.com/about/` for English, `https://harmonybreath.com/${lang}/about/` for others).
-   - Add full bidirectional `<link rel="alternate" hreflang="...">` tags for all 7 languages + `x-default` using `getHreflangLinks('about')`.
-   - Add localized JSON-LD schemas (`AboutPage`, `Organization`, `BreadcrumbList`).
+   - Add `<link rel="canonical">` pointing to the localized URL (`https://harmonybreath.com/contact/` for English, `https://harmonybreath.com/${lang}/contact/` for others).
+   - Add full bidirectional `<link rel="alternate" hreflang="...">` tags for all 7 languages + `x-default` using `getHreflangLinks('contact')`.
+   - Add localized JSON-LD schemas (`ContactPage`, `Organization`, `BreadcrumbList`).
 
-3. **Content Dictionary (`src/i18n/about.ts`)**:
+3. **Content Dictionary (`src/i18n/contact.ts`)**:
    - Build a structured dictionary adhering to the Astro i18n pattern for all 7 languages: `en`, `es`, `de`, `fr`, `pt`, `ja`, `it`.
    - Include high-intent regional keywords, localized meta titles & descriptions for search engines.
    - Translate all page content:
-     - Header Badge (*"Our Mission"*), Title (*"About HarmonyBreath"*), and Subtitle (*"Making breathwork accessible, private, and free for everyone."*).
-     - **Our Story**: Origin, mission, philosophy of data privacy, barrier-free access, and conscious breathing as an essential health tool.
-     - **What We Offer**: Introductory text and descriptions for all 6 breathing practices with localized names and summaries:
-       - Wim Hof Method
-       - Box Breathing (4-4-4-4)
-       - 4-7-8 Relaxing Breath
-       - Diaphragmatic / Belly Breathing
-       - Nadi Shodhana (Alternate Nostril)
-       - Physiological Sigh
-     - **Our Principles**: 4 core values (*Privacy by Design*, *Technique-Faithful*, *100% Free*, *Open & Transparent*).
-     - **Our Team**: Independent practitioner mission, craftsmanship, and commitment to privacy and continuous improvement.
+     - Header: Badge (*"Get in Touch"*), Main Title (*"Contact Us"*), and Subtitle (*"Have a question, suggestion, or feedback? We'd love to hear from you."*).
+     - Form Fields & Placeholders:
+       - Name label & placeholder (*"Your name"*).
+       - Email label & placeholder (*"your@email.com"*).
+       - Subject dropdown label & placeholder option (*"Select a subject"*), plus all 6 options (*"General Inquiry"*, *"Feedback & Suggestions"*, *"Bug Report"*, *"Feature Request"*, *"Privacy Question"*, *"Other"*).
+       - Message label & placeholder (*"Write your message here..."*).
+       - Submit button text (*"Send Message"*).
+       - Formspree security / privacy disclaimer (*"This form uses Formspree. Your message will be sent securely. No data is stored on our servers."*).
+     - "Other Ways to Reach Us" section: Section title, email label, and response time notice (*"We aim to respond within 48 hours during business days."*).
 
-4. **Dynamic Technique Links & Navigation**:
-   - Ensure all 6 technique links in the "What We Offer" section dynamically route to their localized URLs when browsing in non-default languages (e.g., `/${lang}/${slug}/` for `es`, `de`, `fr`, `pt`, `ja`, `it`, and `/${slug}/` for `en`).
+4. **Interactive Form & Component Localization**:
+   - Ensure the form continues pointing to `https://formspree.io/f/xrenjllv` with `method="POST"`.
    - Pass `lang={currentLang}` to `Header` and `Footer` to preserve language context and highlight active links.
-   - Verify `LanguagePicker` seamlessly switches between `/about/`, `/es/about/`, `/de/about/`, `/fr/about/`, `/pt/about/`, `/ja/about/`, `/it/about/`.
+   - Verify `LanguagePicker` seamlessly switches between `/contact/`, `/es/contact/`, `/de/contact/`, `/fr/contact/`, `/pt/contact/`, `/ja/contact/`, `/it/contact/`.
 
 5. **Mobile Responsiveness, Sitemap & Build Verification**:
-   - Ensure responsive layout styling with appropriate typography scaling, margins, and word-wrapping (`break-words`, `overflow-wrap: break-word;`) to prevent clipping or horizontal scroll on 360px mobile viewports.
-   - Update `public/sitemap.xml` with the 6 localized About URLs (`/es/about/`, `/de/about/`, `/fr/about/`, `/pt/about/`, `/ja/about/`, `/it/about/`).
+   - Ensure form inputs, dropdowns, textarea, and submit buttons maintain responsive scaling, touch-friendly tap targets, and no overflow on 360px mobile viewports.
+   - Update `public/sitemap.xml` with the 6 localized Contact URLs (`/es/contact/`, `/de/contact/`, `/fr/contact/`, `/pt/contact/`, `/ja/contact/`, `/it/contact/`).
    - Run `npm run build` to verify all static routes build cleanly with 0 errors.
