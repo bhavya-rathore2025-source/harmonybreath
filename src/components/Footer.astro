@@ -14,6 +14,7 @@ const techniquesUrl = currentLang === 'en' ? '/#techniques' : `/${currentLang}/#
 const aboutUrl = currentLang === 'en' ? '/about/' : `/${currentLang}/about/`;
 const contactUrl = currentLang === 'en' ? '/contact/' : `/${currentLang}/contact/`;
 const privacyUrl = currentLang === 'en' ? '/privacy/' : `/${currentLang}/privacy/`;
+const termsUrl = currentLang === 'en' ? '/terms/' : `/${currentLang}/terms/`;
 ---
 
 <footer class="relative z-10 w-full border-t border-white/10 bg-neutral-950/90 backdrop-blur-xl py-12 mt-auto">
@@ -34,7 +35,7 @@ const privacyUrl = currentLang === 'en' ? '/privacy/' : `/${currentLang}/privacy
         <a href={aboutUrl} class="hover:text-white transition-colors">{t('nav.about')}</a>
         <a href={contactUrl} class="hover:text-white transition-colors">{t('nav.contact')}</a>
         <a href={privacyUrl} class="hover:text-white transition-colors">Privacy</a>
-        <a href="/terms/" class="hover:text-white transition-colors">Terms</a>
+        <a href={termsUrl} class="hover:text-white transition-colors">Terms</a>
       </div>
 
       <div class="text-xs font-mono text-neutral-400">
@@ -48,7 +49,7 @@ const privacyUrl = currentLang === 'en' ? '/privacy/' : `/${currentLang}/privacy
       <div class="flex items-center justify-center gap-4 pt-2 text-xs">
         <a href={privacyUrl} class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">Privacy Policy</a>
         <span class="text-neutral-600">|</span>
-        <a href="/terms/" class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">Terms & Conditions</a>
+        <a href={termsUrl} class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">Terms & Conditions</a>
       </div>
     </div>
   </div>

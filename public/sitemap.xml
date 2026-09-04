@@ -356,6 +356,36 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://harmonybreath.com/es/terms/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://harmonybreath.com/de/terms/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://harmonybreath.com/fr/terms/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://harmonybreath.com/pt/terms/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://harmonybreath.com/ja/terms/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://harmonybreath.com/it/terms/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://harmonybreath.com/quotes/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
