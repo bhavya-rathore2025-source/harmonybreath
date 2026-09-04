@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { privacyI18n } from '../i18n/privacy';
+import { getHreflangLinks } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const content = privacyI18n[lang] || privacyI18n.en;
+
+const siteUrl = 'https://harmonybreath.com';
+const canonicalUrl = lang === 'en' ? `${siteUrl}/privacy/` : `${siteUrl}/${lang}/privacy/`;
+const homeUrl = lang === 'en' ? `${siteUrl}/` : `${siteUrl}/${lang}/`;
+const contactUrl = lang === 'en' ? '/contact/' : `/${lang}/contact/`;
+const hreflangLinks = getHreflangLinks('privacy', siteUrl);
+
+const homeNames: Record<SupportedLanguage, string> = {
+  en: 'Home',
+  es: 'Inicio',
+  de: 'Startseite',
+  fr: 'Accueil',
+  pt: 'Início',
+  ja: 'ホーム',
+  it: 'Home',
+};
+
+const pageSchemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": content.metaTitle,
+    "description": content.metaDescription,
+    "url": canonicalUrl,
+    "inLanguage": lang,
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "HarmonyBreath",
+      "url": siteUrl
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": homeNames[lang] || 'Home',
+          "item": homeUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": content.breadcrumbName,
+          "item": canonicalUrl
+        }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "HarmonyBreath",
+    "url": siteUrl,
+    "logo": `${siteUrl}/favicon-96x96.png`,
+    "description": "Free, privacy-first guided breathing timers and breathwork platform."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": homeNames[lang] || 'Home',
+        "item": homeUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": content.breadcrumbName,
+        "item": canonicalUrl
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title={content.metaTitle}
+  description={content.metaDescription}
+  keywords={content.keywords}
+  canonicalUrl={canonicalUrl}
+  lang={lang}
+  hreflangLinks={hreflangLinks}
+  schemaData={pageSchemaData}
+>
+  <Header lang={lang} />
+
+  <main class="flex-1 hero-gradient-mesh relative selection:bg-amber-500/30 selection:text-amber-200">
+    <section class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <div class="text-center space-y-4 mb-12">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400 text-xs font-mono uppercase tracking-wider">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+          {content.badge}
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-bold text-white tracking-tight break-words">
+          {content.title}
+        </h1>
+        <p class="text-neutral-400 max-w-2xl mx-auto text-sm font-sans font-light break-words">
+          {content.lastUpdated}
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-6 text-sm sm:text-base text-neutral-300 leading-relaxed font-sans font-light break-words overflow-hidden [&_h2]:text-white [&_h2]:text-xl [&_h2]:sm:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-white [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_strong]:text-white [&_strong]:font-medium [&_ul]:list-disc [&_ul]:list-inside [&_ul]:space-y-2 [&_ul]:text-neutral-400">
+        <h2>{content.commitmentTitle}</h2>
+        <p>
+          {content.commitmentText}
+        </p>
+
+        <h2>{content.collectionTitle}</h2>
+        <p>
+          {content.collectionIntro}
+        </p>
+        <ul>
+          {content.collectionPoints.map((point) => (
+            <li>{point}</li>
+          ))}
+        </ul>
+
+        <h2>{content.localStorageTitle}</h2>
+        <p>
+          {content.localStorageText}
+        </p>
+
+        <h2>{content.cookiesTitle}</h2>
+        <p>
+          {content.cookiesIntro}
+        </p>
+        <p>{content.cookiesPurposesIntro}</p>
+        <ul>
+          {content.cookiesPurposes.map((purpose) => (
+            <li>{purpose}</li>
+          ))}
+        </ul>
+        <p>
+          {content.cookiesControlNote}
+        </p>
+        <p>
+          <strong>{content.choicesTitle}</strong> {content.choicesTextBeforeGoogle}
+          <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-300 underline underline-offset-2 break-all sm:break-normal">{content.googleAdsLinkText}</a>
+          {content.choicesTextBetween}
+          <a href="https://optout.networkadvertising.org" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-300 underline underline-offset-2 break-all sm:break-normal">{content.naiLinkText}</a>
+          {content.choicesTextAfterNai}
+        </p>
+        <p>
+          {content.choicesRejectionNote}
+        </p>
+        <p>
+          {content.googlePolicyIntro}
+          <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-300 underline underline-offset-2 break-all sm:break-normal">{content.googlePartnerLinkText}</a>
+          {content.googlePolicyAnd}
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-300 underline underline-offset-2 break-all sm:break-normal">{content.googlePrivacyLinkText}</a>.
+        </p>
+
+        <h2>{content.thirdPartyTitle}</h2>
+        <p>
+          {content.thirdPartyIntro}
+        </p>
+        <ul>
+          {content.thirdPartyServices.map((service) => (
+            <li>
+              <strong>{service.name}</strong> — {service.description}
+            </li>
+          ))}
+        </ul>
+        <p>
+          {content.thirdPartySummary}
+        </p>
+
+        <h2>{content.dataSharingTitle}</h2>
+        <p>
+          {content.dataSharingText}
+        </p>
+
+        <h2>{content.childrenTitle}</h2>
+        <p>
+          {content.childrenText}
+        </p>
+
+        <h2>{content.changesTitle}</h2>
+        <p>
+          {content.changesText}
+        </p>
+
+        <h2>{content.contactTitle}</h2>
+        <p>
+          {content.contactTextBefore}
+          <a href={contactUrl} class="text-amber-400 hover:text-amber-300 underline underline-offset-2">{content.contactLinkText}</a>
+          {content.contactTextAfter}
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

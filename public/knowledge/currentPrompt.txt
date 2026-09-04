@@ -1,38 +1,39 @@
-Use the official Astro i18n recipe guide (https://docs.astro.build/en/recipes/i18n/) to implement complete multi-language support for the Contact Us Page (/contact/) on HarmonyBreath across all 7 languages (en, es, de, fr, pt, ja, it), matching the structure established across all localized pages so it ranks on international global keywords.
+Use the official Astro i18n recipe guide (https://docs.astro.build/en/recipes/i18n/) to implement complete multi-language support for the Terms & Conditions Page (/terms/) on HarmonyBreath across all 7 languages (en, es, de, fr, pt, ja, it), matching the structure established across all localized pages so it ranks on international global keywords and provides legally sound disclaimers in each locale.
 
 ### Scope & Requirements based on Astro i18n Recipe:
 
 1. **Routing & Architecture (https://docs.astro.build/en/recipes/i18n/)**:
-   - Follow the Astro i18n dynamic routing pattern using `src/pages/[lang]/contact.astro`.
+   - Follow the Astro i18n dynamic routing pattern using `src/pages/[lang]/terms.astro`.
    - Implement `getStaticPaths()` for all non-default languages: `['es', 'de', 'fr', 'pt', 'ja', 'it']`.
-   - Refactor `src/pages/contact.astro` into a reusable component `src/components/ContactPage.astro` that accepts `lang?: SupportedLanguage`.
-   - Keep default language (`en`) at root `/contact/` delegating to `<ContactPage lang="en" />`.
+   - Refactor `src/pages/terms.astro` into a reusable component `src/components/TermsPage.astro` that accepts `lang?: SupportedLanguage`.
+   - Keep default language (`en`) at root `/terms/` delegating to `<TermsPage lang="en" />`.
 
 2. **International SEO & Hreflang Markup (per Astro i18n Recipe)**:
-   - Add `<link rel="canonical">` pointing to the localized URL (`https://harmonybreath.com/contact/` for English, `https://harmonybreath.com/${lang}/contact/` for others).
-   - Add full bidirectional `<link rel="alternate" hreflang="...">` tags for all 7 languages + `x-default` using `getHreflangLinks('contact')`.
-   - Add localized JSON-LD schemas (`ContactPage`, `Organization`, `BreadcrumbList`).
+   - Add `<link rel="canonical">` pointing to the localized URL (`https://harmonybreath.com/terms/` for English, `https://harmonybreath.com/${lang}/terms/` for others).
+   - Add full bidirectional `<link rel="alternate" hreflang="...">` tags for all 7 languages + `x-default` using `getHreflangLinks('terms')`.
+   - Add localized JSON-LD schemas (`WebPage`, `Organization`, `BreadcrumbList`).
 
-3. **Content Dictionary (`src/i18n/contact.ts`)**:
+3. **Content Dictionary (`src/i18n/terms.ts`)**:
    - Build a structured dictionary adhering to the Astro i18n pattern for all 7 languages: `en`, `es`, `de`, `fr`, `pt`, `ja`, `it`.
    - Include high-intent regional keywords, localized meta titles & descriptions for search engines.
-   - Translate all page content:
-     - Header: Badge (*"Get in Touch"*), Main Title (*"Contact Us"*), and Subtitle (*"Have a question, suggestion, or feedback? We'd love to hear from you."*).
-     - Form Fields & Placeholders:
-       - Name label & placeholder (*"Your name"*).
-       - Email label & placeholder (*"your@email.com"*).
-       - Subject dropdown label & placeholder option (*"Select a subject"*), plus all 6 options (*"General Inquiry"*, *"Feedback & Suggestions"*, *"Bug Report"*, *"Feature Request"*, *"Privacy Question"*, *"Other"*).
-       - Message label & placeholder (*"Write your message here..."*).
-       - Submit button text (*"Send Message"*).
-       - Formspree security / privacy disclaimer (*"This form uses Formspree. Your message will be sent securely. No data is stored on our servers."*).
-     - "Other Ways to Reach Us" section: Section title, email label, and response time notice (*"We aim to respond within 48 hours during business days."*).
+   - Accurately translate all legal clauses, medical disclaimers, and terms:
+     - Header: Badge (*"Terms of Service"*), Main Title (*"Terms & Conditions"*), and Last Updated date (*"Last updated: July 27, 2026"*).
+     - **Acceptance of Terms**: Legal agreement upon visiting or using the breathwork platform.
+     - **Educational Purpose Only**: Clear declaration that HarmonyBreath is not a medical device and provides general wellness tools only.
+     - **User Responsibility**: Practicing at one's own risk, safe seated/lying postures, strict prohibition during driving or swimming, and immediate cessation if dizzy.
+     - **Medical Disclaimer**: High-visibility health warnings regarding breath retention, hyperventilation, and medical contraindications (epilepsy, cardiovascular disease, hypertension, glaucoma, pregnancy, respiratory issues).
+     - **Intellectual Property**: Content ownership, non-commercial personal use license, and trademark/content protection.
+     - **Limitation of Liability**: "As is" provision, disclaimer of liability for direct or indirect physical injury or data loss.
+     - **No Account Required**: Client-side browser localStorage declaration and zero account/data collection policy.
+     - **Governing Law**: Governing law clause and dispute resolution principles.
+     - **Contact**: Inquiries about terms with localized link to the contact page.
 
-4. **Interactive Form & Component Localization**:
-   - Ensure the form continues pointing to `https://formspree.io/f/xrenjllv` with `method="POST"`.
-   - Pass `lang={currentLang}` to `Header` and `Footer` to preserve language context and highlight active links.
-   - Verify `LanguagePicker` seamlessly switches between `/contact/`, `/es/contact/`, `/de/contact/`, `/fr/contact/`, `/pt/contact/`, `/ja/contact/`, `/it/contact/`.
+4. **Component & Navigation Integration**:
+   - Dynamically localize the internal contact link in the Contact section to point to `/${lang}/contact/` for non-default languages.
+   - Pass `lang={currentLang}` to `Header` and `Footer` to preserve language context across all navigation elements.
+   - Verify `LanguagePicker` seamlessly switches between `/terms/`, `/es/terms/`, `/de/terms/`, `/fr/terms/`, `/pt/terms/`, `/ja/terms/`, `/it/terms/`.
 
 5. **Mobile Responsiveness, Sitemap & Build Verification**:
-   - Ensure form inputs, dropdowns, textarea, and submit buttons maintain responsive scaling, touch-friendly tap targets, and no overflow on 360px mobile viewports.
-   - Update `public/sitemap.xml` with the 6 localized Contact URLs (`/es/contact/`, `/de/contact/`, `/fr/contact/`, `/pt/contact/`, `/ja/contact/`, `/it/contact/`).
+   - Ensure legal text, warnings, bullet lists, and links maintain responsive scaling and proper word-wrapping (`break-words`, `overflow-wrap: break-word;`) without text clipping on 360px mobile viewports.
+   - Update `public/sitemap.xml` with the 6 localized Terms URLs (`/es/terms/`, `/de/terms/`, `/fr/terms/`, `/pt/terms/`, `/ja/terms/`, `/it/terms/`).
    - Run `npm run build` to verify all static routes build cleanly with 0 errors.

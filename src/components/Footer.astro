@@ -13,6 +13,7 @@ const homeUrl = currentLang === 'en' ? '/' : `/${currentLang}/`;
 const techniquesUrl = currentLang === 'en' ? '/#techniques' : `/${currentLang}/#techniques`;
 const aboutUrl = currentLang === 'en' ? '/about/' : `/${currentLang}/about/`;
 const contactUrl = currentLang === 'en' ? '/contact/' : `/${currentLang}/contact/`;
+const privacyUrl = currentLang === 'en' ? '/privacy/' : `/${currentLang}/privacy/`;
 ---
 
 <footer class="relative z-10 w-full border-t border-white/10 bg-neutral-950/90 backdrop-blur-xl py-12 mt-auto">
@@ -32,7 +33,7 @@ const contactUrl = currentLang === 'en' ? '/contact/' : `/${currentLang}/contact
         <a href={techniquesUrl} class="hover:text-white transition-colors">{t('nav.techniques')}</a>
         <a href={aboutUrl} class="hover:text-white transition-colors">{t('nav.about')}</a>
         <a href={contactUrl} class="hover:text-white transition-colors">{t('nav.contact')}</a>
-        <a href="/privacy/" class="hover:text-white transition-colors">Privacy</a>
+        <a href={privacyUrl} class="hover:text-white transition-colors">Privacy</a>
         <a href="/terms/" class="hover:text-white transition-colors">Terms</a>
       </div>
 
@@ -45,7 +46,7 @@ const contactUrl = currentLang === 'en' ? '/contact/' : `/${currentLang}/contact
       <p class="text-neutral-300 font-medium">© {new Date().getFullYear()} HarmonyBreath Platform. Educational & Wellness Tool Only.</p>
       <p class="max-w-2xl mx-auto text-neutral-400 font-light">Not intended to diagnose, treat, cure, or prevent any medical condition. Always practice safely sitting or lying down.</p>
       <div class="flex items-center justify-center gap-4 pt-2 text-xs">
-        <a href="/privacy/" class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">Privacy Policy</a>
+        <a href={privacyUrl} class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">Privacy Policy</a>
         <span class="text-neutral-600">|</span>
         <a href="/terms/" class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">Terms & Conditions</a>
       </div>
