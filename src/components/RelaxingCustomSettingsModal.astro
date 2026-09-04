@@ -1,17 +1,116 @@
 ---
+import type { SupportedLanguage } from '../i18n/ui';
+
+export interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const translations: Record<SupportedLanguage, {
+  title: string;
+  desc: string;
+  inhaleLabel: string;
+  holdLabel: string;
+  exhaleLabel: string;
+  cyclesLabel: string;
+  cycleSingular: string;
+  cyclePlural: string;
+  applyBtn: string;
+}> = {
+  en: {
+    title: 'Custom 4-7-8 Breath Settings',
+    desc: 'Customize the timing of each phase or total cycles for your relaxing breath session.',
+    inhaleLabel: 'Inhale Duration (Nose)',
+    holdLabel: 'Hold Duration',
+    exhaleLabel: 'Exhale Duration (Mouth)',
+    cyclesLabel: 'Total Cycles',
+    cycleSingular: 'Cycle',
+    cyclePlural: 'Cycles',
+    applyBtn: 'Apply Custom Session',
+  },
+  es: {
+    title: 'Ajustes Personalizados de Respiración 4-7-8',
+    desc: 'Personaliza la duración de cada fase o el total de ciclos para tu sesión relajante.',
+    inhaleLabel: 'Duración de Inhalación (Nariz)',
+    holdLabel: 'Duración de Retención',
+    exhaleLabel: 'Duración de Exhalación (Boca)',
+    cyclesLabel: 'Ciclos Totales',
+    cycleSingular: 'Ciclo',
+    cyclePlural: 'Ciclos',
+    applyBtn: 'Aplicar Sesión Personalizada',
+  },
+  de: {
+    title: 'Individuelle 4-7-8 Einstellungen',
+    desc: 'Passen Sie die Phasendauer oder die Gesamtzyklen für Ihre Entspannungssitzung an.',
+    inhaleLabel: 'Einatmung (Nase)',
+    holdLabel: 'Atemanhalten',
+    exhaleLabel: 'Ausatmung (Mund)',
+    cyclesLabel: 'Gesamte Zyklen',
+    cycleSingular: 'Zyklus',
+    cyclePlural: 'Zyklen',
+    applyBtn: 'Einstellungen Übernehmen',
+  },
+  fr: {
+    title: 'Paramètres Personnalisés de Respiration 4-7-8',
+    desc: 'Personnalisez la durée de chaque phase ou le nombre de cycles pour votre séance de détente.',
+    inhaleLabel: 'Durée d’Inspiration (Nez)',
+    holdLabel: 'Durée de Rétention',
+    exhaleLabel: 'Durée d’Expiration (Bouche)',
+    cyclesLabel: 'Cycles Totaux',
+    cycleSingular: 'Cycle',
+    cyclePlural: 'Cycles',
+    applyBtn: 'Appliquer la Séance',
+  },
+  pt: {
+    title: 'Configurações Personalizadas de Respiração 4-7-8',
+    desc: 'Personalize o tempo de cada fase ou o total de ciclos para sua sessão de relaxamento.',
+    inhaleLabel: 'Duração da Inspiração (Nariz)',
+    holdLabel: 'Duração da Retenção',
+    exhaleLabel: 'Duração da Expiração (Boca)',
+    cyclesLabel: 'Ciclos Totais',
+    cycleSingular: 'Ciclo',
+    cyclePlural: 'Ciclos',
+    applyBtn: 'Aplicar Sessão Personalizada',
+  },
+  ja: {
+    title: '4-7-8呼吸のカスタム設定',
+    desc: '各フェーズの秒数や合計サイクル数を呼吸力に合わせて調整できます。',
+    inhaleLabel: '吸う時間（鼻）',
+    holdLabel: '息止め時間',
+    exhaleLabel: '吐く時間（口）',
+    cyclesLabel: '合計サイクル数',
+    cycleSingular: 'サイクル',
+    cyclePlural: 'サイクル',
+    applyBtn: 'カスタム設定を適用',
+  },
+  it: {
+    title: 'Impostazioni Personalizzate Respirazione 4-7-8',
+    desc: 'Personalizza la durata di ciascuna fase o i cicli totali per la tua sessione rilassante.',
+    inhaleLabel: 'Durata Inspirazione (Naso)',
+    holdLabel: 'Durata Trattenuta',
+    exhaleLabel: 'Durata Espirazione (Bocca)',
+    cyclesLabel: 'Cicli Totali',
+    cycleSingular: 'Ciclo',
+    cyclePlural: 'Cicli',
+    applyBtn: 'Applica Sessione Personalizzata',
+  },
+};
+
+const t = translations[lang] || translations.en;
 ---
 
 <div id="relax-custom-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
   <div class="w-full max-w-md bg-neutral-950 border border-neutral-800 rounded-2xl p-6 shadow-2xl space-y-6">
     <div class="flex items-center justify-between border-b border-neutral-800 pb-4">
       <h3 class="text-base font-bold text-white flex items-center gap-2">
-        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
-        Custom 4-7-8 Breath Settings
+        <span class="break-words">{t.title}</span>
       </h3>
-      <button id="close-relax-custom-modal" class="text-neutral-400 hover:text-white transition-colors">
+      <button id="close-relax-custom-modal" class="text-neutral-400 hover:text-white transition-colors" aria-label="Close modal">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -19,13 +118,13 @@
     </div>
 
     <div class="text-xs text-neutral-500 font-mono leading-relaxed -mt-2">
-      Customize the timing of each phase or total cycles for your relaxing breath session.
+      {t.desc}
     </div>
 
     <!-- Inhale Duration -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Inhale Duration (Nose)</span>
+        <span>{t.inhaleLabel}</span>
         <span id="relax-custom-inhale-val" class="text-amber-400 font-bold">4s</span>
       </div>
       <input
@@ -46,7 +145,7 @@
     <!-- Hold Duration -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Hold Duration</span>
+        <span>{t.holdLabel}</span>
         <span id="relax-custom-hold-val" class="text-cyan-400 font-bold">7s</span>
       </div>
       <input
@@ -67,7 +166,7 @@
     <!-- Exhale Duration -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Exhale Duration (Mouth)</span>
+        <span>{t.exhaleLabel}</span>
         <span id="relax-custom-exhale-val" class="text-blue-400 font-bold">8s</span>
       </div>
       <input
@@ -88,8 +187,8 @@
     <!-- Total Cycles -->
     <div class="space-y-2">
       <div class="flex justify-between text-xs font-mono text-neutral-300">
-        <span>Total Cycles</span>
-        <span id="relax-custom-cycles-val" class="text-indigo-400 font-bold">4 Cycles</span>
+        <span>{t.cyclesLabel}</span>
+        <span id="relax-custom-cycles-val" class="text-indigo-400 font-bold">4 {t.cyclePlural}</span>
       </div>
       <input
         type="range"
@@ -101,8 +200,8 @@
         class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-indigo-400"
       />
       <div class="flex justify-between text-[10px] text-neutral-500 font-mono">
-        <span>1 Cycle</span>
-        <span>30 Cycles</span>
+        <span>1 {t.cycleSingular}</span>
+        <span>30 {t.cyclePlural}</span>
       </div>
     </div>
 
@@ -112,7 +211,7 @@
         type="button"
         class="flex-1 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-semibold text-xs transition-colors shadow-lg shadow-blue-500/10"
       >
-        Apply Custom Session
+        {t.applyBtn}
       </button>
     </div>
   </div>

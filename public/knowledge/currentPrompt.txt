@@ -1,0 +1,31 @@
+Use the official Astro i18n recipe guide (https://docs.astro.build/en/recipes/i18n/) to implement complete multi-language support for the Physiological Sigh page on HarmonyBreath, matching the structure established in Box Breathing, Wim Hof, and 4-7-8 Breathing so it ranks on international keywords.
+
+### Scope & Requirements based on Astro i18n Recipe:
+
+1. **Routing & Architecture (https://docs.astro.build/en/recipes/i18n/)**:
+   - Follow the Astro i18n dynamic routing pattern using `src/pages/[lang]/physiological-sigh.astro`.
+   - Implement `getStaticPaths()` for all non-default languages: `['es', 'de', 'fr', 'pt', 'ja', 'it']`.
+   - Refactor `src/pages/physiological-sigh.astro` into a reusable component `src/components/PhysiologicalSighPage.astro` that accepts `lang?: SupportedLanguage`.
+   - Keep default language (`en`) at root `/physiological-sigh/` delegating to `<PhysiologicalSighPage lang="en" />`.
+
+2. **International SEO & Hreflang Markup (per Astro i18n Recipe)**:
+   - Add `<link rel="canonical">` pointing to the localized URL.
+   - Add full bidirectional `<link rel="alternate" hreflang="...">` tags for all 7 languages + `x-default` (using `getHreflangLinks('physiological-sigh')`).
+   - Add localized JSON-LD schemas (`SoftwareApplication`, `WebApplication`, `Article`, `FAQPage`, `BreadcrumbList`).
+
+3. **Content Dictionary (`src/i18n/physiological-sigh.ts`)**:
+   - Build a structured dictionary adhering to the Astro i18n pattern for all 7 languages: `en`, `es`, `de`, `fr`, `pt`, `ja`, `it`.
+   - Include high-intent regional keywords (e.g., *suspiro fisiológico*, *physiologischer seufzer*, *soupir physiologique*, *生理的ため息*, *sospiro fisiologico*), localized meta titles & descriptions.
+   - Translate all page content: Hero, Step-by-Step Guide (Inhale 1, Top-up Inhale 2, Long Sighing Exhale), Physiological Mechanisms (Dr. Andrew Huberman, Stanford neurobiology research, collapsed alveoli re-inflation, rapid autonomic deceleration), Benefits, and 5–7 detailed clinical/stress-relief FAQs.
+
+4. **Interactive Timer & Component Localization**:
+   - Localize `PhysiologicalSighTimer.astro`: live phase directives (*"First Inhale"*, *"Top-Up Inhale"*, *"Extended Exhale / Sigh"*), phase labels, cycle counters, tips, and control buttons (*"Start Session"*, *"Pause"*, *"Resume"*, *"Reset"*, *"Music"*).
+   - Localize `PhysiologicalSessionPresets.astro` (preset cards, round badges, descriptions).
+   - Localize `PhysiologicalCustomSettingsModal.astro` (sliders for first inhale, top-up inhale, exhale durations, total cycles, and apply buttons).
+   - Pass `lang={lang}` to `AnalyticsPanel` and `ExploreOtherTechniques`.
+   - Add `'physiological-sigh'` to `multilingualTechniques` in `ExploreOtherTechniques.astro`.
+
+5. **Mobile Responsiveness & Sitemap**:
+   - Ensure all headings, badges, and timer status bars have responsive text scaling and word-wrapping (`break-words`, `overflow-wrap: break-word;`, `flex-wrap`) so text never overflows or clips on 360px mobile screens.
+   - Update `public/sitemap.xml` with all localized physiological sigh URLs.
+   - Run `npm run build` to verify all 44 static routes build cleanly with 0 errors (38 + 6 = 44).

@@ -1,25 +1,397 @@
 ---
+import type { SupportedLanguage } from '../i18n/ui';
 import RelaxingCustomSettingsModal from './RelaxingCustomSettingsModal.astro';
 import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
+
+export interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+
+const relaxTimerI18n: Record<SupportedLanguage, {
+  presetStandard: string;
+  presetCustom: string;
+  cyclePrefix: string;
+  cycleOf: string;
+  ready: string;
+  pressStart: string;
+  sessionComplete: string;
+  completedAction: string;
+  btnStart: string;
+  btnPause: string;
+  btnResume: string;
+  btnReset: string;
+  btnMusic: string;
+  btnSkipPhase: string;
+  btnStartAgain: string;
+  inWord: string;
+  holdWord: string;
+  outWord: string;
+  cyclesWord: string;
+  inhalePill: string;
+  holdPill: string;
+  exhalePill: string;
+  phases: {
+    INHALE: { label: string; action: string; glow: string; labelClass: string; haloScale: string };
+    HOLD: { label: string; action: string; glow: string; labelClass: string; haloScale: string };
+    EXHALE: { label: string; action: string; glow: string; labelClass: string; haloScale: string };
+  };
+}> = {
+  en: {
+    presetStandard: 'STANDARD 4 CYCLES',
+    presetCustom: 'CUSTOM',
+    cyclePrefix: 'Cycle',
+    cycleOf: 'of',
+    ready: 'Ready',
+    pressStart: 'Press Start',
+    sessionComplete: 'Completed',
+    completedAction: 'Session Complete!',
+    btnStart: 'Start Session',
+    btnPause: 'Pause',
+    btnResume: 'Resume',
+    btnReset: 'Reset',
+    btnMusic: 'Music',
+    btnSkipPhase: 'Skip Phase',
+    btnStartAgain: 'Start Again',
+    inWord: 'In',
+    holdWord: 'Hold',
+    outWord: 'Out',
+    cyclesWord: 'Cycles',
+    inhalePill: 'Inhale (4s)',
+    holdPill: 'Hold (7s)',
+    exhalePill: 'Exhale (8s)',
+    phases: {
+      INHALE: {
+        label: 'Phase 1: Inhale',
+        action: 'Breathe In Slowly (Nose)',
+        glow: 'from-amber-500/20',
+        labelClass: 'text-amber-400',
+        haloScale: 'scale-125 duration-[4000ms]',
+      },
+      HOLD: {
+        label: 'Phase 2: Hold',
+        action: 'Hold Breath Gently',
+        glow: 'from-cyan-500/20',
+        labelClass: 'text-cyan-400',
+        haloScale: 'scale-125 duration-700',
+      },
+      EXHALE: {
+        label: 'Phase 3: Exhale',
+        action: 'Exhale Completely (Mouth)',
+        glow: 'from-blue-500/20',
+        labelClass: 'text-blue-400',
+        haloScale: 'scale-90 duration-[8000ms]',
+      },
+    },
+  },
+  es: {
+    presetStandard: 'ESTÁNDAR 4 CICLOS',
+    presetCustom: 'PERSONALIZADO',
+    cyclePrefix: 'Ciclo',
+    cycleOf: 'de',
+    ready: 'Listo',
+    pressStart: 'Presiona Iniciar',
+    sessionComplete: 'Completado',
+    completedAction: '¡Sesión Completada!',
+    btnStart: 'Iniciar Sesión',
+    btnPause: 'Pausar',
+    btnResume: 'Continuar',
+    btnReset: 'Reiniciar',
+    btnMusic: 'Música',
+    btnSkipPhase: 'Saltar Fase',
+    btnStartAgain: 'Comenzar de Nuevo',
+    inWord: 'Inhala',
+    holdWord: 'Retén',
+    outWord: 'Exhala',
+    cyclesWord: 'Ciclos',
+    inhalePill: 'Inhala (4s)',
+    holdPill: 'Retén (7s)',
+    exhalePill: 'Exhala (8s)',
+    phases: {
+      INHALE: {
+        label: 'Fase 1: Inhala',
+        action: 'Inhala Suavemente (Nariz)',
+        glow: 'from-amber-500/20',
+        labelClass: 'text-amber-400',
+        haloScale: 'scale-125 duration-[4000ms]',
+      },
+      HOLD: {
+        label: 'Fase 2: Retén',
+        action: 'Retén el Aire con Calma',
+        glow: 'from-cyan-500/20',
+        labelClass: 'text-cyan-400',
+        haloScale: 'scale-125 duration-700',
+      },
+      EXHALE: {
+        label: 'Fase 3: Exhala',
+        action: 'Exhala por Completo (Boca)',
+        glow: 'from-blue-500/20',
+        labelClass: 'text-blue-400',
+        haloScale: 'scale-90 duration-[8000ms]',
+      },
+    },
+  },
+  de: {
+    presetStandard: 'STANDARD 4 ZYKLEN',
+    presetCustom: 'BENUTZERDEFINIERT',
+    cyclePrefix: 'Zyklus',
+    cycleOf: 'von',
+    ready: 'Bereit',
+    pressStart: 'Start drücken',
+    sessionComplete: 'Abgeschlossen',
+    completedAction: 'Sitzung abgeschlossen!',
+    btnStart: 'Sitzung Starten',
+    btnPause: 'Pause',
+    btnResume: 'Fortsetzen',
+    btnReset: 'Zurücksetzen',
+    btnMusic: 'Musik',
+    btnSkipPhase: 'Phase überspringen',
+    btnStartAgain: 'Erneut starten',
+    inWord: 'Ein',
+    holdWord: 'Halten',
+    outWord: 'Aus',
+    cyclesWord: 'Zyklen',
+    inhalePill: 'Einatmen (4s)',
+    holdPill: 'Halten (7s)',
+    exhalePill: 'Ausatmen (8s)',
+    phases: {
+      INHALE: {
+        label: 'Phase 1: Einatmen',
+        action: 'Ruhig Einatmen (Nase)',
+        glow: 'from-amber-500/20',
+        labelClass: 'text-amber-400',
+        haloScale: 'scale-125 duration-[4000ms]',
+      },
+      HOLD: {
+        label: 'Phase 2: Halten',
+        action: 'Atem Sanft Halten',
+        glow: 'from-cyan-500/20',
+        labelClass: 'text-cyan-400',
+        haloScale: 'scale-125 duration-700',
+      },
+      EXHALE: {
+        label: 'Phase 3: Ausatmen',
+        action: 'Vollständig Ausatmen (Mund)',
+        glow: 'from-blue-500/20',
+        labelClass: 'text-blue-400',
+        haloScale: 'scale-90 duration-[8000ms]',
+      },
+    },
+  },
+  fr: {
+    presetStandard: 'STANDARD 4 CYCLES',
+    presetCustom: 'PERSONNALISÉ',
+    cyclePrefix: 'Cycle',
+    cycleOf: 'sur',
+    ready: 'Prêt',
+    pressStart: 'Appuyez sur Démarrer',
+    sessionComplete: 'Terminé',
+    completedAction: 'Séance terminée !',
+    btnStart: 'Démarrer la Séance',
+    btnPause: 'Pause',
+    btnResume: 'Reprendre',
+    btnReset: 'Réinitialiser',
+    btnMusic: 'Musique',
+    btnSkipPhase: 'Passer l’étape',
+    btnStartAgain: 'Recommencer',
+    inWord: 'Inspire',
+    holdWord: 'Retiens',
+    outWord: 'Expire',
+    cyclesWord: 'Cycles',
+    inhalePill: 'Inspiration (4s)',
+    holdPill: 'Rétention (7s)',
+    exhalePill: 'Expiration (8s)',
+    phases: {
+      INHALE: {
+        label: 'Phase 1 : Inspirez',
+        action: 'Inspirez Lentement (Nez)',
+        glow: 'from-amber-500/20',
+        labelClass: 'text-amber-400',
+        haloScale: 'scale-125 duration-[4000ms]',
+      },
+      HOLD: {
+        label: 'Phase 2 : Retenez',
+        action: 'Retenez sans Forcer',
+        glow: 'from-cyan-500/20',
+        labelClass: 'text-cyan-400',
+        haloScale: 'scale-125 duration-700',
+      },
+      EXHALE: {
+        label: 'Phase 3 : Expirez',
+        action: 'Expirez Totalement (Bouche)',
+        glow: 'from-blue-500/20',
+        labelClass: 'text-blue-400',
+        haloScale: 'scale-90 duration-[8000ms]',
+      },
+    },
+  },
+  pt: {
+    presetStandard: 'PADRÃO 4 CICLOS',
+    presetCustom: 'PERSONALIZADO',
+    cyclePrefix: 'Ciclo',
+    cycleOf: 'de',
+    ready: 'Pronto',
+    pressStart: 'Pressione Iniciar',
+    sessionComplete: 'Concluído',
+    completedAction: 'Sessão Concluída!',
+    btnStart: 'Iniciar Sessão',
+    btnPause: 'Pausar',
+    btnResume: 'Continuar',
+    btnReset: 'Reiniciar',
+    btnMusic: 'Música',
+    btnSkipPhase: 'Pular Fase',
+    btnStartAgain: 'Iniciar Novamente',
+    inWord: 'Inspire',
+    holdWord: 'Retenha',
+    outWord: 'Expire',
+    cyclesWord: 'Ciclos',
+    inhalePill: 'Inspire (4s)',
+    holdPill: 'Retenha (7s)',
+    exhalePill: 'Expire (8s)',
+    phases: {
+      INHALE: {
+        label: 'Fase 1: Inspire',
+        action: 'Inspire Suavemente (Nariz)',
+        glow: 'from-amber-500/20',
+        labelClass: 'text-amber-400',
+        haloScale: 'scale-125 duration-[4000ms]',
+      },
+      HOLD: {
+        label: 'Fase 2: Retenha',
+        action: 'Segure o Ar com Calma',
+        glow: 'from-cyan-500/20',
+        labelClass: 'text-cyan-400',
+        haloScale: 'scale-125 duration-700',
+      },
+      EXHALE: {
+        label: 'Fase 3: Expire',
+        action: 'Expire Totalmente (Boca)',
+        glow: 'from-blue-500/20',
+        labelClass: 'text-blue-400',
+        haloScale: 'scale-90 duration-[8000ms]',
+      },
+    },
+  },
+  ja: {
+    presetStandard: '標準 4サイクル',
+    presetCustom: 'カスタム',
+    cyclePrefix: 'サイクル',
+    cycleOf: '/',
+    ready: '準備完了',
+    pressStart: '開始を押す',
+    sessionComplete: '完了',
+    completedAction: 'セッション完了！',
+    btnStart: 'セッション開始',
+    btnPause: '一時停止',
+    btnResume: '再開',
+    btnReset: 'リセット',
+    btnMusic: '音楽',
+    btnSkipPhase: 'フェーズをスキップ',
+    btnStartAgain: 'もう一度開始',
+    inWord: '吸気',
+    holdWord: '停止',
+    outWord: '呼気',
+    cyclesWord: 'サイクル',
+    inhalePill: '吸う (4秒)',
+    holdPill: '止める (7秒)',
+    exhalePill: '吐く (8秒)',
+    phases: {
+      INHALE: {
+        label: 'フェーズ1: 吸う',
+        action: '鼻から静かに吸う',
+        glow: 'from-amber-500/20',
+        labelClass: 'text-amber-400',
+        haloScale: 'scale-125 duration-[4000ms]',
+      },
+      HOLD: {
+        label: 'フェーズ2: 息止め',
+        action: '穏やかに息を止める',
+        glow: 'from-cyan-500/20',
+        labelClass: 'text-cyan-400',
+        haloScale: 'scale-125 duration-700',
+      },
+      EXHALE: {
+        label: 'フェーズ3: 吐く',
+        action: '口から完全に吐き出す',
+        glow: 'from-blue-500/20',
+        labelClass: 'text-blue-400',
+        haloScale: 'scale-90 duration-[8000ms]',
+      },
+    },
+  },
+  it: {
+    presetStandard: 'STANDARD 4 CICLI',
+    presetCustom: 'PERSONALIZZATO',
+    cyclePrefix: 'Ciclo',
+    cycleOf: 'di',
+    ready: 'Pronto',
+    pressStart: 'Premi Inizia',
+    sessionComplete: 'Completato',
+    completedAction: 'Sessione completata!',
+    btnStart: 'Inizia Sessione',
+    btnPause: 'Pausa',
+    btnResume: 'Riprendi',
+    btnReset: 'Ripristina',
+    btnMusic: 'Musica',
+    btnSkipPhase: 'Salta Fase',
+    btnStartAgain: 'Ricomincia',
+    inWord: 'Inspira',
+    holdWord: 'Trattieni',
+    outWord: 'Espira',
+    cyclesWord: 'Cicli',
+    inhalePill: 'Inspira (4s)',
+    holdPill: 'Trattieni (7s)',
+    exhalePill: 'Espira (8s)',
+    phases: {
+      INHALE: {
+        label: 'Fase 1: Inspira',
+        action: 'Inspira Lentamente (Naso)',
+        glow: 'from-amber-500/20',
+        labelClass: 'text-amber-400',
+        haloScale: 'scale-125 duration-[4000ms]',
+      },
+      HOLD: {
+        label: 'Fase 2: Trattieni',
+        action: 'Trattieni con Dolcezza',
+        glow: 'from-cyan-500/20',
+        labelClass: 'text-cyan-400',
+        haloScale: 'scale-125 duration-700',
+      },
+      EXHALE: {
+        label: 'Fase 3: Espira',
+        action: 'Espira Totalmente (Bocca)',
+        glow: 'from-blue-500/20',
+        labelClass: 'text-blue-400',
+        haloScale: 'scale-90 duration-[8000ms]',
+      },
+    },
+  },
+};
+
+const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
 ---
 
 <section id="relax-timer-section" class="w-full max-w-4xl mx-auto py-8 px-4">
+  <!-- Hidden JSON dictionary for client script hydration -->
+  <script id="hb-relax-timer-i18n" type="application/json" set:html={JSON.stringify(currentI18n)} />
+
   <div class="relative w-full bg-neutral-950/80 border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-2xl overflow-hidden shadow-blue-950/20">
     <div id="relax-phase-glow" class="absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-blue-500/20 via-transparent to-transparent"></div>
 
-    <div class="relative z-10 flex items-center justify-between border-b border-neutral-800/60 pb-6 mb-8">
-      <div class="flex items-center gap-3">
-        <span id="relax-preset-badge" class="px-3 py-1 rounded-full text-xs font-mono font-medium border border-blue-400/30 bg-blue-400/10 text-blue-400">
-          Standard 4 Cycles
+    <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-neutral-800/60 pb-6 mb-8">
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <span id="relax-preset-badge" class="px-3 py-1 rounded-full text-xs font-mono font-medium border border-blue-400/30 bg-blue-400/10 text-blue-400 max-w-full break-words">
+          {currentI18n.presetStandard}
         </span>
-        <span id="relax-cycle-badge" class="text-xs font-mono text-neutral-400">
-          Cycle <span id="relax-current-cycle-text" class="text-white font-bold">1</span> of <span id="relax-total-cycles-text" class="text-white font-bold">4</span>
+        <span id="relax-cycle-badge" class="text-xs font-mono text-neutral-400 whitespace-nowrap">
+          {currentI18n.cyclePrefix} <span id="relax-current-cycle-text" class="text-white font-bold">1</span> {currentI18n.cycleOf} <span id="relax-total-cycles-text" class="text-white font-bold">4</span>
         </span>
       </div>
 
-      <div class="flex items-center gap-2 text-xs font-mono text-neutral-400">
-        <span id="relax-status-indicator" class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
-        <span id="relax-phase-label" class="uppercase tracking-wider font-semibold text-blue-400">Ready</span>
+      <div class="flex items-center gap-2 text-xs font-mono text-neutral-400 shrink-0">
+        <span id="relax-status-indicator" class="w-2 h-2 rounded-full bg-blue-400 animate-ping shrink-0"></span>
+        <span id="relax-phase-label" class="uppercase tracking-wider font-semibold text-blue-400 break-words">{currentI18n.ready}</span>
       </div>
     </div>
 
@@ -51,55 +423,61 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
 
         <div id="relax-breath-halo" class="absolute w-44 h-44 rounded-full bg-gradient-to-tr from-amber-500/15 via-cyan-500/15 to-blue-500/15 transition-transform duration-[2500ms] ease-in-out scale-100 flex items-center justify-center border border-white/5"></div>
 
-        <div class="relative z-20 flex flex-col items-center text-center">
-          <div id="relax-breath-action-text" class="text-xs font-mono uppercase tracking-widest text-blue-400 mb-1">
-            Press Start
+        <div class="relative z-20 flex flex-col items-center text-center px-4">
+          <div id="relax-breath-action-text" class="text-xs font-mono uppercase tracking-widest text-blue-400 mb-1 break-words">
+            {currentI18n.pressStart}
           </div>
 
           <div id="relax-primary-counter" class="text-5xl sm:text-6xl font-bold tracking-normal font-mono-numbers text-white">
             00:00
           </div>
 
-          <div id="relax-secondary-counter" class="text-xs font-mono text-neutral-400 mt-2">
-            4s In • 7s Hold • 8s Out
+          <div id="relax-secondary-counter" class="text-xs font-mono text-neutral-400 mt-2 break-words">
+            4s {currentI18n.inWord} • 7s {currentI18n.holdWord} • 8s {currentI18n.outWord}
           </div>
         </div>
       </div>
 
-      <div class="mt-6 flex items-center gap-3 text-xs text-neutral-500 bg-neutral-900/40 border border-neutral-800/60 px-4 py-2 rounded-full font-mono">
-        <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-        <span>Inhale (4s)</span>
-        <span class="text-neutral-700">|</span>
-        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-        <span>Hold (7s)</span>
-        <span class="text-neutral-700">|</span>
-        <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-        <span>Exhale (8s)</span>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-neutral-500 bg-neutral-900/40 border border-neutral-800/60 px-4 py-2 rounded-full font-mono">
+        <span class="inline-flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
+          <span>{currentI18n.inhalePill}</span>
+        </span>
+        <span class="text-neutral-700 hidden sm:inline">|</span>
+        <span class="inline-flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 shrink-0"></span>
+          <span>{currentI18n.holdPill}</span>
+        </span>
+        <span class="text-neutral-700 hidden sm:inline">|</span>
+        <span class="inline-flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-blue-400 shrink-0"></span>
+          <span>{currentI18n.exhalePill}</span>
+        </span>
       </div>
     </div>
 
-    <div class="relative z-10 flex flex-wrap items-center justify-center gap-4 mt-8 pt-6 border-t border-neutral-800/60">
+    <div class="relative z-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 pt-6 border-t border-neutral-800/60">
       <button
         id="relax-btn-main-action"
         type="button"
-        class="flex items-center gap-2 px-8 py-3.5 rounded-full bg-blue-500/90 text-white font-semibold text-sm hover:bg-blue-400 transition-all transform active:scale-95 shadow-xl shadow-blue-500/15"
+        class="flex items-center gap-2 px-7 sm:px-8 py-3.5 rounded-full bg-blue-500/90 text-white font-semibold text-sm hover:bg-blue-400 transition-all transform active:scale-95 shadow-xl shadow-blue-500/15 cursor-pointer"
       >
-        <svg id="relax-icon-play" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <svg id="relax-icon-play" class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
           <path d="M8 5v14l11-7z"/>
         </svg>
-        <svg id="relax-icon-pause" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24">
+        <svg id="relax-icon-pause" class="w-4 h-4 hidden shrink-0" fill="currentColor" viewBox="0 0 24 24">
           <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
         </svg>
-        <span id="relax-label-main-action">Start Session</span>
+        <span id="relax-label-main-action">{currentI18n.btnStart}</span>
       </button>
 
       <button
         id="relax-btn-skip-phase"
         type="button"
-        class="hidden flex items-center gap-2 px-6 py-3.5 rounded-full bg-neutral-900 border border-neutral-750 text-neutral-200 hover:text-white hover:bg-neutral-800 text-xs font-mono font-medium transition-all"
+        class="hidden flex items-center gap-2 px-5 sm:px-6 py-3.5 rounded-full bg-neutral-900 border border-neutral-750 text-neutral-200 hover:text-white hover:bg-neutral-800 text-xs font-mono font-medium transition-all cursor-pointer"
       >
-        <span id="relax-label-skip-phase">Skip Phase</span>
-        <svg class="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <span id="relax-label-skip-phase">{currentI18n.btnSkipPhase}</span>
+        <svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
         </svg>
       </button>
@@ -107,37 +485,40 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
       <button
         id="relax-btn-restart"
         type="button"
-        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+        class="flex items-center gap-2 px-4 sm:px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all cursor-pointer"
         title="Restart Session"
       >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
-        <span>Reset</span>
+        <span>{currentI18n.btnReset}</span>
       </button>
 
       <button
         id="relax-btn-music"
         type="button"
-        class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all"
+        class="flex items-center gap-2 px-4 sm:px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-800 text-xs font-mono transition-all cursor-pointer"
         title="Change Background Music"
       >
-        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
         </svg>
-        <span>Music</span>
+        <span>{currentI18n.btnMusic}</span>
       </button>
     </div>
   </div>
 </section>
 
-<RelaxingCustomSettingsModal />
+<RelaxingCustomSettingsModal lang={lang} />
 <RelaxingMusicSelectionModal />
 
 <script>
   import { audioPlayer } from '../utils/audioPlayer';
   import { musicTracks } from '../config/audioConfig';
   import { saveExerciseStats } from '../utils/stats';
+
+  const i18nEl = document.getElementById('hb-relax-timer-i18n');
+  const i18n = i18nEl ? JSON.parse(i18nEl.textContent || '{}') : {};
 
   const RELAX_MUSIC_KEY = 'hb_relax_music_selection';
   const allTracks = [
@@ -201,6 +582,9 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
   }
 
   function getPhaseConfig(phaseKey: string) {
+    if (i18n.phases && i18n.phases[phaseKey]) {
+      return i18n.phases[phaseKey];
+    }
     switch (phaseKey) {
       case 'INHALE':
         return {
@@ -228,8 +612,8 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
         };
       default:
         return {
-          label: 'Ready',
-          action: 'Press Start',
+          label: i18n.ready || 'Ready',
+          action: i18n.pressStart || 'Press Start',
           glow: 'from-blue-500/20',
           labelClass: 'text-blue-400',
           haloScale: 'scale-100 duration-500',
@@ -254,11 +638,6 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
     try {
       const trackId = localStorage.getItem(RELAX_MUSIC_KEY);
       if (!trackId) return null;
-      const allTracks = [
-        ...musicTracks.guidedBreathing,
-        ...musicTracks.breathOutHold,
-        ...musicTracks.recoveryHold,
-      ];
       const track = allTracks.find(t => t.id === trackId);
       return track?.filePath || null;
     } catch {
@@ -268,16 +647,23 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
 
   function updateUI() {
     if (presetBadge) {
-      presetBadge.textContent = currentPreset === 'custom'
-        ? `Custom (${inhaleSec}-${holdSec}-${exhaleSec})`
-        : `${currentPreset.toUpperCase()} (${inhaleSec}-${holdSec}-${exhaleSec})`;
+      if (currentPreset === 'custom') {
+        presetBadge.textContent = `${i18n.presetCustom || 'CUSTOM'} (${inhaleSec}-${holdSec}-${exhaleSec})`;
+      } else if (currentPreset === 'beginner') {
+        presetBadge.textContent = `${i18n.presetStandard || 'STANDARD 4 CYCLES'} (${inhaleSec}-${holdSec}-${exhaleSec})`;
+      } else {
+        presetBadge.textContent = `${currentPreset.toUpperCase()} (${inhaleSec}-${holdSec}-${exhaleSec})`;
+      }
     }
 
     if (currentCycleText) currentCycleText.textContent = String(currentCycle);
     if (totalCyclesText) totalCyclesText.textContent = String(totalCycles);
 
     if (secondaryCounter) {
-      secondaryCounter.textContent = `${inhaleSec}s In • ${holdSec}s Hold • ${exhaleSec}s Out`;
+      const inW = i18n.inWord || 'In';
+      const holdW = i18n.holdWord || 'Hold';
+      const outW = i18n.outWord || 'Out';
+      secondaryCounter.textContent = `${inhaleSec}s ${inW} • ${holdSec}s ${holdW} • ${exhaleSec}s ${outW}`;
     }
 
     if (statusIndicator) {
@@ -286,18 +672,18 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
 
     if (state === 'IDLE') {
       if (phaseLabel) {
-        phaseLabel.textContent = 'Ready';
+        phaseLabel.textContent = i18n.ready || 'Ready';
         phaseLabel.className = 'uppercase tracking-wider font-semibold text-blue-400';
       }
       if (breathActionText) {
-        breathActionText.textContent = 'Press Start';
+        breathActionText.textContent = i18n.pressStart || 'Press Start';
         breathActionText.className = 'text-xs font-mono uppercase tracking-widest text-blue-400 mb-1';
       }
       if (primaryCounter) primaryCounter.textContent = formatTime(0);
       updateProgressRing(0);
       if (iconPlay) iconPlay.classList.remove('hidden');
       if (iconPause) iconPause.classList.add('hidden');
-      if (labelMainAction) labelMainAction.textContent = 'Start Session';
+      if (labelMainAction) labelMainAction.textContent = i18n.btnStart || 'Start Session';
       if (btnSkipPhase) btnSkipPhase.classList.add('hidden');
       if (breathHalo) breathHalo.className = 'absolute w-44 h-44 rounded-full bg-gradient-to-tr from-amber-500/15 via-cyan-500/15 to-blue-500/15 transition-transform duration-700 ease-in-out scale-100 flex items-center justify-center border border-white/5';
       return;
@@ -305,18 +691,18 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
 
     if (state === 'COMPLETED') {
       if (phaseLabel) {
-        phaseLabel.textContent = 'Completed';
+        phaseLabel.textContent = i18n.sessionComplete || 'Completed';
         phaseLabel.className = 'uppercase tracking-wider font-semibold text-emerald-400';
       }
       if (breathActionText) {
-        breathActionText.textContent = 'Session Complete!';
+        breathActionText.textContent = i18n.completedAction || 'Session Complete!';
         breathActionText.className = 'text-xs font-mono uppercase tracking-widest text-emerald-400 mb-1';
       }
       if (primaryCounter) primaryCounter.textContent = formatTime((inhaleSec + holdSec + exhaleSec) * totalCycles);
       updateProgressRing(100);
       if (iconPlay) iconPlay.classList.remove('hidden');
       if (iconPause) iconPause.classList.add('hidden');
-      if (labelMainAction) labelMainAction.textContent = 'Start Again';
+      if (labelMainAction) labelMainAction.textContent = i18n.btnStartAgain || 'Start Again';
       if (btnSkipPhase) btnSkipPhase.classList.add('hidden');
       return;
     }
@@ -351,22 +737,18 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
     if (state === 'RUNNING') {
       if (iconPlay) iconPlay.classList.add('hidden');
       if (iconPause) iconPause.classList.remove('hidden');
-      if (labelMainAction) labelMainAction.textContent = 'Pause';
+      if (labelMainAction) labelMainAction.textContent = i18n.btnPause || 'Pause';
       if (btnSkipPhase) btnSkipPhase.classList.remove('hidden');
     } else if (state === 'PAUSED') {
       if (iconPlay) iconPlay.classList.remove('hidden');
       if (iconPause) iconPause.classList.add('hidden');
-      if (labelMainAction) labelMainAction.textContent = 'Resume';
+      if (labelMainAction) labelMainAction.textContent = i18n.btnResume || 'Resume';
     }
   }
 
   function startPhase() {
     phaseElapsed = 0;
-    const currentPhaseKey = PHASES[currentPhaseIndex];
-    const dur = getPhaseDuration(currentPhaseKey);
-
     audioPlayer.playChime();
-
     updateUI();
   }
 
@@ -514,7 +896,7 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
     if (customExhaleVal) customExhaleVal.textContent = `${exhaleSec}s`;
 
     if (customCyclesInput) customCyclesInput.value = String(totalCycles);
-    if (customCyclesVal) customCyclesVal.textContent = `${totalCycles} Cycles`;
+    if (customCyclesVal) customCyclesVal.textContent = `${totalCycles} ${i18n.cyclesWord || 'Cycles'}`;
 
     customModal.classList.remove('hidden');
     customModal.classList.add('flex');
@@ -539,7 +921,7 @@ import RelaxingMusicSelectionModal from './RelaxingMusicSelectionModal.astro';
     if (customExhaleVal) customExhaleVal.textContent = `${customExhaleInput.value}s`;
   });
   customCyclesInput?.addEventListener('input', () => {
-    if (customCyclesVal) customCyclesVal.textContent = `${customCyclesInput.value} Cycles`;
+    if (customCyclesVal) customCyclesVal.textContent = `${customCyclesInput.value} ${i18n.cyclesWord || 'Cycles'}`;
   });
 
   applyCustom?.addEventListener('click', () => {

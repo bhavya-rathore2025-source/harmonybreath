@@ -1,0 +1,498 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Relaxing478Timer from '../components/Relaxing478Timer.astro';
+import RelaxingSessionPresets from '../components/RelaxingSessionPresets.astro';
+import AnalyticsPanel from '../components/AnalyticsPanel.astro';
+import ExploreOtherTechniques from '../components/ExploreOtherTechniques.astro';
+import Footer from '../components/Footer.astro';
+import { relaxing478I18n } from '../i18n/4-7-8';
+import { getHreflangLinks } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const content = relaxing478I18n[lang] || relaxing478I18n.en;
+
+const siteUrl = 'https://harmonybreath.com';
+const fullCanonicalUrl = `${siteUrl}${content.canonicalPath}`;
+const hreflangLinks = getHreflangLinks('4-7-8-breathing', siteUrl);
+
+const datePublished = '2026-07-25';
+const dateModified = '2026-08-15';
+
+const breadcrumb = [
+  { name: 'Home', url: '/' },
+  { name: content.breadcrumbName, url: content.canonicalPath },
+];
+
+const pageSchemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": `HarmonyBreath — ${content.heroTitle.replace('\n', ' ')}`,
+    "alternateName": "HarmonyBreath 4-7-8 Guided Breathwork App",
+    "description": content.metaDescription,
+    "url": fullCanonicalUrl,
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any (Web Browser)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Guided 4-7-8 breathing timer with visual and acoustic feedback",
+      "Customizable 4-7-8 breathing method timing parameters and round presets",
+      "Relaxation-focused 4-7-8 technique guidance for sleep prep and calm",
+      "Ambient soundscape player and real-time phase indicators",
+      "Private browser-local session analytics with zero data tracking"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": `HarmonyBreath ${content.breadcrumbName} Timer`,
+    "description": content.metaDescription,
+    "browserRequirements": "Requires JavaScript",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": content.metaTitle,
+    "description": content.metaDescription,
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "author": {
+      "@type": "Organization",
+      "name": "HarmonyBreath",
+      "url": "https://harmonybreath.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HarmonyBreath",
+      "url": "https://harmonybreath.com"
+    },
+    "mainEntityOfPage": fullCanonicalUrl,
+    "citation": content.references.map(ref => ref.url)
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": content.faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": siteUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": content.breadcrumbName,
+        "item": fullCanonicalUrl
+      }
+    ]
+  }
+];
+---
+
+<Layout
+  title={content.metaTitle}
+  description={content.metaDescription}
+  keywords={content.keywords}
+  canonicalUrl={fullCanonicalUrl}
+  image="https://harmonybreath.com/og-image.png"
+  schemaData={pageSchemaData}
+  breadcrumb={breadcrumb}
+  lang={lang}
+  hreflangLinks={hreflangLinks}
+>
+  <Header />
+
+  <main class="flex-1 bg-[#06080d] text-white relative selection:bg-blue-500/30 selection:text-blue-200">
+    <!-- Fixed Persistent Atmospheric Background Image -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <img 
+        src="/4-7-8-breathing.png" 
+        alt="" 
+        class="w-full h-full object-cover object-center filter brightness-[0.7] contrast-110 saturate-110 scale-105"
+      />
+      <!-- Page-wide Gradient & Radial Ambient Overlays -->
+      <div class="absolute inset-0 bg-gradient-to-b from-neutral-950/80 via-neutral-950/50 to-[#06080d]/95"></div>
+      <div class="absolute inset-0 bg-radial from-blue-500/15 via-transparent to-transparent"></div>
+      <div class="absolute inset-0 noise-overlay opacity-15"></div>
+    </div>
+
+    <!-- Scrolling Page Content Container -->
+    <div class="relative z-10 w-full">
+      <!-- Hero Header Section -->
+      <section class="w-full max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-12 flex flex-col items-center">
+        <!-- Floating Glass Nav Pill Bar -->
+        <header class="w-full max-w-4xl mx-auto mb-10 sm:mb-14">
+          <nav class="flex flex-wrap items-center justify-between gap-3 p-2 sm:px-4 sm:py-2.5 rounded-full border border-white/15 bg-neutral-950/80 backdrop-blur-2xl shadow-2xl shadow-blue-950/30">
+            <!-- Brand Badge -->
+            <div class="flex items-center gap-2.5 px-3 py-1">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-400 animate-pulse shadow-[0_0_12px_#60a5fa]"></span>
+              <span class="text-xs sm:text-sm font-bold tracking-wider text-white uppercase font-mono break-words">
+                4-7-8 <span class="text-blue-400">BREATHING</span>
+              </span>
+            </div>
+
+            <!-- Jump Links (Pills) -->
+            <div class="hidden md:flex items-center gap-1 text-xs font-mono font-medium text-neutral-300">
+              <a href="#relax-timer-section" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.timer}</a>
+              <a href="#presets" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.presets}</a>
+              <a href="#analytics" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.stats}</a>
+              <a href="#guide" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.guide}</a>
+              <a href="#safety-section" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.safety}</a>
+              <a href="#about-section" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.about}</a>
+              <a href="#faq-section" class="px-3.5 py-1.5 rounded-full hover:bg-white/10 hover:text-white transition-all">{content.jumpLinks.faq}</a>
+            </div>
+
+            <!-- Header Action Buttons -->
+            <div class="flex items-center gap-2">
+              <a 
+                href="#relax-timer-section" 
+                class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold text-neutral-950 bg-white hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.25)]"
+              >
+                <span>{content.startPracticeBtn}</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l7-7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </nav>
+        </header>
+
+        <!-- Hero Headline & Subtitle -->
+        <div class="text-center space-y-6 max-w-3xl mx-auto w-full px-2">
+          <div class="inline-flex max-w-full flex-wrap justify-center items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-white text-[11px] sm:text-xs font-mono tracking-wide">
+            <svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span class="break-words text-center">{content.badge}</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.14] sm:leading-[1.08] text-balance drop-shadow-xl whitespace-pre-line break-words">
+            {content.heroTitle}
+          </h1>
+
+          <p class="max-w-2xl mx-auto text-sm sm:text-lg text-neutral-300 font-light leading-relaxed text-pretty break-words">
+            {content.heroSubtitle}
+          </p>
+
+          <!-- Authorship & Quick Metadata -->
+          <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-neutral-400 pt-2">
+            <span class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              100% Free & Private
+            </span>
+            <span class="text-neutral-600">•</span>
+            <span>By HarmonyBreath Editorial</span>
+            <span class="text-neutral-600">•</span>
+            <span>Published {datePublished} · Updated {dateModified}</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Interactive 4-7-8 Breathing Timer Component -->
+      <div id="relax-timer-section" class="scroll-mt-20">
+        <Relaxing478Timer lang={lang} />
+      </div>
+
+      <!-- Session Presets -->
+      <div id="presets" class="scroll-mt-20">
+        <RelaxingSessionPresets lang={lang} />
+      </div>
+
+      <!-- Analytics Stats Panel -->
+      <div id="analytics" class="scroll-mt-20">
+        <AnalyticsPanel exerciseId="4-7-8-breathing" lang={lang} />
+      </div>
+
+      <!-- Step-by-Step Technique Guide -->
+      <section id="guide" class="w-full max-w-4xl mx-auto px-4 py-8 scroll-mt-20">
+        <div class="bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-8 backdrop-blur-xl space-y-6">
+          <div class="flex items-center gap-3 border-b border-neutral-800 pb-4">
+            <div class="w-8 h-8 rounded-full bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-400 shrink-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white break-words">{content.guide.howToTitle}</h3>
+              <p class="text-xs text-neutral-400 font-mono break-words">{content.guide.howToSubtitle}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {content.guide.howToSteps.map((s, idx) => (
+              <div class={`reveal p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 space-y-2 group hover:border-blue-500/30 hover:bg-neutral-900/70 hover:-translate-y-0.5 transition-all duration-300 ${
+                idx === 1 ? 'md:mt-6' : idx === 2 ? 'md:-mt-6' : ''
+              }`}>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono text-blue-400 font-semibold uppercase">Phase 0{s.step}</span>
+                  <span class="text-xs font-mono text-neutral-500">{s.time}</span>
+                </div>
+                <h4 class="text-base font-bold text-white">{s.title}</h4>
+                <p class="text-xs text-neutral-400 leading-relaxed text-pretty">
+                  {s.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <!-- Benefits Card Grid -->
+          <div class="reveal relative p-6 sm:p-8 rounded-2xl border border-neutral-800 bg-neutral-900/30 mt-6 space-y-4">
+            <h4 class="text-xs font-mono uppercase tracking-widest text-blue-400">{content.guide.benefitsTitle}</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              {content.guide.benefits.map((b) => (
+                <div class="flex flex-col gap-1 p-3.5 rounded-xl bg-neutral-950/60 border border-neutral-800/70">
+                  <div class="flex items-center gap-2 text-white font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 shrink-0"></span>
+                    <span>{b.title}</span>
+                  </div>
+                  <p class="text-neutral-400 pl-4 leading-relaxed">{b.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Safety Precautions & Contraindications -->
+      <section id="safety-section" class="w-full max-w-4xl mx-auto py-12 px-4 border-t border-neutral-900 scroll-mt-20">
+        <div class="reveal bg-red-950/20 border border-red-500/30 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-red-500/20 border border-red-500/30 text-red-400 flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white break-words">{content.safety.title}</h3>
+              <p class="text-xs text-neutral-400 break-words">{content.safety.subtitle}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-neutral-300">
+            <div>
+              <h4 class="font-bold text-red-400 uppercase tracking-wider mb-2 font-mono">{content.safety.neverTitle}</h4>
+              <ul class="space-y-1.5 text-neutral-400 list-disc list-inside">
+                {content.safety.neverItems.map(item => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-bold text-emerald-400 uppercase tracking-wider mb-2 font-mono">{content.safety.alwaysTitle}</h4>
+              <ul class="space-y-1.5 text-neutral-400 list-disc list-inside">
+                {content.safety.alwaysItems.map(item => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-red-500/20 text-[11px] text-neutral-400 leading-relaxed font-mono">
+            {content.safety.medicalDisclaimer}
+          </div>
+        </div>
+      </section>
+
+      <!-- In-Depth SEO About Section -->
+      <section id="about-section" class="w-full max-w-4xl mx-auto py-16 px-4 border-t border-neutral-900 scroll-mt-20">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-blue-400">About 4-7-8 Breathing</h2>
+          <h3 class="text-3xl font-bold text-white sm:text-4xl text-balance">
+            {content.guide.whatIsTitle}
+          </h3>
+          <p class="text-sm text-neutral-400">
+            {content.guide.whatIsDesc1}
+          </p>
+        </div>
+
+        <div class="space-y-8 text-sm text-neutral-300 leading-relaxed text-pretty">
+          <!-- Research & Editorial Disclosure -->
+          <div class="reveal p-4 rounded-xl border border-neutral-800 bg-neutral-900/50 text-xs text-neutral-300 font-sans flex items-start gap-3 backdrop-blur-md">
+            <span class="shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
+            </span>
+            <div>
+              <strong class="text-white font-medium">{content.researchDisclosure.label}</strong> {content.researchDisclosure.desc}
+            </div>
+          </div>
+
+          <div class="reveal p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md space-y-3">
+            <p>{content.guide.whatIsDesc2}</p>
+          </div>
+
+          <!-- Physiology Section -->
+          <div class="reveal p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+            <h4 class="text-lg font-bold text-white mb-3">{content.guide.scienceTitle}</h4>
+            <p class="mb-4">{content.guide.scienceDesc1}</p>
+            <p class="mb-4">{content.guide.scienceDesc2}</p>
+            <ul class="space-y-2 list-disc list-inside text-neutral-400">
+              {content.guide.scienceBullets.map(b => (
+                <li>
+                  <strong class="text-white">{b.title}</strong> {b.desc}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- When to Practice -->
+          <div class="reveal p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+            <h4 class="text-lg font-bold text-white mb-3">{content.guide.whenToPracticeTitle}</h4>
+            <p class="mb-4">{content.guide.whenToPracticeDesc}</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
+              {content.guide.whenToPracticeCards.map(c => (
+                <div class="p-4 rounded-xl border border-neutral-800 bg-neutral-900/40 space-y-2">
+                  <h5 class="text-base font-bold text-white flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-blue-400"></span> {c.title}
+                  </h5>
+                  <p class="text-xs text-neutral-400">{c.desc}</p>
+                </div>
+              ))}
+            </div>
+            <p>{content.guide.consistencyNote}</p>
+          </div>
+
+          <!-- Pattern Overview -->
+          <div class="reveal p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+            <h4 class="text-lg font-bold text-white mb-3">{content.guide.patternTitle}</h4>
+            <p class="mb-4">{content.guide.patternDesc1}</p>
+            <p>{content.guide.patternDesc2}</p>
+          </div>
+
+          <!-- Timer Features -->
+          <div class="reveal p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md">
+            <h4 class="text-lg font-bold text-white mb-3">{content.guide.featuresTitle}</h4>
+            <p class="mb-4">{content.guide.featuresDesc}</p>
+            <ul class="space-y-3 text-neutral-300">
+              {content.guide.features.map(f => (
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">•</span>
+                  <span><strong class="text-white">{f.title}</strong> {f.desc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Scientific References -->
+          <div class="reveal pt-6 border-t border-neutral-800">
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono mb-3">{content.referencesTitle}</h3>
+            <ol class="space-y-1.5 text-xs text-neutral-500 font-mono list-decimal list-inside">
+              {content.references.map(r => (
+                <li>
+                  {r.citation} <em class="text-neutral-400">{r.journal}</em>.{' '}
+                  <a href={r.url} target="_blank" rel="noopener" class="text-blue-400 hover:underline">{r.linkText}</a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- Editorial Team Bio -->
+      <section class="w-full max-w-4xl mx-auto px-4 py-10">
+        <div class="max-w-3xl mx-auto reveal rounded-2xl border border-neutral-800 bg-neutral-950/60 p-6 sm:p-8 font-sans">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full border border-blue-400/30 bg-blue-400/10 flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <div class="space-y-2">
+              <h2 class="text-sm sm:text-base font-bold text-white">{content.authorBio.title}</h2>
+              <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                {content.authorBio.desc}
+              </p>
+              <p class="text-xs font-mono text-neutral-500">
+                {content.authorBio.disclaimer}
+              </p>
+              <a href="/about/" class="focus-ring inline-flex items-center gap-1.5 text-xs font-mono text-blue-400 hover:text-blue-300 transition-colors">
+                {content.authorBio.learnMore}
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq-section" class="w-full max-w-4xl mx-auto py-16 px-4 border-t border-neutral-900 scroll-mt-20">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+          <h2 class="text-xs font-mono uppercase tracking-widest text-blue-400">FAQ</h2>
+          <h3 class="text-3xl font-bold text-white sm:text-4xl text-balance">
+            Frequently Asked Questions
+          </h3>
+        </div>
+
+        <div class="reveal space-y-4">
+          {content.faqs.map((faq, idx) => (
+            <details class="group p-6 rounded-2xl border border-neutral-800 bg-neutral-950/60 backdrop-blur-md open:border-blue-500/30 hover:border-neutral-700 transition-all duration-300" open={idx === 0}>
+              <summary class="flex items-center justify-between cursor-pointer list-none text-white font-bold text-base text-pretty">
+                <span>{faq.question}</span>
+                <svg class="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="mt-4 text-sm text-neutral-300 leading-relaxed">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- Explore Other Techniques -->
+      <ExploreOtherTechniques current="4-7-8-breathing" accent="blue" lang={lang} />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach((el) => observer.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('reveal-visible'));
+    }
+  }
+</script>

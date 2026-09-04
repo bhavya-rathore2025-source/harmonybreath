@@ -95,12 +95,14 @@ if (!basePath) {
     if (!btn || !dropdown || !container) return;
 
     function toggleMenu() {
+      if (!btn || !dropdown) return;
       const isExpanded = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', (!isExpanded).toString());
       dropdown.classList.toggle('hidden', isExpanded);
     }
 
     function closeMenu() {
+      if (!btn || !dropdown) return;
       btn.setAttribute('aria-expanded', 'false');
       dropdown.classList.add('hidden');
     }
