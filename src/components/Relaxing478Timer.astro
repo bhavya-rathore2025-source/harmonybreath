@@ -374,7 +374,7 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
 
 <section id="relax-timer-section" class="w-full max-w-4xl mx-auto py-8 px-4">
   <!-- Hidden JSON dictionary for client script hydration -->
-  <script id="hb-relax-timer-i18n" type="application/json" set:html={JSON.stringify(currentI18n)} />
+  <script is:inline id="hb-relax-timer-i18n" type="application/json" set:html={JSON.stringify(currentI18n)} />
 
   <div class="relative w-full bg-neutral-950/80 border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-2xl overflow-hidden shadow-blue-950/20">
     <div id="relax-phase-glow" class="absolute inset-0 opacity-20 pointer-events-none transition-all duration-1000 bg-gradient-to-b from-blue-500/20 via-transparent to-transparent"></div>

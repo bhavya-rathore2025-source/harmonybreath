@@ -54,7 +54,7 @@ if (!basePath) {
     <div class="px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-neutral-400 border-b border-neutral-900">
       Select Language
     </div>
-    {Object.entries(languages).map(([code, label]) => {
+    {Object.entries(languages).map(([code]) => {
       const loc = code as SupportedLanguage;
       const meta = languageMeta[loc];
       const isSelected = loc === currentLang;

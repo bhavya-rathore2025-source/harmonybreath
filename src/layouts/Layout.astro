@@ -133,9 +133,10 @@ const breadcrumb = Astro.props.breadcrumb;
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
        <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaData)} />
     {breadcrumb && (
       <script
+        is:inline
         type="application/ld+json"
         set:html={JSON.stringify({
           "@context": "https://schema.org",
@@ -151,7 +152,7 @@ const breadcrumb = Astro.props.breadcrumb;
     )}
 
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RL5BBWJ3Q7"></script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-RL5BBWJ3Q7"></script>
 
     <script is:inline>
       window.dataLayer = window.dataLayer || [];

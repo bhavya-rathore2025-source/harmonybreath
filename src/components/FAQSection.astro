@@ -32,7 +32,7 @@ const faqs = [
   </div>
 
   <div class="space-y-4">
-    {faqs.map((faq, idx) => (
+    {faqs.map((faq) => (
       <details class="group border border-neutral-800 rounded-xl bg-neutral-950/60 p-5 font-sans [&_summary::-webkit-details-marker]:hidden transition-all duration-200 hover:border-neutral-700">
         <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-sm sm:text-base">
           <span>{faq.q}</span>

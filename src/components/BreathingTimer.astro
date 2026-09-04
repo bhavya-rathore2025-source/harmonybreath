@@ -312,7 +312,7 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
 
 <section id="timer-section" class="w-full max-w-4xl mx-auto py-8 px-4">
   <!-- Hidden JSON for client script localization -->
-  <script id="hb-timer-i18n" type="application/json" set:html={JSON.stringify(currentI18n)}></script>
+  <script is:inline id="hb-timer-i18n" type="application/json" set:html={JSON.stringify(currentI18n)}></script>
 
   <!-- Main Timer Control Box -->
   <div class="relative w-full bg-neutral-950/80 border border-neutral-800/80 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl overflow-hidden">
