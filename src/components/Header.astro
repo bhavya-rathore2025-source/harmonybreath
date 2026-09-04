@@ -12,6 +12,8 @@ const currentLang = propLang || getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 const homeUrl = currentLang === 'en' ? '/' : `/${currentLang}/`;
 const techniquesUrl = currentLang === 'en' ? '/#techniques' : `/${currentLang}/#techniques`;
+const aboutUrl = currentLang === 'en' ? '/about/' : `/${currentLang}/about/`;
+const contactUrl = currentLang === 'en' ? '/contact/' : `/${currentLang}/contact/`;
 ---
 
 <header class="sticky top-0 z-50 w-full border-b border-neutral-900 bg-neutral-950/80 backdrop-blur-xl">
@@ -36,8 +38,8 @@ const techniquesUrl = currentLang === 'en' ? '/#techniques' : `/${currentLang}/#
     <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-400">
       <a href={homeUrl} class="hover:text-white transition-colors duration-200">{t('nav.home')}</a>
       <a href={techniquesUrl} class="hover:text-white transition-colors duration-200">{t('nav.techniques')}</a>
-      <a href="/about/" class="hover:text-white transition-colors duration-200">{t('nav.about')}</a>
-      <a href="/contact/" class="hover:text-white transition-colors duration-200">{t('nav.contact')}</a>
+      <a href={aboutUrl} class="hover:text-white transition-colors duration-200">{t('nav.about')}</a>
+      <a href={contactUrl} class="hover:text-white transition-colors duration-200">{t('nav.contact')}</a>
     </nav>
 
     <!-- Header Actions -->
@@ -130,7 +132,8 @@ const techniquesUrl = currentLang === 'en' ? '/#techniques' : `/${currentLang}/#
   const rawPath = window.location.pathname;
   const currentPath = rawPath.replace(/\/$/, '') || '/';
   const isHomePage = currentPath === '/' || /^\/(es|de|fr|pt|ja|it)$/.test(currentPath);
-  if (isHomePage || hidePages.includes(currentPath)) {
+  const isHidePage = hidePages.includes(currentPath) || /^\/(es|de|fr|pt|ja|it)\/(about|contact|privacy|terms|quotes)$/.test(currentPath);
+  if (isHomePage || isHidePage) {
     const volumeControl = document.getElementById('volume-control');
     const musicBtn = document.getElementById('choose-music-btn');
     if (volumeControl) volumeControl.classList.add('hidden');

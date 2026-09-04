@@ -1,0 +1,253 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { aboutI18n } from '../i18n/about';
+import { getHreflangLinks } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const content = aboutI18n[lang] || aboutI18n.en;
+
+const siteUrl = 'https://harmonybreath.com';
+const canonicalUrl = lang === 'en' ? `${siteUrl}/about/` : `${siteUrl}/${lang}/about/`;
+const homeUrl = lang === 'en' ? `${siteUrl}/` : `${siteUrl}/${lang}/`;
+const hreflangLinks = getHreflangLinks('about', siteUrl);
+
+const pageSchemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": content.metaTitle,
+    "description": content.metaDescription,
+    "url": canonicalUrl,
+    "inLanguage": lang,
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "HarmonyBreath",
+      "url": siteUrl,
+      "logo": `${siteUrl}/favicon-96x96.png`
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "HarmonyBreath",
+    "url": siteUrl,
+    "logo": `${siteUrl}/favicon-96x96.png`,
+    "description": content.metaDescription,
+    "publishingPrinciples": canonicalUrl,
+    "knowsAbout": [
+      "Breathwork",
+      "Pranayama",
+      "Wim Hof Method",
+      "Box Breathing",
+      "4-7-8 Breathing",
+      "Diaphragmatic Breathing",
+      "Physiological Sigh",
+      "Mindfulness"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": lang === 'en' ? 'Home' : (lang === 'es' ? 'Inicio' : lang === 'de' ? 'Startseite' : lang === 'fr' ? 'Accueil' : lang === 'pt' ? 'Início' : lang === 'ja' ? 'ホーム' : 'Home'),
+        "item": homeUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": content.breadcrumbName,
+        "item": canonicalUrl
+      }
+    ]
+  }
+];
+
+const techniqueIcons: Record<string, string> = {
+  'wim-hof': 'M13 10V3L4 14h7v7l9-11h-7z',
+  'box-breathing': 'M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z',
+  '4-7-8-breathing': 'M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z',
+  'diaphragmatic-breathing': 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+  'nadi-shodhana': 'M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4',
+  'physiological-sigh': 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+};
+---
+
+<Layout
+  title={content.metaTitle}
+  description={content.metaDescription}
+  keywords={content.keywords}
+  canonicalUrl={canonicalUrl}
+  lang={lang}
+  hreflangLinks={hreflangLinks}
+  schemaData={pageSchemaData}
+>
+  <Header lang={lang} />
+
+  <main class="flex-1 bg-[#06080d] text-white relative selection:bg-amber-500/30 selection:text-amber-200">
+    <!-- Atmospheric Ambient Background Overlay -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div class="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-950/70 to-[#06080d]/95"></div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-amber-500/10 blur-[130px] rounded-full pointer-events-none"></div>
+      <div class="absolute inset-0 noise-overlay opacity-15"></div>
+    </div>
+
+    <!-- Page Content Container -->
+    <div class="relative z-10 w-full">
+      <article class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        
+        <!-- HERO / HEADER -->
+        <header class="text-center space-y-4 mb-14 sm:mb-16">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-300 text-xs font-mono uppercase tracking-wider shadow-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+            {content.badge}
+          </span>
+          <h1 class="text-3xl sm:text-5xl font-bold text-white tracking-tight break-words">
+            {content.title}
+          </h1>
+          <p class="text-neutral-400 max-w-2xl mx-auto text-sm sm:text-base font-sans font-light leading-relaxed break-words">
+            {content.subtitle}
+          </p>
+        </header>
+
+        <!-- MAIN CONTENT SECTIONS -->
+        <div class="space-y-12 sm:space-y-16">
+
+          <!-- OUR STORY -->
+          <section class="rounded-3xl border border-white/10 bg-neutral-900/40 backdrop-blur-xl p-6 sm:p-10 shadow-2xl space-y-5">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </span>
+              <h2 class="text-xl sm:text-2xl font-bold text-white">
+                {content.storyTitle}
+              </h2>
+            </div>
+
+            <div class="space-y-4 text-sm sm:text-base text-neutral-300 leading-relaxed font-sans font-light">
+              {content.storyParagraphs.map((paragraph) => (
+                <p class="break-words">{paragraph}</p>
+              ))}
+            </div>
+          </section>
+
+          <!-- WHAT WE OFFER (6 TECHNIQUES WITH DYNAMIC LOCALIZED ROUTING) -->
+          <section class="space-y-6">
+            <div class="space-y-2">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </span>
+                <h2 class="text-xl sm:text-2xl font-bold text-white">
+                  {content.offerTitle}
+                </h2>
+              </div>
+              <p class="text-sm sm:text-base text-neutral-400 font-light leading-relaxed break-words">
+                {content.offerIntro}
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {content.techniques.map((tech) => {
+                const targetUrl = lang === 'en' ? `/${tech.slug}/` : `/${lang}/${tech.slug}/`;
+                const iconPath = techniqueIcons[tech.slug] || techniqueIcons['box-breathing'];
+
+                return (
+                  <a
+                    href={targetUrl}
+                    class="group relative p-5 rounded-2xl border border-white/10 bg-neutral-900/30 hover:bg-neutral-900/60 hover:border-amber-400/40 transition-all duration-300 flex flex-col justify-between shadow-lg"
+                  >
+                    <div class="space-y-2.5">
+                      <div class="flex items-center justify-between gap-2">
+                        <div class="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-105 group-hover:bg-amber-500/20 transition-all shrink-0">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPath} />
+                          </svg>
+                        </div>
+                        <span class="text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono flex items-center gap-1">
+                          →
+                        </span>
+                      </div>
+                      <h3 class="text-base font-semibold text-white group-hover:text-amber-300 transition-colors break-words">
+                        {tech.name}
+                      </h3>
+                      <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed break-words">
+                        {tech.desc}
+                      </p>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+
+          <!-- OUR PRINCIPLES -->
+          <section class="space-y-6">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </span>
+              <h2 class="text-xl sm:text-2xl font-bold text-white">
+                {content.principlesTitle}
+              </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {content.principles.map((item, idx) => (
+                <div class="p-5 rounded-2xl border border-white/10 bg-neutral-900/30 hover:border-white/20 transition-all space-y-2">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 shrink-0"></span>
+                    <h3 class="text-sm sm:text-base font-semibold text-white break-words">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed break-words">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- OUR TEAM -->
+          <section class="rounded-3xl border border-white/10 bg-neutral-900/40 backdrop-blur-xl p-6 sm:p-10 shadow-2xl space-y-5">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </span>
+              <h2 class="text-xl sm:text-2xl font-bold text-white">
+                {content.teamTitle}
+              </h2>
+            </div>
+
+            <div class="space-y-4 text-sm sm:text-base text-neutral-300 leading-relaxed font-sans font-light">
+              {content.teamParagraphs.map((paragraph) => (
+                <p class="break-words">{paragraph}</p>
+              ))}
+            </div>
+          </section>
+
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

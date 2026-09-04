@@ -11,6 +11,7 @@ const currentLang = propLang || getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 const homeUrl = currentLang === 'en' ? '/' : `/${currentLang}/`;
 const techniquesUrl = currentLang === 'en' ? '/#techniques' : `/${currentLang}/#techniques`;
+const aboutUrl = currentLang === 'en' ? '/about/' : `/${currentLang}/about/`;
 ---
 
 <footer class="relative z-10 w-full border-t border-white/10 bg-neutral-950/90 backdrop-blur-xl py-12 mt-auto">
@@ -28,7 +29,7 @@ const techniquesUrl = currentLang === 'en' ? '/#techniques' : `/${currentLang}/#
       <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-300 font-mono">
         <a href={homeUrl} class="hover:text-white transition-colors">{t('nav.home')}</a>
         <a href={techniquesUrl} class="hover:text-white transition-colors">{t('nav.techniques')}</a>
-        <a href="/about/" class="hover:text-white transition-colors">{t('nav.about')}</a>
+        <a href={aboutUrl} class="hover:text-white transition-colors">{t('nav.about')}</a>
         <a href="/contact/" class="hover:text-white transition-colors">{t('nav.contact')}</a>
         <a href="/privacy/" class="hover:text-white transition-colors">Privacy</a>
         <a href="/terms/" class="hover:text-white transition-colors">Terms</a>

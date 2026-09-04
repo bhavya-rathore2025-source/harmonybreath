@@ -1,34 +1,40 @@
-Use the official Astro i18n recipe guide (https://docs.astro.build/en/recipes/i18n/) to implement complete multi-language support for the Home Page on HarmonyBreath across all 7 languages (en, es, de, fr, pt, ja, it), matching the structure established in the technique pages so it ranks on international global keywords.
+Use the official Astro i18n recipe guide (https://docs.astro.build/en/recipes/i18n/) to implement complete multi-language support for the About Us Page (/about/) on HarmonyBreath across all 7 languages (en, es, de, fr, pt, ja, it), matching the structure established in the home and technique pages so it ranks on international global keywords.
 
 ### Scope & Requirements based on Astro i18n Recipe:
 
 1. **Routing & Architecture (https://docs.astro.build/en/recipes/i18n/)**:
-   - Follow the Astro i18n dynamic routing pattern using `src/pages/[lang]/index.astro`.
+   - Follow the Astro i18n dynamic routing pattern using `src/pages/[lang]/about.astro`.
    - Implement `getStaticPaths()` for all non-default languages: `['es', 'de', 'fr', 'pt', 'ja', 'it']`.
-   - Refactor `src/pages/index.astro` into a reusable component `src/components/HomePage.astro` that accepts `lang?: SupportedLanguage`.
-   - Keep default language (`en`) at root `/` delegating to `<HomePage lang="en" />`.
+   - Refactor `src/pages/about.astro` into a reusable component `src/components/AboutPage.astro` that accepts `lang?: SupportedLanguage`.
+   - Keep default language (`en`) at root `/about/` delegating to `<AboutPage lang="en" />`.
 
 2. **International SEO & Hreflang Markup (per Astro i18n Recipe)**:
-   - Add `<link rel="canonical">` pointing to the localized URL (`https://harmonybreath.com/` for English, `https://harmonybreath.com/${lang}/` for others).
-   - Add full bidirectional `<link rel="alternate" hreflang="...">` tags for all 7 languages + `x-default`.
-   - Add localized JSON-LD schemas (`WebSite`, `Organization`, `ItemList` listing all 6 breathing techniques with localized titles and links, `SoftwareApplication`).
+   - Add `<link rel="canonical">` pointing to the localized URL (`https://harmonybreath.com/about/` for English, `https://harmonybreath.com/${lang}/about/` for others).
+   - Add full bidirectional `<link rel="alternate" hreflang="...">` tags for all 7 languages + `x-default` using `getHreflangLinks('about')`.
+   - Add localized JSON-LD schemas (`AboutPage`, `Organization`, `BreadcrumbList`).
 
-3. **Content Dictionary (`src/i18n/home.ts`)**:
+3. **Content Dictionary (`src/i18n/about.ts`)**:
    - Build a structured dictionary adhering to the Astro i18n pattern for all 7 languages: `en`, `es`, `de`, `fr`, `pt`, `ja`, `it`.
-   - Include high-intent regional keywords (e.g., *temporizador de respiración guiada*, *ejercicios de respiración*, *geführter atemtimer*, *atemübungen*, *minuteur respiration guidée*, *呼吸法タイマー*, *timer respirazione guidata*), localized meta titles & descriptions.
+   - Include high-intent regional keywords, localized meta titles & descriptions for search engines.
    - Translate all page content:
-     - Hero Header & Subtitle (*"Master Every Breath, Elevate Mind & Body"*), jump links (Catalog, Benefits, Motivation, About, Contact), and CTA buttons.
-     - Practice Catalog Grid: All 6 breathing techniques (Wim Hof, Box Breathing, 4-7-8, Diaphragmatic, Nadi Shodhana, Physiological Sigh) with localized badge (*"Live & Available"*), category tags, descriptions, cadences, primary goals, and localized action buttons pointing to localized routes (`/${lang}/${slug}/`).
-     - "Why HarmonyBreath / Breathwork Made Simple" section (4 feature cards: Guided Timers, Customizable Sessions, Audio Cues & Ambience, Private & Free).
-     - Call-to-Action Banner (*"Ready to Start Your Breathwork Practice?"*).
-     - Footer Info Cards Grid (About Us, Contact Us, Privacy Policy, Terms & Conditions) with localized titles and short descriptions.
+     - Header Badge (*"Our Mission"*), Title (*"About HarmonyBreath"*), and Subtitle (*"Making breathwork accessible, private, and free for everyone."*).
+     - **Our Story**: Origin, mission, philosophy of data privacy, barrier-free access, and conscious breathing as an essential health tool.
+     - **What We Offer**: Introductory text and descriptions for all 6 breathing practices with localized names and summaries:
+       - Wim Hof Method
+       - Box Breathing (4-4-4-4)
+       - 4-7-8 Relaxing Breath
+       - Diaphragmatic / Belly Breathing
+       - Nadi Shodhana (Alternate Nostril)
+       - Physiological Sigh
+     - **Our Principles**: 4 core values (*Privacy by Design*, *Technique-Faithful*, *100% Free*, *Open & Transparent*).
+     - **Our Team**: Independent practitioner mission, craftsmanship, and commitment to privacy and continuous improvement.
 
-4. **Interactive Navigation & Component Localization**:
-   - Ensure the glass pill nav, jump links, and buttons delegate to localized anchors and routes.
-   - Verify `Header` and `LanguagePicker` correctly detect the home route across all locales and switch between `/`, `/es/`, `/de/`, `/fr/`, `/pt/`, `/ja/`, `/it/`.
-   - Ensure all 6 technique catalog cards link directly to their corresponding localized technique pages when browsing in a non-default language.
+4. **Dynamic Technique Links & Navigation**:
+   - Ensure all 6 technique links in the "What We Offer" section dynamically route to their localized URLs when browsing in non-default languages (e.g., `/${lang}/${slug}/` for `es`, `de`, `fr`, `pt`, `ja`, `it`, and `/${slug}/` for `en`).
+   - Pass `lang={currentLang}` to `Header` and `Footer` to preserve language context and highlight active links.
+   - Verify `LanguagePicker` seamlessly switches between `/about/`, `/es/about/`, `/de/about/`, `/fr/about/`, `/pt/about/`, `/ja/about/`, `/it/about/`.
 
-5. **Mobile Responsiveness & Sitemap**:
-   - Ensure all hero headlines, catalog cards, cadence badges, and feature cards have responsive text scaling and word-wrapping (`break-words`, `overflow-wrap: break-word;`, `flex-wrap`) so text never overflows or clips on 360px mobile screens.
-   - Update `public/sitemap.xml` with all localized Home Page URLs (`/es/`, `/de/`, `/fr/`, `/pt/`, `/ja/`, `/it/`).
+5. **Mobile Responsiveness, Sitemap & Build Verification**:
+   - Ensure responsive layout styling with appropriate typography scaling, margins, and word-wrapping (`break-words`, `overflow-wrap: break-word;`) to prevent clipping or horizontal scroll on 360px mobile viewports.
+   - Update `public/sitemap.xml` with the 6 localized About URLs (`/es/about/`, `/de/about/`, `/fr/about/`, `/pt/about/`, `/ja/about/`, `/it/about/`).
    - Run `npm run build` to verify all static routes build cleanly with 0 errors.

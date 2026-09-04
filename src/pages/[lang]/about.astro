@@ -1,0 +1,19 @@
+---
+import AboutPage from '../../components/AboutPage.astro';
+import type { SupportedLanguage } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'ja' } },
+    { params: { lang: 'it' } },
+  ];
+}
+
+const { lang } = Astro.params;
+---
+
+<AboutPage lang={lang as SupportedLanguage} />
