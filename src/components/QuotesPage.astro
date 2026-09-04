@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { quotesI18n } from '../i18n/quotes';
+import { getHreflangLinks } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+export interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const content = quotesI18n[lang] || quotesI18n.en;
+
+const siteUrl = 'https://harmonybreath.com';
+const canonicalUrl = lang === 'en' ? `${siteUrl}/quotes/` : `${siteUrl}/${lang}/quotes/`;
+const homeUrl = lang === 'en' ? `${siteUrl}/` : `${siteUrl}/${lang}/`;
+const hreflangLinks = getHreflangLinks('quotes', siteUrl);
+
+const homeNames: Record<SupportedLanguage, string> = {
+  en: 'Home',
+  es: 'Inicio',
+  de: 'Startseite',
+  fr: 'Accueil',
+  pt: 'Início',
+  ja: 'ホーム',
+  it: 'Home',
+};
+
+const pageSchemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": content.metaTitle,
+    "description": content.metaDescription,
+    "url": canonicalUrl,
+    "inLanguage": lang,
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "HarmonyBreath",
+      "url": siteUrl,
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": homeNames[lang] || 'Home',
+          "item": homeUrl,
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": content.breadcrumbName,
+          "item": canonicalUrl,
+        },
+      ],
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "HarmonyBreath",
+    "url": siteUrl,
+    "logo": `${siteUrl}/favicon-96x96.png`,
+    "description": "Free, privacy-first guided breathing timers and breathwork platform.",
+  },
+];
+
+const breadcrumb = [
+  { name: homeNames[lang] || 'Home', url: homeUrl },
+  { name: content.breadcrumbName, url: canonicalUrl },
+];
+---
+
+<Layout
+  title={content.metaTitle}
+  description={content.metaDescription}
+  keywords={content.keywords}
+  canonicalUrl={canonicalUrl}
+  image="https://harmonybreath.com/og-image.png"
+  imageAlt={`HarmonyBreath — ${content.breadcrumbName}`}
+  ogType="article"
+  schemaData={pageSchemaData}
+  breadcrumb={breadcrumb}
+  lang={lang}
+  hreflangLinks={hreflangLinks}
+>
+  <Header />
+
+  <main class="flex-1 hero-gradient-mesh relative">
+    <!-- Hero Header -->
+    <section class="w-full max-w-3xl mx-auto pt-14 pb-12 px-4 sm:px-6 text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400 text-xs font-mono">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+        <span>{content.badge}</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-bold tracking-normal text-white leading-[1.18] sm:leading-[1.15] text-balance break-words">
+        {content.titleBefore}<span class="gradient-text-develop">{content.titleHighlight}</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-base sm:text-lg text-neutral-400 leading-relaxed font-sans font-light text-pretty break-words">
+        {content.subtitle}
+      </p>
+    </section>
+
+    <!-- Quotes Grid -->
+    <section class="w-full max-w-3xl mx-auto px-4 sm:px-6 pb-16 space-y-6">
+      {content.quotes.map((item) => (
+        <div class="rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 sm:p-8 space-y-4 hover:border-amber-400/30 hover:bg-neutral-900/80 transition-all duration-300 backdrop-blur-sm group">
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400/40 text-3xl sm:text-4xl font-serif select-none leading-none shrink-0 group-hover:text-amber-400/70 transition-colors">
+              “
+            </span>
+            <blockquote class="text-lg sm:text-2xl text-white leading-relaxed font-light italic break-words flex-1">
+              {item.quote}
+            </blockquote>
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-400 font-mono pl-7 sm:pl-9 break-words">
+            — {item.author}
+          </p>
+        </div>
+      ))}
+    </section>
+
+    <!-- Share a Quote CTA -->
+    <section class="w-full max-w-3xl mx-auto px-4 sm:px-6 pb-24">
+      <div class="rounded-3xl border border-neutral-800 bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-950 p-8 sm:p-12 text-center space-y-4 shadow-2xl backdrop-blur-md">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white break-words">
+          {content.shareTitle}
+        </h2>
+        <p class="text-neutral-400 text-sm sm:text-base font-sans font-light max-w-lg mx-auto leading-relaxed break-words text-pretty">
+          {content.shareDescBeforeEmail}
+          <a
+            href={`mailto:${content.shareEmail}`}
+            class="text-amber-400 hover:text-amber-300 underline underline-offset-2 transition-colors font-medium break-all"
+          >
+            {content.shareEmail}
+          </a>
+          {content.shareDescAfterEmail}
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
