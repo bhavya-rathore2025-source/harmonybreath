@@ -140,7 +140,7 @@ export interface NadiShodhanaContent {
 
 export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = {
   en: {
-    metaTitle: 'Free Nadi Shodhana Breathing Timer | Alternate Nostril Breathing | HarmonyBreath',
+    metaTitle: 'Nadi Shodhana: Alternate Nostril Breathing Pranayama Timer',
     metaDescription: 'Master Nadi Shodhana (Alternate Nostril Breathing) with our free guided timer. Visual nostril cues, custom rhythms, and calming ambient soundscapes.',
     keywords: 'nadi shodhana, alternate nostril breathing, anulom vilom, pranayama timer, breathing exercise for focus, balanced breathing, guided alternate nostril breathing, vishnu mudra, channel purification breathing, nadi shodhana benefits',
     canonicalPath: '/nadi-shodhana/',

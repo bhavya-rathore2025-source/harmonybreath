@@ -93,7 +93,7 @@ export interface WimHofContent {
 
 export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
   en: {
-    metaTitle: 'Free Wim Hof Breathing Timer & Guide | HarmonyBreath',
+    metaTitle: 'Wim Hof Method Breathing: Guided Rounds & Retention Timer',
     metaDescription: 'Master Wim Hof method breathing with our free guided timer. Customizable breath retention holds, audio cues, and round tracking. Practice free online.',
     keywords: 'wim hof breathing, wim hof method, wim hof breathing technique, wim hof guided breathing, wim hof timer online, wim hof breathing benefits, wim hof breathing methods, breathwork timer, the iceman method',
     canonicalPath: '/wim-hof/',

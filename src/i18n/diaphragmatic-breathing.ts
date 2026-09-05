@@ -49,7 +49,7 @@ export interface DiaphragmaticBreathingContent {
 
 export const diaphragmaticBreathingI18n: Record<SupportedLanguage, DiaphragmaticBreathingContent> = {
   en: {
-    metaTitle: 'Free Diaphragmatic Breathing Timer & Guide | Belly Breathing | HarmonyBreath',
+    metaTitle: 'Diaphragmatic Breathing: Belly Breathing Timer & Exercises',
     metaDescription: 'Master diaphragmatic breathing (belly breathing) with our free guided timer. Stimulate the vagus nerve, reduce stress, and activate deep relaxation.',
     keywords: 'diaphragmatic breathing, belly breathing, deep abdominal breathing, diaphragmatic breathing exercises, diaphragmatic breathing timer, vagus nerve stimulation, reduce cortisol breathing, breathing exercises for anxiety',
     canonicalPath: '/diaphragmatic-breathing/',

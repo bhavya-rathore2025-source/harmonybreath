@@ -62,7 +62,7 @@ export interface PhysiologicalSighContent {
 
 export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighContent> = {
   en: {
-    metaTitle: 'Free Physiological Sigh Timer & Guide | Cyclic Sighing | HarmonyBreath',
+    metaTitle: 'Physiological Sigh & Cyclic Sighing: Complete Guide & Timer',
     metaDescription: 'Practice the Physiological Sigh with our free guided timer. Two quick inhales and a long exhale for instant stress relief based on Stanford research.',
     keywords: 'physiological sigh, cyclic sighing, physiological sigh timer, cyclic sighing timer, huberman sigh, double inhale breathing, stress relief breathing, free breathwork app, stanford breathing study',
     canonicalPath: '/physiological-sigh/',

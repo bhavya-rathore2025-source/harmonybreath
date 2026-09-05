@@ -49,7 +49,7 @@ export interface BoxBreathingContent {
 
 export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = {
   en: {
-    metaTitle: 'Free Box Breathing Timer & Guide | HarmonyBreath',
+    metaTitle: 'Box Breathing (Square Breathing) — Guided Calm & Focus Timer',
     metaDescription: 'Practice box breathing (4-4-4-4 technique) with our free guided timer. Equal inhale, hold, exhale, and pause phases for instant calm and focus.',
     keywords: 'box breathing, box breathing timer, square breathing, 4-4-4-4 breathing, box breathing exercise, box breathing method, tactical breathing, stress relief breathing, guided breathing timer',
     canonicalPath: '/box-breathing/',
