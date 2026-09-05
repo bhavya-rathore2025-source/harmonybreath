@@ -123,7 +123,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   },
 
   es: {
-    metaTitle: 'Temporizador de Respiración Diafragmática (Abdominal) Gratis | HarmonyBreath',
+    metaTitle: 'Respiración Diafragmática: Temporizador Abdominal y Guía',
     metaDescription: 'Aprende la respiración diafragmática (abdominal) con nuestro temporizador gratis. Estimula el nervio vago, reduce el cortisol y calma la ansiedad.',
     keywords: 'respiracion diafragmatica, respiracion abdominal, respiracion de vientre, ejercicios de respiracion diafragmatica, como respirar con el diafragma, respiracion para calmar la ansiedad, nervio vago respiracion',
     canonicalPath: '/es/diaphragmatic-breathing/',
@@ -197,7 +197,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   },
 
   de: {
-    metaTitle: 'Kostenloser Bauchatmung Timer & Anleitung | Zwerchfellatmung | HarmonyBreath',
+    metaTitle: 'Zwerchfellatmung: Bauchatmung Timer & Übungen für Ruhe',
     metaDescription: 'Lerne die Bauchatmung (Zwerchfellatmung) mit unserem kostenlosen Online-Timer. Stimuliere den Vagusnerv, senke Stress und aktiviere tiefe Entspannung.',
     keywords: 'bauchatmung, zwerchfellatmung, bauchatmung uebungen, richtig in den bauch atmen, tiefe bauchatmung, vagusnerv stimulieren atmung, atemuebungen blutdruck senken, entspannung timer',
     canonicalPath: '/de/diaphragmatic-breathing/',
@@ -271,7 +271,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   },
 
   fr: {
-    metaTitle: 'Minuteur de Respiration Diaphragmatique (Abdominale) Gratuit | HarmonyBreath',
+    metaTitle: 'Respiration Diaphragmatique: Minuteur Ventral & Exercices',
     metaDescription: 'Apprenez la respiration diaphragmatique (ventrale) avec notre minuteur gratuit. Stimulez le nerf vague, baissez le cortisol et calmez l’anxiété.',
     keywords: 'respiration diaphragmatique, respiration abdominale, respiration par le ventre, exercices respiration diaphragmatique, bienfaits respiration abdominale, calmer angoisse respiration, nerf vague respiration',
     canonicalPath: '/fr/diaphragmatic-breathing/',
@@ -345,7 +345,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   },
 
   pt: {
-    metaTitle: 'Temporizador de Respiração Diafragmática (Abdominal) Grátis | HarmonyBreath',
+    metaTitle: 'Respiração Diafragmática: Temporizador Abdominal e Guia',
     metaDescription: 'Aprenda a respiração diafragmática (abdominal) com nosso temporizador grátis. Estimule o nervo vago, reduza o estresse e acalme a ansiedade.',
     keywords: 'respiracao diafragmatica, respiracao abdominal, respiracao com a barriga, exercicios de respiracao diafragmatica, como fazer respiracao diafragmatica, acalmar ansiedade respiracao, nervo vago respiracao',
     canonicalPath: '/pt/diaphragmatic-breathing/',
@@ -419,7 +419,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   },
 
   ja: {
-    metaTitle: '腹式呼吸法（横隔膜呼吸）無料タイマー＆やり方解説 | HarmonyBreath',
+    metaTitle: '腹式呼吸法（横隔膜呼吸）ガイド付きタイマー＆やり方解説',
     metaDescription: '腹式呼吸（横隔膜呼吸・ベリー呼吸）を無料のビジュアル＆音声ガイド付きタイマーで実践。迷走神経を刺激し、コルチゾールを抑えて自律神経を整え、不安や緊張を解消して深いリラックスへ導きます。',
     keywords: '腹式呼吸, 腹式呼吸 やり方, 横隔膜呼吸, 腹式呼吸 効果, 自律神経 呼吸法, 腹式呼吸 タイマー, ストレス解消 呼吸, 深呼吸 やり方',
     canonicalPath: '/ja/diaphragmatic-breathing/',
@@ -493,7 +493,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   },
 
   it: {
-    metaTitle: 'Timer e Guida alla Respirazione Diaframmatica (Addominale) Gratis | HarmonyBreath',
+    metaTitle: 'Respirazione Diaframmatica: Timer Addominale ed Esercizi',
     metaDescription: 'Impara la respirazione diaframmatica (addominale) con il nostro timer guidato online gratuito. Stimola il nervo vago e riduci lo stress profondo.',
     keywords: 'respirazione diaframmatica, respirazione addominale, respirazione di pancia, esercizi respirazione diaframmatica, come respirare con il diaframma, nervo vago respirazione, ansia respirazione diaframmatica',
     canonicalPath: '/it/diaphragmatic-breathing/',

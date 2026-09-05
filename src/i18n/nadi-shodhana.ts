@@ -378,7 +378,7 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
   },
 
   es: {
-    metaTitle: 'Temporizador de Nadi Shodhana Gratis | Respiración Nasal Alterna | HarmonyBreath',
+    metaTitle: 'Nadi Shodhana: Respiración Nasal Alterna Temporizador',
     metaDescription: 'Domina Nadi Shodhana (respiración nasal alterna) con nuestro temporizador guiado gratis. Indicadores visuales de fosas, ritmos ajustables y calma.',
     keywords: 'nadi shodhana, respiración nasal alterna, anulom vilom, temporizador pranayama, ejercicios de respiración para concentrarse, respiración equilibrada, vishnu mudra, beneficios nadi shodhana',
     canonicalPath: '/es/nadi-shodhana/',
@@ -616,7 +616,7 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
   },
 
   de: {
-    metaTitle: 'Kostenloser Nadi-Shodhana-Timer | Wechselatmung Anleitung | HarmonyBreath',
+    metaTitle: 'Nadi Shodhana (Wechselatmung): Geführter Pranayama-Timer',
     metaDescription: 'Meistere Nadi Shodhana (Wechselatmung) mit unserem kostenlosen Timer. Visuelle Nasenlochanzeige, anpassbare Rhythmen und beruhigende Klänge.',
     keywords: 'nadi shodhana, wechselatmung anleitung, anulom vilom, wechselatmung wirkung, pranayama timer, atemübungen konzentration, vishnu mudra, wechselatmung vorteile',
     canonicalPath: '/de/nadi-shodhana/',
@@ -854,7 +854,7 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
   },
 
   fr: {
-    metaTitle: 'Minuteur Nadi Shodhana Gratuit | Respiration Alternée | HarmonyBreath',
+    metaTitle: 'Nadi Shodhana: Respiration Alternée Minuteur Pranayama',
     metaDescription: 'Pratiquez Nadi Shodhana (respiration alternée) avec notre minuteur guidé gratuit. Indicateurs de narines, rythmes ajustables et sons apaisants.',
     keywords: 'nadi shodhana, respiration alternée, anulom vilom, minuteur pranayama, exercice de respiration concentration, vishnu mudra, bienfaits nadi shodhana',
     canonicalPath: '/fr/nadi-shodhana/',
@@ -1092,7 +1092,7 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
   },
 
   pt: {
-    metaTitle: 'Temporizador Nadi Shodhana Grátis | Respiração das Narinas Alternadas | HarmonyBreath',
+    metaTitle: 'Nadi Shodhana: Respiração Narinas Alternadas Temporizador',
     metaDescription: 'Pratique Nadi Shodhana (respiração alternada) com nosso temporizador guiado gratuito. Indicadores visuais de narinas, ritmos ajustáveis e foco mental.',
     keywords: 'nadi shodhana, respiracao narinas alternadas, anulom vilom, temporizador pranayama, exercicio de respiracao foco, vishnu mudra, beneficios nadi shodhana',
     canonicalPath: '/pt/nadi-shodhana/',
@@ -1330,7 +1330,7 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
   },
 
   ja: {
-    metaTitle: '無料ナディ・ショーダナ（片鼻呼吸法）タイマー | HarmonyBreath',
+    metaTitle: '片鼻呼吸法（ナディ・ショーダナ）：プラーナヤーマ・タイマー',
     metaDescription: '片鼻呼吸法（ナディ・ショーダナ／アヌロム・ヴィロム）を実践できる無料オンラインタイマー。左右の鼻腔インジケーター、呼吸リズム調整、心地よい音源、自律神経を整える科学的効果。',
     keywords: '片鼻呼吸法, ナディ・ショーダナ, アヌロム・ヴィロム, 呼吸法 タイマー, 自律神経 呼吸法, 集中力 呼吸, ヴィシュヌムドラ, 片鼻呼吸 やり方, 左右交互呼吸',
     canonicalPath: '/ja/nadi-shodhana/',
@@ -1568,7 +1568,7 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
   },
 
   it: {
-    metaTitle: 'Timer Nadi Shodhana Gratuito | Respirazione a Narici Alternate | HarmonyBreath',
+    metaTitle: 'Nadi Shodhana: Respirazione a Narici Alternate Pranayama',
     metaDescription: 'Impara Nadi Shodhana (respirazione a narici alternate) con il nostro timer gratuito. Indicatori visivi, ritmi personalizzabili e calma profonda.',
     keywords: 'nadi shodhana, respirazione narici alternate, anulom vilom, timer pranayama, esercizi respirazione concentrazione, vishnu mudra, benefici nadi shodhana',
     canonicalPath: '/it/nadi-shodhana/',

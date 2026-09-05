@@ -188,7 +188,7 @@ export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighC
     ],
   },
   es: {
-    metaTitle: 'Temporizador y Guía del Suspiro Fisiológico Gratis | Respiración Cíclica | HarmonyBreath',
+    metaTitle: 'Suspiro Fisiológico y Respiración Cíclica: Guía y Timer',
     metaDescription: 'Practica el Suspiro Fisiológico con nuestro temporizador guiado gratis. Doble inhalación y exhalación larga para frenar el estrés al instante.',
     keywords: 'suspiro fisiologico, respiracion ciclica, temporizador suspiro fisiologico, suspiro psicologico huberman, respiracion doble inhalacion, tecnicas de respiracion estres, app respiracion gratis',
     canonicalPath: '/es/physiological-sigh/',
@@ -314,7 +314,7 @@ export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighC
     ],
   },
   de: {
-    metaTitle: 'Kostenloser Physiologischer Seufzer Timer & Guide | Zyklisches Seufzen | HarmonyBreath',
+    metaTitle: 'Physiologischer Seufzer (Zyklisches Seufzen): Timer & Guide',
     metaDescription: 'Meistere den Physiologischen Seufzer mit unserem kostenlosen Timer. Doppeltes Einatmen und langes Ausatmen für schnellen Stressabbau nach Stanford.',
     keywords: 'physiologischer seufzer, zyklisches seufzen, physiologischer seufzer timer, huberman seufzer, doppelter atemzug, atemübung stressabbau, kostenlose atem app, stanford atemstudie',
     canonicalPath: '/de/physiological-sigh/',
@@ -440,7 +440,7 @@ export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighC
     ],
   },
   fr: {
-    metaTitle: 'Minuteur et Guide du Soupir Physiologique Gratuit | Soupir Cyclique | HarmonyBreath',
+    metaTitle: 'Soupir Physiologique et Soupir Cyclique: Guide et Minuteur',
     metaDescription: 'Pratiquez le Soupir Physiologique avec notre minuteur gratuit. Double inspiration et longue expiration pour un soulagement rapide validé par Stanford.',
     keywords: 'soupir physiologique, soupir cyclique, minuteur soupir physiologique, huberman respiration, double inspiration, exercices respiration stress, application respiration gratuite, etude stanford respiration',
     canonicalPath: '/fr/physiological-sigh/',
@@ -566,7 +566,7 @@ export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighC
     ],
   },
   pt: {
-    metaTitle: 'Temporizador e Guia do Suspiro Fisiológico Grátis | Suspiro Cíclico | HarmonyBreath',
+    metaTitle: 'Suspiro Fisiológico e Suspiro Cíclico: Guia e Temporizador',
     metaDescription: 'Domine o Suspiro Fisiológico com nosso temporizador guiado gratuito. Dupla inalação e expiração longa para alívio rápido comprovado por Stanford.',
     keywords: 'suspiro fisiologico, suspiro ciclico, temporizador suspiro fisiologico, suspiro huberman, respiracao dupla inalacao, exercicios respiratorios ansiedade, app de respiracao gratis, estudo stanford respiracao',
     canonicalPath: '/pt/physiological-sigh/',
@@ -692,7 +692,7 @@ export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighC
     ],
   },
   ja: {
-    metaTitle: '生理的ため息（サイクリックサイイング）無料タイマー＆解説 | HarmonyBreath',
+    metaTitle: '生理的ため息（サイクリックサイイング）タイマー＆科学的解説',
     metaDescription: 'スタンフォード大学医学部の研究に基づく「生理的ため息（Cyclic Sighing）」を無料の音声＆ビジュアルタイマーで実践。2回連続吸気と長時間の呼気で自律神経を即座に整え、ストレスを解消します。',
     keywords: '生理的ため息, サイクリックサイイング, 生理的ため息 タイマー, ヒューバーマン 呼吸法, 2回吸う 呼吸法, ストレス解消 呼吸法, 自律神経 呼吸法, 無料 呼吸アプリ',
     canonicalPath: '/ja/physiological-sigh/',
@@ -818,7 +818,7 @@ export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighC
     ],
   },
   it: {
-    metaTitle: 'Timer e Guida del Sospiro Fisiologico Gratis | Sospiro Ciclico | HarmonyBreath',
+    metaTitle: 'Sospiro Fisiologico e Sospiro Ciclico: Guida e Timer Calma',
     metaDescription: 'Pratica il Sospiro Fisiologico con il nostro timer guidato gratuito. Doppia inspirazione ed espirazione lunga per un rapido sollievo dallo stress.',
     keywords: 'sospiro fisiologico, sospiro ciclico, timer sospiro fisiologico, sospiro huberman, respirazione doppia inspirazione, esercizi respirazione ansia, app respirazione gratis, studio stanford respirazione',
     canonicalPath: '/it/physiological-sigh/',

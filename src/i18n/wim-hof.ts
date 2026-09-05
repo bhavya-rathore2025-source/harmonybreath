@@ -302,7 +302,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
   },
 
   es: {
-    metaTitle: 'Temporizador de Respiración Wim Hof Gratis y Guía | Método Wim Hof | HarmonyBreath',
+    metaTitle: 'Método Wim Hof: Temporizador Guiado de Rondas y Retención',
     metaDescription: 'Domina la respiración del Método Wim Hof con nuestro temporizador guiado online. 30 respiraciones, retención y recuperación para energía y enfoque.',
     keywords: 'respiracion wim hof, metodo wim hof, tecnica de respiracion wim hof, metodo wim hof respiracion, temporizador wim hof, respiracion wim hof guiada, beneficios metodo wim hof, ejercicios de respiracion wim hof, respiracion iceman wim hof, retencion de respiracion, como hacer el metodo wim hof',
     canonicalPath: '/es/wim-hof/',
@@ -507,7 +507,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
   },
 
   de: {
-    metaTitle: 'Kostenloser Wim-Hof-Atmung Timer & Anleitung | Wim-Hof-Methode | HarmonyBreath',
+    metaTitle: 'Wim-Hof-Methode: Geführter Timer für Runden & Anhalten',
     metaDescription: 'Meistere die Wim-Hof-Atemtechnik mit unserem kostenlosen Online-Timer. 30 tiefe Atemzüge, Retention und Erholungsatem für Energie und Fokus.',
     keywords: 'wim hof atmung, wim hof methode, wim hof atemtechnik, wim hof timer, wim hof atmung anleitung, wim hof atmung vorteile, wim hof geführte atmung, atemübung wim hof, eisbrecher methode atmung, wim hof methode lernen, iceman atmung',
     canonicalPath: '/de/wim-hof/',
@@ -712,7 +712,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
   },
 
   fr: {
-    metaTitle: 'Minuteur de Respiration Wim Hof Gratuit & Guide | Méthode Wim Hof | HarmonyBreath',
+    metaTitle: 'Méthode Wim Hof: Minuteur Guidé des Cycles et Rétention',
     metaDescription: 'Maîtrisez la méthode Wim Hof avec notre minuteur gratuit. Cycles de 30 respirations, rétention poumons vides et récupération pour booster l’énergie.',
     keywords: 'respiration wim hof, methode wim hof, technique de respiration wim hof, wim hof respiration guidee, chronometre wim hof, minuteur respiration wim hof, bienfaits methode wim hof, exercices de respiration wim hof, respiration iceman, apnee wim hof, methode wim hof comment faire',
     canonicalPath: '/fr/wim-hof/',
@@ -917,7 +917,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
   },
 
   pt: {
-    metaTitle: 'Temporizador de Respiração Wim Hof Grátis & Guia | Método Wim Hof | HarmonyBreath',
+    metaTitle: 'Método Wim Hof: Temporizador Guiado de Ciclos e Retenção',
     metaDescription: 'Domine a respiração do Método Wim Hof com nosso timer guiado gratuito. 30 respirações, retenção e recuperação para energia e foco mental.',
     keywords: 'respiração wim hof, método wim hof, técnica de respiração wim hof, temporizador wim hof, respiração wim hof guiada, benefícios método wim hof, exercícios de respiração wim hof, método wim hof respiração passo a passo, retenção respiração wim hof, iceman respiração',
     canonicalPath: '/pt/wim-hof/',
@@ -1122,7 +1122,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
   },
 
   ja: {
-    metaTitle: '無料ヴィム・ホフ呼吸法タイマー＆ガイド | ヴィムホフメソッド | HarmonyBreath',
+    metaTitle: 'ヴィム・ホフ呼吸法：ラウンド＆息止めガイド付きタイマー',
     metaDescription: 'ヴィム・ホフ呼吸法（アイスマン呼吸法）を無料のオンラインガイドタイマーで実践。30回の深い呼吸、息止め（リテンション）、回復の呼吸で活力向上と集中力アップ。',
     keywords: 'ヴィムホフ呼吸法, ヴィム・ホフ メソッド, ヴィムホフ タイマー, アイスマン 呼吸法, ヴィムホフ呼吸法 やり方, ヴィムホフ 効果, ヴィムホフ呼吸法 ガイド, 呼吸法 タイマー, 息止め 呼吸法, ヴィムホフ メソッド 呼吸, 自律神経 呼吸法',
     canonicalPath: '/ja/wim-hof/',
@@ -1327,7 +1327,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
   },
 
   it: {
-    metaTitle: 'Timer e Guida Gratuita Respirazione Wim Hof | Metodo Wim Hof | HarmonyBreath',
+    metaTitle: 'Metodo Wim Hof: Timer Guidato di Respirazione e Trattenuta',
     metaDescription: 'Impara la respirazione del Metodo Wim Hof con il nostro timer guidato online gratuito. 30 respiri profondi, apnea a polmoni vuoti e respiro di recupero per energia, concentrazione e immunità.',
     keywords: 'respirazione wim hof, metodo wim hof, tecnica di respirazione wim hof, timer respirazione wim hof, respirazione guidata wim hof, benefici metodo wim hof, esercizi di respirazione wim hof, wim hof apnea, metodo wim hof come fare, respirazione uomo di ghiaccio',
     canonicalPath: '/it/wim-hof/',
