@@ -50,7 +50,7 @@ export interface DiaphragmaticBreathingContent {
 export const diaphragmaticBreathingI18n: Record<SupportedLanguage, DiaphragmaticBreathingContent> = {
   en: {
     metaTitle: 'Free Diaphragmatic Breathing Timer & Guide | Belly Breathing | HarmonyBreath',
-    metaDescription: 'Learn diaphragmatic breathing (belly breathing) with our free guided breathing timer. Stimulate the vagus nerve, reduce cortisol, lower blood pressure, and activate deep relaxation.',
+    metaDescription: 'Master diaphragmatic breathing (belly breathing) with our free guided timer. Stimulate the vagus nerve, reduce stress, and activate deep relaxation.',
     keywords: 'diaphragmatic breathing, belly breathing, deep abdominal breathing, diaphragmatic breathing exercises, diaphragmatic breathing timer, vagus nerve stimulation, reduce cortisol breathing, breathing exercises for anxiety',
     canonicalPath: '/diaphragmatic-breathing/',
     badge: 'VAGAL TONE & DEEP PARASYMPATHETIC ACTIVATION',
@@ -124,7 +124,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
 
   es: {
     metaTitle: 'Temporizador de Respiración Diafragmática (Abdominal) Gratis | HarmonyBreath',
-    metaDescription: 'Aprende la respiración diafragmática (respiración abdominal o de vientre) con nuestro temporizador guiado gratis. Estimula el nervio vago, reduce el cortisol y calma la ansiedad profundamente.',
+    metaDescription: 'Aprende la respiración diafragmática (abdominal) con nuestro temporizador gratis. Estimula el nervio vago, reduce el cortisol y calma la ansiedad.',
     keywords: 'respiracion diafragmatica, respiracion abdominal, respiracion de vientre, ejercicios de respiracion diafragmatica, como respirar con el diafragma, respiracion para calmar la ansiedad, nervio vago respiracion',
     canonicalPath: '/es/diaphragmatic-breathing/',
     badge: 'ESTIMULACIÓN DEL NERVIO VAGO Y ACTIVACIÓN PARASIMPÁTICA',
@@ -198,7 +198,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
 
   de: {
     metaTitle: 'Kostenloser Bauchatmung Timer & Anleitung | Zwerchfellatmung | HarmonyBreath',
-    metaDescription: 'Lerne die Bauchatmung (Zwerchfellatmung) mit unserem kostenlosen Online-Timer. Stimuliere den Vagusnerv, senke Cortisol und Blutdruck und aktiviere tiefe parasympathische Entspannung.',
+    metaDescription: 'Lerne die Bauchatmung (Zwerchfellatmung) mit unserem kostenlosen Online-Timer. Stimuliere den Vagusnerv, senke Stress und aktiviere tiefe Entspannung.',
     keywords: 'bauchatmung, zwerchfellatmung, bauchatmung uebungen, richtig in den bauch atmen, tiefe bauchatmung, vagusnerv stimulieren atmung, atemuebungen blutdruck senken, entspannung timer',
     canonicalPath: '/de/diaphragmatic-breathing/',
     badge: 'VAGUSNERV-STIMULATION & PARASYMPATHISCHE ENTSPANNUNG',
@@ -272,7 +272,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
 
   fr: {
     metaTitle: 'Minuteur de Respiration Diaphragmatique (Abdominale) Gratuit | HarmonyBreath',
-    metaDescription: 'Apprenez la respiration diaphragmatique (respiration par le ventre ou abdominale) avec notre minuteur interactif gratuit. Stimulez le nerf vague, baissez le cortisol et réduisez l’anxiété.',
+    metaDescription: 'Apprenez la respiration diaphragmatique (ventrale) avec notre minuteur gratuit. Stimulez le nerf vague, baissez le cortisol et calmez l’anxiété.',
     keywords: 'respiration diaphragmatique, respiration abdominale, respiration par le ventre, exercices respiration diaphragmatique, bienfaits respiration abdominale, calmer angoisse respiration, nerf vague respiration',
     canonicalPath: '/fr/diaphragmatic-breathing/',
     badge: 'STIMULATION DU NERF VAGUE & APPAISEMENT PARASYMPATHIQUE',
@@ -346,7 +346,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
 
   pt: {
     metaTitle: 'Temporizador de Respiração Diafragmática (Abdominal) Grátis | HarmonyBreath',
-    metaDescription: 'Aprenda a respiração diafragmática (respiração abdominal ou com a barriga) com nosso temporizador guiado grátis. Estimule o nervo vago, reduza o cortisol e acalme a ansiedade.',
+    metaDescription: 'Aprenda a respiração diafragmática (abdominal) com nosso temporizador grátis. Estimule o nervo vago, reduza o estresse e acalme a ansiedade.',
     keywords: 'respiracao diafragmatica, respiracao abdominal, respiracao com a barriga, exercicios de respiracao diafragmatica, como fazer respiracao diafragmatica, acalmar ansiedade respiracao, nervo vago respiracao',
     canonicalPath: '/pt/diaphragmatic-breathing/',
     badge: 'ESTIMULAÇÃO DO NERVO VAGO & ATIVAÇÃO PARASSIMPÁTICA',
@@ -494,7 +494,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
 
   it: {
     metaTitle: 'Timer e Guida alla Respirazione Diaframmatica (Addominale) Gratis | HarmonyBreath',
-    metaDescription: 'Impara la respirazione diaframmatica (respirazione addominale o di pancia) con il nostro timer guidato online gratuito. Stimola il nervo vago, abbassa il cortisolo e sconfiggi lo stress.',
+    metaDescription: 'Impara la respirazione diaframmatica (addominale) con il nostro timer guidato online gratuito. Stimola il nervo vago e riduci lo stress profondo.',
     keywords: 'respirazione diaframmatica, respirazione addominale, respirazione di pancia, esercizi respirazione diaframmatica, come respirare con il diaframma, nervo vago respirazione, ansia respirazione diaframmatica',
     canonicalPath: '/it/diaphragmatic-breathing/',
     badge: 'STIMOLAZIONE DEL NERVO VAGO & CALMA PARASIMPATICA',

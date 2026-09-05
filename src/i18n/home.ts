@@ -67,7 +67,7 @@ export interface HomeContent {
 export const homeI18n: Record<SupportedLanguage, HomeContent> = {
   en: {
     metaTitle: 'HarmonyBreath — Free Guided Breathing Timers & Breathwork Techniques',
-    metaDescription: 'Free online guided breathing timers for Wim Hof, Box Breathing, 4-7-8, and more. Practice breathwork with audio cues, customizable sessions, and local progress tracking. 100% free & private.',
+    metaDescription: 'Free online guided breathing timer for Wim Hof, Box Breathing & 4-7-8. Practice breathwork with audio cues, custom intervals & no sign-up required.',
     keywords: 'guided breathing timer, breathing exercises, online breathwork timer, calming breathing exercises, breathing techniques app, free breathwork app',
     canonicalPath: '/',
     heroBadge: 'UNIVERSAL BREATHWORK & PRANAYAMA ENGINE',
@@ -233,7 +233,7 @@ export const homeI18n: Record<SupportedLanguage, HomeContent> = {
   },
   es: {
     metaTitle: 'HarmonyBreath — Temporizadores de Respiración Guiada y Ejercicios Gratuitos',
-    metaDescription: 'Temporizadores de respiración guiada online gratuitos para Método Wim Hof, Respiración Cuadrada, 4-7-8 y más. Señales de audio, sesiones personalizables y 100% privado.',
+    metaDescription: 'Temporizador de respiración guiada online para Wim Hof, Box Breathing y 4-7-8. Señales de audio, sesiones personalizadas y privacidad total.',
     keywords: 'temporizador de respiración guiada, ejercicios de respiración, temporizador de respiración online, ejercicios de respiración relajantes, técnicas de respiración, app de respiración gratuita',
     canonicalPath: '/es/',
     heroBadge: 'MOTOR UNIVERSAL DE RESPIRACIÓN Y PRANAYAMA',
@@ -399,7 +399,7 @@ export const homeI18n: Record<SupportedLanguage, HomeContent> = {
   },
   de: {
     metaTitle: 'HarmonyBreath — Kostenlose geführte Atemtimer & Atemtechniken',
-    metaDescription: 'Kostenlose geführte Online-Atemtimer für Wim Hof, Box Breathing, 4-7-8 und mehr. Mit Audio-Signalen, anpassbaren Sitzungen und lokalem Tracking. 100% kostenlos & privat.',
+    metaDescription: 'Kostenloser Online-Atemtimer für Wim Hof, Box Breathing und 4-7-8. Mit Audio-Signalen, anpassbaren Intervallen und lokalem Tracking. 100% privat.',
     keywords: 'geführter atemtimer, atemübungen, online atemtimer, beruhigende atemübungen, atemtechniken app, kostenlose atem app',
     canonicalPath: '/de/',
     heroBadge: 'UNIVERSELLE ATEMARBEIT & PRANAYAMA ENGINE',
@@ -565,7 +565,7 @@ export const homeI18n: Record<SupportedLanguage, HomeContent> = {
   },
   fr: {
     metaTitle: 'HarmonyBreath — Minuteurs de Respiration Guidée & Exercices Gratuits',
-    metaDescription: 'Minuteurs en ligne gratuits pour la méthode Wim Hof, la respiration carrée, le 4-7-8 et plus. Signaux sonores, séances personnalisables et suivi 100% privé.',
+    metaDescription: 'Minuteur de respiration guidée pour la méthode Wim Hof, respiration carrée et 4-7-8. Signaux sonores, séances sur mesure et suivi 100% privé.',
     keywords: 'minuteur respiration guidée, exercices de respiration, minuteur respiration en ligne, exercices respiration apaisante, techniques de respiration, application respiration gratuite',
     canonicalPath: '/fr/',
     heroBadge: 'MOTEUR UNIVERSEL DE RESPIRATION & PRANAYAMA',
@@ -731,7 +731,7 @@ export const homeI18n: Record<SupportedLanguage, HomeContent> = {
   },
   pt: {
     metaTitle: 'HarmonyBreath — Temporizadores de Respiração Guiada & Técnicas Gratuitas',
-    metaDescription: 'Temporizadores online gratuitos para o Método Wim Hof, Respiração Quadrada, 4-7-8 e mais. Sinais sonoros, sessões personalizadas e acompanhamento 100% privado.',
+    metaDescription: 'Temporizador de respiração guiada para o Método Wim Hof, Box Breathing e 4-7-8. Sinais sonoros, sessões personalizadas e 100% privado.',
     keywords: 'temporizador de respiração guiada, exercícios de respiração, temporizador de respiração online, exercícios calmantes de respiração, técnicas de respiração, app de respiração gratuito',
     canonicalPath: '/pt/',
     heroBadge: 'MOTOR UNIVERSAL DE RESPIRAÇÃO & PRANAYAMA',

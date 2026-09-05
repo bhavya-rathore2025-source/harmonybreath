@@ -50,7 +50,7 @@ export interface BoxBreathingContent {
 export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = {
   en: {
     metaTitle: 'Free Box Breathing Timer & Guide | HarmonyBreath',
-    metaDescription: 'Master box breathing (square breathing 4-4-4-4) with our free guided breathing timer. Equal inhale, hold, exhale, and empty hold phases for calm, stress relief, and tactical focus.',
+    metaDescription: 'Practice box breathing (4-4-4-4 technique) with our free guided timer. Equal inhale, hold, exhale, and pause phases for instant calm and focus.',
     keywords: 'box breathing, box breathing timer, square breathing, 4-4-4-4 breathing, box breathing exercise, box breathing method, tactical breathing, stress relief breathing, guided breathing timer',
     canonicalPath: '/box-breathing/',
     badge: 'TACTICAL CALM & HIGH-PRESSURE FOCUS ENGINE',
@@ -124,7 +124,7 @@ export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = 
 
   es: {
     metaTitle: 'Temporizador de Respiración Cuadrada (Box Breathing Navy SEALs) Gratis | HarmonyBreath',
-    metaDescription: 'Aprende cómo hacer la respiración cuadrada (box breathing técnica 4-4-4-4 de los Navy SEALs y Sama Vritti) con nuestro temporizador guiado gratis. Calma la ansiedad, estrés y pánico en 4 minutos.',
+    metaDescription: 'Practica la respiración cuadrada (box breathing 4-4-4-4) con nuestro temporizador guiado gratis. Calma la ansiedad y mejora tu enfoque en 4 minutos.',
     keywords: 'respiracion cuadrada, box breathing, box breathing español, respiracion en caja, temporizador de box breathing, respiracion navy seals, sama vritti pranayama, samavritti pranayama, sama vritti, como hacer la respiracion cuadrada, tecnica 4-4-4-4, respiracion 4x4, ejercicios de respiracion para ansiedad, respiracion guiada online, temporizador de respiracion, respiracion en cuatro tiempos, respiracion igualada',
     canonicalPath: '/es/box-breathing/',
     badge: 'CALMA TÁCTICA Y ENFOQUE BAJO PRESIÓN',
@@ -203,7 +203,7 @@ export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = 
 
   de: {
     metaTitle: 'Kostenloser Box-Atmung Timer & Anleitung (Navy SEALs Kastenatmung) | HarmonyBreath',
-    metaDescription: 'Lerne die Box-Atmung (Kastenatmung & Quadratatmung 4-4-4-4 der Navy SEALs und Sama Vritti) mit unserem kostenlosen Online-Timer. Baue Stress ab, stoppe Panikattacken und stärke deinen Fokus in 4 Minuten.',
+    metaDescription: 'Lerne die Box-Atmung (4-4-4-4 Kastenatmung) mit unserem kostenlosen Online-Timer. Baue Stress ab und stärke deinen Fokus in nur 4 Minuten.',
     keywords: 'box atmung, kastenatmung, quadratatmung, quadratische atmung, box breathing deutsch, box breathing, box breathing timer, navy seals atmung, sama vritti pranayama, samavritti pranayama, sama vritti, box atmung anleitung, 4-4-4-4 atmung, 4x4 atmung, atemuebungen gegen panikattacken, gefuehrte atmung timer, atemquadrat online, gleichmaessige atmung',
     canonicalPath: '/de/box-breathing/',
     badge: 'TAKTISCHE RUHE & FOKUS-ENGINE UNTER DRUCK',
@@ -281,7 +281,7 @@ export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = 
 
   fr: {
     metaTitle: 'Minuteur de Respiration Carrée (Box Breathing Navy SEALs) Gratuit | HarmonyBreath',
-    metaDescription: 'Découvrez comment faire la respiration carrée (box breathing 4-4-4-4 des Navy SEALs et Sama Vritti) avec notre minuteur guidé gratuit. Apaisez l’angoisse, stoppez les crises de panique et retrouvez le calme en 4 minutes.',
+    metaDescription: 'Pratiquez la respiration carrée (box breathing 4-4-4-4) avec notre minuteur guidé gratuit. Apaisez le stress et retrouvez le calme en 4 minutes.',
     keywords: 'respiration carree, box breathing, box breathing francais, respiration navy seals, comment faire la respiration carree, respiration en boite, sama vritti pranayama, samavritti pranayama, sama vritti, technique respiration 4 4 4 4, respiration 4x4, respiration carree angoisse, chronometre respiration carree, minuteur respiration, respiration militaire anti stress, respiration en quatre temps, respiration egale',
     canonicalPath: '/fr/box-breathing/',
     badge: 'CALME TACTIQUE & CONCENTRATION SOUS PRESSION',
@@ -359,7 +359,7 @@ export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = 
 
   pt: {
     metaTitle: 'Temporizador de Respiração Quadrada (Box Breathing) Grátis | HarmonyBreath',
-    metaDescription: 'Aprenda a respiração quadrada (box breathing técnica 4-4-4-4) com nosso timer guiado grátis. Reduza a ansiedade, estresse e aumente o foco com a respiração dos Navy SEALs.',
+    metaDescription: 'Aprenda a respiração quadrada (box breathing 4-4-4-4) com nosso timer guiado grátis. Reduza a ansiedade e aumente o foco com a técnica Navy SEALs.',
     keywords: 'respiracao quadrada, box breathing portugues, tecnica de respiracao quadrada, respiracao 4 4 4 4, respiracao 4x4, respiracao quadrada como fazer, respiracao dos navy seals, timer respiracao quadrada, samavritti pranayama, exercicios de respiracao ansiedade, respiracao em caixa',
     canonicalPath: '/pt/box-breathing/',
     badge: 'CALMA TÁTICA & FOCO SOB PRESSÃO EXTREMA',
@@ -511,7 +511,7 @@ export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = 
 
   it: {
     metaTitle: 'Timer e Guida alla Respirazione Quadrata (Box Breathing Navy SEALs) Gratis | HarmonyBreath',
-    metaDescription: 'Impara come si fa la respirazione quadrata (box breathing 4-4-4-4 dei Navy SEALs e Sama Vritti) con il nostro timer online guidato. Blocca gli attacchi di panico, riduci lo stress e ritrova la lucidità in 4 minuti.',
+    metaDescription: 'Impara la respirazione quadrata (box breathing 4-4-4-4) con il nostro timer guidato gratuito. Riduci lo stress e ritrova la calma in soli 4 minuti.',
     keywords: 'respirazione quadrata, box breathing italiano, box breathing, respirazione dei navy seals, respirazione quadrata come si fa, respirazione a scatola, sama vritti pranayama, samavritti pranayama, sama vritti, respirazione 4 4 4 4, respirazione 4x4, respirazione guidata online, timer respirazione quadrata gratis, esercizi di respirazione contro ansia, respirazione in quattro tempi, respirazione uniforme',
     canonicalPath: '/it/box-breathing/',
     badge: 'CALMA TATTICA E CONCENTRAZIONE SOTTO PRESSIONE',

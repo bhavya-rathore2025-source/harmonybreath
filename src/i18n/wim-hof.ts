@@ -94,7 +94,7 @@ export interface WimHofContent {
 export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
   en: {
     metaTitle: 'Free Wim Hof Breathing Timer & Guide | HarmonyBreath',
-    metaDescription: 'Master the Wim Hof breathing technique with our free guided timer. Practice Wim Hof method breathing with customizable retention holds, audio cues, and session tracking. The best Wim Hof timer online.',
+    metaDescription: 'Master Wim Hof method breathing with our free guided timer. Customizable breath retention holds, audio cues, and round tracking. Practice free online.',
     keywords: 'wim hof breathing, wim hof method, wim hof breathing technique, wim hof guided breathing, wim hof timer online, wim hof breathing benefits, wim hof breathing methods, breathwork timer, the iceman method',
     canonicalPath: '/wim-hof/',
     badge: 'FREE GUIDED BREATHWORK & IMMUNITY ENGINE',
@@ -303,7 +303,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
 
   es: {
     metaTitle: 'Temporizador de Respiración Wim Hof Gratis y Guía | Método Wim Hof | HarmonyBreath',
-    metaDescription: 'Domina la técnica de respiración del Método Wim Hof con nuestro temporizador guiado online gratuito. Rondas de 30 respiraciones profundas, retención en vacío y respiración de recuperación para energía, inmunidad y enfoque mental.',
+    metaDescription: 'Domina la respiración del Método Wim Hof con nuestro temporizador guiado online. 30 respiraciones, retención y recuperación para energía y enfoque.',
     keywords: 'respiracion wim hof, metodo wim hof, tecnica de respiracion wim hof, metodo wim hof respiracion, temporizador wim hof, respiracion wim hof guiada, beneficios metodo wim hof, ejercicios de respiracion wim hof, respiracion iceman wim hof, retencion de respiracion, como hacer el metodo wim hof',
     canonicalPath: '/es/wim-hof/',
     badge: 'RESPIRACIÓN GUIADA Y ACTIVACIÓN FISIOLÓGICA GRATIS',
@@ -508,7 +508,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
 
   de: {
     metaTitle: 'Kostenloser Wim-Hof-Atmung Timer & Anleitung | Wim-Hof-Methode | HarmonyBreath',
-    metaDescription: 'Meistere die Wim-Hof-Atemtechnik mit unserem kostenlosen Online-Timer. 30 tiefe Atemzüge, Atemanhalten (Retention) und Erholungsatem für Energie, Fokus und Immunsystem.',
+    metaDescription: 'Meistere die Wim-Hof-Atemtechnik mit unserem kostenlosen Online-Timer. 30 tiefe Atemzüge, Retention und Erholungsatem für Energie und Fokus.',
     keywords: 'wim hof atmung, wim hof methode, wim hof atemtechnik, wim hof timer, wim hof atmung anleitung, wim hof atmung vorteile, wim hof geführte atmung, atemübung wim hof, eisbrecher methode atmung, wim hof methode lernen, iceman atmung',
     canonicalPath: '/de/wim-hof/',
     badge: 'KOSTENLOSE GEFÜHRTE ATEMÜBUNG & ENERGIE-ENGINE',
@@ -713,7 +713,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
 
   fr: {
     metaTitle: 'Minuteur de Respiration Wim Hof Gratuit & Guide | Méthode Wim Hof | HarmonyBreath',
-    metaDescription: 'Maîtrisez la technique de respiration Wim Hof grâce à notre minuteur en ligne gratuit. Cycles de 30 respirations profondes, rétention poumons vides et récupération pour booster votre énergie.',
+    metaDescription: 'Maîtrisez la méthode Wim Hof avec notre minuteur gratuit. Cycles de 30 respirations, rétention poumons vides et récupération pour booster l’énergie.',
     keywords: 'respiration wim hof, methode wim hof, technique de respiration wim hof, wim hof respiration guidee, chronometre wim hof, minuteur respiration wim hof, bienfaits methode wim hof, exercices de respiration wim hof, respiration iceman, apnee wim hof, methode wim hof comment faire',
     canonicalPath: '/fr/wim-hof/',
     badge: 'RESPIRATION GUIDÉE & ACTIVATION ÉNERGÉTIQUE GRATUITE',
@@ -918,7 +918,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
 
   pt: {
     metaTitle: 'Temporizador de Respiração Wim Hof Grátis & Guia | Método Wim Hof | HarmonyBreath',
-    metaDescription: 'Aprenda a respiração do Método Wim Hof com nosso temporizador online gratuito. 30 respirações profundas, retenção sem ar e respiração de recuperação para energia e foco.',
+    metaDescription: 'Domine a respiração do Método Wim Hof com nosso timer guiado gratuito. 30 respirações, retenção e recuperação para energia e foco mental.',
     keywords: 'respiração wim hof, método wim hof, técnica de respiração wim hof, temporizador wim hof, respiração wim hof guiada, benefícios método wim hof, exercícios de respiração wim hof, método wim hof respiração passo a passo, retenção respiração wim hof, iceman respiração',
     canonicalPath: '/pt/wim-hof/',
     badge: 'RESPIRAÇÃO GUIADA & ENERGIA FISIOLÓGICA GRATUITA',

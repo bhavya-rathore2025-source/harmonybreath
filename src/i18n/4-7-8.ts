@@ -80,7 +80,7 @@ export interface Relaxing478Content {
 export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
   en: {
     metaTitle: 'Free 4-7-8 Breathing Timer & Guide | HarmonyBreath',
-    metaDescription: 'Master the 4-7-8 breathing method (relaxing breath) with our free guided breathing timer. Inhale 4s, hold 7s, exhale 8s to calm your nervous system and fall asleep fast.',
+    metaDescription: 'Master the 4-7-8 breathing method with our free guided timer. Inhale 4s, hold 7s, exhale 8s to calm your nervous system and fall asleep faster.',
     keywords: '4-7-8 breathing, 4-7-8 breathing method, 4-7-8 breathing technique, 4-7-8 breathing timer, relaxing breath technique, breathing exercise for sleep, 4-7-8 breathing benefits, dr andrew weil breathing',
     canonicalPath: '/4-7-8-breathing/',
     badge: 'DEEP RELAXATION & SLEEP INDUCTION ENGINE',
@@ -279,7 +279,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
   },
   es: {
     metaTitle: 'Temporizador y Guía de Respiración 4-7-8 Gratis | HarmonyBreath',
-    metaDescription: 'Domina la técnica de respiración 4-7-8 del Dr. Andrew Weil con nuestro temporizador guiado online. Inhala 4s, retén 7s y exhala 8s para calmar la ansiedad y conciliar el sueño rápidamente.',
+    metaDescription: 'Domina la respiración 4-7-8 con nuestro temporizador guiado online. Inhala 4s, retén 7s y exhala 8s para calmar la ansiedad y conciliar el sueño rápido.',
     keywords: 'respiración 4-7-8, técnica 4-7-8, método 4-7-8, temporizador respiración 4-7-8, respiración para dormir, respiración relajante, dr andrew weil respiración, ejercicios respiración ansiedad',
     canonicalPath: '/es/4-7-8-breathing/',
     badge: 'MOTOR DE RELAJACIÓN PROFUNDA E INDUCCIÓN AL SUEÑO',
@@ -478,7 +478,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
   },
   de: {
     metaTitle: 'Kostenloser 4-7-8 Atemtechnik Timer & Anleitung | HarmonyBreath',
-    metaDescription: 'Meistern Sie die 4-7-8 Atemtechnik von Dr. Andrew Weil mit unserem kostenlosen Online-Timer. 4s Einatmen, 7s Halten, 8s Ausatmen für sofortige Entspannung und besseren Schlaf.',
+    metaDescription: 'Meistern Sie die 4-7-8 Atemtechnik mit unserem kostenlosen Online-Timer. 4s Einatmen, 7s Halten, 8s Ausatmen für tiefe Entspannung und besseren Schlaf.',
     keywords: '4-7-8 atemtechnik, 4-7-8 methode, 4-7-8 atmen timer, einschlaf atemtechnik, atemübung schlafen, vagusnerv stimulieren, dr andrew weil atemtechnik, atemübungen gegen stress',
     canonicalPath: '/de/4-7-8-breathing/',
     badge: 'TIEFENENTSPANNUNG & SCHLAFINDUSKTIONS-SYSTEM',
@@ -677,7 +677,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
   },
   fr: {
     metaTitle: 'Minuteur & Guide de Respiration 4-7-8 Gratuit | HarmonyBreath',
-    metaDescription: 'Maîtrisez la méthode de respiration 4-7-8 du Dr Andrew Weil avec notre minuteur en ligne gratuit. Inspirez 4s, retenez 7s, expirez 8s pour calmer le stress et vous endormir vite.',
+    metaDescription: 'Maîtrisez la respiration 4-7-8 avec notre minuteur gratuit. Inspirez 4s, retenez 7s, expirez 8s pour calmer le stress et vous endormir plus vite.',
     keywords: 'respiration 4-7-8, technique 4-7-8, méthode 4-7-8, minuteur respiration 4-7-8, respiration pour dormir, exercice respiration sommeil, dr andrew weil respiration, stimuler nerf vague',
     canonicalPath: '/fr/4-7-8-breathing/',
     badge: 'MOTEUR DE RELAXATION PROFONDE & D’INDUCTION DU SOMMEIL',
@@ -876,7 +876,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
   },
   pt: {
     metaTitle: 'Temporizador e Guia de Respiração 4-7-8 Grátis | HarmonyBreath',
-    metaDescription: 'Aprenda a técnica de respiração 4-7-8 do Dr. Andrew Weil com nosso temporizador guiado online. Inspire 4s, retenha 7s e expire 8s para aliviar o estresse e dormir rápido.',
+    metaDescription: 'Aprenda a respiração 4-7-8 com nosso temporizador guiado online. Inspire 4s, retenha 7s e expire 8s para aliviar o estresse e dormir mais rápido.',
     keywords: 'respiração 4-7-8, técnica 4-7-8, método 4-7-8, temporizador respiração 4-7-8, respiração para dormir, exercício respiração sono, dr andrew weil respiração, diminuir ansiedade respiração',
     canonicalPath: '/pt/4-7-8-breathing/',
     badge: 'MOTOR DE RELAXAMENTO PROFUNDO & INDUÇÃO DO SONO',
@@ -1274,7 +1274,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
   },
   it: {
     metaTitle: 'Timer & Guida Gratuita alla Respirazione 4-7-8 | HarmonyBreath',
-    metaDescription: 'Impara il metodo di respirazione 4-7-8 del Dr. Andrew Weil con il nostro timer guidato online gratuito. Inspira 4s, trattieni 7s ed espira 8s per calmare l’ansia e addormentarti velocemente.',
+    metaDescription: 'Impara la respirazione 4-7-8 con il nostro timer guidato gratuito. Inspira 4s, trattieni 7s ed espira 8s per calmare l’ansia e addormentarti presto.',
     keywords: 'respirazione 4-7-8, tecnica 4-7-8, metodo 4-7-8, timer respirazione 4-7-8, respirazione per dormire, esercizi respirazione ansia, dr andrew weil respirazione, stimolare nervo vago',
     canonicalPath: '/it/4-7-8-breathing/',
     badge: 'MOTORE DI RILASSAMENTO PROFONDO E INDUZIONE DEL SONNO',
