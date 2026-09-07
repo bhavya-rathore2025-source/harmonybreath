@@ -34,8 +34,8 @@ const termsUrl = currentLang === 'en' ? '/terms/' : `/${currentLang}/terms/`;
         <a href={techniquesUrl} class="hover:text-white transition-colors">{t('nav.techniques')}</a>
         <a href={aboutUrl} class="hover:text-white transition-colors">{t('nav.about')}</a>
         <a href={contactUrl} class="hover:text-white transition-colors">{t('nav.contact')}</a>
-        <a href={privacyUrl} class="hover:text-white transition-colors">Privacy</a>
-        <a href={termsUrl} class="hover:text-white transition-colors">Terms</a>
+        <a href={privacyUrl} class="hover:text-white transition-colors">{t('nav.privacy')}</a>
+        <a href={termsUrl} class="hover:text-white transition-colors">{t('nav.terms')}</a>
       </div>
 
       <div class="text-xs font-mono text-neutral-400">
@@ -44,12 +44,12 @@ const termsUrl = currentLang === 'en' ? '/terms/' : `/${currentLang}/terms/`;
     </div>
 
     <div class="pt-8 text-center text-xs font-mono text-neutral-400 space-y-2">
-      <p class="text-neutral-300 font-medium">© {new Date().getFullYear()} HarmonyBreath Platform. Educational & Wellness Tool Only.</p>
-      <p class="max-w-2xl mx-auto text-neutral-400 font-light">Not intended to diagnose, treat, cure, or prevent any medical condition. Always practice safely sitting or lying down.</p>
+      <p class="text-neutral-300 font-medium">© {new Date().getFullYear()} {t('footer.copyright')}</p>
+      <p class="max-w-2xl mx-auto text-neutral-400 font-light">{t('footer.disclaimer')}</p>
       <div class="flex items-center justify-center gap-4 pt-2 text-xs">
-        <a href={privacyUrl} class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">Privacy Policy</a>
+        <a href={privacyUrl} class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">{t('footer.privacyPolicy')}</a>
         <span class="text-neutral-600">|</span>
-        <a href={termsUrl} class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">Terms & Conditions</a>
+        <a href={termsUrl} class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">{t('footer.termsConditions')}</a>
       </div>
     </div>
   </div>
