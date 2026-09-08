@@ -54,7 +54,7 @@ export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = 
     keywords: 'box breathing, box breathing timer, square breathing, 4-4-4-4 breathing, box breathing exercise, box breathing method, tactical breathing, stress relief breathing, guided breathing timer',
     canonicalPath: '/box-breathing/',
     badge: 'TACTICAL CALM & HIGH-PRESSURE FOCUS ENGINE',
-    heroTitle: 'Box Breathing\nSquare Breathing 4-4-4-4',
+    heroTitle: 'Box Breathing Timer\nGuided Square Breathing',
     heroSubtitle: 'The gold-standard tactical protocol used by Navy SEALs, elite athletes, and clinicians to reset the nervous system, lower cortisol, and regain razor-sharp composure in 4 minutes.',
     breadcrumbName: 'Box Breathing',
     startPracticeBtn: 'Start Practice',
