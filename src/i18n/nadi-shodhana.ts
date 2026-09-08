@@ -145,7 +145,7 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
     keywords: 'nadi shodhana, alternate nostril breathing, anulom vilom, pranayama timer, breathing exercise for focus, balanced breathing, guided alternate nostril breathing, vishnu mudra, channel purification breathing, nadi shodhana benefits',
     canonicalPath: '/nadi-shodhana/',
     badge: 'TRADITIONAL YOGIC PRANAYAMA ENGINE',
-    heroTitle: 'Nadi Shodhana\nAlternate Nostril Breath',
+    heroTitle: 'Nadi Shodhana Pranayama\nAlternate Nostril Breathing Timer',
     heroSubtitle: 'Nadi Shodhana is a traditional yogic breathing practice that alternates airflow between the left and right nostrils. Its slow, rhythmic pattern encourages focused attention, hemispheric brain balancing, and calm awareness.',
     breadcrumbName: 'Nadi Shodhana',
     startPracticeBtn: 'Start Practice',

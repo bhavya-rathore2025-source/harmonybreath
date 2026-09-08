@@ -84,7 +84,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
     keywords: '4-7-8 breathing, 4-7-8 breathing method, 4-7-8 breathing technique, 4-7-8 breathing timer, relaxing breath technique, breathing exercise for sleep, 4-7-8 breathing benefits, dr andrew weil breathing',
     canonicalPath: '/4-7-8-breathing/',
     badge: 'DEEP RELAXATION & SLEEP INDUCTION ENGINE',
-    heroTitle: '4-7-8 Breathing\nDeep Relaxing Breath',
+    heroTitle: '4-7-8 Breathing Method\nRelaxing Sleep Timer',
     heroSubtitle: 'Unwind your mind and body with our free online guided 4-7-8 breathing timer. Popularized by Dr. Andrew Weil, the 4-7-8 technique uses extended exhalation to trigger deep nervous system calm.',
     breadcrumbName: '4-7-8 Breathing',
     startPracticeBtn: 'Start Practice',

@@ -54,7 +54,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
     keywords: 'diaphragmatic breathing, belly breathing, deep abdominal breathing, diaphragmatic breathing exercises, diaphragmatic breathing timer, vagus nerve stimulation, reduce cortisol breathing, breathing exercises for anxiety',
     canonicalPath: '/diaphragmatic-breathing/',
     badge: 'VAGAL TONE & DEEP PARASYMPATHETIC ACTIVATION',
-    heroTitle: 'Diaphragmatic Breathing\nBelly Breathing Exercise & Timer',
+    heroTitle: 'Diaphragmatic / Belly Breathing\nTimer & Exercise',
     heroSubtitle: 'Master true anatomical belly breathing to expand lung capacity, stimulate the vagus nerve, and trigger systemic parasympathetic relaxation with our free visual & audio guided timer.',
     breadcrumbName: 'Diaphragmatic Breathing',
     startPracticeBtn: 'Start Practice',

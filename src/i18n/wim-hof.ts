@@ -98,7 +98,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
     keywords: 'wim hof breathing, wim hof method, wim hof breathing technique, wim hof guided breathing, wim hof timer online, wim hof breathing benefits, wim hof breathing methods, breathwork timer, the iceman method',
     canonicalPath: '/wim-hof/',
     badge: 'FREE GUIDED BREATHWORK & IMMUNITY ENGINE',
-    heroTitle: 'The Wim Hof Method\nMaster Mind & Physiology',
+    heroTitle: 'The Wim Hof Method\nGuided Rounds & Retention Timer',
     heroSubtitle: 'Experience authentic three-phase Wim Hof breathing. Controlled hyperventilation, unforced retention holds, and recovery oxygenation — guided with precision, audio soundscapes, and local progress tracking.',
     breadcrumbName: 'Wim Hof Breathing',
     startPracticeBtn: 'Start Practice',

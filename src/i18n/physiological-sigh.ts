@@ -67,7 +67,7 @@ export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighC
     keywords: 'physiological sigh, cyclic sighing, physiological sigh timer, cyclic sighing timer, huberman sigh, double inhale breathing, stress relief breathing, free breathwork app, stanford breathing study',
     canonicalPath: '/physiological-sigh/',
     badge: 'STANFORD RESEARCHED RAPID STRESS RESET ENGINE',
-    heroTitle: 'Physiological Sigh\nCyclic Sighing Reset',
+    heroTitle: 'Physiological Sigh\nFast Stress Relief Timer',
     heroSubtitle: 'Master the Physiological Sigh with our free guided timer. Double inhale followed by a long exhale for rapid stress relief based on Stanford Huberman Lab research.',
     breadcrumbName: 'Physiological Sigh',
     startPracticeBtn: 'Start Practice',
