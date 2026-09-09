@@ -123,9 +123,9 @@ export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = 
   },
 
   es: {
-    metaTitle: 'Respiración Cuadrada (Box Breathing): Temporizador Guiado',
+    metaTitle: 'Respiración Cuadrada (Box Breathing en Español): Temporizador Guiado',
     metaDescription: 'Practica la respiración cuadrada (box breathing 4-4-4-4) con nuestro temporizador guiado gratis. Calma la ansiedad y mejora tu enfoque en 4 minutos.',
-    keywords: 'respiracion cuadrada, box breathing, box breathing español, respiracion en caja, temporizador de box breathing, respiracion navy seals, sama vritti pranayama, samavritti pranayama, sama vritti, como hacer la respiracion cuadrada, tecnica 4-4-4-4, respiracion 4x4, ejercicios de respiracion para ansiedad, respiracion guiada online, temporizador de respiracion, respiracion en cuatro tiempos, respiracion igualada',
+    keywords: 'respiracion cuadrada, box breathing, box breathing español, box breathing spanish, box breathing in spanish, respiracion en caja, temporizador de box breathing, respiracion navy seals, sama vritti pranayama, samavritti pranayama, sama vritti, como hacer la respiracion cuadrada, tecnica 4-4-4-4, respiracion 4x4, ejercicios de respiracion para ansiedad, respiracion guiada online, temporizador de respiracion, respiracion en cuatro tiempos, respiracion igualada',
     canonicalPath: '/es/box-breathing/',
     badge: 'CALMA TÁCTICA Y ENFOQUE BAJO PRESIÓN',
     heroTitle: 'Respiración Cuadrada\nBox Breathing 4-4-4-4',
@@ -202,9 +202,9 @@ export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = 
 
 
   de: {
-    metaTitle: 'Box-Atmung (Kastenatmung) — Geführter Timer für Fokus',
+    metaTitle: 'Box-Atmung & Quadratatmung — Geführter Timer für Fokus',
     metaDescription: 'Lerne die Box-Atmung (4-4-4-4 Kastenatmung) mit unserem kostenlosen Online-Timer. Baue Stress ab und stärke deinen Fokus in nur 4 Minuten.',
-    keywords: 'box atmung, kastenatmung, quadratatmung, quadratische atmung, box breathing deutsch, box breathing, box breathing timer, navy seals atmung, sama vritti pranayama, samavritti pranayama, sama vritti, box atmung anleitung, 4-4-4-4 atmung, 4x4 atmung, atemuebungen gegen panikattacken, gefuehrte atmung timer, atemquadrat online, gleichmaessige atmung',
+    keywords: 'box atmung, kastenatmung, quadratatmung, quadratische atmung, quadratatmung anleitung, quadratatmung wirkung, quadratatmung yoga, quadratatmung einschlafen, box breathing deutsch, box breathing, box breathing timer, navy seals atmung, sama vritti pranayama, samavritti pranayama, sama vritti, box atmung anleitung, 4-4-4-4 atmung, 4x4 atmung, atemuebungen gegen panikattacken, gefuehrte atmung timer, gleichmaessige atmung',
     canonicalPath: '/de/box-breathing/',
     badge: 'TAKTISCHE RUHE & FOKUS-ENGINE UNTER DRUCK',
     heroTitle: 'Box-Atmung\nQuadratische Atmung 4-4-4-4',
@@ -249,7 +249,7 @@ export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = 
         { title: 'Höhere Herzratenvariabilität (HRV)', desc: 'Stärkt die kardiovaskuläre Widerstandskraft und emotionale Selbstbeherrschung.' },
         { title: 'Unterbricht Panikschleifen sofort', desc: 'Der feste Zählrhythmus stoppt kreisende Gedanken und körperliche Unruhe.' },
       ],
-      scienceTitle: 'Die Physiologie: Warum das Atemquadrat das vegetative Nervensystem beruhigt',
+      scienceTitle: 'Die Physiologie: Warum die Quadratatmung das vegetative Nervensystem beruhigt',
       scienceDesc1: 'Bei Stress wird die Atmung flach und schnell, was das Herz rasen lässt. Das kontrollierte Anhalten der vollen Lungen verbessert den Gasaustausch, während das langsame Ausatmen Barorezeptoren aktiviert, die das Herz verlangsamen.',
       scienceDesc2: 'Die Pause bei leeren Lungen trainiert die CO2-Toleranz im Gewebe, verbessert die Sauerstoffabgabe nach dem Bohr-Effekt und schützt vor Hyperventilation.',
       whoUsesTitle: 'Wer nutzt die Navy SEALs Atmung zur mentalen Fokussierung?',

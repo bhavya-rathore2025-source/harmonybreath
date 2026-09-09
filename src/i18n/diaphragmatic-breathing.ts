@@ -199,7 +199,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   de: {
     metaTitle: 'Zwerchfellatmung: Bauchatmung Timer & Übungen für Ruhe',
     metaDescription: 'Lerne die Bauchatmung (Zwerchfellatmung) mit unserem kostenlosen Online-Timer. Stimuliere den Vagusnerv, senke Stress und aktiviere tiefe Entspannung.',
-    keywords: 'bauchatmung, zwerchfellatmung, bauchatmung uebungen, richtig in den bauch atmen, tiefe bauchatmung, vagusnerv stimulieren atmung, atemuebungen blutdruck senken, entspannung timer',
+    keywords: 'bauchatmung, bauchatmung lernen, tiefe bauchatmung lernen, zwerchfellatmung, bauchatmung uebungen, richtig in den bauch atmen, tiefe bauchatmung, vagusnerv stimulieren atmung, atemuebungen blutdruck senken, entspannung timer',
     canonicalPath: '/de/diaphragmatic-breathing/',
     badge: 'VAGUSNERV-STIMULATION & PARASYMPATHISCHE ENTSPANNUNG',
     heroTitle: 'Bauchatmung (Zwerchfellatmung)\nÜbungen & Geführter Timer',
@@ -230,7 +230,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
       whatIsTitle: 'Was ist die Bauchatmung (Zwerchfellatmung)?',
       whatIsDesc1: 'Die Bauchatmung – medizinisch als Zwerchfellatmung oder abdominelle Atmung bezeichnet – ist die natürliche, biologisch effizienteste Atemform des Menschen. Dabei wird primär das Zwerchfell anstelle der Nacken- und Brustmuskulatur genutzt.',
       whatIsDesc2: 'Beim Einatmen senkt sich das Zwerchfell nach unten, massiert die inneren Organe und zieht die Luft bis in die unteren Lungenflügel, wo die beste Sauerstoffaufnahme stattfindet.',
-      howToTitle: 'Schritt-für-Schritt-Anleitung: Richtig in den Bauch atmen',
+      howToTitle: 'Bauchatmung lernen: Schritt-für-Schritt-Anleitung',
       howToSteps: [
         { step: '1', title: 'Hände positionieren', desc: 'Lege dich bequem hin oder sitze aufrecht. Eine Hand auf die Brust, die andere auf den Bauch unterhalb der Rippen.' },
         { step: '2', title: 'Tief in den Bauch einatmen', desc: 'Atme 4 Sekunden langsam durch die Nase ein. Nur die Hand auf dem Bauch hebt sich, die Brust bleibt ruhig.' },

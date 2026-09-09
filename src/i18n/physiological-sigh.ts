@@ -316,7 +316,7 @@ export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighC
   de: {
     metaTitle: 'Physiologischer Seufzer (Zyklisches Seufzen): Timer & Guide',
     metaDescription: 'Meistere den Physiologischen Seufzer mit unserem kostenlosen Timer. Doppeltes Einatmen und langes Ausatmen für schnellen Stressabbau nach Stanford.',
-    keywords: 'physiologischer seufzer, zyklisches seufzen, physiologischer seufzer timer, huberman seufzer, doppelter atemzug, atemübung stressabbau, kostenlose atem app, stanford atemstudie',
+    keywords: 'physiologischer seufzer, physiologisches seufzen, zyklisches seufzen, physiologischer seufzer timer, physiologisches seufzen timer, physiologischer seufzer wirkung, physiologischer seufzer atmung, huberman seufzer, doppelter atemzug, atemübung stressabbau, kostenlose atem app, stanford atemstudie',
     canonicalPath: '/de/physiological-sigh/',
     badge: 'IN STANFORD ERFORSCHTES SYSTEM FÜR SOFORTIGEN STRESSABBAU',
     heroTitle: 'Physiologischer Seufzer\nZyklisches Seufzen Reset',
@@ -344,7 +344,7 @@ export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighC
     guide: {
       sectionTitle: 'Den Physiologischen Seufzer verstehen',
       sectionSubtitle: 'Die Wissenschaft und Praxis des Atmens mit doppeltem Einatmen',
-      whatIsTitle: 'Was ist der Physiologische Seufzer?',
+      whatIsTitle: 'Was ist ein physiologischer Seufzer (Physiologisches Seufzen)?',
       whatIsDesc1: 'Der physiologische Seufzer (bekannt gemacht durch den Neurowissenschaftler Dr. Andrew Huberman, oft auch als psychologischer Seufzer bezeichnet) ist ein biologischer Schutzreflex, den Menschen und Tiere unbewusst ausführen, um überschüssiges Kohlendioxid (CO2) abzuatmen und Anspannung zu lösen.',
       whatIsDesc2: 'Im Gegensatz zu herkömmlichen Atemübungen nutzt der Seufzer eine spezifische Abfolge: zwei schnelle Einatmungen durch die Nase gefolgt von einer langen, langsamen Ausatmung durch den Mund. Bereits 1 bis 3 Zyklen senken die Herzfrequenz und die akute körperliche Erregung spürbar.',
       howToTitle: 'So funktioniert der Physiologische Seufzer',
