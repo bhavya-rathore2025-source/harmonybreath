@@ -81,7 +81,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
   en: {
     metaTitle: '4-7-8 Breathing Technique: Guided Timer for Sleep & Anxiety',
     metaDescription: 'Master the 4-7-8 breathing method with our free guided timer. Inhale 4s, hold 7s, exhale 8s to calm your nervous system and fall asleep faster.',
-    keywords: '4-7-8 breathing, 4-7-8 breathing method, 4-7-8 breathing technique, 4-7-8 breathing timer, relaxing breath technique, breathing exercise for sleep, 4-7-8 breathing benefits, dr andrew weil breathing',
+    keywords: '4-7-8 breathing, 4 7 8 breathing, 4-7-8 breathing method, 4-7-8 breathing technique, 4-7-8 breathing timer, 4 7 8 breathing timer, relaxing breath technique, breathing exercise for sleep, 4-7-8 breathing benefits, dr andrew weil breathing',
     canonicalPath: '/4-7-8-breathing/',
     badge: 'DEEP RELAXATION & SLEEP INDUCTION ENGINE',
     heroTitle: '4-7-8 Breathing Method\nRelaxing Sleep Timer',
@@ -252,7 +252,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
     },
     faqs: [
       {
-        question: 'How does 4-7-8 breathing work?',
+        question: 'How does the 4 7 8 breathing timer work?',
         answer: 'The 4-7-8 breathing method uses a strict mathematical ratio: inhale for 4 seconds, retain for 7 seconds, and exhale for 8 seconds. Because the exhalation is twice as long as the inhalation, it stimulates baroreceptors that cue the vagus nerve to slow heart rate, drop blood pressure, and activate parasympathetic calm.',
       },
       {
@@ -678,7 +678,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
   fr: {
     metaTitle: 'Technique de Respiration 4-7-8: Minuteur pour le Sommeil',
     metaDescription: 'Maîtrisez la respiration 4-7-8 avec notre minuteur gratuit. Inspirez 4s, retenez 7s, expirez 8s pour calmer le stress et vous endormir plus vite.',
-    keywords: 'respiration 4-7-8, technique 4-7-8, méthode 4-7-8, minuteur respiration 4-7-8, respiration pour dormir, exercice respiration sommeil, dr andrew weil respiration, stimuler nerf vague',
+    keywords: 'respiration 4-7-8, respiration 4 7 8, technique 4-7-8, méthode 4-7-8, minuteur respiration 4-7-8, respiration pour dormir, exercice respiration sommeil, dr andrew weil respiration, stimuler nerf vague',
     canonicalPath: '/fr/4-7-8-breathing/',
     badge: 'MOTEUR DE RELAXATION PROFONDE & D’INDUCTION DU SOMMEIL',
     heroTitle: 'Respiration 4-7-8\nTechnique de Relaxation Profonde',
@@ -849,7 +849,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
     },
     faqs: [
       {
-        question: 'Comment fonctionne la respiration 4-7-8 ?',
+        question: 'Comment fonctionne la respiration 4 7 8 ?',
         answer: 'Elle repose sur un ratio précis : inspiration de 4 secondes, rétention de 7 secondes et expiration de 8 secondes. L’expiration prolongée stimule le nerf vague et déclenche la réponse de relaxation parasympathique.',
       },
       {
