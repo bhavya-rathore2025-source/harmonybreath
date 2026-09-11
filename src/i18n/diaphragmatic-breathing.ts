@@ -276,7 +276,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
     keywords: 'respiration diaphragmatique, respiration abdominale, respiration par le ventre, exercices respiration diaphragmatique, bienfaits respiration abdominale, calmer angoisse respiration, nerf vague respiration',
     canonicalPath: '/fr/diaphragmatic-breathing/',
     badge: 'STIMULATION DU NERF VAGUE & APPAISEMENT PARASYMPATHIQUE',
-    heroTitle: 'Respiration Abdominale & Ventrale\nExercices de Calme Intérieur',
+    heroTitle: 'Respiration Abdominale\n& Ventrale : Calme Intérieur',
     heroSubtitle: 'Maîtrisez la véritable respiration par le ventre pour maximiser votre capacité pulmonaire, stimuler le nerf vague et déclencher une détente physique et mentale profonde grâce à notre minuteur guidé.',
     breadcrumbName: 'Respiration Diaphragmatique',
     startPracticeBtn: 'Commencer l’exercice',
