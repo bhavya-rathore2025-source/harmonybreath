@@ -271,12 +271,12 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   },
 
   fr: {
-    metaTitle: 'Respiration Diaphragmatique: Minuteur Ventral & Exercices',
-    metaDescription: 'Apprenez la respiration diaphragmatique (ventrale) avec notre minuteur gratuit. Stimulez le nerf vague, baissez le cortisol et calmez l’anxiété.',
+    metaTitle: 'Respiration Abdominale & Ventrale : Exercices de Détente au Minuteur',
+    metaDescription: 'Pratiquez la respiration abdominale et ventrale avec notre minuteur gratuit. Stimulez le nerf vague, baissez le cortisol et retrouvez le calme.',
     keywords: 'respiration diaphragmatique, respiration abdominale, respiration par le ventre, exercices respiration diaphragmatique, bienfaits respiration abdominale, calmer angoisse respiration, nerf vague respiration',
     canonicalPath: '/fr/diaphragmatic-breathing/',
     badge: 'STIMULATION DU NERF VAGUE & APPAISEMENT PARASYMPATHIQUE',
-    heroTitle: 'Respiration Diaphragmatique\nRespiration Abdominale par le Ventre',
+    heroTitle: 'Respiration Abdominale & Ventrale\nExercices de Calme Intérieur',
     heroSubtitle: 'Maîtrisez la véritable respiration par le ventre pour maximiser votre capacité pulmonaire, stimuler le nerf vague et déclencher une détente physique et mentale profonde grâce à notre minuteur guidé.',
     breadcrumbName: 'Respiration Diaphragmatique',
     startPracticeBtn: 'Commencer l’exercice',
@@ -304,7 +304,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
       whatIsTitle: 'Qu’est-ce que la respiration diaphragmatique (abdominale) ?',
       whatIsDesc1: 'La respiration diaphragmatique—souvent appelée respiration ventrale ou abdominale—est le mode respiratoire physiologique naturel de l’être humain. Elle sollicite le diaphragme plutôt que les muscles accessoires des épaules et de la gorge.',
       whatIsDesc2: 'Lorsque vous inspirez avec le diaphragme, ce muscle descend, masse les organes digestifs et achemine l’air vers la base des poumons, là où l’oxygénation sanguine et les récepteurs de détente sont les plus performants.',
-      howToTitle: 'Protocole pas à pas : Comment bien respirer par le ventre',
+      howToTitle: 'Technique pas à pas pour bien respirer par le ventre',
       howToSteps: [
         { step: '1', title: 'Positionnez vos mains', desc: 'Allongez-vous ou asseyez-vous le dos droit. Posez une main sur la poitrine et l’autre sur le ventre, sous les côtes.' },
         { step: '2', title: 'Inspirez vers le ventre', desc: 'Inspirez par le nez pendant 4 secondes. Seule la main posée sur le ventre doit monter, la poitrine reste immobile.' },
