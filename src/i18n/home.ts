@@ -73,7 +73,7 @@ export const homeI18n: Record<SupportedLanguage, HomeContent> = {
     heroBadge: 'UNIVERSAL BREATHWORK & PRANAYAMA ENGINE',
     heroTitleLine1: 'Master Every Breath,',
     heroTitleLine2: 'Elevate Mind & Body',
-    heroSubtitle: 'HarmonyBreath is your peaceful companion for conscious breathing. Experience guided breathwork through beautifully crafted timers, calming guidance, and a private space designed for daily practice.',
+    heroSubtitle: 'HarmonyBreath is your peaceful companion for conscious breathing. Experience guided breathwork through beautifully crafted and customizable timers, calming guidance, and a private space designed for daily practice.',
     heroExploreBtn: 'Explore Breathing Catalog ↓',
     heroQuotesBtn: 'Quotes for Motivation & Peace →',
     jumpLinks: {
@@ -185,7 +185,7 @@ export const homeI18n: Record<SupportedLanguage, HomeContent> = {
       },
       {
         num: '02',
-        title: 'Customizable Sessions',
+        title: 'Custom Breathing Timers & Presets',
         desc: 'Adjust phase lengths, cycle counts, and session durations to match your comfort level and experience, from first-time practice to daily routine.',
         color: 'purple',
       },
