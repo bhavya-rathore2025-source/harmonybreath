@@ -197,6 +197,14 @@ C. SPANISH & BILINGUAL SEARCHES:
    - Avoids translating German templates directly, ensuring compliance with Google's 
      Helpful Content / Anti-Boilerplate guidelines.
 
+9. ENGLISH: Homepage (`src/i18n/home.ts`)
+   - Hero Subtitle (<p>): Added "and customizable" to the intro:
+     "...crafted and customizable timers..."
+   - Feature Card 02 (<h3>):
+     FROM: "Customizable Sessions"
+     TO:   "Custom Breathing Timers & Presets"
+   - Direct exact-match targeting for GSC query "custom breathing timer" (#78.0).
+
 
 --------------------------------------------------------------------------------
 6. RE-INDEXING ACTION CHECKLIST (GOOGLE SEARCH CONSOLE)
