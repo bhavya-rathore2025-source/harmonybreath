@@ -123,9 +123,31 @@ if (!basePath) {
         closeMenu();
       }
     });
+
+    // Stop all audio when user clicks a language link
+    dropdown.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        try {
+          if (typeof (window as any).hbStopAllMusic === 'function') {
+            (window as any).hbStopAllMusic();
+          }
+        } catch {
+          // ignore
+        }
+      });
+    });
   }
 
   // Setup on initial load and page changes
   setupLangPicker();
   document.addEventListener('astro:page-load', setupLangPicker);
+  document.addEventListener('astro:before-preparation', () => {
+    try {
+      if (typeof (window as any).hbStopAllMusic === 'function') {
+        (window as any).hbStopAllMusic();
+      }
+    } catch {
+      // ignore
+    }
+  });
 </script>

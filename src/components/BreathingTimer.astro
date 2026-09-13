@@ -41,6 +41,8 @@ const timerI18nData: Record<SupportedLanguage, {
   btnResume: string;
   btnReset: string;
   btnMusic: string;
+  btnQuitMusic: string;
+  musicStopped: string;
   btnStartNew: string;
   btnFinishBreaths: string;
   btnInhaleRecovery: string;
@@ -78,6 +80,8 @@ const timerI18nData: Record<SupportedLanguage, {
     btnResume: 'Resume',
     btnReset: 'Reset',
     btnMusic: 'Music',
+    btnQuitMusic: 'Quit Music',
+    musicStopped: 'Music Stopped',
     btnStartNew: 'Start New Session',
     btnFinishBreaths: 'Finish Breaths & Hold',
     btnInhaleRecovery: 'Inhale Recovery',
@@ -115,6 +119,8 @@ const timerI18nData: Record<SupportedLanguage, {
     btnResume: 'Continuar',
     btnReset: 'Reiniciar',
     btnMusic: 'Música',
+    btnQuitMusic: 'Detener Música',
+    musicStopped: 'Música detenida',
     btnStartNew: 'Nueva Sesión',
     btnFinishBreaths: 'Terminar e Iniciar Retención',
     btnInhaleRecovery: 'Inhalar Recuperación',
@@ -152,6 +158,8 @@ const timerI18nData: Record<SupportedLanguage, {
     btnResume: 'Fortsetzen',
     btnReset: 'Zurücksetzen',
     btnMusic: 'Musik',
+    btnQuitMusic: 'Musik Beenden',
+    musicStopped: 'Musik beendet',
     btnStartNew: 'Neue Sitzung',
     btnFinishBreaths: 'Atemzüge beenden & Halten',
     btnInhaleRecovery: 'Erholungsatemzug',
@@ -189,6 +197,8 @@ const timerI18nData: Record<SupportedLanguage, {
     btnResume: 'Reprendre',
     btnReset: 'Réinitialiser',
     btnMusic: 'Musique',
+    btnQuitMusic: 'Arrêter Musique',
+    musicStopped: 'Musique arrêtée',
     btnStartNew: 'Nouvelle Séance',
     btnFinishBreaths: 'Passer à l’Apnée',
     btnInhaleRecovery: 'Inspirer Récupération',
@@ -226,6 +236,8 @@ const timerI18nData: Record<SupportedLanguage, {
     btnResume: 'Continuar',
     btnReset: 'Reiniciar',
     btnMusic: 'Música',
+    btnQuitMusic: 'Parar Música',
+    musicStopped: 'Música parada',
     btnStartNew: 'Nova Sessão',
     btnFinishBreaths: 'Finalizar e Segurar sem Ar',
     btnInhaleRecovery: 'Inalar Recuperação',
@@ -263,6 +275,8 @@ const timerI18nData: Record<SupportedLanguage, {
     btnResume: '再開',
     btnReset: 'リセット',
     btnMusic: '音楽',
+    btnQuitMusic: '音楽を停止',
+    musicStopped: '音楽停止',
     btnStartNew: '新しいセッション',
     btnFinishBreaths: '息止め（リテンション）へ',
     btnInhaleRecovery: '回復の深呼吸へ',
@@ -300,6 +314,8 @@ const timerI18nData: Record<SupportedLanguage, {
     btnResume: 'Riprendi',
     btnReset: 'Ripristina',
     btnMusic: 'Musica',
+    btnQuitMusic: 'Ferma Musica',
+    musicStopped: 'Musica fermata',
     btnStartNew: 'Nuova Sessione',
     btnFinishBreaths: 'Concludi e Trattieni',
     btnInhaleRecovery: 'Inspira Recupero',
@@ -448,6 +464,19 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
         </svg>
         <span>{currentI18n.btnMusic}</span>
       </button>
+
+      <!-- Quit Music Button -->
+      <button
+        id="btn-quit-music"
+        type="button"
+        class="flex items-center gap-2 px-4 sm:px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-rose-400 hover:border-rose-500/30 hover:bg-neutral-800 text-xs font-mono transition-all cursor-pointer group"
+        title={currentI18n.btnQuitMusic}
+      >
+        <svg class="w-4 h-4 text-rose-400/80 group-hover:text-rose-400 shrink-0 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+          <rect x="6" y="6" width="12" height="12" rx="2"/>
+        </svg>
+        <span id="label-quit-music">{currentI18n.btnQuitMusic}</span>
+      </button>
     </div>
   </div>
 </section>
@@ -523,6 +552,7 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
   }
 
   function playBackgroundMusic() {
+    if (isMusicStopped) return;
     const filePath = getSelectedMusicFilePath();
     if (filePath) {
       audioPlayer.playMusicTrack(
@@ -570,6 +600,9 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
   const labelSkipPhase = document.getElementById('label-skip-phase');
   const btnRestart = document.getElementById('btn-restart');
   const btnMusic = document.getElementById('btn-music');
+  const btnQuitMusic = document.getElementById('btn-quit-music');
+  const labelQuitMusic = document.getElementById('label-quit-music');
+  let isMusicStopped = false;
 
   const customModal = document.getElementById('custom-modal');
   const customSettingsBtn = document.getElementById('custom-settings-btn');
@@ -698,6 +731,20 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
     }
   });
 
+  btnQuitMusic?.addEventListener('click', () => {
+    isMusicStopped = true;
+    audioPlayer.stopAll();
+    if (labelQuitMusic) {
+      const originalText = labelQuitMusic.textContent;
+      labelQuitMusic.textContent = t.musicStopped || 'Music Stopped';
+      btnQuitMusic.classList.add('text-rose-400', 'border-rose-500/50');
+      setTimeout(() => {
+        labelQuitMusic.textContent = originalText;
+        btnQuitMusic.classList.remove('text-rose-400', 'border-rose-500/50');
+      }, 1600);
+    }
+  });
+
   function startSession() {
     currentRound = 1;
     targetHoldSeconds = baseHoldSeconds;
@@ -720,7 +767,9 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
 
   function resumeSession() {
     isPaused = false;
-    audioPlayer.resume();
+    if (!isMusicStopped) {
+      audioPlayer.resume();
+    }
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.add('hidden');
       iconPause.classList.remove('hidden');
@@ -1030,6 +1079,7 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
 
   function resetSession() {
     resetTimers();
+    isMusicStopped = false;
     phase = 'IDLE';
     isPaused = false;
     breathCount = 0;
@@ -1074,8 +1124,13 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
 
   // Listen for music selection changes and apply immediately if session is active
   window.addEventListener('hb_music_updated', () => {
-    if (phase !== 'IDLE' && phase !== 'COMPLETE') {
+    isMusicStopped = false;
+    if (phase !== 'IDLE' && phase !== 'COMPLETE' && !isPaused) {
       playBackgroundMusic();
     }
+  });
+
+  window.addEventListener('hb_music_quit', () => {
+    isMusicStopped = true;
   });
 </script>

@@ -23,6 +23,8 @@ const relaxTimerI18n: Record<SupportedLanguage, {
   btnResume: string;
   btnReset: string;
   btnMusic: string;
+  btnQuitMusic: string;
+  musicStopped: string;
   btnSkipPhase: string;
   btnStartAgain: string;
   inWord: string;
@@ -52,6 +54,8 @@ const relaxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Resume',
     btnReset: 'Reset',
     btnMusic: 'Music',
+    btnQuitMusic: 'Quit Music',
+    musicStopped: 'Music Stopped',
     btnSkipPhase: 'Skip Phase',
     btnStartAgain: 'Start Again',
     inWord: 'In',
@@ -99,6 +103,8 @@ const relaxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Continuar',
     btnReset: 'Reiniciar',
     btnMusic: 'Música',
+    btnQuitMusic: 'Detener Música',
+    musicStopped: 'Música detenida',
     btnSkipPhase: 'Saltar Fase',
     btnStartAgain: 'Comenzar de Nuevo',
     inWord: 'Inhala',
@@ -146,6 +152,8 @@ const relaxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Fortsetzen',
     btnReset: 'Zurücksetzen',
     btnMusic: 'Musik',
+    btnQuitMusic: 'Musik Beenden',
+    musicStopped: 'Musik beendet',
     btnSkipPhase: 'Phase überspringen',
     btnStartAgain: 'Erneut starten',
     inWord: 'Ein',
@@ -193,6 +201,8 @@ const relaxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Reprendre',
     btnReset: 'Réinitialiser',
     btnMusic: 'Musique',
+    btnQuitMusic: 'Arrêter Musique',
+    musicStopped: 'Musique arrêtée',
     btnSkipPhase: 'Passer l’étape',
     btnStartAgain: 'Recommencer',
     inWord: 'Inspire',
@@ -240,6 +250,8 @@ const relaxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Continuar',
     btnReset: 'Reiniciar',
     btnMusic: 'Música',
+    btnQuitMusic: 'Parar Música',
+    musicStopped: 'Música parada',
     btnSkipPhase: 'Pular Fase',
     btnStartAgain: 'Iniciar Novamente',
     inWord: 'Inspire',
@@ -287,6 +299,8 @@ const relaxTimerI18n: Record<SupportedLanguage, {
     btnResume: '再開',
     btnReset: 'リセット',
     btnMusic: '音楽',
+    btnQuitMusic: '音楽を停止',
+    musicStopped: '音楽停止',
     btnSkipPhase: 'フェーズをスキップ',
     btnStartAgain: 'もう一度開始',
     inWord: '吸気',
@@ -334,6 +348,8 @@ const relaxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Riprendi',
     btnReset: 'Ripristina',
     btnMusic: 'Musica',
+    btnQuitMusic: 'Ferma Musica',
+    musicStopped: 'Musica fermata',
     btnSkipPhase: 'Salta Fase',
     btnStartAgain: 'Ricomincia',
     inWord: 'Inspira',
@@ -505,6 +521,18 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
         </svg>
         <span>{currentI18n.btnMusic}</span>
       </button>
+
+      <button
+        id="relax-btn-quit-music"
+        type="button"
+        class="flex items-center gap-2 px-4 sm:px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-rose-400 hover:border-rose-500/30 hover:bg-neutral-800 text-xs font-mono transition-all cursor-pointer group"
+        title={currentI18n.btnQuitMusic}
+      >
+        <svg class="w-4 h-4 text-rose-400/80 group-hover:text-rose-400 shrink-0 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+          <rect x="6" y="6" width="12" height="12" rx="2"/>
+        </svg>
+        <span id="relax-label-quit-music">{currentI18n.btnQuitMusic}</span>
+      </button>
     </div>
   </div>
 </section>
@@ -560,6 +588,9 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
   const btnSkipPhase = document.getElementById('relax-btn-skip-phase');
   const btnRestart = document.getElementById('relax-btn-restart');
   const btnMusic = document.getElementById('relax-btn-music');
+  const btnQuitMusic = document.getElementById('relax-btn-quit-music');
+  const labelQuitMusic = document.getElementById('relax-label-quit-music');
+  let isMusicStopped = false;
 
   const customModal = document.getElementById('relax-custom-modal');
   const customSettingsBtn = document.getElementById('relax-custom-settings-btn');
@@ -802,7 +833,9 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
 
     if (state === 'PAUSED') {
       state = 'RUNNING';
-      audioPlayer.resume();
+      if (!isMusicStopped) {
+        audioPlayer.resume();
+      }
       tickTimer = setInterval(tick, 200);
       updateUI();
       return;
@@ -815,7 +848,7 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
     phaseElapsed = 0;
 
     const musicPath = getSelectedMusicFilePath();
-    if (musicPath) {
+    if (musicPath && !isMusicStopped) {
       audioPlayer.playMusicTrack(
         musicPath,
         audioPlayer.isLoopSong(),
@@ -832,6 +865,7 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
 
   function resetSession() {
     state = 'IDLE';
+    isMusicStopped = false;
     clearInterval(tickTimer);
     tickTimer = null;
     currentCycle = 1;
@@ -854,6 +888,20 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
   btnMusic?.addEventListener('click', () => {
     if ((window as any).openRelaxMusicModal) {
       (window as any).openRelaxMusicModal();
+    }
+  });
+
+  btnQuitMusic?.addEventListener('click', () => {
+    isMusicStopped = true;
+    audioPlayer.stopAll();
+    if (labelQuitMusic) {
+      const originalText = labelQuitMusic.textContent;
+      labelQuitMusic.textContent = i18n.musicStopped || 'Music Stopped';
+      btnQuitMusic.classList.add('text-rose-400', 'border-rose-500/50');
+      setTimeout(() => {
+        labelQuitMusic.textContent = originalText;
+        btnQuitMusic.classList.remove('text-rose-400', 'border-rose-500/50');
+      }, 1600);
     }
   });
 
@@ -936,6 +984,7 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
   });
 
   window.addEventListener('hb_relax_music_updated', () => {
+    isMusicStopped = false;
     if (state === 'RUNNING') {
       const musicPath = getSelectedMusicFilePath();
       if (musicPath) {
@@ -944,6 +993,10 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
         audioPlayer.stop();
       }
     }
+  });
+
+  window.addEventListener('hb_music_quit', () => {
+    isMusicStopped = true;
   });
 
   updateUI();

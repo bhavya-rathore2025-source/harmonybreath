@@ -23,6 +23,8 @@ const sighTimerI18n: Record<SupportedLanguage, {
   btnReset: string;
   btnSkipPhase: string;
   btnMusic: string;
+  btnQuitMusic: string;
+  musicStopped: string;
   inhalePill: string;
   sipPill: string;
   exhalePill: string;
@@ -50,6 +52,8 @@ const sighTimerI18n: Record<SupportedLanguage, {
     btnReset: 'Reset',
     btnSkipPhase: 'Skip Phase',
     btnMusic: 'Music',
+    btnQuitMusic: 'Quit Music',
+    musicStopped: 'Music Stopped',
     inhalePill: 'Inhale',
     sipPill: 'Sharp Sip',
     exhalePill: 'Exhale',
@@ -95,6 +99,8 @@ const sighTimerI18n: Record<SupportedLanguage, {
     btnReset: 'Reiniciar',
     btnSkipPhase: 'Saltar Fase',
     btnMusic: 'Música',
+    btnQuitMusic: 'Detener Música',
+    musicStopped: 'Música detenida',
     inhalePill: 'Inhala',
     sipPill: 'Sorbo Corto',
     exhalePill: 'Exhala',
@@ -140,6 +146,8 @@ const sighTimerI18n: Record<SupportedLanguage, {
     btnReset: 'Zurücksetzen',
     btnSkipPhase: 'Phase überspringen',
     btnMusic: 'Musik',
+    btnQuitMusic: 'Musik Beenden',
+    musicStopped: 'Musik beendet',
     inhalePill: 'Einatmen',
     sipPill: 'Nachzug',
     exhalePill: 'Ausatmen',
@@ -185,6 +193,8 @@ const sighTimerI18n: Record<SupportedLanguage, {
     btnReset: 'Réinitialiser',
     btnSkipPhase: 'Passer la phase',
     btnMusic: 'Musique',
+    btnQuitMusic: 'Arrêter Musique',
+    musicStopped: 'Musique arrêtée',
     inhalePill: 'Inspiration',
     sipPill: 'Second souffle',
     exhalePill: 'Expiration',
@@ -230,6 +240,8 @@ const sighTimerI18n: Record<SupportedLanguage, {
     btnReset: 'Reiniciar',
     btnSkipPhase: 'Pular Fase',
     btnMusic: 'Música',
+    btnQuitMusic: 'Parar Música',
+    musicStopped: 'Música parada',
     inhalePill: 'Inalar',
     sipPill: 'Gole Extra',
     exhalePill: 'Exalar',
@@ -275,6 +287,8 @@ const sighTimerI18n: Record<SupportedLanguage, {
     btnReset: 'リセット',
     btnSkipPhase: 'スキップ',
     btnMusic: '音楽',
+    btnQuitMusic: '音楽を停止',
+    musicStopped: '音楽停止',
     inhalePill: '吸う',
     sipPill: '追い吸い',
     exhalePill: '吐く',
@@ -320,6 +334,8 @@ const sighTimerI18n: Record<SupportedLanguage, {
     btnReset: 'Ripristina',
     btnSkipPhase: 'Salta Fase',
     btnMusic: 'Musica',
+    btnQuitMusic: 'Ferma Musica',
+    musicStopped: 'Musica fermata',
     inhalePill: 'Inspira',
     sipPill: 'Sorso Extra',
     exhalePill: 'Espira',
@@ -489,6 +505,18 @@ const currentI18n = sighTimerI18n[lang] || sighTimerI18n.en;
         </svg>
         <span>{currentI18n.btnMusic}</span>
       </button>
+
+      <button
+        id="sigh-btn-quit-music"
+        type="button"
+        class="flex items-center gap-2 px-4 sm:px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-rose-400 hover:border-rose-500/30 hover:bg-neutral-800 text-xs font-mono transition-all cursor-pointer group"
+        title={currentI18n.btnQuitMusic}
+      >
+        <svg class="w-4 h-4 text-rose-400/80 group-hover:text-rose-400 shrink-0 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+          <rect x="6" y="6" width="12" height="12" rx="2"/>
+        </svg>
+        <span id="sigh-label-quit-music">{currentI18n.btnQuitMusic}</span>
+      </button>
     </div>
   </div>
 </section>
@@ -546,6 +574,9 @@ const currentI18n = sighTimerI18n[lang] || sighTimerI18n.en;
   const btnSkipPhase = document.getElementById('sigh-btn-skip-phase');
   const btnRestart = document.getElementById('sigh-btn-restart');
   const btnMusic = document.getElementById('sigh-btn-music');
+  const btnQuitMusic = document.getElementById('sigh-btn-quit-music');
+  const labelQuitMusic = document.getElementById('sigh-label-quit-music');
+  let isMusicStopped = false;
 
   const customModal = document.getElementById('sigh-custom-modal');
   const customSettingsBtn = document.getElementById('sigh-custom-settings-btn');
@@ -793,7 +824,9 @@ const currentI18n = sighTimerI18n[lang] || sighTimerI18n.en;
 
     if (state === 'PAUSED') {
       state = 'RUNNING';
-      audioPlayer.resume();
+      if (!isMusicStopped) {
+        audioPlayer.resume();
+      }
       tickTimer = setInterval(tick, 200);
       updateUI();
       return;
@@ -806,7 +839,7 @@ const currentI18n = sighTimerI18n[lang] || sighTimerI18n.en;
     phaseElapsed = 0;
 
     const musicPath = getSelectedMusicFilePath();
-    if (musicPath) {
+    if (musicPath && !isMusicStopped) {
       audioPlayer.playMusicTrack(
         musicPath,
         audioPlayer.isLoopSong(),
@@ -823,6 +856,7 @@ const currentI18n = sighTimerI18n[lang] || sighTimerI18n.en;
 
   function resetSession() {
     state = 'IDLE';
+    isMusicStopped = false;
     clearInterval(tickTimer);
     tickTimer = null;
     currentCycle = 1;
@@ -845,6 +879,20 @@ const currentI18n = sighTimerI18n[lang] || sighTimerI18n.en;
   btnMusic?.addEventListener('click', () => {
     if ((window as any).openSighMusicModal) {
       (window as any).openSighMusicModal();
+    }
+  });
+
+  btnQuitMusic?.addEventListener('click', () => {
+    isMusicStopped = true;
+    audioPlayer.stopAll();
+    if (labelQuitMusic) {
+      const originalText = labelQuitMusic.textContent;
+      labelQuitMusic.textContent = i18n.musicStopped || 'Music Stopped';
+      btnQuitMusic.classList.add('text-rose-400', 'border-rose-500/50');
+      setTimeout(() => {
+        labelQuitMusic.textContent = originalText;
+        btnQuitMusic.classList.remove('text-rose-400', 'border-rose-500/50');
+      }, 1600);
     }
   });
 
@@ -935,6 +983,7 @@ const currentI18n = sighTimerI18n[lang] || sighTimerI18n.en;
   });
 
   window.addEventListener('hb_sigh_music_updated', () => {
+    isMusicStopped = false;
     if (state === 'RUNNING') {
       const musicPath = getSelectedMusicFilePath();
       if (musicPath) {
@@ -943,6 +992,10 @@ const currentI18n = sighTimerI18n[lang] || sighTimerI18n.en;
         audioPlayer.stop();
       }
     }
+  });
+
+  window.addEventListener('hb_music_quit', () => {
+    isMusicStopped = true;
   });
 
   updateUI();

@@ -102,6 +102,8 @@ export interface NadiShodhanaContent {
     btnSkip: string;
     btnReset: string;
     btnMusic: string;
+    btnQuitMusic: string;
+    musicStopped: string;
     phaseLabels: {
       leftInhale: string;
       hold: string;
@@ -317,6 +319,8 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
       btnSkip: 'Skip Step',
       btnReset: 'Reset',
       btnMusic: 'Music',
+      btnQuitMusic: 'Quit Music',
+      musicStopped: 'Music Stopped',
       phaseLabels: {
         leftInhale: 'LEFT INHALE',
         hold: 'RETENTION HOLD',
@@ -555,6 +559,8 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
       btnSkip: 'Saltar Paso',
       btnReset: 'Reiniciar',
       btnMusic: 'Música',
+      btnQuitMusic: 'Detener Música',
+      musicStopped: 'Música detenida',
       phaseLabels: {
         leftInhale: 'INHALAR IZQUIERDA',
         hold: 'RETENCIÓN',
@@ -793,6 +799,8 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
       btnSkip: 'Schritt Überspringen',
       btnReset: 'Zurücksetzen',
       btnMusic: 'Musik',
+      btnQuitMusic: 'Musik Beenden',
+      musicStopped: 'Musik beendet',
       phaseLabels: {
         leftInhale: 'LINKS EINATMEN',
         hold: 'ATEM HALTEN',
@@ -1031,6 +1039,8 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
       btnSkip: 'Passer l’Étape',
       btnReset: 'Réinitialiser',
       btnMusic: 'Musique',
+      btnQuitMusic: 'Arrêter Musique',
+      musicStopped: 'Musique arrêtée',
       phaseLabels: {
         leftInhale: 'INSPIRE GAUCHE',
         hold: 'RÉTENTION',
@@ -1269,6 +1279,8 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
       btnSkip: 'Pular Etapa',
       btnReset: 'Redefinir',
       btnMusic: 'Música',
+      btnQuitMusic: 'Parar Música',
+      musicStopped: 'Música parada',
       phaseLabels: {
         leftInhale: 'INALAR ESQUERDA',
         hold: 'RETENÇÃO',
@@ -1507,6 +1519,8 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
       btnSkip: 'スキップ',
       btnReset: 'リセット',
       btnMusic: '音楽',
+      btnQuitMusic: '音楽を停止',
+      musicStopped: '音楽停止',
       phaseLabels: {
         leftInhale: '左から吸う',
         hold: '息を止める',
@@ -1745,6 +1759,8 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
       btnSkip: 'Salta Passo',
       btnReset: 'Ripristina',
       btnMusic: 'Musica',
+      btnQuitMusic: 'Ferma Musica',
+      musicStopped: 'Musica fermata',
       phaseLabels: {
         leftInhale: 'INSPIRA SINISTRA',
         hold: 'TRATTIENI',

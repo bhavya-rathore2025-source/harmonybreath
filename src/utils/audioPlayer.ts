@@ -160,6 +160,7 @@ class ResilientAudioPlayer {
 
     try {
       this.currentBreathSound = new Audio(filePath);
+      this.registerAudioElement(this.currentBreathSound);
       this.currentBreathSound.volume = this.config.breathSoundVolume;
       this.currentBreathSound.muted = this.isBreathSoundMuted;
       
@@ -190,6 +191,8 @@ class ResilientAudioPlayer {
       try {
         this.currentBreathSound.pause();
         this.currentBreathSound.currentTime = 0;
+        this.currentBreathSound.src = '';
+        this.currentBreathSound.load();
       } catch {
         // Ignore errors
       }
@@ -221,6 +224,7 @@ class ResilientAudioPlayer {
 
     try {
       const audio = new Audio(filePath);
+      this.registerAudioElement(audio);
       audio.volume = this.config.volume;
       audio.muted = this.isMuted;
       audio.loop = loop;
@@ -251,6 +255,7 @@ class ResilientAudioPlayer {
 
     try {
       const chime = new Audio(chimePath);
+      this.registerAudioElement(chime);
       chime.volume = this.config.volume;
       chime.muted = this.isMuted;
       await chime.play();
@@ -288,6 +293,8 @@ class ResilientAudioPlayer {
       try {
         this.currentAudio.pause();
         this.currentAudio.currentTime = 0;
+        this.currentAudio.src = '';
+        this.currentAudio.load();
       } catch {
         // Ignore pause errors
       }
@@ -352,6 +359,7 @@ class ResilientAudioPlayer {
 
     try {
       const audio = new Audio(filePath);
+      this.registerAudioElement(audio);
       audio.volume = this.config.volume;
       audio.muted = this.isMuted;
       audio.loop = shouldLoop;
@@ -422,6 +430,8 @@ class ResilientAudioPlayer {
       try {
         this.currentPreviewAudio.pause();
         this.currentPreviewAudio.currentTime = 0;
+        this.currentPreviewAudio.src = '';
+        this.currentPreviewAudio.load();
       } catch {
         // Ignore pause errors
       }
@@ -453,6 +463,7 @@ class ResilientAudioPlayer {
 
     try {
       this.currentPreviewAudio = new Audio(filePath);
+      this.registerAudioElement(this.currentPreviewAudio);
       this.currentPreviewAudio.volume = this.config.volume;
       this.currentPreviewAudio.muted = this.isMuted;
       this.currentPreviewAudio.loop = false;
@@ -461,6 +472,60 @@ class ResilientAudioPlayer {
       // Ignore autoplay errors for preview
     }
   }
+
+  /**
+   * Keep a global registry of all audio elements so any dangling or orphaned audio can be killed instantly
+   */
+  private registerAudioElement(audio: HTMLAudioElement) {
+    if (typeof window !== 'undefined') {
+      if (!Array.isArray((window as any).__hb_audio_registry)) {
+        (window as any).__hb_audio_registry = [];
+      }
+      (window as any).__hb_audio_registry.push(audio);
+    }
+  }
+
+  /**
+   * Instantly stop and terminate all audio across music, breath sounds, chimes, and previews
+   */
+  public stopAll(): void {
+    this.stop();
+    this.stopPreview();
+    this.stopBreathSound();
+
+    if (typeof window !== 'undefined') {
+      const audioList = (window as any).__hb_audio_registry as HTMLAudioElement[] | undefined;
+      if (Array.isArray(audioList)) {
+        for (const a of audioList) {
+          try {
+            a.pause();
+            a.currentTime = 0;
+            a.src = '';
+            a.load();
+          } catch {
+            // ignore
+          }
+        }
+        (window as any).__hb_audio_registry = [];
+      }
+
+      window.dispatchEvent(new CustomEvent('hb_music_quit'));
+    }
+  }
 }
 
 export const audioPlayer = new ResilientAudioPlayer();
+
+if (typeof window !== 'undefined') {
+  // Listen to beforeunload and pagehide so page transitions / language changes / refreshes always kill audio
+  window.addEventListener('beforeunload', () => {
+    audioPlayer.stopAll();
+  });
+  window.addEventListener('pagehide', () => {
+    audioPlayer.stopAll();
+  });
+
+  (window as any).hbStopAllMusic = () => {
+    audioPlayer.stopAll();
+  };
+}

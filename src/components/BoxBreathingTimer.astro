@@ -25,6 +25,8 @@ const boxTimerI18n: Record<SupportedLanguage, {
   btnResume: string;
   btnReset: string;
   btnMusic: string;
+  btnQuitMusic: string;
+  musicStopped: string;
   btnStartNew: string;
   btnSkipPhase: string;
   nextCycle: string;
@@ -55,6 +57,8 @@ const boxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Resume',
     btnReset: 'Reset',
     btnMusic: 'Music',
+    btnQuitMusic: 'Quit Music',
+    musicStopped: 'Music Stopped',
     btnStartNew: 'Start New Session',
     btnSkipPhase: 'Skip Phase',
     nextCycle: 'Next Cycle',
@@ -85,6 +89,8 @@ const boxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Continuar',
     btnReset: 'Reiniciar',
     btnMusic: 'Música',
+    btnQuitMusic: 'Detener Música',
+    musicStopped: 'Música detenida',
     btnStartNew: 'Nueva Sesión',
     btnSkipPhase: 'Saltar Fase',
     nextCycle: 'Siguiente Ciclo',
@@ -115,6 +121,8 @@ const boxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Fortsetzen',
     btnReset: 'Neu starten',
     btnMusic: 'Musik',
+    btnQuitMusic: 'Musik Beenden',
+    musicStopped: 'Musik beendet',
     btnStartNew: 'Neue Sitzung',
     btnSkipPhase: 'Phase überspringen',
     nextCycle: 'Nächster Zyklus',
@@ -145,6 +153,8 @@ const boxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Reprendre',
     btnReset: 'Recommencer',
     btnMusic: 'Musique',
+    btnQuitMusic: 'Arrêter Musique',
+    musicStopped: 'Musique arrêtée',
     btnStartNew: 'Nouvelle Séance',
     btnSkipPhase: 'Passer la phase',
     nextCycle: 'Cycle Suivant',
@@ -175,6 +185,8 @@ const boxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Continuar',
     btnReset: 'Reiniciar',
     btnMusic: 'Música',
+    btnQuitMusic: 'Parar Música',
+    musicStopped: 'Música parada',
     btnStartNew: 'Nova Sessão',
     btnSkipPhase: 'Pular Fase',
     nextCycle: 'Próximo Ciclo',
@@ -205,6 +217,8 @@ const boxTimerI18n: Record<SupportedLanguage, {
     btnResume: '再開',
     btnReset: 'やり直す',
     btnMusic: '音楽',
+    btnQuitMusic: '音楽を停止',
+    musicStopped: '音楽停止',
     btnStartNew: '新しいセッション',
     btnSkipPhase: 'フェーズをスキップ',
     nextCycle: '次のサイクル',
@@ -235,6 +249,8 @@ const boxTimerI18n: Record<SupportedLanguage, {
     btnResume: 'Riprendi',
     btnReset: 'Riavvia',
     btnMusic: 'Musica',
+    btnQuitMusic: 'Ferma Musica',
+    musicStopped: 'Musica fermata',
     btnStartNew: 'Nuova Sessione',
     btnSkipPhase: 'Salta Fase',
     nextCycle: 'Prossimo Ciclo',
@@ -387,6 +403,18 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
         </svg>
         <span>{currentI18n.btnMusic}</span>
       </button>
+
+      <button
+        id="box-btn-quit-music"
+        type="button"
+        class="focus-ring flex items-center gap-2 px-4 sm:px-5 py-3.5 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-400 hover:text-rose-400 hover:border-rose-500/30 hover:bg-neutral-800 text-xs font-mono transition-all cursor-pointer group"
+        title={currentI18n.btnQuitMusic}
+      >
+        <svg class="w-4 h-4 text-rose-400/80 group-hover:text-rose-400 shrink-0 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+          <rect x="6" y="6" width="12" height="12" rx="2"/>
+        </svg>
+        <span id="box-label-quit-music">{currentI18n.btnQuitMusic}</span>
+      </button>
     </div>
   </div>
 </section>
@@ -455,6 +483,9 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
   const customCyclesVal = document.getElementById('box-custom-cycles-val');
 
   const btnMusic = document.getElementById('box-btn-music');
+  const btnQuitMusic = document.getElementById('box-btn-quit-music');
+  const labelQuitMusic = document.getElementById('box-label-quit-music');
+  let isMusicStopped = false;
 
   const phaseConfig = t.phases || {
     INHALE: { label: 'Phase 1: Inhale', action: 'Breathe In Slowly', glow: 'from-amber-500/20', labelClass: 'text-amber-400', haloScale: '1.25' },
@@ -571,6 +602,20 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
     (window as any).openBoxMusicModal?.();
   });
 
+  btnQuitMusic?.addEventListener('click', () => {
+    isMusicStopped = true;
+    audioPlayer.stopAll();
+    if (labelQuitMusic) {
+      const originalText = labelQuitMusic.textContent;
+      labelQuitMusic.textContent = t.musicStopped || 'Music Stopped';
+      btnQuitMusic.classList.add('text-rose-400', 'border-rose-500/50');
+      setTimeout(() => {
+        labelQuitMusic.textContent = originalText;
+        btnQuitMusic.classList.remove('text-rose-400', 'border-rose-500/50');
+      }, 1600);
+    }
+  });
+
   window.addEventListener('hb_box_music_updated', () => {
     if (phase === 'IDLE' || phase === 'COMPLETE') return;
     const filePath = getSelectedMusicFilePath();
@@ -591,6 +636,7 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
   }
 
   function playBackgroundMusic() {
+    if (isMusicStopped) return;
     const filePath = getSelectedMusicFilePath();
     if (filePath) {
       audioPlayer.playMusicTrack(
@@ -619,7 +665,9 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
 
   function resumeSession() {
     isPaused = false;
-    audioPlayer.resume();
+    if (!isMusicStopped) {
+      audioPlayer.resume();
+    }
     if (iconPlay && iconPause && labelMainAction) {
       iconPlay.classList.add('hidden');
       iconPause.classList.remove('hidden');
@@ -748,6 +796,7 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
 
   function resetSession() {
     resetTimers();
+    isMusicStopped = false;
     phase = 'IDLE';
     isPaused = false;
     currentPhaseIndex = 0;
@@ -786,4 +835,8 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
   const activePresetBtn = document.querySelector(`.box-preset-btn[data-box-preset="${currentPreset}"]`);
   activePresetBtn?.classList.add('is-active');
   activePresetBtn?.setAttribute('aria-pressed', 'true');
+
+  window.addEventListener('hb_music_quit', () => {
+    isMusicStopped = true;
+  });
 </script>
