@@ -330,8 +330,8 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
         answer: 'Oui, c’est l’outil naturel le plus rapide et éprouvé pour désamorcer les crises d’angoisse. Elle bloque l’hyperventilation et régule le système nerveux en stimulant le nerf vague.',
       },
       {
-        question: 'À quelle fréquence doit-on la pratiquer ?',
-        answer: 'Pratiquer 5 à 10 minutes, 2 à 3 fois par jour (au réveil, en pause au travail et au coucher) suffit pour rééduquer durablement sa respiration quotidienne.',
+        question: 'Combien de temps par jour pratiquer la respiration diaphragmatique ?',
+        answer: 'Pratiquer 5 à 10 minutes, 2 à 3 fois par jour (au réveil, lors d’une pause et au coucher) suffit pour rééduquer durablement sa respiration et réduire le stress.',
       },
       {
         question: 'Pourquoi ma poitrine se lève-t-elle au lieu de mon ventre ?',

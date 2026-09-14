@@ -145,7 +145,7 @@ const breadcrumb = Astro.props.breadcrumb;
             "@type": "ListItem",
             "position": i + 1,
             "name": item.name,
-            "item": `https://harmonybreath.com${item.url}`
+            "item": new URL(item.url, siteUrl).href
           }))
         })}
       />

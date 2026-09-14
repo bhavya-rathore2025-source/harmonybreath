@@ -68,11 +68,6 @@ const pageSchemaData = [
     "description": "Free, privacy-first guided breathing timers and breathwork platform.",
   },
 ];
-
-const breadcrumb = [
-  { name: homeNames[lang] || 'Home', url: homeUrl },
-  { name: content.breadcrumbName, url: canonicalUrl },
-];
 ---
 
 <Layout
@@ -84,7 +79,6 @@ const breadcrumb = [
   imageAlt={`HarmonyBreath — ${content.breadcrumbName}`}
   ogType="article"
   schemaData={pageSchemaData}
-  breadcrumb={breadcrumb}
   lang={lang}
   hreflangLinks={hreflangLinks}
   robots="noindex, follow"

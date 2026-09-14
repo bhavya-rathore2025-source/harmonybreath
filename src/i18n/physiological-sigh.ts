@@ -162,8 +162,8 @@ export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighC
     faqsSubtitle: 'Everything you need to know about the Physiological Sigh & Cyclic Sighing',
     faqs: [
       {
-        question: 'What is the Huberman psychological sigh?',
-        answer: 'The physiological sigh—frequently called the psychological sigh—is a fast-acting stress reduction technique popularized by neuroscientist Dr. Andrew Huberman. It consists of two quick inhales through the nose followed by one long, relaxing exhale through the mouth to rapidly lower autonomic arousal and restore calm.',
+        question: 'What is the Huberman cyclic sighing?',
+        answer: 'Cyclic sighing is an evidence-based breathwork protocol popularized by Stanford neurobiologist Dr. Andrew Huberman. In a landmark 2023 Stanford clinical trial led with Dr. David Spiegel, participants practiced 5 minutes of cyclic sighing daily—repeating two quick inhales through the nose (one deep breath followed by a sharp "sip" to fully reinflate collapsed alveoli) and a slow, extended exhale through the mouth. The study proved that cyclic sighing produces greater reductions in autonomic anxiety and larger improvements in positive mood than standard mindfulness meditation. You can use our guided timer above to practice the exact 5-minute Stanford protocol.',
       },
       {
         question: 'Does the physiological sigh actually work?',

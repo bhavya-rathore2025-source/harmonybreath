@@ -71,7 +71,7 @@ B. Second 24-Hour Snapshot (Upward Velocity):
    - "zwerchfellatmung" (German) jumped from #83 to #72.0 (+11 spots).
    - "respiration ventrale" (French) received 2 impressions at Position #77.5.
 
-C. Third 24-Hour Snapshot (September 12, 2026 - Today's Report):
+C. Third 24-Hour Snapshot (September 12, 2026):
    - "square breath"                | 0 Clicks | 2 Imp | Pos: #60.0 (Strong synonym cluster)
    - "metodo wim hof"               | 0 Clicks | 1 Imp | Pos: #44.0 (Spanish/Italian Top 50)
    - "respiración de wim hof"       | 0 Clicks | 1 Imp | Pos: #54.0 (Consistent Spanish demand)
@@ -81,6 +81,18 @@ C. Third 24-Hour Snapshot (September 12, 2026 - Today's Report):
    - "custom breathing timer"       | 0 Clicks | 1 Imp | Pos: #78.0 (HIGH INTENT tool feature query!)
    - "tecnica di respirazione 4-7-8" | 0 Clicks | 1 Imp | Pos: #80.0 (Italian breakthrough /it/)
    - "box breathing spanish pdf"    | 0 Clicks | 1 Imp | Pos: #92.0 (Downloadable/printable guide intent)
+
+D. Fourth 24-Hour Snapshot (September 14, 2026 - Latest Report):
+   - "nadi shodhana"                                    | 0 Clicks | 2 Imp | Pos: #70.0 (Core Pranayama keyword)
+   - "cyclic sighing"                                  | 0 Clicks | 2 Imp | Pos: #132.0 (Scientific/Huberman synonym)
+   - "wim holf"                                        | 0 Clicks | 1 Imp | Pos: #44.0 (Typo rank - Top 45)
+   - "método de wim hof"                               | 0 Clicks | 1 Imp | Pos: #47.0 (Spanish/Portuguese accent variant)
+   - "respirer par le ventre"                          | 0 Clicks | 1 Imp | Pos: #52.0 (French belly breathing - high position)
+   - "box breathing in spanish"                        | 0 Clicks | 1 Imp | Pos: #62.0 (Spanish / bilingual Box Breathing)
+   - "respiração quadrado"                             | 0 Clicks | 1 Imp | Pos: #63.0 (PORTUGUESE /pt/ BREAKTHROUGH!)
+   - "nadishodhan"                                     | 0 Clicks | 1 Imp | Pos: #65.0 (Alternative sanskrit/compound spelling)
+   - "physiological sigh timer"                        | 0 Clicks | 1 Imp | Pos: #67.0 (HIGH INTENT tool/timer query!)
+   - "respiration diaphragmatique combien de temps par jour" | 0 Clicks | 1 Imp | Pos: #77.0 (French long-tail question intent)
 
 
 --------------------------------------------------------------------------------
@@ -205,21 +217,35 @@ C. SPANISH & BILINGUAL SEARCHES:
      TO:   "Custom Breathing Timers & Presets"
    - Direct exact-match targeting for GSC query "custom breathing timer" (#78.0).
 
+10. FRENCH: Diaphragmatic Breathing (`src/i18n/diaphragmatic-breathing.ts`)
+    - Updated FAQ #2 Question:
+      FROM: "À quelle fréquence doit-on la pratiquer ?"
+      TO:   "Combien de temps par jour pratiquer la respiration diaphragmatique ?"
+    - Direct exact-match targeting for GSC query "respiration diaphragmatique combien de temps par jour" (#77.0).
+
+11. ENGLISH: Physiological Sigh (`src/i18n/physiological-sigh.ts`)
+    - Updated FAQ #1:
+      FROM: "What is the Huberman psychological sigh?"
+      TO:   "What is the Huberman cyclic sighing?"
+    - Upgraded answer with authoritative Stanford 2023 clinical trial details (Spiegel/Huberman),
+      explaining the double inhale mechanism, alveoli reinflation, and guided timer.
+    - Direct targeting for "cyclic sighing" (#132.0) and "physiological sigh timer" (#67.0).
+
 
 --------------------------------------------------------------------------------
 6. RE-INDEXING ACTION CHECKLIST (GOOGLE SEARCH CONSOLE)
 --------------------------------------------------------------------------------
 Whenever these changes are pushed to live production (main branch -> Cloudflare Pages), 
-request manual re-indexing for these 5 modified URLs in GSC (URL Inspection -> "Request Indexing"):
+request manual re-indexing for these URLs in GSC (URL Inspection -> "Request Indexing"):
 
-1. https://harmonybreath.com/de/diaphragmatic-breathing/
-2. https://harmonybreath.com/de/box-breathing/
-3. https://harmonybreath.com/de/physiological-sigh/
-4. https://harmonybreath.com/es/box-breathing/
-5. https://harmonybreath.com/fr/diaphragmatic-breathing/
-6. https://harmonybreath.com/4-7-8-breathing/
-7. https://harmonybreath.com/fr/4-7-8-breathing/
-8. https://harmonybreath.com/nadi-shodhana/
+1. https://harmonybreath.com/physiological-sigh/ (Updated FAQ 1 for Cyclic Sighing & Timer)
+2. https://harmonybreath.com/fr/diaphragmatic-breathing/ (Updated FAQ 2 for daily practice query)
+3. https://harmonybreath.com/ (Updated customizable timer hero subtitle & H3 card)
+4. https://harmonybreath.com/pt/box-breathing/ (Portuguese breakthrough query: respiração quadrado)
+5. https://harmonybreath.com/nadi-shodhana/ (Ranking for nadishodhan & nadi shodhana)
+6. https://harmonybreath.com/es/wim-hof/ (Ranking for método de wim hof)
+7. https://harmonybreath.com/de/diaphragmatic-breathing/
+8. https://harmonybreath.com/de/box-breathing/
 
 
 --------------------------------------------------------------------------------
