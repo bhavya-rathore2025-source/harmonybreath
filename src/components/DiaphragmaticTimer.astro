@@ -49,8 +49,15 @@ const currentI18n = diaTimerI18n[lang] || diaTimerI18n.en;
     </div>
 
     <div class="relative z-10 flex flex-col items-center justify-center my-6">
-      <div class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
-        <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+      <div
+        id="diaphragmatic-circle-action"
+        role="button"
+        tabindex="0"
+        aria-label="Start Session"
+        title="Start Session"
+        class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center cursor-pointer select-none rounded-full transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/50"
+      >
+        <svg class="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3" class="text-neutral-900" fill="none" />
           <circle
             id="diaphragmatic-progress-circle"
@@ -74,9 +81,9 @@ const currentI18n = diaTimerI18n[lang] || diaTimerI18n.en;
           </defs>
         </svg>
 
-        <div id="diaphragmatic-breath-halo" class="absolute w-44 h-44 rounded-full bg-gradient-to-tr from-teal-500/20 via-emerald-500/20 to-cyan-500/20 transition-transform duration-[4000ms] ease-in-out scale-100 flex items-center justify-center border border-white/5"></div>
+        <div id="diaphragmatic-breath-halo" class="absolute w-44 h-44 rounded-full bg-gradient-to-tr from-teal-500/20 via-emerald-500/20 to-cyan-500/20 transition-transform duration-[4000ms] ease-in-out scale-100 flex items-center justify-center border border-white/5 pointer-events-none"></div>
 
-        <div class="relative z-20 flex flex-col items-center text-center">
+        <div class="relative z-20 flex flex-col items-center text-center pointer-events-none">
           <div id="diaphragmatic-breath-action-text" class="text-xs font-mono uppercase tracking-widest text-teal-400 mb-1">
             Press Start
           </div>
@@ -223,6 +230,7 @@ const currentI18n = diaTimerI18n[lang] || diaTimerI18n.en;
   const phaseGlow = document.getElementById('diaphragmatic-phase-glow');
 
   const btnMainAction = document.getElementById('diaphragmatic-btn-main-action');
+  const diaphragmaticCircleAction = document.getElementById('diaphragmatic-circle-action');
   const labelMainAction = document.getElementById('diaphragmatic-label-main-action');
   const iconPlay = document.getElementById('diaphragmatic-icon-play');
   const iconPause = document.getElementById('diaphragmatic-icon-pause');
@@ -614,6 +622,28 @@ const currentI18n = diaTimerI18n[lang] || diaTimerI18n.en;
 
   // Event Listeners
   btnMainAction?.addEventListener('click', startSession);
+
+  diaphragmaticCircleAction?.addEventListener('click', () => {
+    btnMainAction?.click();
+  });
+
+  diaphragmaticCircleAction?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      btnMainAction?.click();
+    }
+  });
+
+  if (diaphragmaticCircleAction && labelMainAction) {
+    const syncCircleAria = () => {
+      const txt = labelMainAction.textContent?.trim() || 'Start Session';
+      diaphragmaticCircleAction.setAttribute('aria-label', txt);
+      diaphragmaticCircleAction.setAttribute('title', txt);
+    };
+    const observer = new MutationObserver(syncCircleAria);
+    observer.observe(labelMainAction, { childList: true, characterData: true, subtree: true });
+    syncCircleAria();
+  }
   btnSkipPhase?.addEventListener('click', advancePhase);
   btnRestart?.addEventListener('click', resetSession);
 

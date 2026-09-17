@@ -295,10 +295,17 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
     </div>
 
     <div class="relative z-10 flex flex-col items-center justify-center my-6">
-      <div class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
+      <div
+        id="box-circle-action"
+        role="button"
+        tabindex="0"
+        aria-label={currentI18n.btnStart || 'Start Session'}
+        title={currentI18n.btnStart || 'Start Session'}
+        class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center cursor-pointer select-none rounded-2xl sm:rounded-3xl transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
+      >
         <div class="breath-square absolute inset-2 rounded-2xl border border-dashed border-amber-400/25 pointer-events-none"></div>
         <div class="breath-square-pulse absolute -inset-1 rounded-[1.75rem] border border-amber-400/10 pointer-events-none"></div>
-        <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+        <svg class="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3" class="text-neutral-900" fill="none" />
           <circle
             id="box-progress-circle"
@@ -322,9 +329,9 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
           </defs>
         </svg>
 
-        <div id="box-breath-halo" class="absolute w-44 h-44 rounded-full bg-gradient-to-tr from-amber-500/15 via-cyan-500/15 to-emerald-500/15 transition-transform duration-[2500ms] ease-in-out scale-100 flex items-center justify-center border border-white/5"></div>
+        <div id="box-breath-halo" class="absolute w-44 h-44 rounded-full bg-gradient-to-tr from-amber-500/15 via-cyan-500/15 to-emerald-500/15 transition-transform duration-[2500ms] ease-in-out scale-100 flex items-center justify-center border border-white/5 pointer-events-none"></div>
 
-        <div class="relative z-20 flex flex-col items-center text-center">
+        <div class="relative z-20 flex flex-col items-center text-center pointer-events-none">
           <div id="box-breath-action-text" class="text-xs font-mono uppercase tracking-widest text-amber-400 mb-1">
             {currentI18n.pressStart}
           </div>
@@ -466,6 +473,7 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
   const totalCyclesText = document.getElementById('box-total-cycles-text');
 
   const btnMainAction = document.getElementById('box-btn-main-action');
+  const boxCircleAction = document.getElementById('box-circle-action');
   const iconPlay = document.getElementById('box-icon-play');
   const iconPause = document.getElementById('box-icon-pause');
   const labelMainAction = document.getElementById('box-label-main-action');
@@ -591,6 +599,28 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
       pauseSession();
     }
   });
+
+  boxCircleAction?.addEventListener('click', () => {
+    btnMainAction?.click();
+  });
+
+  boxCircleAction?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      btnMainAction?.click();
+    }
+  });
+
+  if (boxCircleAction && labelMainAction) {
+    const syncCircleAria = () => {
+      const txt = labelMainAction.textContent?.trim() || t.btnStart || 'Start Session';
+      boxCircleAction.setAttribute('aria-label', txt);
+      boxCircleAction.setAttribute('title', txt);
+    };
+    const observer = new MutationObserver(syncCircleAria);
+    observer.observe(labelMainAction, { childList: true, characterData: true, subtree: true });
+    syncCircleAria();
+  }
 
   btnSkipPhase?.addEventListener('click', () => {
     advancePhase();

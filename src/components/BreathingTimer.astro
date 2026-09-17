@@ -354,9 +354,16 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
 
     <!-- Central Interactive Visual Breath Circle -->
     <div class="relative z-10 flex flex-col items-center justify-center my-6">
-      <div class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
+      <div
+        id="breath-circle-action"
+        role="button"
+        tabindex="0"
+        aria-label={currentI18n.btnStart || 'Start Session'}
+        title={currentI18n.btnStart || 'Start Session'}
+        class="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center cursor-pointer select-none rounded-full transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50"
+      >
         <!-- SVG Radial Progress Ring -->
-        <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+        <svg class="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100">
           <!-- Background Track Circle -->
           <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="3" class="text-neutral-900" fill="none" />
           <!-- Animated Progress Stroke -->
@@ -383,10 +390,10 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
         </svg>
 
         <!-- Expanding Breath Halo -->
-        <div id="breath-halo" class="absolute w-44 h-44 rounded-full bg-gradient-to-tr from-amber-500/15 via-cyan-500/15 to-emerald-500/15 transition-transform duration-[2500ms] ease-in-out scale-100 flex items-center justify-center border border-white/5"></div>
+        <div id="breath-halo" class="absolute w-44 h-44 rounded-full bg-gradient-to-tr from-amber-500/15 via-cyan-500/15 to-emerald-500/15 transition-transform duration-[2500ms] ease-in-out scale-100 flex items-center justify-center border border-white/5 pointer-events-none"></div>
 
         <!-- Center Counter Content -->
-        <div class="relative z-20 flex flex-col items-center text-center">
+        <div class="relative z-20 flex flex-col items-center text-center pointer-events-none">
           <!-- Breath In / Out Directive Text -->
           <div id="breath-action-text" class="text-xs font-mono uppercase tracking-widest text-amber-400 mb-1">
             {currentI18n.pressStart}
@@ -593,6 +600,7 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
   const totalRoundsText = document.getElementById('total-rounds-text');
 
   const btnMainAction = document.getElementById('btn-main-action');
+  const breathCircleAction = document.getElementById('breath-circle-action');
   const iconPlay = document.getElementById('icon-play');
   const iconPause = document.getElementById('icon-pause');
   const labelMainAction = document.getElementById('label-main-action');
@@ -711,6 +719,28 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
       pauseSession();
     }
   });
+
+  breathCircleAction?.addEventListener('click', () => {
+    btnMainAction?.click();
+  });
+
+  breathCircleAction?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      btnMainAction?.click();
+    }
+  });
+
+  if (breathCircleAction && labelMainAction) {
+    const syncCircleAria = () => {
+      const txt = labelMainAction.textContent?.trim() || t.btnStart || 'Start Session';
+      breathCircleAction.setAttribute('aria-label', txt);
+      breathCircleAction.setAttribute('title', txt);
+    };
+    const observer = new MutationObserver(syncCircleAria);
+    observer.observe(labelMainAction, { childList: true, characterData: true, subtree: true });
+    syncCircleAria();
+  }
 
   btnSkipPhase?.addEventListener('click', () => {
     if (phase === 'GUIDED') {
