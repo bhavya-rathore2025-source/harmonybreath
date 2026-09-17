@@ -128,9 +128,11 @@ const pageSchemaData = [
             <li>{purpose}</li>
           ))}
         </ul>
-        <p>
-          {content.cookiesControlNote}
-        </p>
+        {content.cookiesControlNote && (
+          <p>
+            {content.cookiesControlNote}
+          </p>
+        )}
         <p>
           <strong>{content.choicesTitle}</strong> {content.choicesTextBeforeGoogle}
           <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-300 underline underline-offset-2 break-all sm:break-normal">{content.googleAdsLinkText}</a>
