@@ -82,7 +82,7 @@ C. Third 24-Hour Snapshot (September 12, 2026):
    - "tecnica di respirazione 4-7-8" | 0 Clicks | 1 Imp | Pos: #80.0 (Italian breakthrough /it/)
    - "box breathing spanish pdf"    | 0 Clicks | 1 Imp | Pos: #92.0 (Downloadable/printable guide intent)
 
-D. Fourth 24-Hour Snapshot (September 14, 2026 - Latest Report):
+D. Fourth 24-Hour Snapshot (September 14, 2026):
    - "nadi shodhana"                                    | 0 Clicks | 2 Imp | Pos: #70.0 (Core Pranayama keyword)
    - "cyclic sighing"                                  | 0 Clicks | 2 Imp | Pos: #132.0 (Scientific/Huberman synonym)
    - "wim holf"                                        | 0 Clicks | 1 Imp | Pos: #44.0 (Typo rank - Top 45)
@@ -93,6 +93,17 @@ D. Fourth 24-Hour Snapshot (September 14, 2026 - Latest Report):
    - "nadishodhan"                                     | 0 Clicks | 1 Imp | Pos: #65.0 (Alternative sanskrit/compound spelling)
    - "physiological sigh timer"                        | 0 Clicks | 1 Imp | Pos: #67.0 (HIGH INTENT tool/timer query!)
    - "respiration diaphragmatique combien de temps par jour" | 0 Clicks | 1 Imp | Pos: #77.0 (French long-tail question intent)
+
+E. Fifth 24-Hour Snapshot (September 15, 2026 - Today's Report):
+   - "8 7 4"                           | 0 Clicks | 2 Imp | Pos: #85.5 (Reverse order numbers for 4-7-8)
+   - "box breathing deutsch"           | 0 Clicks | 2 Imp | Pos: #86.5 (German language modifier query)
+   - "respiration 4 7 8 combien de temps" | 0 Clicks | 2 Imp | Pos: #89.5 (French duration query - pending reindex)
+   - "psychologischer seufzer"         | 0 Clicks | 1 Imp | Pos: #27.0 (🔥 ALL-TIME HIGHEST RANK! Page 3 Germany!)
+   - "nadi shodhana pranayama"         | 0 Clicks | 1 Imp | Pos: #62.0 (Sanskrit phrase target moving upward)
+   - "ヴィムホフメソッド"                 | 0 Clicks | 1 Imp | Pos: #64.0 (🇯🇵 JAPANESE BREAKTHROUGH! /ja/ indexed!)
+   - "physiological sigh timer"        | 0 Clicks | 1 Imp | Pos: #69.0 (Consistent tool intent query)
+   - "square breathing technique"      | 0 Clicks | 1 Imp | Pos: #74.0 (English square breathing variation)
+   - "respirazione 4-7-8"              | 0 Clicks | 1 Imp | Pos: #80.0 (Italian 4-7-8 confirmation)
 
 
 --------------------------------------------------------------------------------
@@ -262,4 +273,20 @@ request manual re-indexing for these URLs in GSC (URL Inspection -> "Request Ind
 3. Monitor Average Ranking Positions (Positions 11–30):
    - Queries with impressions in positions 11–30 represent the highest ROI targets; 
      small on-page tweaks can push them onto Page 1 (Top 10) where clicks happen.
+
+--------------------------------------------------------------------------------
+8. IMMUTABLE DIRECTIVE: URL STABILITY VS ON-PAGE OPTIMIZATION
+--------------------------------------------------------------------------------
+CRITICAL MANDATE FOR ALL FUTURE AGENT SESSIONS:
+- NEVER recommend or execute changes to existing URL slugs, routes, or pathnames
+  (e.g., NEVER rename `/box-breathing/`, `/physiological-sigh/`, or localized paths).
+  Changing established URLs breaks Google's index, wipes out sandbox progress,
+  creates 404 dead-ends, and resets accumulated domain trust to zero.
+- URL SLUGS & SITEMAP STRUCTURE MUST REMAIN 100% PERMANENT AND UNTOUCHED.
+- ALL FUTURE OPTIMIZATIONS MUST BE EXCLUSIVELY ON-PAGE:
+  1. Add or tune FAQ questions & answers to match emerging Search Console queries.
+  2. Refine section subheadings (<h2>, <h3>).
+  3. Enrich descriptive body copy, feature cards, and instructions.
+  Rule of thumb: The store address (URL) never changes; only update the displays
+  and products (on-page content) inside the store.
 ================================================================================

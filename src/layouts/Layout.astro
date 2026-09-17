@@ -183,6 +183,6 @@ const breadcrumb = Astro.props.breadcrumb;
 
   <body class="bg-neutral-950 text-white selection:bg-neutral-700 selection:text-white flex flex-col min-h-screen">
     <slot />
-    <CookieConsent />
+    <CookieConsent lang={currentLang} />
   </body>
 </html>

@@ -1,22 +1,32 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const currentLang = lang || getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
-<section id="cookie-consent" class="fixed bottom-0 left-0 right-0 z-50 hidden" aria-label="Cookie consent banner">
+<section id="cookie-consent" class="fixed bottom-0 left-0 right-0 z-50 hidden" aria-label={t('cookie.title')}>
   <div class="max-w-5xl mx-auto p-3 sm:p-4">
     <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-3 sm:p-4 shadow-2xl backdrop-blur-xl">
       <div class="flex flex-row items-center gap-3">
         <div class="flex-1 min-w-0 text-xs text-neutral-300 leading-relaxed">
-          <p class="font-medium text-white text-sm mb-0.5">This site uses cookies</p>
+          <p class="font-medium text-white text-sm mb-0.5">{t('cookie.title')}</p>
           <p>
-            We use cookies and privacy-friendly analytics to improve your experience.
+            {t('cookie.text')}
           </p>
         </div>
         <div class="flex items-center gap-2 shrink-0">
           <button id="cookie-reject" class="px-3 py-1.5 text-xs font-medium text-neutral-300 hover:text-white rounded-lg border border-neutral-700 hover:border-neutral-600 transition-colors cursor-pointer">
-            Reject All
+            {t('cookie.reject')}
           </button>
           <button id="cookie-accept" class="px-3 py-1.5 text-xs font-medium text-white bg-amber-500 hover:bg-amber-400 rounded-lg transition-colors cursor-pointer">
-            Accept All
+            {t('cookie.accept')}
           </button>
         </div>
       </div>

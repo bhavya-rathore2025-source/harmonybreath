@@ -43,6 +43,10 @@ export const ui = {
     'footer.disclaimer': 'Not intended to diagnose, treat, cure, or prevent any medical condition. Always practice safely sitting or lying down.',
     'footer.privacyPolicy': 'Privacy Policy',
     'footer.termsConditions': 'Terms & Conditions',
+    'cookie.title': 'This site uses cookies',
+    'cookie.text': 'We use cookies and privacy-friendly analytics to improve your experience.',
+    'cookie.accept': 'Accept All',
+    'cookie.reject': 'Reject All',
   },
   es: {
     'nav.home': 'Inicio',
@@ -62,6 +66,10 @@ export const ui = {
     'footer.disclaimer': 'No está destinado a diagnosticar, tratar, curar o prevenir ninguna afección médica. Practique siempre de forma segura sentado o acostado.',
     'footer.privacyPolicy': 'Política de Privacidad',
     'footer.termsConditions': 'Términos y Condiciones',
+    'cookie.title': 'Este sitio utiliza cookies',
+    'cookie.text': 'Usamos cookies y análisis respetuosos con la privacidad para mejorar tu experiencia.',
+    'cookie.accept': 'Aceptar todo',
+    'cookie.reject': 'Rechazar todo',
   },
   de: {
     'nav.home': 'Startseite',
@@ -81,6 +89,10 @@ export const ui = {
     'footer.disclaimer': 'Nicht zur Diagnose, Behandlung, Heilung oder Vorbeugung von Krankheiten bestimmt. Bitte immer sicher im Sitzen oder Liegen üben.',
     'footer.privacyPolicy': 'Datenschutzerklärung',
     'footer.termsConditions': 'Nutzungsbedingungen',
+    'cookie.title': 'Diese Website verwendet Cookies',
+    'cookie.text': 'Wir verwenden Cookies und datenschutzfreundliche Analysen, um Ihre Erfahrung zu verbessern.',
+    'cookie.accept': 'Alle akzeptieren',
+    'cookie.reject': 'Alle ablehnen',
   },
   fr: {
     'nav.home': 'Accueil',
@@ -100,6 +112,10 @@ export const ui = {
     'footer.disclaimer': 'Non destiné à diagnostiquer, traiter, guérir ou prévenir une condition médicale. Pratiquez toujours en sécurité, assis ou allongé.',
     'footer.privacyPolicy': 'Politique de Confidentialité',
     'footer.termsConditions': 'Conditions Générales',
+    'cookie.title': 'Ce site utilise des cookies',
+    'cookie.text': 'Nous utilisons des cookies et des outils d\'analyse respectueux de la vie privée pour améliorer votre expérience.',
+    'cookie.accept': 'Tout accepter',
+    'cookie.reject': 'Tout refuser',
   },
   pt: {
     'nav.home': 'Início',
@@ -119,6 +135,10 @@ export const ui = {
     'footer.disclaimer': 'Não se destina a diagnosticar, tratar, curar ou prevenir qualquer condição médica. Pratique sempre em segurança, sentado ou deitado.',
     'footer.privacyPolicy': 'Política de Privacidade',
     'footer.termsConditions': 'Termos e Condições',
+    'cookie.title': 'Este site utiliza cookies',
+    'cookie.text': 'Utilizamos cookies e análises que respeitam a privacidade para melhorar a sua experiência.',
+    'cookie.accept': 'Aceitar todos',
+    'cookie.reject': 'Rejeitar todos',
   },
   ja: {
     'nav.home': 'ホーム',
@@ -138,6 +158,10 @@ export const ui = {
     'footer.disclaimer': 'いかなる病状の診断、治療、治癒、予防を目的としたものではありません。常に座るか横になった安全な状態で練習してください。',
     'footer.privacyPolicy': 'プライバシーポリシー',
     'footer.termsConditions': '利用規約',
+    'cookie.title': '当サイトはクッキーを使用しています',
+    'cookie.text': '当サイトでは、快適な利用体験の提供とプライバシーに配慮したアクセスの分析のためにCookieを使用しています。',
+    'cookie.accept': 'すべて同意',
+    'cookie.reject': 'すべて拒否',
   },
   it: {
     'nav.home': 'Home',
@@ -157,6 +181,10 @@ export const ui = {
     'footer.disclaimer': 'Non destinato a diagnosticare, trattare, curare o prevenire alcuna condizione medica. Eseguire sempre in sicurezza da seduti o sdraiati.',
     'footer.privacyPolicy': 'Informativa sulla Privacy',
     'footer.termsConditions': 'Termini e Condizioni',
+    'cookie.title': 'Questo sito utilizza i cookie',
+    'cookie.text': 'Utilizziamo cookie e strumenti di analisi nel rispetto della privacy per migliorare la tua esperienza.',
+    'cookie.accept': 'Accetta tutti',
+    'cookie.reject': 'Rifiuta tutti',
   },
 } as const;
 
