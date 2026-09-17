@@ -1,7 +1,21 @@
 ---
+import { getLangFromUrl } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+import { musicI18n } from '../i18n/music';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang: propLang } = Astro.props;
+const lang = propLang || getLangFromUrl(Astro.url);
+const t = musicI18n[lang] || musicI18n.en;
 ---
 
-<div id="music-selection-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+<div id="music-selection-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+  <!-- Hidden JSON dictionary for client script hydration -->
+  <script is:inline id="hb-wim-music-i18n" type="application/json" set:html={JSON.stringify(t)} />
+
   <div class="relative w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950/95 shadow-2xl">
     <!-- Header -->
     <div class="flex items-center justify-between border-b border-neutral-800 px-4 sm:px-6 py-3 sm:py-4 shrink-0">
@@ -9,9 +23,9 @@
         <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
         </svg>
-        Choose Background Music
+        <span>{t.modalTitle}</span>
       </h2>
-      <p class="hidden sm:block text-xs text-neutral-500 font-mono">Select a track for your breathing session</p>
+      <p class="hidden sm:block text-xs text-neutral-500 font-mono">{t.modalSubtitle}</p>
       <button
         id="close-music-modal"
         type="button"
@@ -28,11 +42,11 @@
     <div class="overflow-y-auto flex-1 p-4">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-neutral-800 mb-4">
         <div class="text-center sm:text-left text-xs text-neutral-400 font-mono">
-          Pick one track to play throughout your entire session
+          {t.pickInstruction}
         </div>
         <label class="inline-flex items-center gap-2.5 cursor-pointer select-none bg-neutral-900/90 border border-neutral-800 hover:border-neutral-700 px-3 py-1.5 rounded-xl transition-colors shrink-0">
-          <span class="text-xs font-medium text-neutral-200">Loop Song</span>
-          <span class="text-[10px] text-neutral-500 font-mono hidden xs:inline">(Playlist if off)</span>
+          <span class="text-xs font-medium text-neutral-200">{t.loopSong}</span>
+          <span class="text-[10px] text-neutral-500 font-mono hidden xs:inline">{t.playlistHint}</span>
           <div class="relative inline-flex items-center cursor-pointer">
             <input type="checkbox" id="music-loop-song-toggle" class="sr-only peer" />
             <div class="w-9 h-5 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-amber-400"></div>
@@ -48,14 +62,14 @@
         <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span>Settings saved automatically to your browser</span>
+        <span>{t.autoSaveHint}</span>
       </div>
       <button
         id="apply-music-settings"
         type="button"
         class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-amber-400/90 text-neutral-950 font-semibold text-sm hover:bg-amber-300 transition-colors"
       >
-        Apply & Close
+        {t.applyBtn}
       </button>
     </div>
   </div>
@@ -66,6 +80,9 @@
   import { audioPlayer } from '../utils/audioPlayer';
 
   const STORAGE_KEY = 'hb_music_selection';
+
+  const i18nEl = document.getElementById('hb-wim-music-i18n');
+  const t = i18nEl ? JSON.parse(i18nEl.textContent || '{}') : {};
 
   const allTracks = [
     ...musicTracks.guidedBreathing,
@@ -103,6 +120,11 @@
     if (!container) return;
     container.innerHTML = allTracks.map(track => {
       const isSelected = track.id === selectedTrackId;
+      const trackMeta = t.tracks?.[track.id] || {};
+      const trackName = trackMeta.name || track.name;
+      const trackDesc = trackMeta.description || track.description;
+      const selectedText = t.selectedBadge || 'Selected';
+
       return `
         <button
           type="button"
@@ -121,12 +143,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
               </svg>
             </div>
-            <div class="flex-1 min-w-0">
-              <h4 class="text-sm font-medium text-white truncate">${track.name}</h4>
-              <p class="text-xs text-neutral-400 mt-0.5 truncate">${track.description}</p>
+            <div class="flex-1 min-w-0 text-left">
+              <h4 class="text-sm font-medium text-white truncate">${trackName}</h4>
+              <p class="text-xs text-neutral-400 mt-0.5 truncate">${trackDesc}</p>
             </div>
           </div>
-          ${isSelected ? '<span class="absolute bottom-2 right-2 text-xs font-mono text-amber-400">Selected</span>' : ''}
+          ${isSelected ? `<span class="absolute bottom-2 right-2 text-xs font-mono text-amber-400">${selectedText}</span>` : ''}
         </button>
       `;
     }).join('');
@@ -158,6 +180,7 @@
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
     renderTracks();
   }
 
@@ -172,6 +195,7 @@
     modal.classList.add('hidden');
     modal.classList.remove('flex');
     document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
   }
 
   closeBtn?.addEventListener('click', closeModal);

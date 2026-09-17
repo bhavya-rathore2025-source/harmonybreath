@@ -17,7 +17,7 @@ const contactUrl = currentLang === 'en' ? '/contact/' : `/${currentLang}/contact
 const privacyUrl = currentLang === 'en' ? '/privacy/' : `/${currentLang}/privacy/`;
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-neutral-900 bg-neutral-950/80 backdrop-blur-xl">
+<header id="site-header" class="sticky top-0 z-50 w-full border-b border-neutral-900 bg-neutral-950/80 backdrop-blur-xl transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <!-- Brand Logo -->
     <a href={homeUrl} class="flex items-center gap-2.5 group">
@@ -224,8 +224,36 @@ const privacyUrl = currentLang === 'en' ? '/privacy/' : `/${currentLang}/privacy
   // Choose Music Button
   const chooseMusicBtn = document.getElementById('choose-music-btn') as HTMLButtonElement | null;
   chooseMusicBtn?.addEventListener('click', () => {
+    volumePanel?.classList.add('hidden');
+    volumePanel?.classList.remove('flex');
+    volumeBtn?.setAttribute('aria-expanded', 'false');
     if (typeof (window as any).openMusicModal === 'function') {
       (window as any).openMusicModal();
     }
   });
 </script>
+
+<style>
+  #site-header {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    will-change: transform, opacity;
+  }
+
+  :global(body.modal-open) #site-header,
+  :global(body:has(#box-music-modal:not(.hidden))) #site-header,
+  :global(body:has(#music-selection-modal:not(.hidden))) #site-header,
+  :global(body:has(#relax-music-modal:not(.hidden))) #site-header,
+  :global(body:has(#sigh-music-modal:not(.hidden))) #site-header,
+  :global(body:has(#nadi-music-modal:not(.hidden))) #site-header,
+  :global(body:has(#diaphragmatic-music-modal:not(.hidden))) #site-header,
+  :global(body:has(#box-custom-modal:not(.hidden))) #site-header,
+  :global(body:has(#custom-modal:not(.hidden))) #site-header,
+  :global(body:has(#relax-custom-modal:not(.hidden))) #site-header,
+  :global(body:has(#sigh-custom-modal:not(.hidden))) #site-header,
+  :global(body:has(#nadi-custom-modal:not(.hidden))) #site-header,
+  :global(body:has(#diaphragmatic-custom-modal:not(.hidden))) #site-header {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
