@@ -12,21 +12,21 @@ const t = useTranslations(currentLang);
 ---
 
 <section id="cookie-consent" class="fixed bottom-0 left-0 right-0 z-50 hidden" aria-label={t('cookie.title')}>
-  <div class="max-w-5xl mx-auto p-3 sm:p-4">
+  <div class="max-w-5xl mx-auto p-2.5 sm:p-4">
     <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-3 sm:p-4 shadow-2xl backdrop-blur-xl">
       <div class="flex flex-row items-center gap-3">
-        <div class="flex-1 min-w-0 text-xs text-neutral-300 leading-relaxed">
-          <p class="font-medium text-white text-sm mb-0.5">{t('cookie.title')}</p>
+        <div class="flex-1 min-w-0 text-[11px] sm:text-xs text-neutral-300 leading-relaxed">
+          <p class="font-medium text-white text-xs sm:text-sm mb-0.5">{t('cookie.title')}</p>
           <p>
             {t('cookie.text')}
           </p>
         </div>
-        <div class="flex items-center gap-2 shrink-0">
-          <button id="cookie-reject" class="px-3 py-1.5 text-xs font-medium text-neutral-300 hover:text-white rounded-lg border border-neutral-700 hover:border-neutral-600 transition-colors cursor-pointer">
-            {t('cookie.reject')}
-          </button>
-          <button id="cookie-accept" class="px-3 py-1.5 text-xs font-medium text-white bg-amber-500 hover:bg-amber-400 rounded-lg transition-colors cursor-pointer">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-1.5 sm:gap-2 shrink-0">
+          <button id="cookie-accept" class="order-1 sm:order-2 px-3 py-1 sm:py-1.5 text-[11px] sm:text-xs font-medium text-white bg-amber-500 hover:bg-amber-400 rounded-lg transition-colors cursor-pointer text-center whitespace-nowrap">
             {t('cookie.accept')}
+          </button>
+          <button id="cookie-reject" class="order-2 sm:order-1 px-3 py-1 sm:py-1.5 text-[11px] sm:text-xs font-medium text-neutral-300 hover:text-white rounded-lg border border-neutral-700 hover:border-neutral-600 transition-colors cursor-pointer text-center whitespace-nowrap">
+            {t('cookie.reject')}
           </button>
         </div>
       </div>
