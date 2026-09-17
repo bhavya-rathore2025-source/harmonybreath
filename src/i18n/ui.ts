@@ -14,14 +14,14 @@ export const defaultLang: SupportedLanguage = 'en';
 
 export const showDefaultLang = false;
 
-export const languageMeta: Record<SupportedLanguage, { name: string; nativeName: string; flag: string; ogLocale: string }> = {
-  en: { name: 'English', nativeName: 'English', flag: '🇺🇸', ogLocale: 'en_US' },
-  es: { name: 'Spanish', nativeName: 'Español', flag: '🇪🇸', ogLocale: 'es_ES' },
-  de: { name: 'German', nativeName: 'Deutsch', flag: '🇩🇪', ogLocale: 'de_DE' },
-  fr: { name: 'French', nativeName: 'Français', flag: '🇫🇷', ogLocale: 'fr_FR' },
-  pt: { name: 'Portuguese', nativeName: 'Português', flag: '🇧🇷', ogLocale: 'pt_BR' },
-  ja: { name: 'Japanese', nativeName: '日本語', flag: '🇯🇵', ogLocale: 'ja_JP' },
-  it: { name: 'Italian', nativeName: 'Italiano', flag: '🇮🇹', ogLocale: 'it_IT' },
+export const languageMeta: Record<SupportedLanguage, { name: string; nativeName: string; ogLocale: string }> = {
+  en: { name: 'English', nativeName: 'English', ogLocale: 'en_US' },
+  es: { name: 'Spanish', nativeName: 'Español', ogLocale: 'es_ES' },
+  de: { name: 'German', nativeName: 'Deutsch', ogLocale: 'de_DE' },
+  fr: { name: 'French', nativeName: 'Français', ogLocale: 'fr_FR' },
+  pt: { name: 'Portuguese', nativeName: 'Português', ogLocale: 'pt_BR' },
+  ja: { name: 'Japanese', nativeName: '日本語', ogLocale: 'ja_JP' },
+  it: { name: 'Italian', nativeName: 'Italiano', ogLocale: 'it_IT' },
 };
 
 export const ui = {
