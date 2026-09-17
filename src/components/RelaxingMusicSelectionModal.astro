@@ -158,7 +158,7 @@ const t = musicI18n[lang] || musicI18n.en;
         renderTracks();
 
         const track = getTrackById(trackId);
-        if (track) {
+        if (track && !audioPlayer.isPlaying()) {
           audioPlayer.previewTrack(track.phase as any, trackId);
         }
 

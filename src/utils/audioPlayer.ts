@@ -34,11 +34,15 @@ function getSelectedTrackForPhase(phase: string): string {
 class ResilientAudioPlayer {
   private config: AudioConfig;
   private currentAudio: HTMLAudioElement | null = null;
-  private currentPreviewAudio: HTMLAudioElement | null = null;
   private currentBreathSound: HTMLAudioElement | null = null;
   private isMuted: boolean = false;
   private isBreathSoundMuted: boolean = false;
+  private isPreviewMode: boolean = false;
   private availabilityCache: Map<string, boolean> = new Map();
+
+  private playRequestId: number = 0;
+  private previewRequestId: number = 0;
+  private breathSoundRequestId: number = 0;
 
   private loopSongKey: string = 'hb_loop_song';
   private currentPlaylistInfo: {
@@ -49,6 +53,24 @@ class ResilientAudioPlayer {
 
   constructor(customConfig?: Partial<AudioConfig>) {
     this.config = { ...defaultAudioConfig, ...customConfig };
+  }
+
+  private cleanupAudioElement(audio: HTMLAudioElement): void {
+    try {
+      audio.pause();
+      audio.currentTime = 0;
+      audio.src = '';
+      audio.load();
+    } catch {
+      // Ignore pause errors
+    }
+  }
+
+  /**
+   * Check if main background music is actively playing
+   */
+  public isPlaying(): boolean {
+    return !!(this.currentAudio && !this.currentAudio.paused && !this.currentAudio.ended);
   }
 
   public isLoopSong(): boolean {
@@ -90,9 +112,6 @@ class ResilientAudioPlayer {
     this.isMuted = muted;
     if (this.currentAudio) {
       this.currentAudio.muted = muted;
-    }
-    if (this.currentPreviewAudio) {
-      this.currentPreviewAudio.muted = muted;
     }
   }
 
@@ -139,8 +158,6 @@ class ResilientAudioPlayer {
     return this.config.musicTracks[phase] || [];
   }
 
-
-
   /**
    * Play breath sound (inhale/exhale) stretched to match phase duration
    */
@@ -153,31 +170,48 @@ class ResilientAudioPlayer {
 
     if (!filePath) return;
 
+    this.stopBreathSound();
+    const requestId = ++this.breathSoundRequestId;
+
     const exists = await this.checkAudioExists(filePath);
+    if (requestId !== this.breathSoundRequestId) return;
     if (!exists) {
       return;
     }
 
     try {
-      this.currentBreathSound = new Audio(filePath);
-      this.registerAudioElement(this.currentBreathSound);
-      this.currentBreathSound.volume = this.config.breathSoundVolume;
-      this.currentBreathSound.muted = this.isBreathSoundMuted;
+      const audio = new Audio(filePath);
+      this.registerAudioElement(audio);
+      audio.volume = this.config.breathSoundVolume;
+      audio.muted = this.isBreathSoundMuted;
       
       if (phaseDuration && phaseDuration > 0) {
         const setupPlaybackRate = () => {
-          if (this.currentBreathSound && !isNaN(this.currentBreathSound.duration) && this.currentBreathSound.duration > 0) {
-            const naturalDuration = this.currentBreathSound.duration;
+          if (audio && !isNaN(audio.duration) && audio.duration > 0) {
+            const naturalDuration = audio.duration;
             const rate = naturalDuration / phaseDuration;
-            this.currentBreathSound.playbackRate = Math.max(0.25, Math.min(4, rate));
+            audio.playbackRate = Math.max(0.25, Math.min(4, rate));
           } else {
-            this.currentBreathSound?.addEventListener('loadedmetadata', setupPlaybackRate, { once: true });
+            audio?.addEventListener('loadedmetadata', setupPlaybackRate, { once: true });
           }
         };
         setupPlaybackRate();
       }
       
-      await this.currentBreathSound.play();
+      if (requestId !== this.breathSoundRequestId) {
+        this.cleanupAudioElement(audio);
+        return;
+      }
+
+      this.currentBreathSound = audio;
+      await audio.play();
+
+      if (requestId !== this.breathSoundRequestId) {
+        this.cleanupAudioElement(audio);
+        if (this.currentBreathSound === audio) {
+          this.currentBreathSound = null;
+        }
+      }
     } catch {
       // Ignore autoplay errors for breath sounds
     }
@@ -187,15 +221,9 @@ class ResilientAudioPlayer {
    * Stop the currently playing breath sound
    */
   public stopBreathSound(): void {
+    this.breathSoundRequestId++;
     if (this.currentBreathSound) {
-      try {
-        this.currentBreathSound.pause();
-        this.currentBreathSound.currentTime = 0;
-        this.currentBreathSound.src = '';
-        this.currentBreathSound.load();
-      } catch {
-        // Ignore errors
-      }
+      this.cleanupAudioElement(this.currentBreathSound);
       this.currentBreathSound = null;
     }
   }
@@ -204,8 +232,9 @@ class ResilientAudioPlayer {
    * Play audio track for phase safely using selected music
    */
   public async playPhaseTrack(phase: 'guidedBreathing' | 'breathOutHold' | 'recoveryHold', loop: boolean = false): Promise<void> {
-    this.stopPreview();
     this.stop();
+    const requestId = ++this.playRequestId;
+    this.isPreviewMode = false;
 
     if (this.isMuted) return;
 
@@ -217,6 +246,7 @@ class ResilientAudioPlayer {
     }
 
     const exists = await this.checkAudioExists(filePath);
+    if (requestId !== this.playRequestId) return;
     if (!exists) {
       console.warn(`[HarmonyBreath Audio] Local audio file not found at "${filePath}". Continuing timer in silent mode.`);
       return;
@@ -228,14 +258,29 @@ class ResilientAudioPlayer {
       audio.volume = this.config.volume;
       audio.muted = this.isMuted;
       audio.loop = loop;
+
+      if (requestId !== this.playRequestId) {
+        this.cleanupAudioElement(audio);
+        return;
+      }
+
       this.currentAudio = audio;
 
       audio.onerror = () => {
         console.warn(`[HarmonyBreath Audio] Failed to play audio from "${filePath}". Continuing silently.`);
-        this.currentAudio = null;
+        if (this.currentAudio === audio) {
+          this.currentAudio = null;
+        }
       };
 
       await audio.play();
+
+      if (requestId !== this.playRequestId) {
+        this.cleanupAudioElement(audio);
+        if (this.currentAudio === audio) {
+          this.currentAudio = null;
+        }
+      }
     } catch (err) {
       console.warn(`[HarmonyBreath Audio] Autoplay or playback prevented for "${filePath}":`, err);
     }
@@ -288,17 +333,22 @@ class ResilientAudioPlayer {
    * Stop any currently playing track
    */
   public stop(): void {
-    this.stopPreview();
+    this.playRequestId++;
+    this.isPreviewMode = false;
     if (this.currentAudio) {
-      try {
-        this.currentAudio.pause();
-        this.currentAudio.currentTime = 0;
-        this.currentAudio.src = '';
-        this.currentAudio.load();
-      } catch {
-        // Ignore pause errors
-      }
+      this.cleanupAudioElement(this.currentAudio);
       this.currentAudio = null;
+    }
+    if (typeof window !== 'undefined') {
+      const audioList = (window as any).__hb_audio_registry as HTMLAudioElement[] | undefined;
+      if (Array.isArray(audioList)) {
+        for (const a of audioList) {
+          if (a !== this.currentBreathSound) {
+            this.cleanupAudioElement(a);
+          }
+        }
+        (window as any).__hb_audio_registry = this.currentBreathSound ? [this.currentBreathSound] : [];
+      }
     }
   }
 
@@ -341,11 +391,13 @@ class ResilientAudioPlayer {
     eventName?: string
   ): Promise<void> {
     this.stop();
-    this.stopPreview();
+    const requestId = ++this.playRequestId;
+    this.isPreviewMode = false;
 
     if (this.isMuted || !filePath) return;
 
     const exists = await this.checkAudioExists(filePath);
+    if (requestId !== this.playRequestId) return;
     if (!exists) {
       console.warn(`[HarmonyBreath Audio] Audio file not found at "${filePath}".`);
       return;
@@ -370,14 +422,28 @@ class ResilientAudioPlayer {
         audio.onended = null;
       }
 
+      if (requestId !== this.playRequestId) {
+        this.cleanupAudioElement(audio);
+        return;
+      }
+
       this.currentAudio = audio;
 
       audio.onerror = () => {
         console.warn(`[HarmonyBreath Audio] Failed to play audio from "${filePath}".`);
-        this.currentAudio = null;
+        if (this.currentAudio === audio) {
+          this.currentAudio = null;
+        }
       };
 
       await audio.play();
+
+      if (requestId !== this.playRequestId) {
+        this.cleanupAudioElement(audio);
+        if (this.currentAudio === audio) {
+          this.currentAudio = null;
+        }
+      }
     } catch (err) {
       console.warn(`[HarmonyBreath Audio] Autoplay prevented for "${filePath}":`, err);
     }
@@ -423,54 +489,27 @@ class ResilientAudioPlayer {
   }
 
   /**
-   * Stop any currently playing preview track
+   * Stop any currently playing preview track (only stops if currently in preview mode)
    */
   public stopPreview(): void {
-    if (this.currentPreviewAudio) {
-      try {
-        this.currentPreviewAudio.pause();
-        this.currentPreviewAudio.currentTime = 0;
-        this.currentPreviewAudio.src = '';
-        this.currentPreviewAudio.load();
-      } catch {
-        // Ignore pause errors
-      }
-      this.currentPreviewAudio = null;
+    if (this.isPreviewMode) {
+      this.stop();
     }
   }
 
   /**
    * Preview a specific track by trackId for a phase (for music selection modal)
+   * Uses the single audio channel to guarantee zero audio duplication.
    */
   public async previewTrack(phase: 'guidedBreathing' | 'breathOutHold' | 'recoveryHold', trackId: string): Promise<void> {
     const filePath = getFilePathForTrackId(phase, trackId);
-    
     if (!filePath) {
       console.warn(`[HarmonyBreath Audio] No audio file for track "${trackId}" in phase "${phase}".`);
       return;
     }
 
-    const exists = await this.checkAudioExists(filePath);
-    if (!exists) {
-      console.warn(`[HarmonyBreath Audio] Preview audio not found: "${filePath}".`);
-      return;
-    }
-
-    // Stop any currently playing preview
-    this.stopPreview();
-
-    if (this.isMuted) return;
-
-    try {
-      this.currentPreviewAudio = new Audio(filePath);
-      this.registerAudioElement(this.currentPreviewAudio);
-      this.currentPreviewAudio.volume = this.config.volume;
-      this.currentPreviewAudio.muted = this.isMuted;
-      this.currentPreviewAudio.loop = false;
-      await this.currentPreviewAudio.play();
-    } catch {
-      // Ignore autoplay errors for preview
-    }
+    this.isPreviewMode = true;
+    await this.playMusicTrack(filePath, false);
   }
 
   /**
@@ -489,22 +528,18 @@ class ResilientAudioPlayer {
    * Instantly stop and terminate all audio across music, breath sounds, chimes, and previews
    */
   public stopAll(): void {
+    this.playRequestId++;
+    this.breathSoundRequestId++;
+    this.isPreviewMode = false;
+
     this.stop();
-    this.stopPreview();
     this.stopBreathSound();
 
     if (typeof window !== 'undefined') {
       const audioList = (window as any).__hb_audio_registry as HTMLAudioElement[] | undefined;
       if (Array.isArray(audioList)) {
         for (const a of audioList) {
-          try {
-            a.pause();
-            a.currentTime = 0;
-            a.src = '';
-            a.load();
-          } catch {
-            // ignore
-          }
+          this.cleanupAudioElement(a);
         }
         (window as any).__hb_audio_registry = [];
       }

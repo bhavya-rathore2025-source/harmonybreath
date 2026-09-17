@@ -202,7 +202,24 @@ const p = currentContent.presets;
 
 <script>
   import { audioPlayer } from '../utils/audioPlayer';
+  import { musicTracks } from '../config/audioConfig';
   import { saveExerciseStats } from '../utils/stats';
+
+  const MUSIC_STORAGE_KEY = 'hb_nadi_music_selection';
+  const allTracks = [
+    ...musicTracks.guidedBreathing,
+    ...musicTracks.breathOutHold,
+    ...musicTracks.recoveryHold,
+  ];
+
+  function getSelectedMusicFilePath(): string {
+    const trackId = localStorage.getItem(MUSIC_STORAGE_KEY);
+    if (trackId) {
+      const found = allTracks.find(track => track.id === trackId);
+      if (found) return found.filePath;
+    }
+    return '';
+  }
 
   // Read localized strings from JSON tag
   const i18nEl = document.getElementById('hb-nadi-timer-i18n');
@@ -576,9 +593,15 @@ const p = currentContent.presets;
     if (statusIndicator) statusIndicator.className = 'w-2 h-2 rounded-full bg-indigo-400 animate-ping';
 
     // Start background music if selected
-    const savedTrackId = localStorage.getItem('hb_nadi_music_selection');
-    if (savedTrackId && !isMusicStopped) {
-      audioPlayer.playMusicTrack(savedTrackId);
+    const musicPath = getSelectedMusicFilePath();
+    if (musicPath && !isMusicStopped) {
+      audioPlayer.playMusicTrack(
+        musicPath,
+        audioPlayer.isLoopSong(),
+        allTracks,
+        MUSIC_STORAGE_KEY,
+        'hb_nadi_music_updated'
+      );
     }
 
     updateUI();
@@ -685,9 +708,9 @@ const p = currentContent.presets;
   window.addEventListener('hb_nadi_music_updated', () => {
     isMusicStopped = false;
     if (isRunning) {
-      const savedTrackId = localStorage.getItem('hb_nadi_music_selection');
-      if (savedTrackId) {
-        audioPlayer.playMusicTrack(savedTrackId);
+      const musicPath = getSelectedMusicFilePath();
+      if (musicPath) {
+        audioPlayer.playMusicTrack(musicPath, true);
       } else {
         audioPlayer.stop();
       }
