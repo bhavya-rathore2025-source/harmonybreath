@@ -79,7 +79,7 @@ export interface Relaxing478Content {
 
 export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
   en: {
-    metaTitle: '4-7-8 Breathing Technique: Guided Timer for Sleep & Anxiety',
+    metaTitle: '4-7-8 Breathing Timer: Free Online Sleep & Anxiety Breathwork',
     metaDescription: 'Master the 4-7-8 breathing method with our free guided timer. Inhale 4s, hold 7s, exhale 8s to calm your nervous system and fall asleep faster.',
     keywords: '4-7-8 breathing, 4 7 8 breathing, 4-7-8 breathing method, 4-7-8 breathing technique, 4-7-8 breathing timer, 4 7 8 breathing timer, relaxing breath technique, breathing exercise for sleep, 4-7-8 breathing benefits, dr andrew weil breathing',
     canonicalPath: '/4-7-8-breathing/',
