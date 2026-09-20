@@ -131,12 +131,14 @@ const pageSchemaData = [
         </h2>
         <p class="text-neutral-400 text-sm sm:text-base font-sans font-light max-w-lg mx-auto leading-relaxed break-words text-pretty">
           {content.shareDescBeforeEmail}
+          <!--email_off-->
           <a
             href={`mailto:${content.shareEmail}`}
             class="text-amber-400 hover:text-amber-300 underline underline-offset-2 transition-colors font-medium break-all"
           >
             {content.shareEmail}
           </a>
+          <!--/email_off-->
           {content.shareDescAfterEmail}
         </p>
       </div>

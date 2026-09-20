@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /cdn-cgi/
 Allow: /
 
 Sitemap: https://harmonybreath.com/sitemap.xml
