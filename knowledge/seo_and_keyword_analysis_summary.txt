@@ -105,6 +105,23 @@ E. Fifth 24-Hour Snapshot (September 15, 2026 - Today's Report):
    - "square breathing technique"      | 0 Clicks | 1 Imp | Pos: #74.0 (English square breathing variation)
    - "respirazione 4-7-8"              | 0 Clicks | 1 Imp | Pos: #80.0 (Italian 4-7-8 confirmation)
 
+F. Sixth Snapshot (September 19, 2026 - 28-Day Overview & 24h Regional Surges):
+   - 28-Day Aggregate All-Time Leaders:
+     * "diaphragmatic breathing timer"     | 0 Clicks | 27 Imp | (#1 all-time query across entire site!)
+     * "box breathing timer"               | 0 Clicks | 25 Imp | (#2 all-time query across entire site!)
+     * "alternate nostril breathing timer" | 0 Clicks | 13 Imp | (#3 all-time query)
+     * "box breathing in spanish"          | 0 Clicks | 11 Imp | (#4 all-time query)
+     * "physiological sigh timer"          | 0 Clicks | 9 Imp  | (#5 all-time query)
+     * "box breathing spanish"             | 0 Clicks | 8 Imp  | (#6 all-time query)
+   - 24-Hour International Velocity:
+     * Switzerland: Average Position #4.4 (5 impressions on Page 1!)
+     * Japan: Average Position #15.3 (3 impressions, rapid Page 2 climb)
+     * Italy: Average Position #11.0 (1 impression, top of Page 2)
+     * Canada: Average Position #82.0 (1 impression, "4-7-8 breathing timer" entry)
+   - Key Analytical Insight: GSC 24-hour mode anonymizes queries with <2-3 daily searches 
+     for privacy (hiding 12 of 16 impressions). Expanding to 28 days de-anonymizes them, 
+     revealing that Box Breathing and Diaphragmatic Breathing represent >71 impressions combined.
+
 
 --------------------------------------------------------------------------------
 4. COUNTRY-SPECIFIC AHREFS KEYWORD RESEARCH FINDINGS
@@ -242,6 +259,33 @@ C. SPANISH & BILINGUAL SEARCHES:
       explaining the double inhale mechanism, alveoli reinflation, and guided timer.
     - Direct targeting for "cyclic sighing" (#132.0) and "physiological sigh timer" (#67.0).
 
+12. TECHNICAL / CORE WEB VITALS: LCP WebP Image Optimization (September 18, 2026)
+    - Cloudflare Web Analytics indicated 20% LCP in "Needs Improvement" (2.5s-4.0s mobile).
+    - Converted all 7 full-viewport hero atmospheric background images from multi-megabyte 
+      PNGs (~12.3 MB total) to WebP format (~725 KB total, ~94% file size reduction):
+      * 4-7-8-breathing: 2,106 KB -> 129.8 KB (-93.8%)
+      * box-breathing: 1,738 KB -> 68.9 KB (-96.0%)
+      * nadi-shodhana: 1,761 KB -> 66.1 KB (-96.3%)
+      * physiological-sigh: 1,935 KB -> 105.4 KB (-94.6%)
+      * home-page: 1,998 KB -> 92.3 KB (-95.4%)
+      * diaphragmatic-breathing: 2,450 KB -> 199.9 KB (-91.8%)
+      * wim_hof_hero_bg: 281 KB -> 63.5 KB (-77.4%)
+    - Added `fetchpriority="high"` and `decoding="async"` on all 7 hero <img> elements.
+    - Moved original heavy PNGs to `knowledge/` archive to clean production bundle.
+
+13. ENGLISH: Meta Title Exact-Match Alignment (September 19, 2026)
+    - Anti-Boilerplate compliant title tune-up front-loading the exact search intent:
+      * 4-7-8 Breathing:
+        FROM: "4-7-8 Breathing Technique: Guided Timer for Sleep & Anxiety"
+        TO:   "4-7-8 Breathing Timer: Free Online Sleep & Anxiety Breathwork"
+      * Box Breathing:
+        FROM: "Box Breathing (Square Breathing) — Guided Calm & Focus Timer"
+        TO:   "Box Breathing Timer — Guided Square Breathing for Focus"
+      * Diaphragmatic Breathing:
+        FROM: "Diaphragmatic Breathing: Belly Breathing Timer & Exercises"
+        TO:   "Diaphragmatic Breathing Timer: Belly Breathing Exercises"
+    - Each title maintains an independent, non-boilerplate grammatical structure and tone.
+
 
 --------------------------------------------------------------------------------
 6. RE-INDEXING ACTION CHECKLIST (GOOGLE SEARCH CONSOLE)
@@ -249,14 +293,17 @@ C. SPANISH & BILINGUAL SEARCHES:
 Whenever these changes are pushed to live production (main branch -> Cloudflare Pages), 
 request manual re-indexing for these URLs in GSC (URL Inspection -> "Request Indexing"):
 
-1. https://harmonybreath.com/physiological-sigh/ (Updated FAQ 1 for Cyclic Sighing & Timer)
-2. https://harmonybreath.com/fr/diaphragmatic-breathing/ (Updated FAQ 2 for daily practice query)
-3. https://harmonybreath.com/ (Updated customizable timer hero subtitle & H3 card)
-4. https://harmonybreath.com/pt/box-breathing/ (Portuguese breakthrough query: respiração quadrado)
-5. https://harmonybreath.com/nadi-shodhana/ (Ranking for nadishodhan & nadi shodhana)
-6. https://harmonybreath.com/es/wim-hof/ (Ranking for método de wim hof)
-7. https://harmonybreath.com/de/diaphragmatic-breathing/
-8. https://harmonybreath.com/de/box-breathing/
+1. https://harmonybreath.com/box-breathing/ (Updated English title for Box Breathing Timer)
+2. https://harmonybreath.com/diaphragmatic-breathing/ (Updated English title for Diaphragmatic Breathing Timer)
+3. https://harmonybreath.com/4-7-8-breathing/ (Updated English title for 4-7-8 Breathing Timer)
+4. https://harmonybreath.com/physiological-sigh/ (Updated FAQ 1 for Cyclic Sighing & Timer)
+5. https://harmonybreath.com/fr/diaphragmatic-breathing/ (Updated FAQ 2 for daily practice query)
+6. https://harmonybreath.com/ (Updated customizable timer hero subtitle & H3 card)
+7. https://harmonybreath.com/pt/box-breathing/ (Portuguese breakthrough query: respiração quadrado)
+8. https://harmonybreath.com/nadi-shodhana/ (Ranking for nadishodhan & nadi shodhana)
+9. https://harmonybreath.com/es/wim-hof/ (Ranking for método de wim hof)
+10. https://harmonybreath.com/de/diaphragmatic-breathing/
+11. https://harmonybreath.com/de/box-breathing/
 
 
 --------------------------------------------------------------------------------

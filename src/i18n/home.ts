@@ -232,7 +232,7 @@ export const homeI18n: Record<SupportedLanguage, HomeContent> = {
     ],
   },
   es: {
-    metaTitle: 'HarmonyBreath — Temporizadores de Respiración Guiada y Ejercicios Gratuitos',
+    metaTitle: 'HarmonyBreath — Temporizadores de Respiración Guiada Gratis',
     metaDescription: 'Temporizador de respiración guiada online para Wim Hof, Box Breathing y 4-7-8. Señales de audio, sesiones personalizadas y privacidad total.',
     keywords: 'temporizador de respiración guiada, ejercicios de respiración, temporizador de respiración online, ejercicios de respiración relajantes, técnicas de respiración, app de respiración gratuita',
     canonicalPath: '/es/',
@@ -730,7 +730,7 @@ export const homeI18n: Record<SupportedLanguage, HomeContent> = {
     ],
   },
   pt: {
-    metaTitle: 'HarmonyBreath — Temporizadores de Respiração Guiada & Técnicas Gratuitas',
+    metaTitle: 'HarmonyBreath — Temporizadores de Respiração Guiada Gratuitos',
     metaDescription: 'Temporizador de respiração guiada para o Método Wim Hof, Box Breathing e 4-7-8. Sinais sonoros, sessões personalizadas e 100% privado.',
     keywords: 'temporizador de respiração guiada, exercícios de respiração, temporizador de respiração online, exercícios calmantes de respiração, técnicas de respiração, app de respiração gratuito',
     canonicalPath: '/pt/',
