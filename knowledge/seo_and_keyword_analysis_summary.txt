@@ -123,6 +123,28 @@ F. Sixth Snapshot (September 19, 2026 - 28-Day Overview & 24h Regional Surges):
      revealing that Box Breathing and Diaphragmatic Breathing represent >71 impressions combined.
 
 
+G. Seventh Snapshot (September 23 & 24, 2026 - 2-Day International Breakthroughs):
+   - September 23, 2026 (24-Hour Window):
+     * "respirazione wim hof prima di dormire" | 0 Clicks | 1 Imp | Pos: #21.0 (🇮🇹 ITALIAN PAGE 3 BREAKTHROUGH!)
+     * "wim hof method breathing 10 rounds"     | 0 Clicks | 1 Imp | Pos: #25.0 (Page 3 high-intent round search)
+     * "respiração alternada"                  | 0 Clicks | 1 Imp | Pos: #56.0 (Portuguese Pranayama head term)
+     * "respiration 4-7-8"                     | 0 Clicks | 1 Imp | Pos: #69.0 (French 4-7-8 head term)
+     * "4 7 8 breathing timer"                 | 0 Clicks | 1 Imp | Pos: #76.0 (Climbed up from #82.0!)
+     * "respiración diafragmática"             | 0 Clicks | 1 Imp | Pos: #85.0 (Initial Spanish probe)
+   - September 24, 2026 (24-Hour Window):
+     * "respiración cuadrada"                  | 0 Clicks | 5 Imp | Pos: #86.8 (🔥 5x impression surge in Spanish Box Breathing)
+     * "respiración diafragmática" (cluster)   | 0 Clicks | 7 Imp | Pos: #53.0 - #70.5 (EXPLOSION across 6 accent/plural variations)
+       - respiración diafragmática: 2 imp, Pos #70.5 (climbed +14.5 spots in 24 hours!)
+       - respiración diafragmatica: 1 imp, Pos #53.0 (Page 6 entry)
+       - respiracion diafragmàtica: 1 imp, Pos #54.0
+       - respiraciones diafragmáticas: 1 imp, Pos #57.0 (Plural search volume)
+       - respiracion diafragmatica: 1 imp, Pos #67.0
+     * "physiological sigh"                    | 0 Clicks | 1 Imp | Pos: #19.0 (🚀 PAGE 2 BREAKTHROUGH! English head keyword)
+     * "サイクリック・サイ"                      | 0 Clicks | 1 Imp | Pos: #22.0 (🇯🇵 JAPANESE PAGE 3 DEBUT! Cyclic sighing term)
+     * "respiración wim hof"                   | 0 Clicks | 1 Imp | Pos: #43.0 (Spanish Wim Hof solid hold)
+     * "metodo wim hof"                        | 0 Clicks | 1 Imp | Pos: #64.0 (Spanish Wim Hof variant)
+
+
 --------------------------------------------------------------------------------
 4. COUNTRY-SPECIFIC AHREFS KEYWORD RESEARCH FINDINGS
 --------------------------------------------------------------------------------
@@ -286,6 +308,29 @@ C. SPANISH & BILINGUAL SEARCHES:
         TO:   "Diaphragmatic Breathing Timer: Belly Breathing Exercises"
     - Each title maintains an independent, non-boilerplate grammatical structure and tone.
 
+14. ITALIAN & ENGLISH: Wim Hof Sleep & Extended 10 Rounds Presets (September 24, 2026)
+    - Added targeted FAQs to `src/i18n/wim-hof.ts`:
+      * Italian: "Si può fare la respirazione Wim Hof prima di dormire?" & "Si possono fare 10 round di respirazione Wim Hof?"
+      * English: "Can you do Wim Hof breathing before sleep?" & "Can you do 10 rounds of Wim Hof breathing?"
+    - Direct targeting for "respirazione wim hof prima di dormire" (#21.0) and "wim hof method breathing 10 rounds" (#25.0).
+    - Freshness signal: Updated Schema `dateModified` in `src/components/WimHofPage.astro` to 2026-09-24 exclusively for `en` and `it`.
+
+15. JAPANESE: Physiological Sigh Cyclic Sighing Integration (September 24, 2026)
+    - Directly incorporated the exact GSC breakout query "サイクリック・サイ" into:
+      * Meta title: "生理的ため息（サイクリック・サイ）無料タイマー＆科学的解説"
+      * Keywords array, hero subtitle, and foundational guide copy in `src/i18n/physiological-sigh.ts`.
+    - Direct targeting for "サイクリック・サイ" (#22.0 in Japan).
+    - Freshness signal: Updated visible editorial badge (`更新日: 2026-09-24`) and Schema `dateModified` in `src/components/PhysiologicalSighPage.astro` strictly for `ja`.
+
+
+16. ITALIAN: Physiological Sigh Title & CTR Optimization (September 24, 2026)
+    - Replaced low-CTR title "Sospiro Fisiologico e Sospiro Ciclico: Guida e Timer Calma":
+      * New Title: "Sospiro Fisiologico (Sospiro Ciclico): Timer Online e Benefici"
+      * Meta Description: Updated "gratuito" -> "online" for high-intent tool clarity:
+        "Pratica il Sospiro Fisiologico con il nostro timer guidato online. Doppia inspirazione ed espirazione lunga per un rapido sollievo dallo stress."
+      * Keywords: Added exact target "sospiro fisiologico timer online".
+      * Freshness signal: Updated visible editorial badge (`Aggiornato il 24/09/2026`) and Schema `dateModified` in `src/components/PhysiologicalSighPage.astro` for `it`.
+
 
 --------------------------------------------------------------------------------
 6. RE-INDEXING ACTION CHECKLIST (GOOGLE SEARCH CONSOLE)
@@ -293,17 +338,21 @@ C. SPANISH & BILINGUAL SEARCHES:
 Whenever these changes are pushed to live production (main branch -> Cloudflare Pages), 
 request manual re-indexing for these URLs in GSC (URL Inspection -> "Request Indexing"):
 
-1. https://harmonybreath.com/box-breathing/ (Updated English title for Box Breathing Timer)
-2. https://harmonybreath.com/diaphragmatic-breathing/ (Updated English title for Diaphragmatic Breathing Timer)
-3. https://harmonybreath.com/4-7-8-breathing/ (Updated English title for 4-7-8 Breathing Timer)
-4. https://harmonybreath.com/physiological-sigh/ (Updated FAQ 1 for Cyclic Sighing & Timer)
-5. https://harmonybreath.com/fr/diaphragmatic-breathing/ (Updated FAQ 2 for daily practice query)
-6. https://harmonybreath.com/ (Updated customizable timer hero subtitle & H3 card)
-7. https://harmonybreath.com/pt/box-breathing/ (Portuguese breakthrough query: respiração quadrado)
-8. https://harmonybreath.com/nadi-shodhana/ (Ranking for nadishodhan & nadi shodhana)
-9. https://harmonybreath.com/es/wim-hof/ (Ranking for método de wim hof)
-10. https://harmonybreath.com/de/diaphragmatic-breathing/
-11. https://harmonybreath.com/de/box-breathing/
+1. https://harmonybreath.com/it/physiological-sigh/ (Updated Italian title for CTR & online timer)
+2. https://harmonybreath.com/box-breathing/ (Updated English title for Box Breathing Timer)
+3. https://harmonybreath.com/diaphragmatic-breathing/ (Updated English title for Diaphragmatic Breathing Timer)
+4. https://harmonybreath.com/4-7-8-breathing/ (Updated English title for 4-7-8 Breathing Timer)
+5. https://harmonybreath.com/physiological-sigh/ (Updated FAQ 1 for Cyclic Sighing & Timer)
+6. https://harmonybreath.com/ja/physiological-sigh/ (Exact match targeting for Japanese "サイクリック・サイ" #22.0)
+7. https://harmonybreath.com/it/wim-hof/ (Targeting "respirazione wim hof prima di dormire" #21.0)
+8. https://harmonybreath.com/wim-hof/ (Targeting "wim hof method breathing 10 rounds" #25.0)
+9. https://harmonybreath.com/fr/diaphragmatic-breathing/ (Updated FAQ 2 for daily practice query)
+10. https://harmonybreath.com/ (Updated customizable timer hero subtitle & H3 card)
+11. https://harmonybreath.com/pt/box-breathing/ (Portuguese breakthrough query: respiração quadrado)
+12. https://harmonybreath.com/nadi-shodhana/ (Ranking for nadishodhan & nadi shodhana)
+13. https://harmonybreath.com/es/wim-hof/ (Ranking for método de wim hof)
+14. https://harmonybreath.com/de/diaphragmatic-breathing/
+15. https://harmonybreath.com/de/box-breathing/
 
 
 --------------------------------------------------------------------------------

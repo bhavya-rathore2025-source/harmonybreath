@@ -298,6 +298,14 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
         question: 'How to Do Wim Hof Breathing?',
         answer: 'To practice Wim Hof Breathing, find a comfortable seated or lying position in a safe environment. Each round consists of 30 deep breaths — inhale fully through the nose or mouth and exhale without force. After the last exhalation, hold your breath out for as long as comfortable. When you feel the urge to breathe, take a full recovery breath and hold for 15 seconds. This completes one round, and beginners typically perform 3 rounds. Always listen to your body and never force the breath hold.',
       },
+      {
+        question: 'Can you do Wim Hof breathing before sleep?',
+        answer: 'While Wim Hof breathing temporarily increases adrenaline and alertness (making it ideal for mornings), many practitioners use gentle rounds before bed to quiet mental chatter and relax deeply. If practicing at night, maintain an easy, unforced rhythm, avoid straining during breath holds, and follow your session with a few minutes of slow nasal breathing (like 4-7-8) to ease into sleep. Always practice lying down safely in bed.',
+      },
+      {
+        question: 'Can you do 10 rounds of Wim Hof breathing?',
+        answer: 'Yes, experienced practitioners occasionally perform extended sessions up to 10 rounds using our customizable timer. However, beginners should always start with 3 to 4 rounds. When doing extended sessions like 10 rounds, always stay lying down in a safe environment, stay hydrated, never force the retention holds, and give yourself ample time to rest and integrate afterward.',
+      },
     ],
   },
 
@@ -1527,6 +1535,14 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
       {
         question: 'Come fare la respirazione Wim Hof passo a passo?',
         answer: '1. Mettiti comodo seduto o sdraiato. 2. Inspira profondamente col naso o la bocca riempiendo pancia e petto, ed espira senza forzare (30 volte). 3. Alla 30ª espirazione svuota i polmoni e trattieni il respiro quanto vuoi. 4. Quando senti il bisogno di respirare, fai un respiro profondo e trattieni 15 secondi. Ripeti 3 o 4 volte.',
+      },
+      {
+        question: 'Si può fare la respirazione Wim Hof prima di dormire?',
+        answer: 'Anche se la respirazione Wim Hof aumenta temporaneamente l’adrenalina e la lucidità (rendendola ideale per il risveglio), molti praticanti la eseguono la sera per liberare la mente dallo stress e favorire un rilassamento profondo. Se la pratichi prima di dormire, mantieni un ritmo calmo, evita apnee forzate e concludi con qualche minuto di respirazione lenta dal naso (come il metodo 4-7-8) per favorire un sonno profondo. Pratica sempre a letto in posizione supina.',
+      },
+      {
+        question: 'Si possono fare 10 round di respirazione Wim Hof?',
+        answer: 'Sì, i praticanti esperti possono eseguire sessioni estese fino a 10 round impostando il timer personalizzato. Tuttavia, i principianti dovrebbero sempre iniziare con 3 o 4 round. Durante sessioni lunghe come 10 round, rimani sempre sdraiato in un ambiente sicuro, non forzare le apnee e concediti qualche minuto di riposo per integrare la pratica.',
       },
     ],
   },
