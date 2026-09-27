@@ -346,19 +346,14 @@ C. SPANISH & BILINGUAL SEARCHES:
       * Freshness signal: Updated visible editorial badge (`Aggiornato il 24/09/2026`) and Schema `dateModified` in `src/components/PhysiologicalSighPage.astro` for `it`.
 
 
-17. ENGLISH & GERMAN: Wim Hof Core Timer Query & German Sighing Optimization (September 26, 2026)
+17. ENGLISH: Wim Hof Core Timer Query Optimization — Option A (September 27, 2026)
     - English Wim Hof (`src/i18n/wim-hof.ts` & `src/components/WimHofPage.astro`):
-      * Front-loaded high-intent query "Wim Hof Breathing Timer" directly into the meta title:
+      * Front-loaded high-intent query "Wim Hof Breathing Timer" using distinct, non-boilerplate natural syntax (Option A):
         FROM: "Wim Hof Method Breathing: Guided Rounds & Retention Timer"
-        TO:   "Wim Hof Breathing Timer — Guided Method & Retention Rounds"
-      * Added "wim hof breathing timer" as primary focus term in keywords.
-      * Freshness signal: Updated Schema `dateModified` for English to 2026-09-26.
-      * Strategic rationale: Capitalize on query surging to Position #20.0 with 3 impressions to push it onto Page 1.
-    - German Physiological Sigh (`src/i18n/physiological-sigh.ts` & `src/components/PhysiologicalSighPage.astro`):
-      * Targeted bilingual query "sighing deutsch" (#68.0) by explicitly noting the English term in the guide body:
-        "Der physiologische Seufzer (im Englischen als Physiological Sigh oder Cyclic Sighing bezeichnet...)"
-      * Added "sighing deutsch", "physiological sigh deutsch", and "cyclic sighing deutsch" to keywords.
-      * Freshness signal: Updated visible editorial badge (`Aktualisiert am 26.09.2026`) and Schema `dateModified` for `de` to 2026-09-26.
+        TO:   "Wim Hof Breathing Timer with Guided Retention Rounds"
+      * Targeted GSC query "wim hof breathing timer" (#20.0, 3 impressions) while avoiding punctuation/template duplication with other pages.
+      * Keywords: Added "wim hof breathing timer" and removed "wim hof breathing benefits" for a leaner, higher-intent array.
+      * Freshness signal: Updated Schema `dateModified` for English to 2026-09-27 in `WimHofPage.astro`.
 
 
 --------------------------------------------------------------------------------
