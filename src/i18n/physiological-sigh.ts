@@ -316,7 +316,7 @@ export const physiologicalSighI18n: Record<SupportedLanguage, PhysiologicalSighC
   de: {
     metaTitle: 'Physiologischer Seufzer (Zyklisches Seufzen): Timer & Guide',
     metaDescription: 'Meistere den Physiologischen Seufzer mit unserem kostenlosen Timer. Doppeltes Einatmen und langes Ausatmen für schnellen Stressabbau nach Stanford.',
-    keywords: 'physiologischer seufzer, physiologisches seufzen, zyklisches seufzen, physiologischer seufzer timer, physiologisches seufzen timer, physiologischer seufzer wirkung, physiologischer seufzer atmung, huberman seufzer, doppelter atemzug, atemübung stressabbau, kostenlose atem app, stanford atemstudie',
+    keywords: 'physiologischer seufzer, physiologisches seufzen, zyklisches seufzen, sighing deutsch, physiologischer seufzer timer, huberman seufzer, atemuebung stressabbau, stanford atemstudie',
     canonicalPath: '/de/physiological-sigh/',
     badge: 'IN STANFORD ERFORSCHTES SYSTEM FÜR SOFORTIGEN STRESSABBAU',
     heroTitle: 'Physiologischer Seufzer\nZyklisches Seufzen Reset',

@@ -869,4 +869,22 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
   window.addEventListener('hb_music_quit', () => {
     isMusicStopped = true;
   });
+
+  // Clean up timers and audio when navigating away via back button or changing page
+  window.addEventListener('pagehide', () => {
+    resetTimers();
+    audioPlayer.stopAll();
+  });
+
+  window.addEventListener('popstate', () => {
+    resetTimers();
+    audioPlayer.stopAll();
+  });
+
+  // Pause session when minimizing app or backing out to mobile home screen
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && phase === 'ACTIVE' && !isPaused) {
+      pauseSession();
+    }
+  });
 </script>

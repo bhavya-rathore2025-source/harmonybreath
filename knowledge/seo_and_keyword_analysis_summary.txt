@@ -354,6 +354,9 @@ C. SPANISH & BILINGUAL SEARCHES:
       * Targeted GSC query "wim hof breathing timer" (#20.0, 3 impressions) while avoiding punctuation/template duplication with other pages.
       * Keywords: Added "wim hof breathing timer" and removed "wim hof breathing benefits" for a leaner, higher-intent array.
       * Freshness signal: Updated Schema `dateModified` for English to 2026-09-27 in `WimHofPage.astro`.
+    - German Physiological Sigh (`src/i18n/physiological-sigh.ts`):
+      * Pruned the German keyword array down to 8 lean, spam-safe terms (avoiding Bing keyword-stuffing penalties):
+        Added "sighing deutsch" (targeting GSC query #68.0) and pruned generic low-value filler terms.
 
 
 --------------------------------------------------------------------------------

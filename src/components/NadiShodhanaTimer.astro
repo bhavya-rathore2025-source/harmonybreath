@@ -721,6 +721,22 @@ const p = currentContent.presets;
     isMusicStopped = true;
   });
 
+  // Clean up timers and audio when navigating away via back button or changing page
+  function cleanupSession() {
+    stopTimer();
+    audioPlayer.stopAll();
+  }
+
+  window.addEventListener('pagehide', cleanupSession);
+  window.addEventListener('popstate', cleanupSession);
+
+  // Pause session when minimizing app or backing out to mobile home screen
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && isRunning) {
+      stopTimer();
+    }
+  });
+
   // Initial UI Render
   updateUI();
 </script>

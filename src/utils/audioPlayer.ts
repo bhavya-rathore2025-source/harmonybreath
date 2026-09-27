@@ -552,11 +552,14 @@ class ResilientAudioPlayer {
 export const audioPlayer = new ResilientAudioPlayer();
 
 if (typeof window !== 'undefined') {
-  // Listen to beforeunload and pagehide so page transitions / language changes / refreshes always kill audio
+  // Listen to beforeunload, pagehide, and popstate so page transitions / back navigations / language changes / refreshes always kill audio
   window.addEventListener('beforeunload', () => {
     audioPlayer.stopAll();
   });
   window.addEventListener('pagehide', () => {
+    audioPlayer.stopAll();
+  });
+  window.addEventListener('popstate', () => {
     audioPlayer.stopAll();
   });
 

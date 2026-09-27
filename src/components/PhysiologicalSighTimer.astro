@@ -1028,5 +1028,30 @@ const currentI18n = sighTimerI18n[lang] || sighTimerI18n.en;
     isMusicStopped = true;
   });
 
+  // Clean up timers and audio when navigating away via back button or changing page
+  function cleanupSession() {
+    if (tickTimer) {
+      clearInterval(tickTimer);
+      tickTimer = null;
+    }
+    audioPlayer.stopAll();
+  }
+
+  window.addEventListener('pagehide', cleanupSession);
+  window.addEventListener('popstate', cleanupSession);
+
+  // Pause session when minimizing app or backing out to mobile home screen
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && state === 'RUNNING') {
+      state = 'PAUSED';
+      audioPlayer.pause();
+      if (tickTimer) {
+        clearInterval(tickTimer);
+        tickTimer = null;
+      }
+      updateUI();
+    }
+  });
+
   updateUI();
 </script>
