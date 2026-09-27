@@ -151,16 +151,14 @@ const breadcrumb = Astro.props.breadcrumb;
       />
     )}
 
-    <!-- Google Analytics -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-RL5BBWJ3Q7"></script>
-
+    <!-- Google Analytics & Consent Mode v2 -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-
       function gtag() {
         dataLayer.push(arguments);
       }
 
+      // Default all consent parameters to denied before tags load
       gtag('consent', 'default', {
         ad_storage: 'denied',
         analytics_storage: 'denied',
@@ -175,6 +173,23 @@ const breadcrumb = Astro.props.breadcrumb;
       gtag('set', 'ads_data_redaction', true);
       gtag('set', 'url_passthrough', true);
 
+      // Immediately restore consent if previously granted by user
+      try {
+        if (localStorage.getItem('hb-cookie-consent') === 'accepted') {
+          gtag('consent', 'update', {
+            ad_storage: 'granted',
+            analytics_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+            functionality_storage: 'granted',
+            personalization_storage: 'granted',
+            security_storage: 'granted',
+          });
+        }
+      } catch (e) {}
+    </script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-RL5BBWJ3Q7"></script>
+    <script is:inline>
       gtag('js', new Date());
       gtag('config', 'G-RL5BBWJ3Q7');
     </script>

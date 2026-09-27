@@ -144,6 +144,20 @@ G. Seventh Snapshot (September 23 & 24, 2026 - 2-Day International Breakthroughs
      * "respiración wim hof"                   | 0 Clicks | 1 Imp | Pos: #43.0 (Spanish Wim Hof solid hold)
      * "metodo wim hof"                        | 0 Clicks | 1 Imp | Pos: #64.0 (Spanish Wim Hof variant)
 
+H. Eighth Snapshot (September 26, 2026 - Today's Report):
+   - "wim hof breathing timer"        | 0 Clicks | 3 Imp | Pos: #20.0 (🚀 HIGHEST INTENT CORE QUERY AT PAGE 2 APEX!)
+     * 3 impressions in a single 24h window; sitting right at the Page 2 / Page 1 threshold (#20.0).
+     * High-converting transactional/tool query directly aligned with our interactive breathing engine.
+   - "winhof"                         | 0 Clicks | 2 Imp | Pos: #52.0 (High-volume typo query discovery)
+   - "7 8 4"                          | 0 Clicks | 1 Imp | Pos: #41.0 (🔥 MASSIVE JUMP: Climbed +44.5 spots from #85.5 to #41.0!)
+   - "nadi shodhana pranayama"        | 0 Clicks | 1 Imp | Pos: #48.0 (📈 Climbed +14 spots from #62.0 straight into Top 50!)
+   - "respirazione wim hof"           | 0 Clicks | 1 Imp | Pos: #48.0 (🇮🇹 Italian Wim Hof head query breaks into Top 50!)
+   - "sighing deutsch"                | 0 Clicks | 1 Imp | Pos: #68.0 (🇩🇪 German bilingual / English query seeking German sighing tool)
+   - "technique de respiration 4 7 8" | 0 Clicks | 1 Imp | Pos: #71.0 (🇫🇷 French 4-7-8 exact title intent match)
+   - "respiraciones diafragmáticas"   | 0 Clicks | 1 Imp | Pos: #78.0 (🇪🇸 Spanish diaphragmatic breathing plural query)
+   - "tecnica di respirazione 4-7-8"  | 0 Clicks | 1 Imp | Pos: #80.0 (🇮🇹 Italian 4-7-8 long-tail technique query)
+   - "respiración cuadrada"          | 0 Clicks | 1 Imp | Pos: #84.0 (🇪🇸 Spanish Box Breathing steady indexing)
+
 
 --------------------------------------------------------------------------------
 4. COUNTRY-SPECIFIC AHREFS KEYWORD RESEARCH FINDINGS
@@ -332,13 +346,30 @@ C. SPANISH & BILINGUAL SEARCHES:
       * Freshness signal: Updated visible editorial badge (`Aggiornato il 24/09/2026`) and Schema `dateModified` in `src/components/PhysiologicalSighPage.astro` for `it`.
 
 
+17. ENGLISH & GERMAN: Wim Hof Core Timer Query & German Sighing Optimization (September 26, 2026)
+    - English Wim Hof (`src/i18n/wim-hof.ts` & `src/components/WimHofPage.astro`):
+      * Front-loaded high-intent query "Wim Hof Breathing Timer" directly into the meta title:
+        FROM: "Wim Hof Method Breathing: Guided Rounds & Retention Timer"
+        TO:   "Wim Hof Breathing Timer — Guided Method & Retention Rounds"
+      * Added "wim hof breathing timer" as primary focus term in keywords.
+      * Freshness signal: Updated Schema `dateModified` for English to 2026-09-26.
+      * Strategic rationale: Capitalize on query surging to Position #20.0 with 3 impressions to push it onto Page 1.
+    - German Physiological Sigh (`src/i18n/physiological-sigh.ts` & `src/components/PhysiologicalSighPage.astro`):
+      * Targeted bilingual query "sighing deutsch" (#68.0) by explicitly noting the English term in the guide body:
+        "Der physiologische Seufzer (im Englischen als Physiological Sigh oder Cyclic Sighing bezeichnet...)"
+      * Added "sighing deutsch", "physiological sigh deutsch", and "cyclic sighing deutsch" to keywords.
+      * Freshness signal: Updated visible editorial badge (`Aktualisiert am 26.09.2026`) and Schema `dateModified` for `de` to 2026-09-26.
+
+
 --------------------------------------------------------------------------------
 6. RE-INDEXING ACTION CHECKLIST (GOOGLE SEARCH CONSOLE)
 --------------------------------------------------------------------------------
 Whenever these changes are pushed to live production (main branch -> Cloudflare Pages), 
 request manual re-indexing for these URLs in GSC (URL Inspection -> "Request Indexing"):
 
-1. https://harmonybreath.com/it/physiological-sigh/ (Updated Italian title for CTR & online timer)
+1. https://harmonybreath.com/wim-hof/ (Updated English title & keywords targeting "wim hof breathing timer" #20.0)
+2. https://harmonybreath.com/de/physiological-sigh/ (Updated German copy & keywords for "sighing deutsch" #68.0)
+3. https://harmonybreath.com/it/physiological-sigh/ (Updated Italian title for CTR & online timer)
 2. https://harmonybreath.com/box-breathing/ (Updated English title for Box Breathing Timer)
 3. https://harmonybreath.com/diaphragmatic-breathing/ (Updated English title for Diaphragmatic Breathing Timer)
 4. https://harmonybreath.com/4-7-8-breathing/ (Updated English title for 4-7-8 Breathing Timer)

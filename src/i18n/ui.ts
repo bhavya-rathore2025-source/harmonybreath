@@ -47,6 +47,7 @@ export const ui = {
     'cookie.text': 'We use cookies and privacy-friendly analytics to improve your experience.',
     'cookie.accept': 'Accept All',
     'cookie.reject': 'Reject All',
+    'cookie.manage': 'Cookie Settings',
   },
   es: {
     'nav.home': 'Inicio',
@@ -70,6 +71,7 @@ export const ui = {
     'cookie.text': 'Usamos cookies y análisis respetuosos con la privacidad para mejorar tu experiencia.',
     'cookie.accept': 'Aceptar todo',
     'cookie.reject': 'Rechazar todo',
+    'cookie.manage': 'Configuración de cookies',
   },
   de: {
     'nav.home': 'Startseite',
@@ -93,6 +95,7 @@ export const ui = {
     'cookie.text': 'Wir verwenden Cookies und datenschutzfreundliche Analysen, um Ihre Erfahrung zu verbessern.',
     'cookie.accept': 'Alle akzeptieren',
     'cookie.reject': 'Alle ablehnen',
+    'cookie.manage': 'Cookie-Einstellungen',
   },
   fr: {
     'nav.home': 'Accueil',
@@ -116,6 +119,7 @@ export const ui = {
     'cookie.text': 'Nous utilisons des cookies et des outils d\'analyse respectueux de la vie privée pour améliorer votre expérience.',
     'cookie.accept': 'Tout accepter',
     'cookie.reject': 'Tout refuser',
+    'cookie.manage': 'Paramètres des cookies',
   },
   pt: {
     'nav.home': 'Início',
@@ -139,6 +143,7 @@ export const ui = {
     'cookie.text': 'Utilizamos cookies e análises que respeitam a privacidade para melhorar a sua experiência.',
     'cookie.accept': 'Aceitar todos',
     'cookie.reject': 'Rejeitar todos',
+    'cookie.manage': 'Definições de cookies',
   },
   ja: {
     'nav.home': 'ホーム',
@@ -162,6 +167,7 @@ export const ui = {
     'cookie.text': '当サイトでは、快適な利用体験の提供とプライバシーに配慮したアクセスの分析のためにCookieを使用しています。',
     'cookie.accept': 'すべて同意',
     'cookie.reject': 'すべて拒否',
+    'cookie.manage': 'Cookie設定',
   },
   it: {
     'nav.home': 'Home',
@@ -185,6 +191,7 @@ export const ui = {
     'cookie.text': 'Utilizziamo cookie e strumenti di analisi nel rispetto della privacy per migliorare la tua esperienza.',
     'cookie.accept': 'Accetta tutti',
     'cookie.reject': 'Rifiuta tutti',
+    'cookie.manage': 'Impostazioni cookie',
   },
 } as const;
 

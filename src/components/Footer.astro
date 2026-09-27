@@ -46,10 +46,12 @@ const termsUrl = currentLang === 'en' ? '/terms/' : `/${currentLang}/terms/`;
     <div class="pt-8 text-center text-xs font-mono text-neutral-400 space-y-2">
       <p class="text-neutral-300 font-medium">© {new Date().getFullYear()} {t('footer.copyright')}</p>
       <p class="max-w-2xl mx-auto text-neutral-400 font-light">{t('footer.disclaimer')}</p>
-      <div class="flex items-center justify-center gap-4 pt-2 text-xs">
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 pt-2 text-xs">
         <a href={privacyUrl} class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">{t('footer.privacyPolicy')}</a>
         <span class="text-neutral-600">|</span>
         <a href={termsUrl} class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4">{t('footer.termsConditions')}</a>
+        <span class="text-neutral-600">|</span>
+        <button type="button" data-open-cookie-settings class="text-neutral-300 hover:text-white transition-colors underline underline-offset-4 cursor-pointer bg-transparent border-0 p-0 font-mono text-xs">{t('cookie.manage')}</button>
       </div>
     </div>
   </div>

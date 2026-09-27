@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { privacyI18n } from '../i18n/privacy';
-import { getHreflangLinks } from '../i18n/utils';
+import { getHreflangLinks, useTranslations } from '../i18n/utils';
 import type { SupportedLanguage } from '../i18n/ui';
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
 }
 
 const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
 const content = privacyI18n[lang] || privacyI18n.en;
 
 const siteUrl = 'https://harmonybreath.com';
@@ -143,6 +144,19 @@ const pageSchemaData = [
         <p>
           {content.choicesRejectionNote}
         </p>
+        <div class="py-2">
+          <button
+            type="button"
+            data-open-cookie-settings
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-700 bg-neutral-900/60 hover:bg-neutral-800 text-amber-400 hover:text-amber-300 font-medium text-xs sm:text-sm transition-all cursor-pointer"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            {t('cookie.manage')}
+          </button>
+        </div>
         <p>
           {content.googlePolicyIntro}
           <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:text-amber-300 underline underline-offset-2 break-all sm:break-normal">{content.googlePartnerLinkText}</a>
