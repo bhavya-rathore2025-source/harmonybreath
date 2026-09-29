@@ -32,13 +32,15 @@ const breadcrumb = [
 const pageSchemaData = [
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": "WebApplication",
     "name": `HarmonyBreath — ${content.heroTitle.replace('\n', ' ')}`,
     "alternateName": "HarmonyBreath Guided Belly Breathing App",
     "description": content.metaDescription,
     "url": fullCanonicalUrl,
+    "image": "https://harmonybreath.com/og-image.png",
     "applicationCategory": "HealthApplication",
-    "operatingSystem": "Any (Web Browser)",
+    "operatingSystem": "All (Web Browser)",
+    "browserRequirements": "Requires JavaScript",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -54,38 +56,6 @@ const pageSchemaData = [
   },
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": `HarmonyBreath ${content.breadcrumbName} Timer`,
-    "description": content.metaDescription,
-    "browserRequirements": "Requires JavaScript",
-    "applicationCategory": "HealthApplication",
-    "operatingSystem": "All"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": content.metaTitle,
-    "description": content.metaDescription,
-    "datePublished": datePublished,
-    "dateModified": dateModified,
-    "author": {
-      "@type": "Organization",
-      "name": "HarmonyBreath",
-      "url": "https://harmonybreath.com"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "HarmonyBreath",
-      "url": "https://harmonybreath.com"
-    },
-    "mainEntityOfPage": fullCanonicalUrl,
-    "citation": [
-      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5455070/",
-      "https://pubmed.ncbi.nlm.nih.gov/36630953/"
-    ]
-  },
-  {
-    "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": content.faqs.map((faq) => ({
       "@type": "Question",
@@ -94,26 +64,6 @@ const pageSchemaData = [
         "@type": "Answer",
         "text": faq.answer,
       }
-    }))
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": content.guide.howToTitle,
-    "description": content.metaDescription,
-    "totalTime": "PT5M",
-    "tool": [
-      {
-        "@type": "HowToTool",
-        "name": `HarmonyBreath ${content.breadcrumbName} Timer`
-      }
-    ],
-    "step": content.guide.howToSteps.map((s, idx) => ({
-      "@type": "HowToStep",
-      "position": idx + 1,
-      "name": `${s.step}. ${s.title}`,
-      "text": s.desc,
-      "url": `${fullCanonicalUrl}#guide`
     }))
   }
 ];
