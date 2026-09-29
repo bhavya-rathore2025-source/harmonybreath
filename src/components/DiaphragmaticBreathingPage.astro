@@ -22,7 +22,7 @@ const fullCanonicalUrl = `${siteUrl}${content.canonicalPath}`;
 const hreflangLinks = getHreflangLinks('diaphragmatic-breathing', siteUrl);
 
 const datePublished = '2026-07-25';
-const dateModified = '2026-08-15';
+const dateModified = '2026-09-29';
 
 const breadcrumb = [
   { name: 'Home', url: '/' },
@@ -94,6 +94,26 @@ const pageSchemaData = [
         "@type": "Answer",
         "text": faq.answer,
       }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": content.guide.howToTitle,
+    "description": content.metaDescription,
+    "totalTime": "PT5M",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": `HarmonyBreath ${content.breadcrumbName} Timer`
+      }
+    ],
+    "step": content.guide.howToSteps.map((s, idx) => ({
+      "@type": "HowToStep",
+      "position": idx + 1,
+      "name": `${s.step}. ${s.title}`,
+      "text": s.desc,
+      "url": `${fullCanonicalUrl}#guide`
     }))
   }
 ];
