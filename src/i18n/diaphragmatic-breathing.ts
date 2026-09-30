@@ -123,9 +123,9 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   },
 
   es: {
-    metaTitle: 'Respiración Diafragmática: Temporizador Abdominal y Guía',
+    metaTitle: 'Respiración Diafragmática: Ejercicios y Temporizador Online Gratis',
     metaDescription: 'Aprende la respiración diafragmática (abdominal) con nuestro temporizador gratis. Estimula el nervio vago, reduce el cortisol y calma la ansiedad.',
-    keywords: 'respiracion diafragmatica, respiracion abdominal, respiracion de vientre, ejercicios de respiracion diafragmatica, como respirar con el diafragma, respiracion para calmar la ansiedad, nervio vago respiracion',
+    keywords: 'respiración diafragmática, respiraciones diafragmáticas, respiracion abdominal, ejercicios de respiracion diafragmatica, temporizador respiracion diafragmatica, como respirar con el diafragma, respiracion para calmar la ansiedad, nervio vago respiracion',
     canonicalPath: '/es/diaphragmatic-breathing/',
     badge: 'ESTIMULACIÓN DEL NERVIO VAGO Y ACTIVACIÓN PARASIMPÁTICA',
     heroTitle: 'Respiración Diafragmática\nRespiración Abdominal y Vientre',
@@ -199,7 +199,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   de: {
     metaTitle: 'Zwerchfellatmung: Bauchatmung Timer & Übungen für Ruhe',
     metaDescription: 'Lerne die Bauchatmung (Zwerchfellatmung) mit unserem kostenlosen Online-Timer. Stimuliere den Vagusnerv, senke Stress und aktiviere tiefe Entspannung.',
-    keywords: 'bauchatmung, bauchatmung lernen, tiefe bauchatmung lernen, zwerchfellatmung, bauchatmung uebungen, richtig in den bauch atmen, tiefe bauchatmung, vagusnerv stimulieren atmung, atemuebungen blutdruck senken, entspannung timer',
+    keywords: 'diaphragmatic breathing deutsch, diaphragmatic breathing, bauchatmung, bauchatmung lernen, zwerchfellatmung, bauchatmung uebungen, tiefe bauchatmung, vagusnerv stimulieren atmung, entspannung timer',
     canonicalPath: '/de/diaphragmatic-breathing/',
     badge: 'VAGUSNERV-STIMULATION & PARASYMPATHISCHE ENTSPANNUNG',
     heroTitle: 'Bauchatmung (Zwerchfellatmung)\nÜbungen & Geführter Timer',
@@ -228,7 +228,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
     },
     guide: {
       whatIsTitle: 'Was ist die Bauchatmung (Zwerchfellatmung)?',
-      whatIsDesc1: 'Die Bauchatmung – medizinisch als Zwerchfellatmung oder abdominelle Atmung bezeichnet – ist die natürliche, biologisch effizienteste Atemform des Menschen. Dabei wird primär das Zwerchfell anstelle der Nacken- und Brustmuskulatur genutzt.',
+      whatIsDesc1: 'Die Bauchatmung – international als Diaphragmatic Breathing und medizinisch als Zwerchfellatmung bezeichnet – ist die natürliche, biologisch effizienteste Atemform des Menschen. Dabei wird primär das Zwerchfell anstelle der Nacken- und Brustmuskulatur genutzt.',
       whatIsDesc2: 'Beim Einatmen senkt sich das Zwerchfell nach unten, massiert die inneren Organe und zieht die Luft bis in die unteren Lungenflügel, wo die beste Sauerstoffaufnahme stattfindet.',
       howToTitle: 'Bauchatmung lernen: Schritt-für-Schritt-Anleitung',
       howToSteps: [
