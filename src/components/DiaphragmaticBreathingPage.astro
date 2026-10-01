@@ -22,7 +22,16 @@ const fullCanonicalUrl = `${siteUrl}${content.canonicalPath}`;
 const hreflangLinks = getHreflangLinks('diaphragmatic-breathing', siteUrl);
 
 const datePublished = '2026-07-25';
-const dateModified = '2026-09-30';
+const modifiedDates: Record<SupportedLanguage, string> = {
+  es: '2026-10-01', // New GSC FAQs & title optimization
+  de: '2026-09-30', // German bilingual query optimization
+  en: '2026-09-29', // Schema consolidation & headline polish
+  fr: '2026-08-15', // Untouched - reversed to baseline
+  pt: '2026-08-15', // Untouched - reversed to baseline
+  ja: '2026-08-15', // Untouched - reversed to baseline
+  it: '2026-08-15', // Untouched - reversed to baseline
+};
+const dateModified = modifiedDates[lang] || '2026-08-15';
 
 const breadcrumb = [
   { name: 'Home', url: '/' },
@@ -38,6 +47,7 @@ const pageSchemaData = [
     "description": content.metaDescription,
     "url": fullCanonicalUrl,
     "image": "https://harmonybreath.com/og-image.png",
+    "dateModified": dateModified,
     "applicationCategory": "HealthApplication",
     "operatingSystem": "All (Web Browser)",
     "browserRequirements": "Requires JavaScript",

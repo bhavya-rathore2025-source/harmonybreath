@@ -22,8 +22,16 @@ const fullCanonicalUrl = `${siteUrl}${content.canonicalPath}`;
 const hreflangLinks = getHreflangLinks("physiological-sigh", siteUrl);
 
 const datePublished = "2026-07-25";
-const dateModified =
-  lang === "ja" || lang === "it" ? "2026-09-24" : "2026-08-15";
+const modifiedDates: Record<SupportedLanguage, string> = {
+  de: "2026-09-27", // German sighing keyword optimization
+  ja: "2026-09-24", // Japanese cyclic sighing integration
+  it: "2026-09-24", // Italian title & CTR optimization
+  en: "2026-09-14", // Cyclic sighing Stanford study FAQ
+  es: "2026-08-15",
+  fr: "2026-08-15",
+  pt: "2026-08-15",
+};
+const dateModified = modifiedDates[lang] || "2026-08-15";
 
 const breadcrumb = [
   { name: "Home", url: "/" },

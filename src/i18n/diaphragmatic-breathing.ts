@@ -178,12 +178,20 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
     },
     faqs: [
       {
-        question: '¿La respiración diafragmática es buena para la ansiedad?',
-        answer: 'Sí, es una de las técnicas con mayor evidencia científica para calmar crisis de ansiedad. Al activar el nervio vago, reduce el ritmo cardíaco y detiene la hiperventilación en cuestión de minutos.',
+        question: '¿Qué es la respiración diafragmática?',
+        answer: 'La respiración diafragmática (o respiración abdominal) es una técnica de respiración profunda que utiliza activamente el diafragma en lugar del pecho. Al inhalar hacia el vientre, se expanden completamente los pulmones y se estimula el nervio vago, induciendo un estado inmediato de calma fisiológica.',
       },
       {
-        question: '¿Cuántas veces al día se recomienda practicarla?',
-        answer: 'De 5 a 10 minutos, 2 o 3 veces al día (por ejemplo, al levantarte y antes de dormir) es suficiente para reeducar tu patrón respiratorio y eliminar la respiración superficial crónica.',
+        question: '¿Cómo se hace la respiración diafragmática paso a paso?',
+        answer: 'Para practicarla: 1) Siéntate o acuéstate con una mano en el pecho y otra en el abdomen. 2) Inhala despacio por la nariz durante 4 segundos sintiendo que solo se mueve la mano del vientre. 3) Mantén el aire 2 segundos de forma suave. 4) Exhala despacio en 4 a 6 segundos vaciando el abdomen. Puedes guiarte con nuestro temporizador visual interactivo.',
+      },
+      {
+        question: '¿Cuáles son los tiempos de la respiración diafragmática y cuánto debe durar?',
+        answer: 'El patrón más recomendado es 4 segundos de inhalación, 2 segundos de pausa y 4 a 6 segundos de exhalación (ritmo 4-2-4 o 4-2-6). Se aconseja practicar de 5 a 10 minutos por sesión, 2 o 3 veces al día, para calmar el sistema nervioso y reducir el cortisol.',
+      },
+      {
+        question: '¿La respiración diafragmática es buena para la ansiedad?',
+        answer: 'Sí, es una de las técnicas con mayor evidencia científica para calmar crisis de ansiedad. Al activar el nervio vago, reduce el ritmo cardíaco y detiene la hiperventilación en cuestión de minutos.',
       },
       {
         question: '¿Por qué se mueve mi pecho y no mi estómago?',

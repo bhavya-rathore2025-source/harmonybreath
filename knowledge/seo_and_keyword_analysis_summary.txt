@@ -232,6 +232,36 @@ J. Tenth Snapshot (September 30, 2026 - Today's Report):
         Tracking "respiración diafragmática" and "respiraciones diafragmáticas" to observe if they climb out of the Page 10 boundary back toward the Top 50.
 
 
+K. Eleventh Snapshot (October 1, 2026 - Today's Report & Historic Page 1 Surge):
+   1. 24-Hour Overall Metrics:
+      - Total Impressions: 35 (+59.1% surge from 22 yesterday, setting all-time 24h record!)
+      - Total Clicks: 0
+      - Geographic Coverage: 8 countries (Spain 16, Japan 5, US 4, Germany 3, France 3, Brazil 2, Switzerland 1, Italy 1).
+      - Device Split: Desktop 23 (pos #49.5), Mobile 11 (pos #31.3), Tablet 1 (pos #72.0).
+
+   2. Historic Page 1 / Top 10 Breakthrough (9 Landing Pages in Google Top 10!):
+      - https://harmonybreath.com/ja/physiological-sigh/ | Pos: #1.0 (2 imp) 🇯🇵
+      - https://harmonybreath.com/it/wim-hof/            | Pos: #1.0 (1 imp) 🇮🇹
+      - https://harmonybreath.com/ja/                   | Pos: #3.0 (1 imp) 🇯🇵
+      - https://harmonybreath.com/fr/physiological-sigh/ | Pos: #4.0 (1 imp) 🇫🇷
+      - https://harmonybreath.com/                      | Pos: #5.0 (1 imp) 🌐
+      - https://harmonybreath.com/wim-hof/              | Pos: #6.5 (2 imp) 🇺🇸
+      - https://harmonybreath.com/es/physiological-sigh/ | Pos: #9.0 (1 imp) 🇪🇸
+      - https://harmonybreath.com/ja/diaphragmatic-breathing/ | Pos: #10.0 (1 imp) 🇯🇵
+      - https://harmonybreath.com/physiological-sigh/   | Pos: #10.0 (1 imp) 🌐
+
+   3. 24-Hour Top Queries Highlights:
+      - "wim hof"                                       | 0 Clicks | 3 Imp | Pos: #46.7
+      - "metodo de wim hof"                             | 0 Clicks | 2 Imp | Pos: #45.0 (Climbed from #47.0)
+      - "quadratatmung"                                 | 0 Clicks | 2 Imp | Pos: #55.0 (Validates Ahrefs German Box Breathing research!)
+      - "respiración diafragmática"                     | 0 Clicks | 2 Imp | Pos: #82.0 (Rebounded +12 spots from #94.0 yesterday!)
+      - "nadi sodhana"                                  | 0 Clicks | 1 Imp | Pos: #39.0 (Top 40 entry)
+      - "respiracion diafragmatica como se hace"        | 0 Clicks | 1 Imp | Pos: #59.0 (Spanish step-by-step tutorial intent)
+      - "respiration 4 7 8 combien de temps"            | 0 Clicks | 1 Imp | Pos: #81.0 (French duration query climbed from #84.0)
+      - "respiración diafragmática tiempos"             | 0 Clicks | 1 Imp | Pos: #90.0 (Spanish timing/duration intent)
+      - "que es la respiración diafragmática"           | 0 Clicks | 1 Imp | Pos: #100.0 (Spanish definition intent)
+
+
 --------------------------------------------------------------------------------
 4. COUNTRY-SPECIFIC AHREFS KEYWORD RESEARCH FINDINGS
 --------------------------------------------------------------------------------
@@ -457,6 +487,16 @@ C. SPANISH & BILINGUAL SEARCHES:
       * Added plural query "respiraciones diafragmáticas" to Spanish `keywords` alongside "respiración diafragmática" and "temporizador respiracion diafragmatica" to eliminate keyword cannibalization and consolidate Page 10 rankings.
     - Schema Freshness (`src/components/DiaphragmaticBreathingPage.astro`):
       * Updated Schema `dateModified` to 2026-09-30.
+
+
+20. SPANISH: Diaphragmatic Breathing Long-Tail FAQ Optimization (October 1, 2026)
+    - Targeted emerging Spanish search intents from GSC October 1 24h export:
+      * Definition Intent: Added FAQ "¿Qué es la respiración diafragmática?" (targeting `que es la respiración diafragmática` #100.0).
+      * Tutorial Intent: Added FAQ "¿Cómo se hace la respiración diafragmática paso a paso?" (targeting `respiracion diafragmatica como se hace` #59.0 & `tecnica de respiracion diafragmatica` #72.0).
+      * Cadence / Timing Intent: Added FAQ "¿Cuáles son los tiempos de la respiración diafragmática y cuánto debe durar?" (targeting `respiración diafragmática tiempos` #90.0).
+    - Freshness Signal:
+      * Updated visible badge and WebApplication Schema `dateModified` to 2026-10-01 for Spanish (`es`) in `src/components/DiaphragmaticBreathingPage.astro`.
+      * Automatically injected into Google-compliant FAQPage JSON-LD structured data.
 
 
 --------------------------------------------------------------------------------

@@ -22,8 +22,16 @@ const fullCanonicalUrl = `${siteUrl}${content.canonicalPath}`;
 const hreflangLinks = getHreflangLinks("wim-hof", siteUrl);
 
 const datePublished = "2026-07-25";
-const dateModified =
-  lang === "en" ? "2026-09-27" : lang === "it" ? "2026-09-24" : "2026-08-15";
+const modifiedDates: Record<SupportedLanguage, string> = {
+  en: "2026-09-27", // Wim Hof Breathing Timer core title update
+  it: "2026-09-24", // Italian sleep & 10 rounds FAQ update
+  de: "2026-08-15",
+  es: "2026-08-15",
+  fr: "2026-08-15",
+  pt: "2026-08-15",
+  ja: "2026-08-15",
+};
+const dateModified = modifiedDates[lang] || "2026-08-15";
 
 const breadcrumb = [
   { name: "Home", url: "/" },
