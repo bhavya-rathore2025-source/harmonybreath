@@ -262,6 +262,30 @@ K. Eleventh Snapshot (October 1, 2026 - Today's Report & Historic Page 1 Surge):
       - "que es la respiración diafragmática"           | 0 Clicks | 1 Imp | Pos: #100.0 (Spanish definition intent)
 
 
+L. Twelfth Snapshot (October 3, 2026 - Today's Report & Italy Explosion):
+   1. 24-Hour Overall Metrics:
+      - Total Impressions: 43 (+95.5% surge from 22 yesterday, setting all-time 24h site record!)
+      - Total Clicks: 0
+      - Geographic Coverage: 9 countries (Italy 16, Spain 13, Germany 5, Brazil 3, US 2, Japan 1, France 1, Portugal 1, India 1).
+      - Device Split: Desktop 35 (pos #53.8), Mobile 7 (pos #47.9), Tablet 1 (pos #9.0).
+
+   2. Highlights & Page 1 Wins:
+      - https://harmonybreath.com/de/wim-hof/            | Pos: #7.0 (3 imp) 🇩🇪 (Page 1)
+      - https://harmonybreath.com/pt/box-breathing/      | Pos: #10.0 (1 imp) 🇧🇷 (Page 1)
+      - https://harmonybreath.com/ja/terms/              | Pos: #11.0 (1 imp) 🇯🇵 (Page 2 apex)
+      - https://harmonybreath.com/pt/wim-hof/            | Pos: #18.0 (2 imp) 🇧🇷 (Page 2)
+      - https://harmonybreath.com/it/diaphragmatic-breathing/ | Pos: #29.5 (2 imp) 🇮🇹 (Page 3)
+      - https://harmonybreath.com/es/diaphragmatic-breathing/ | Pos: #63.0 (6 imp) 🇪🇸 (Surged +17 spots from #80.0)
+
+   3. 24-Hour Top Queries:
+      - "ejercicios respiración diafragmática"          | 0 Clicks | 1 Imp | Pos: #27.0 (Spanish Page 3 intent!)
+      - "wim hof"                                       | 0 Clicks | 1 Imp | Pos: #70.0
+      - "wim hof respirazione"                          | 0 Clicks | 1 Imp | Pos: #31.0 (Italian Page 4 entry)
+      - "respiración diafragmática tiempos"             | 0 Clicks | 1 Imp | Pos: #76.0 (Climbed +14 spots from #90.0!)
+      - "tecnica de respiracion diafragmatica"          | 0 Clicks | 1 Imp | Pos: #60.0 (Climbed +12 spots from #72.0!)
+      - "respirazione 4 7 8 controindicazioni"          | 0 Clicks | 1 Imp | Pos: #81.0 (Emerging Italian safety intent)
+
+
 --------------------------------------------------------------------------------
 4. COUNTRY-SPECIFIC AHREFS KEYWORD RESEARCH FINDINGS
 --------------------------------------------------------------------------------
@@ -497,6 +521,24 @@ C. SPANISH & BILINGUAL SEARCHES:
     - Freshness Signal:
       * Updated visible badge and WebApplication Schema `dateModified` to 2026-10-01 for Spanish (`es`) in `src/components/DiaphragmaticBreathingPage.astro`.
       * Automatically injected into Google-compliant FAQPage JSON-LD structured data.
+
+
+21. ITALIAN: 4-7-8 Breathing Contraindications FAQ & Keyword Target (October 3, 2026)
+    - Targeted emerging Italian safety query "respirazione 4 7 8 controindicazioni" (GSC Position #81.0):
+      * Added exact query to Italian `keywords` array in `src/i18n/4-7-8.ts`.
+      * Upgraded Italian FAQ with dedicated question: "Quali sono le controindicazioni della respirazione 4-7-8?", detailing hypotension, acute respiratory conditions, and dizziness modifications.
+    - Freshness Signal:
+      * Updated Schema and badge `dateModified` strictly for `it` in `src/components/Relaxing478Page.astro` to 2026-10-03.
+
+
+22. SPANISH: Diaphragmatic Breathing "Ejercicios" On-Page Guide Heading Optimization (October 3, 2026)
+    - Targeted breakout queries "ejercicios respiración diafragmática" (GSC #27.0) and "respiración diafragmática ejercicios" (GSC #49.0):
+      * Upgraded the primary guide `<h2>` heading in `src/i18n/diaphragmatic-breathing.ts`:
+        FROM: "Cómo hacer la respiración diafragmática paso a paso"
+        TO:   "Ejercicios de respiración diafragmática: Guía paso a paso"
+      * Aligns the high-ranking guide step-by-step section with search intent without keyword stuffing.
+    - Freshness Signal:
+      * Updated Schema and badge `dateModified` strictly for `es` in `src/components/DiaphragmaticBreathingPage.astro` to 2026-10-03.
 
 
 --------------------------------------------------------------------------------

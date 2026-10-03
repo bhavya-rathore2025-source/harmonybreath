@@ -156,7 +156,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
       whatIsTitle: '¿Qué es la Respiración Diafragmática (Respiración Abdominal)?',
       whatIsDesc1: 'La respiración diafragmática—también llamada respiración abdominal o de vientre—es la forma natural y anatómicamente óptima en que el cuerpo humano está diseñado para respirar. Utiliza el músculo diafragma en lugar de los músculos secundarios del pecho y cuello.',
       whatIsDesc2: 'Al inhalar diafragmáticamente, el diafragma desciende masajeando los órganos internos y llenando la base de los pulmones, donde existe la mayor concentración de vasos sanguíneos y receptores de calma del sistema nervioso.',
-      howToTitle: 'Cómo hacer la respiración diafragmática paso a paso',
+      howToTitle: 'Ejercicios de respiración diafragmática: Guía paso a paso',
       howToSteps: [
         { step: '1', title: 'Coloca tus manos', desc: 'Acuéstate o siéntate cómodo. Pon una mano en tu pecho y la otra sobre tu vientre, justo bajo las costillas.' },
         { step: '2', title: 'Inhala hacia el abdomen', desc: 'Inhala despacio por la nariz durante 4 segundos. La mano del vientre debe subir mientras la del pecho apenas se mueve.' },

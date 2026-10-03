@@ -1275,7 +1275,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
   it: {
     metaTitle: 'Tecnica di Respirazione 4-7-8: Timer per Dormire e Ansia',
     metaDescription: 'Impara la respirazione 4-7-8 con il nostro timer guidato gratuito. Inspira 4s, trattieni 7s ed espira 8s per calmare l’ansia e addormentarti presto.',
-    keywords: 'respirazione 4-7-8, tecnica 4-7-8, metodo 4-7-8, timer respirazione 4-7-8, respirazione per dormire, esercizi respirazione ansia, dr andrew weil respirazione, stimolare nervo vago',
+    keywords: 'respirazione 4-7-8, tecnica 4-7-8, metodo 4-7-8, timer respirazione 4-7-8, respirazione 4 7 8 controindicazioni, respirazione per dormire, esercizi respirazione ansia, dr andrew weil respirazione, stimolare nervo vago',
     canonicalPath: '/it/4-7-8-breathing/',
     badge: 'MOTORE DI RILASSAMENTO PROFONDO E INDUZIONE DEL SONNO',
     heroTitle: 'Respirazione 4-7-8\nTecnica di Rilassamento Profondo',
@@ -1462,8 +1462,8 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
         answer: 'Con una pratica quotidiana costante per 2 o 3 settimane, molte persone riferiscono di addormentarsi in 1-3 minuti dopo il termine dei cicli.',
       },
       {
-        question: 'La respirazione 4-7-8 comporta rischi?',
-        answer: 'È molto sicura se svolta a riposo seduti o coricati. Non va mai praticata al volante o in acqua.',
+        question: 'Quali sono le controindicazioni della respirazione 4-7-8?',
+        answer: 'La tecnica 4-7-8 è generalmente sicura per gli adulti sani. Tuttavia, è sconsigliata o richiede cautela in caso di ipotensione marcata (pressione arteriosa molto bassa), patologie respiratorie acute come asma severa o durante la gravidanza senza previa approvazione medica. Non deve mai essere praticata alla guida o in acqua. Se durante i 7 secondi di apnea avverti capogiri o senso di svenimento, interrompi subito o riduci i tempi dimezzandoli a 2-3.5-4 secondi.',
       },
       {
         question: 'I principianti possono modificare i secondi?',
