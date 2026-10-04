@@ -123,9 +123,9 @@ export const boxBreathingI18n: Record<SupportedLanguage, BoxBreathingContent> = 
   },
 
   es: {
-    metaTitle: 'Respiración Cuadrada (Box Breathing en Español): Temporizador Guiado',
-    metaDescription: 'Practica la respiración cuadrada (box breathing 4-4-4-4) con nuestro temporizador guiado gratis. Calma la ansiedad y mejora tu enfoque en 4 minutos.',
-    keywords: 'respiracion cuadrada, box breathing, box breathing español, box breathing spanish, box breathing in spanish, respiracion en caja, temporizador de box breathing, respiracion navy seals, sama vritti pranayama, samavritti pranayama, sama vritti, como hacer la respiracion cuadrada, tecnica 4-4-4-4, respiracion 4x4, ejercicios de respiracion para ansiedad, respiracion guiada online, temporizador de respiracion, respiracion en cuatro tiempos, respiracion igualada',
+    metaTitle: 'Respiración Cuadrada: Temporizador y Guía Visual 4-4-4-4 Online',
+    metaDescription: 'Practica la respiración en caja (respiración cuadrada 4-4-4-4) con nuestro temporizador y guía visual interactiva en tiempo real. Calma la ansiedad y enfócate en 4 minutos.',
+    keywords: 'respiracion cuadrada, respiracion cuadrada video, guia visual respiracion cuadrada, box breathing, box breathing español, box breathing spanish, box breathing in spanish, respiracion en caja, temporizador de box breathing, respiracion navy seals, sama vritti pranayama, samavritti pranayama, sama vritti, como hacer la respiracion cuadrada, tecnica 4-4-4-4, respiracion 4x4, ejercicios de respiracion para ansiedad, respiracion guiada online, temporizador de respiracion, respiracion en cuatro tiempos, respiracion igualada',
     canonicalPath: '/es/box-breathing/',
     badge: 'CALMA TÁCTICA Y ENFOQUE BAJO PRESIÓN',
     heroTitle: 'Respiración Cuadrada\nBox Breathing 4-4-4-4',

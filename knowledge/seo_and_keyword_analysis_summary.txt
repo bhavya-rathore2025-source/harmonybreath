@@ -541,11 +541,49 @@ C. SPANISH & BILINGUAL SEARCHES:
       * Updated Schema and badge `dateModified` strictly for `es` in `src/components/DiaphragmaticBreathingPage.astro` to 2026-10-03.
 
 
+23. FRENCH: Diaphragmatic Breathing "Exercices" Guide Heading Optimization (October 4, 2026)
+    - Targeted emerging French queries "respiration diaphragmatique exercices" (GSC #37.0), "respiration abdominale exercices" (GSC #75.0), and "exercice respiration abdominale" (GSC #74.0):
+      * Upgraded the primary French guide `<h2>` heading in `src/i18n/diaphragmatic-breathing.ts`:
+        FROM: "Technique pas à pas pour bien respirer par le ventre"
+        TO:   "Exercices de respiration diaphragmatique et abdominale : Guide pas à pas"
+      * Incorporates both exact queries ("respiration diaphragmatique exercices" & "respiration abdominale exercices") organically into a prominent H2 tag.
+    - Freshness Signal:
+      * Updated Schema and badge `dateModified` strictly for `fr` in `src/components/DiaphragmaticBreathingPage.astro` to 2026-10-04.
+
+
+24. ENGLISH: 4-7-8 Breathing Meta Description CTR Hook & Keyword Enrichment (October 4, 2026)
+    - Targeted breakout US/international queries "breath 4-7-8" (GSC #27.0), "4-7-8" (GSC #29.0), and "breathe 4 7 8" (GSC #35.0):
+      * Upgraded English `metaDescription` in `src/i18n/4-7-8.ts` with a strong high-CTR action hook:
+        FROM: "Master the 4-7-8 breathing method with our interactive guided timer. Reduce anxiety, calm your nervous system, and fall asleep faster in just 4 cycles."
+        TO:   "Breathe 4-7-8 with our free interactive timer. Inhale 4s, hold 7s, exhale 8s to relieve anxiety, quiet your mind, and fall asleep in minutes. No app needed."
+      * Added "breath 4-7-8", "breathe 4 7 8", and "4 7 8" to `keywords` array (supported by Bing search ranking while keeping total count under 10).
+    - Freshness Signal:
+      * Updated Schema and badge `dateModified` strictly for `en` in `src/components/Relaxing478Page.astro` to 2026-10-04.
+
+
+25. SPANISH: Box Breathing Meta Title & Visual Guide "Video Intent" Optimization (October 4, 2026)
+    - Targeted emerging breakout query "respiracion cuadrada video" (GSC #47.0):
+      * Refined Spanish `metaTitle` in `src/i18n/box-breathing.ts`:
+        FROM: "Respiración Cuadrada (Box Breathing en Español): Temporizador Guiado"
+        TO:   "Respiración Cuadrada: Temporizador y Guía Visual 4-4-4-4 Online"
+      * Upgraded Spanish `metaDescription` with native terminology ("respiración en caja" + "respiración cuadrada 4-4-4-4") and interactive visual guide copy satisfying video intent:
+        FROM: "Practica la respiración cuadrada (box breathing 4-4-4-4) con nuestro temporizador guiado gratis. Calma la ansiedad y mejora tu enfoque en 4 minutos."
+        TO:   "Practica la respiración en caja (respiración cuadrada 4-4-4-4) con nuestro temporizador y guía visual interactiva en tiempo real. Calma la ansiedad y enfócate en 4 minutos."
+      * Added "respiracion cuadrada video" and "guia visual respiracion cuadrada" to Spanish `keywords` array.
+    - Freshness Signal:
+      * Updated Schema and badge `dateModified` strictly for `es` in `src/components/BoxBreathingPage.astro` to 2026-10-04.
+
+
+
 --------------------------------------------------------------------------------
 6. RE-INDEXING ACTION CHECKLIST (GOOGLE SEARCH CONSOLE)
 --------------------------------------------------------------------------------
 Whenever these changes are pushed to live production (main branch -> Cloudflare Pages), 
 request manual re-indexing for these URLs in GSC (URL Inspection -> "Request Indexing"):
+
+1. https://harmonybreath.com/es/box-breathing/ (Updated Spanish meta title, description & keywords for "respiracion cuadrada video" #47.0)
+2. https://harmonybreath.com/fr/diaphragmatic-breathing/ (Targeting "respiration diaphragmatique exercices" #37.0)
+3. https://harmonybreath.com/4-7-8-breathing/ (Targeting "breath 4-7-8" #27.0 & CTR hook)
 
 1. https://harmonybreath.com/wim-hof/ (Updated English title & keywords targeting "wim hof breathing timer" #20.0)
 2. https://harmonybreath.com/de/physiological-sigh/ (Updated German copy & keywords for "sighing deutsch" #68.0)

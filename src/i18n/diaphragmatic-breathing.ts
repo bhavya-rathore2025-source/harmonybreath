@@ -312,7 +312,7 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
       whatIsTitle: 'Qu’est-ce que la respiration diaphragmatique (abdominale) ?',
       whatIsDesc1: 'La respiration diaphragmatique—souvent appelée respiration ventrale ou abdominale—est le mode respiratoire physiologique naturel de l’être humain. Elle sollicite le diaphragme plutôt que les muscles accessoires des épaules et de la gorge.',
       whatIsDesc2: 'Lorsque vous inspirez avec le diaphragme, ce muscle descend, masse les organes digestifs et achemine l’air vers la base des poumons, là où l’oxygénation sanguine et les récepteurs de détente sont les plus performants.',
-      howToTitle: 'Technique pas à pas pour bien respirer par le ventre',
+      howToTitle: 'Exercices de respiration diaphragmatique et abdominale : Guide pas à pas',
       howToSteps: [
         { step: '1', title: 'Positionnez vos mains', desc: 'Allongez-vous ou asseyez-vous le dos droit. Posez une main sur la poitrine et l’autre sur le ventre, sous les côtes.' },
         { step: '2', title: 'Inspirez vers le ventre', desc: 'Inspirez par le nez pendant 4 secondes. Seule la main posée sur le ventre doit monter, la poitrine reste immobile.' },
