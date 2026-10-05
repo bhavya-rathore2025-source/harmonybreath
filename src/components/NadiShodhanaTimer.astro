@@ -432,8 +432,9 @@ const p = currentContent.presets;
     }
 
     // Format counter text
-    const m = Math.floor(elapsedPhaseSec / 60);
-    const s = elapsedPhaseSec % 60;
+    const roundedSec = Math.floor(elapsedPhaseSec);
+    const m = Math.floor(roundedSec / 60);
+    const s = roundedSec % 60;
     if (primaryCounter) {
       primaryCounter.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
     }
@@ -512,8 +513,11 @@ const p = currentContent.presets;
     return 0;
   }
 
+  let lastTick = Date.now();
+
   function advancePhase() {
     elapsedPhaseSec = 0;
+    lastTick = Date.now();
 
     switch (currentPhase) {
       case 'idle':
@@ -565,7 +569,11 @@ const p = currentContent.presets;
   }
 
   function tick() {
-    elapsedPhaseSec++;
+    const now = Date.now();
+    const dt = (now - lastTick) / 1000;
+    lastTick = now;
+
+    elapsedPhaseSec += dt;
     const totalPhaseDuration = getPhaseDuration(currentPhase);
     if (elapsedPhaseSec >= totalPhaseDuration) {
       advancePhase();
@@ -577,6 +585,7 @@ const p = currentContent.presets;
   function startTimer() {
     if (isRunning) return;
     isRunning = true;
+    lastTick = Date.now();
 
     if (currentPhase === 'idle' || currentPhase === 'completed') {
       currentCycle = 1;
@@ -605,7 +614,7 @@ const p = currentContent.presets;
     }
 
     updateUI();
-    timerInterval = setInterval(tick, 1000);
+    timerInterval = setInterval(tick, 250);
   }
 
   function stopTimer() {
@@ -721,19 +730,33 @@ const p = currentContent.presets;
     isMusicStopped = true;
   });
 
-  // Clean up timers and audio when navigating away via back button or changing page
+  // Clean up timers and audio when navigating away via back button, links, or changing page
   function cleanupSession() {
-    stopTimer();
+    resetSession();
     audioPlayer.stopAll();
   }
 
+  (window as any).hbStopSession = cleanupSession;
+
   window.addEventListener('pagehide', cleanupSession);
   window.addEventListener('popstate', cleanupSession);
+  window.addEventListener('beforeunload', cleanupSession);
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+      resetSession();
+    }
+  });
 
-  // Pause session when minimizing app or backing out to mobile home screen
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden && isRunning) {
-      stopTimer();
+  // Stop session immediately when user clicks internal navigation links (home, technique pages, language switch)
+  document.addEventListener('click', (e) => {
+    const anchor = (e.target as HTMLElement)?.closest('a');
+    if (anchor && anchor.href) {
+      try {
+        const url = new URL(anchor.href, window.location.origin);
+        if (url.origin === window.location.origin && url.pathname !== window.location.pathname) {
+          cleanupSession();
+        }
+      } catch {}
     }
   });
 

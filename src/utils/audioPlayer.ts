@@ -552,18 +552,19 @@ class ResilientAudioPlayer {
 export const audioPlayer = new ResilientAudioPlayer();
 
 if (typeof window !== 'undefined') {
-  // Listen to beforeunload, pagehide, and popstate so page transitions / back navigations / language changes / refreshes always kill audio
-  window.addEventListener('beforeunload', () => {
+  const stopEverything = () => {
     audioPlayer.stopAll();
-  });
-  window.addEventListener('pagehide', () => {
-    audioPlayer.stopAll();
-  });
-  window.addEventListener('popstate', () => {
-    audioPlayer.stopAll();
-  });
-
-  (window as any).hbStopAllMusic = () => {
-    audioPlayer.stopAll();
+    if (typeof (window as any).hbStopSession === 'function') {
+      try {
+        (window as any).hbStopSession();
+      } catch {}
+    }
   };
+
+  // Listen to beforeunload, pagehide, and popstate so page transitions / back navigations / language changes / refreshes always kill audio & sessions
+  window.addEventListener('beforeunload', stopEverything);
+  window.addEventListener('pagehide', stopEverything);
+  window.addEventListener('popstate', stopEverything);
+
+  (window as any).hbStopAllMusic = stopEverything;
 }

@@ -925,14 +925,21 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
     runHoldLoop();
   }
 
+  let lastHoldTick = Date.now();
   function runHoldLoop() {
     if (phaseTimer) clearInterval(phaseTimer);
+    lastHoldTick = Date.now();
 
     phaseTimer = window.setInterval(() => {
       if (isPaused) return;
 
-      elapsedPhaseSeconds++;
-      if (primaryCounter) primaryCounter.textContent = formatTime(elapsedPhaseSeconds);
+      const now = Date.now();
+      const dt = (now - lastHoldTick) / 1000;
+      lastHoldTick = now;
+
+      elapsedPhaseSeconds += dt;
+      const displaySec = Math.floor(elapsedPhaseSeconds);
+      if (primaryCounter) primaryCounter.textContent = formatTime(displaySec);
       if (secondaryCounter) {
         secondaryCounter.textContent = (t.holdProgressTemplate || 'Target: {s}s (Hold relaxed)')
           .replace('{s}', String(targetHoldSeconds));
@@ -946,7 +953,7 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
         audioPlayer.playChime();
         startPhaseRecovery();
       }
-    }, 1000);
+    }, 250);
   }
 
   // Phase 3: Recovery Breath (15 Seconds)
@@ -981,14 +988,21 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
     runRecoveryLoop();
   }
 
+  let lastRecoveryTick = Date.now();
   function runRecoveryLoop() {
     if (phaseTimer) clearInterval(phaseTimer);
+    lastRecoveryTick = Date.now();
 
     phaseTimer = window.setInterval(() => {
       if (isPaused) return;
 
-      elapsedPhaseSeconds--;
-      if (primaryCounter) primaryCounter.textContent = `00:${elapsedPhaseSeconds.toString().padStart(2, '0')}`;
+      const now = Date.now();
+      const dt = (now - lastRecoveryTick) / 1000;
+      lastRecoveryTick = now;
+
+      elapsedPhaseSeconds = Math.max(0, elapsedPhaseSeconds - dt);
+      const displaySec = Math.ceil(elapsedPhaseSeconds);
+      if (primaryCounter) primaryCounter.textContent = `00:${displaySec.toString().padStart(2, '0')}`;
       if (secondaryCounter) secondaryCounter.textContent = t.holdRecovery || 'Hold recovery breath';
 
       updateProgressRing(((15 - elapsedPhaseSeconds) / 15) * 100);
@@ -998,7 +1012,7 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
         audioPlayer.playChime();
         advanceRound();
       }
-    }, 1000);
+    }, 250);
   }
 
   // Rest Break Between Rounds (Normal Breathing)
@@ -1034,9 +1048,11 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
     runRestLoop();
   }
 
+  let lastRestTick = Date.now();
   function runRestLoop() {
     if (phaseTimer) clearInterval(phaseTimer);
     if (breathCycleTimer) clearTimeout(breathCycleTimer);
+    lastRestTick = Date.now();
 
     // Gentle normal-breathing halo motion for the whole rest period
     let expanding = true;
@@ -1050,8 +1066,13 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
     phaseTimer = window.setInterval(() => {
       if (isPaused) return;
 
-      elapsedPhaseSeconds--;
-      if (primaryCounter) primaryCounter.textContent = `00:${elapsedPhaseSeconds.toString().padStart(2, '0')}`;
+      const now = Date.now();
+      const dt = (now - lastRestTick) / 1000;
+      lastRestTick = now;
+
+      elapsedPhaseSeconds = Math.max(0, elapsedPhaseSeconds - dt);
+      const displaySec = Math.ceil(elapsedPhaseSeconds);
+      if (primaryCounter) primaryCounter.textContent = `00:${displaySec.toString().padStart(2, '0')}`;
       if (secondaryCounter) secondaryCounter.textContent = t.breatheRelax || 'Breathe normally & relax';
 
       updateProgressRing(((REST_SECONDS - elapsedPhaseSeconds) / REST_SECONDS) * 100);
@@ -1061,7 +1082,7 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
         if (breathCycleTimer) clearTimeout(breathCycleTimer);
         startPhaseGuided();
       }
-    }, 1000);
+    }, 250);
   }
 
   function advanceRound() {
@@ -1164,21 +1185,33 @@ const currentI18n = timerI18nData[lang] || timerI18nData.en;
     isMusicStopped = true;
   });
 
-  // Clean up timers and audio when navigating away via back button or changing page
-  window.addEventListener('pagehide', () => {
-    resetTimers();
+  // Clean up timers and audio when navigating away via back button, links, or changing page
+  function cleanupSession() {
+    resetSession();
     audioPlayer.stopAll();
+  }
+
+  (window as any).hbStopSession = cleanupSession;
+
+  window.addEventListener('pagehide', cleanupSession);
+  window.addEventListener('popstate', cleanupSession);
+  window.addEventListener('beforeunload', cleanupSession);
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+      resetSession();
+    }
   });
 
-  window.addEventListener('popstate', () => {
-    resetTimers();
-    audioPlayer.stopAll();
-  });
-
-  // Pause session when minimizing app or backing out to mobile home screen
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden && phase !== 'IDLE' && phase !== 'COMPLETE' && !isPaused) {
-      pauseSession();
+  // Stop session immediately when user clicks internal navigation links (home, technique pages, language switch)
+  document.addEventListener('click', (e) => {
+    const anchor = (e.target as HTMLElement)?.closest('a');
+    if (anchor && anchor.href) {
+      try {
+        const url = new URL(anchor.href, window.location.origin);
+        if (url.origin === window.location.origin && url.pathname !== window.location.pathname) {
+          cleanupSession();
+        }
+      } catch {}
     }
   });
 </script>

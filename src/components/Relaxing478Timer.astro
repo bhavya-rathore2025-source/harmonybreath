@@ -785,18 +785,25 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
     }
   }
 
+  let lastTick = Date.now();
+
   function startPhase() {
     phaseElapsed = 0;
+    lastTick = Date.now();
     audioPlayer.playChime();
     updateUI();
   }
 
   function tick() {
     if (state !== 'RUNNING') return;
+    const now = Date.now();
+    const dt = (now - lastTick) / 1000;
+    lastTick = now;
+
     const currentPhaseKey = PHASES[currentPhaseIndex];
     const dur = getPhaseDuration(currentPhaseKey);
 
-    phaseElapsed += 0.2;
+    phaseElapsed += dt;
 
     if (phaseElapsed >= dur) {
       advancePhase();
@@ -841,6 +848,7 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
 
     if (state === 'PAUSED') {
       state = 'RUNNING';
+      lastTick = Date.now();
       if (!isMusicStopped) {
         audioPlayer.resume();
       }
@@ -1029,28 +1037,33 @@ const currentI18n = relaxTimerI18n[lang] || relaxTimerI18n.en;
     isMusicStopped = true;
   });
 
-  // Clean up timers and audio when navigating away via back button or changing page
+  // Clean up timers and audio when navigating away via back button, links, or changing page
   function cleanupSession() {
-    if (tickTimer) {
-      clearInterval(tickTimer);
-      tickTimer = null;
-    }
+    resetSession();
     audioPlayer.stopAll();
   }
 
+  (window as any).hbStopSession = cleanupSession;
+
   window.addEventListener('pagehide', cleanupSession);
   window.addEventListener('popstate', cleanupSession);
+  window.addEventListener('beforeunload', cleanupSession);
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+      resetSession();
+    }
+  });
 
-  // Pause session when minimizing app or backing out to mobile home screen
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden && state === 'RUNNING') {
-      state = 'PAUSED';
-      audioPlayer.pause();
-      if (tickTimer) {
-        clearInterval(tickTimer);
-        tickTimer = null;
-      }
-      updateUI();
+  // Stop session immediately when user clicks internal navigation links (home, technique pages, language switch)
+  document.addEventListener('click', (e) => {
+    const anchor = (e.target as HTMLElement)?.closest('a');
+    if (anchor && anchor.href) {
+      try {
+        const url = new URL(anchor.href, window.location.origin);
+        if (url.origin === window.location.origin && url.pathname !== window.location.pathname) {
+          cleanupSession();
+        }
+      } catch {}
     }
   });
 

@@ -693,8 +693,11 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
     }
   }
 
+  let lastTick = Date.now();
+
   function resumeSession() {
     isPaused = false;
+    lastTick = Date.now();
     if (!isMusicStopped) {
       audioPlayer.resume();
     }
@@ -710,6 +713,7 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
     phase = 'ACTIVE';
     isPaused = false;
     phaseElapsed = 0;
+    lastTick = Date.now();
 
     const currentKey = PHASES[currentPhaseIndex];
     const cfg = phaseConfig[currentKey] || phaseConfig.INHALE;
@@ -751,11 +755,16 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
   function runPhaseTimer() {
     if (tickTimer) clearTimeout(tickTimer);
     if (phaseTimer) clearInterval(phaseTimer);
+    lastTick = Date.now();
 
     phaseTimer = window.setInterval(() => {
       if (isPaused) return;
 
-      phaseElapsed++;
+      const now = Date.now();
+      const deltaSec = (now - lastTick) / 1000;
+      lastTick = now;
+
+      phaseElapsed += deltaSec;
       updateCounter();
 
       if (phaseElapsed >= phaseDuration) {
@@ -763,13 +772,13 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
         audioPlayer.playChime();
         advancePhase();
       }
-    }, 1000);
+    }, 250);
   }
 
   function updateCounter() {
-    const remaining = Math.max(0, phaseDuration - phaseElapsed);
+    const remaining = Math.max(0, Math.ceil(phaseDuration - phaseElapsed));
     if (primaryCounter) primaryCounter.textContent = formatTime(remaining);
-    const pct = (phaseElapsed / phaseDuration) * 100;
+    const pct = Math.min(100, (phaseElapsed / phaseDuration) * 100);
     updateProgressRing(pct);
   }
 
@@ -870,21 +879,33 @@ const currentI18n = boxTimerI18n[lang] || boxTimerI18n.en;
     isMusicStopped = true;
   });
 
-  // Clean up timers and audio when navigating away via back button or changing page
-  window.addEventListener('pagehide', () => {
-    resetTimers();
+  // Clean up timers and audio when navigating away via back button, links, or changing page
+  function cleanupSession() {
+    resetSession();
     audioPlayer.stopAll();
+  }
+
+  (window as any).hbStopSession = cleanupSession;
+
+  window.addEventListener('pagehide', cleanupSession);
+  window.addEventListener('popstate', cleanupSession);
+  window.addEventListener('beforeunload', cleanupSession);
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+      resetSession();
+    }
   });
 
-  window.addEventListener('popstate', () => {
-    resetTimers();
-    audioPlayer.stopAll();
-  });
-
-  // Pause session when minimizing app or backing out to mobile home screen
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden && phase === 'ACTIVE' && !isPaused) {
-      pauseSession();
+  // Stop session immediately when user clicks internal navigation links (home, technique pages, language switch)
+  document.addEventListener('click', (e) => {
+    const anchor = (e.target as HTMLElement)?.closest('a');
+    if (anchor && anchor.href) {
+      try {
+        const url = new URL(anchor.href, window.location.origin);
+        if (url.origin === window.location.origin && url.pathname !== window.location.pathname) {
+          cleanupSession();
+        }
+      } catch {}
     }
   });
 </script>
