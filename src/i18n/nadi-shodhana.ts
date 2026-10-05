@@ -382,9 +382,9 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
   },
 
   es: {
-    metaTitle: 'Nadi Shodhana: Respiración Nasal Alterna Temporizador',
-    metaDescription: 'Domina Nadi Shodhana (respiración nasal alterna) con nuestro temporizador guiado gratis. Indicadores visuales de fosas, ritmos ajustables y calma.',
-    keywords: 'nadi shodhana, respiración nasal alterna, anulom vilom, temporizador pranayama, ejercicios de respiración para concentrarse, respiración equilibrada, vishnu mudra, beneficios nadi shodhana',
+    metaTitle: 'Nadi Shodhana (Respiración Alterna): Temporizador y Guía Online',
+    metaDescription: 'Aprende cómo se hace Nadi Shodhana (respiración alterna de fosas nasales) con nuestro temporizador guiado gratis. Indicadores visuales, ritmos y calma profunda.',
+    keywords: 'nadi shodhana, respiracion alterna, respiración alterna, respiración nasal alterna, nadi shodhana como se hace, como hacer respiracion alterna, anulom vilom, temporizador pranayama, ejercicios de respiración para concentrarse, respiración equilibrada, vishnu mudra, beneficios nadi shodhana',
     canonicalPath: '/es/nadi-shodhana/',
     badge: 'MOTOR DE PRANAYAMA YÓGICO TRADICIONAL',
     heroTitle: 'Nadi Shodhana\nRespiración Nasal Alterna',
@@ -525,6 +525,10 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
       {
         question: '¿Qué posición de mano (mudra) se recomienda?',
         answer: 'Se utiliza Vishnu Mudra con la mano derecha: el pulgar controla la fosa derecha y el dedo anular la fosa izquierda, mientras el índice y el medio reposan doblados hacia la palma o sobre el entrecejo.',
+      },
+      {
+        question: '¿Cómo se hace la respiración alterna (Nadi Shodhana) paso a paso?',
+        answer: '1. Siéntate erguido en un lugar tranquilo y relaja los hombros. 2. Con la mano derecha en Vishnu Mudra, tapa la fosa derecha con el pulgar e inhala suavemente por la fosa izquierda (4 segundos). 3. Tapa la fosa izquierda con el anular, libera la fosa derecha y exhala lentamente (4 segundos). 4. Inhala por la fosa derecha (4 segundos), vuelve a taparla con el pulgar y exhala por la fosa izquierda (4 segundos). Esto completa 1 ciclo de respiración alterna.',
       },
     ],
     timer: {

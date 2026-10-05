@@ -574,6 +574,46 @@ C. SPANISH & BILINGUAL SEARCHES:
       * Updated Schema and badge `dateModified` strictly for `es` in `src/components/BoxBreathingPage.astro` to 2026-10-04.
 
 
+26. SPANISH: Wim Hof Method "Meditación" & "Método Respiratorio" Optimization (October 5, 2026)
+    - Targeted breakout queries "meditacion wim hof" (GSC #24.0), "metodo respiratorio wim hof" (3 impressions, GSC #38.67), and "wim hof en español" (GSC #37.0):
+      * Upgraded Spanish `metaDescription` in `src/i18n/wim-hof.ts`:
+        FROM: "Domina la respiración del Método Wim Hof con nuestro temporizador guiado online. 30 respiraciones, retención y recuperación para energía y enfoque."
+        TO:   "Domina el método respiratorio y meditación Wim Hof con nuestro temporizador guiado en español. 30 respiraciones, retención y recuperación para energía y calma."
+      * Enriched Spanish `heroSubtitle` to mention "método respiratorio y meditación en tres fases de Wim Hof... guiado en español".
+      * Added "meditacion wim hof, metodo respiratorio wim hof, wim hof en español, wim hof respiraciones" to `keywords` array.
+      * Added dedicated FAQ question: "¿La respiración Wim Hof sirve como meditación y método respiratorio diario?"
+    - Freshness Signal:
+      * Updated Schema and badge `dateModified` strictly for `es` in `src/components/WimHofPage.astro` to 2026-10-05.
+
+
+27. SPANISH: Nadi Shodhana "Respiración Alterna" & "Cómo Se Hace" Optimization (October 5, 2026)
+    - Targeted breakout queries "respiracion alterna" (GSC #55.0) and "nadi shodhana como se hace" (GSC #95.0):
+      * Refined Spanish `metaTitle` in `src/i18n/nadi-shodhana.ts`:
+        FROM: "Nadi Shodhana: Respiración Nasal Alterna Temporizador"
+        TO:   "Nadi Shodhana (Respiración Alterna): Temporizador y Guía Online"
+      * Upgraded Spanish `metaDescription` in `src/i18n/nadi-shodhana.ts`:
+        FROM: "Domina Nadi Shodhana (respiración nasal alterna) con nuestro temporizador guiado gratis. Indicadores visuales de fosas, ritmos ajustables y calma."
+        TO:   "Aprende cómo se hace Nadi Shodhana (respiración alterna de fosas nasales) con nuestro temporizador guiado gratis. Indicadores visuales, ritmos y calma profunda."
+      * Added "respiracion alterna, respiración alterna, nadi shodhana como se hace, como hacer respiracion alterna" to `keywords` array.
+      * Added dedicated tutorial FAQ: "¿Cómo se hace la respiración alterna (Nadi Shodhana) paso a paso?"
+    - Freshness Signal:
+      * Updated Schema and badge `dateModified` strictly for `es` in `src/components/NadiShodhanaPage.astro` to 2026-10-05.
+
+
+28. FRENCH: 4-7-8 Breathing "Cohérence Cardiaque" & Sommeil Optimization (October 5, 2026)
+    - Targeted breakout queries "cohérence cardiaque 4 7 8" (GSC #73.0) and "technique de respiration 4-7-8" (GSC #74.0):
+      * Refined French `metaTitle` in `src/i18n/4-7-8.ts`:
+        FROM: "Technique de Respiration 4-7-8: Minuteur pour le Sommeil"
+        TO:   "Technique de Respiration 4-7-8: Minuteur Sommeil & Relaxation"
+      * Upgraded French `metaDescription` in `src/i18n/4-7-8.ts`:
+        FROM: "Maîtrisez la respiration 4-7-8 avec notre minuteur gratuit. Inspirez 4s, retenez 7s, expirez 8s pour calmer le stress et vous endormir plus vite."
+        TO:   "Pratiquez la technique de respiration 4-7-8 (cohérence cardiaque et sommeil) avec notre minuteur gratuit. Inspirez 4s, retenez 7s, expirez 8s pour calmer le stress."
+      * Added "technique de respiration 4-7-8, technique de respiration 4 7 8, cohérence cardiaque 4 7 8, coherence cardiaque 4 7 8" to `keywords` array.
+      * Added dedicated comparison FAQ: "Quelle est la différence entre la cohérence cardiaque et la respiration 4-7-8?"
+    - Freshness Signal:
+      * Updated Schema and badge `dateModified` strictly for `fr` in `src/components/Relaxing478Page.astro` to 2026-10-05.
+
+
 
 --------------------------------------------------------------------------------
 6. RE-INDEXING ACTION CHECKLIST (GOOGLE SEARCH CONSOLE)
@@ -581,9 +621,12 @@ C. SPANISH & BILINGUAL SEARCHES:
 Whenever these changes are pushed to live production (main branch -> Cloudflare Pages), 
 request manual re-indexing for these URLs in GSC (URL Inspection -> "Request Indexing"):
 
-1. https://harmonybreath.com/es/box-breathing/ (Updated Spanish meta title, description & keywords for "respiracion cuadrada video" #47.0)
-2. https://harmonybreath.com/fr/diaphragmatic-breathing/ (Targeting "respiration diaphragmatique exercices" #37.0)
-3. https://harmonybreath.com/4-7-8-breathing/ (Targeting "breath 4-7-8" #27.0 & CTR hook)
+1. https://harmonybreath.com/es/wim-hof/ (Targeting "meditacion wim hof" #24.0 & "metodo respiratorio wim hof" #38.67)
+2. https://harmonybreath.com/es/nadi-shodhana/ (Targeting "respiracion alterna" #55.0 & "como se hace" #95.0)
+3. https://harmonybreath.com/fr/4-7-8-breathing/ (Targeting "cohérence cardiaque 4 7 8" #73.0 & "technique de respiration" #74.0)
+4. https://harmonybreath.com/es/box-breathing/ (Updated Spanish meta title, description & keywords for "respiracion cuadrada video" #47.0)
+5. https://harmonybreath.com/fr/diaphragmatic-breathing/ (Targeting "respiration diaphragmatique exercices" #37.0)
+6. https://harmonybreath.com/4-7-8-breathing/ (Targeting "breath 4-7-8" #27.0 & CTR hook)
 
 1. https://harmonybreath.com/wim-hof/ (Updated English title & keywords targeting "wim hof breathing timer" #20.0)
 2. https://harmonybreath.com/de/physiological-sigh/ (Updated German copy & keywords for "sighing deutsch" #68.0)

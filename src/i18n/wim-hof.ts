@@ -311,12 +311,12 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
 
   es: {
     metaTitle: 'Método Wim Hof: Temporizador Guiado de Rondas y Retención',
-    metaDescription: 'Domina la respiración del Método Wim Hof con nuestro temporizador guiado online. 30 respiraciones, retención y recuperación para energía y enfoque.',
-    keywords: 'respiracion wim hof, metodo wim hof, tecnica de respiracion wim hof, metodo wim hof respiracion, temporizador wim hof, respiracion wim hof guiada, beneficios metodo wim hof, ejercicios de respiracion wim hof, respiracion iceman wim hof, retencion de respiracion, como hacer el metodo wim hof',
+    metaDescription: 'Domina el método respiratorio y meditación Wim Hof con nuestro temporizador guiado en español. 30 respiraciones, retención y recuperación para energía y calma.',
+    keywords: 'respiracion wim hof, metodo wim hof, meditacion wim hof, metodo respiratorio wim hof, wim hof en español, wim hof respiraciones, tecnica de respiracion wim hof, metodo wim hof respiracion, temporizador wim hof, respiracion wim hof guiada, beneficios metodo wim hof, ejercicios de respiracion wim hof, respiracion iceman wim hof, retencion de respiracion, como hacer el metodo wim hof',
     canonicalPath: '/es/wim-hof/',
     badge: 'RESPIRACIÓN GUIADA Y ACTIVACIÓN FISIOLÓGICA GRATIS',
     heroTitle: 'Método Wim Hof\nDomina Mente y Fisiología',
-    heroSubtitle: 'Experimenta la respiración auténtica en tres fases del Método Wim Hof: hiperventilación rítmica controlada, retención cómoda con pulmones vacíos y oxigenación de recuperación. Todo guiado con sonido, halo visual y seguimiento de progreso privado.',
+    heroSubtitle: 'Experimenta el método respiratorio y meditación en tres fases de Wim Hof: hiperventilación rítmica controlada, retención cómoda con pulmones vacíos y oxigenación de recuperación. Todo guiado en español con sonido, halo visual y seguimiento privado.',
     breadcrumbName: 'Respiración Wim Hof',
     startPracticeBtn: 'Comenzar Práctica',
     jumpLinks: {
@@ -510,6 +510,10 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
       {
         question: '¿Cómo hacer la respiración Wim Hof paso a paso?',
         answer: '1. Adopta una postura cómoda sentado o tumbado. 2. Inhala profundamente por la nariz o boca llenando abdomen y pecho, y suelta el aire sin forzar (30 veces). 3. En la última exhalación, vacía los pulmones suavemente y aguanta sin aire el tiempo que te resulte cómodo. 4. Cuando sientas ganas de respirar, inhala profundamente y mantén el aire 15 segundos. Eso completa 1 ronda (lo ideal son 3 o 4 rondas).',
+      },
+      {
+        question: '¿La respiración Wim Hof sirve como meditación y método respiratorio diario?',
+        answer: 'Sí, la meditación Wim Hof combina el método respiratorio de 30 respiraciones con un estado de presencia plena y quietud durante las fases de retención. Miles de personas la utilizan como meditación matutina para calmar la mente, reducir el estrés y conectar profundamente con su cuerpo.',
       },
     ],
   },

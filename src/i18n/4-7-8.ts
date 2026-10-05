@@ -676,9 +676,9 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
     ],
   },
   fr: {
-    metaTitle: 'Technique de Respiration 4-7-8: Minuteur pour le Sommeil',
-    metaDescription: 'Maîtrisez la respiration 4-7-8 avec notre minuteur gratuit. Inspirez 4s, retenez 7s, expirez 8s pour calmer le stress et vous endormir plus vite.',
-    keywords: 'respiration 4-7-8, respiration 4 7 8, technique 4-7-8, méthode 4-7-8, minuteur respiration 4-7-8, respiration pour dormir, exercice respiration sommeil, dr andrew weil respiration, stimuler nerf vague',
+    metaTitle: 'Technique de Respiration 4-7-8: Minuteur Sommeil & Relaxation',
+    metaDescription: 'Pratiquez la technique de respiration 4-7-8 (cohérence cardiaque et sommeil) avec notre minuteur gratuit. Inspirez 4s, retenez 7s, expirez 8s pour calmer le stress.',
+    keywords: 'respiration 4-7-8, respiration 4 7 8, technique de respiration 4-7-8, technique de respiration 4 7 8, cohérence cardiaque 4 7 8, coherence cardiaque 4 7 8, méthode 4-7-8, minuteur respiration 4-7-8, respiration pour dormir, exercice respiration sommeil, dr andrew weil respiration, stimuler nerf vague',
     canonicalPath: '/fr/4-7-8-breathing/',
     badge: 'MOTEUR DE RELAXATION PROFONDE & D’INDUCTION DU SOMMEIL',
     heroTitle: 'Respiration 4-7-8\nTechnique de Relaxation Profonde',
@@ -871,6 +871,10 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
       {
         question: 'Peut-on adapter le nombre de secondes ?',
         answer: 'Oui, l’élément fondamental est le ratio 4:7:8 (par exemple 2s inspirer, 3.5s retenir, 4s expirer).',
+      },
+      {
+        question: 'Quelle est la différence entre la cohérence cardiaque et la respiration 4-7-8 ?',
+        answer: 'La cohérence cardiaque classique utilise un rythme régulier de 5s d’inspiration et 5s d’expiration (6 cycles par minute) pour équilibrer le système nerveux en journée. La technique de respiration 4-7-8 utilise une expiration deux fois plus longue (8s) et une rétention (7s), induisant un puissant effet sédatif spécifiquement conçu pour l’endormissement et l’apaisement immédiat.',
       },
     ],
   },
