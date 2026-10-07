@@ -1,680 +1,743 @@
-================================================================================
-HARMONYBREATH.COM — COMPLETE SEO, KEYWORD & SEARCH CONSOLE KNOWLEDGE SUMMARY
-================================================================================
-Generated: September 2026
-Site: https://harmonybreath.com
-Stack: Astro (Static Site Generation), Cloudflare Pages, Multi-language i18n
-Supported Locales: en (default), de, es, fr, pt, ja, it
-================================================================================
-
---------------------------------------------------------------------------------
-1. EXECUTIVE OVERVIEW & ARCHITECTURAL CONTEXT
---------------------------------------------------------------------------------
-HarmonyBreath is a high-performance, privacy-first web application providing 
-interactive breathwork timers and evidence-based physiological guides. 
-A key growth driver of the site is international organic search (i18n), offering 
-native routes across 7 languages.
-
-Key architectural note:
-- All pages are statically compiled with Astro (`npm run build`), generating 86 
-  pre-rendered HTML pages.
-- Deployed on Cloudflare Pages without needing complex serverless Wrangler configs 
-  (clean static build).
-
-
---------------------------------------------------------------------------------
-2. SEARCH ENGINE RANKING PRINCIPLES & GOOGLE ALGORITHM INSIGHTS
---------------------------------------------------------------------------------
-A critical technical SEO principle established during our audits:
-
-A. The Reality of the <meta name="keywords"> Tag:
-   - Google has officially IGNORED the <meta name="keywords"> tag since 2009.
-     Adding words solely to the meta keywords array produces zero ranking impact 
-     in Google.
-   - Bing considers an over-stuffed or irrelevant meta keywords tag as a potential 
-     SPAM signal. Safe practice is keeping it minimal (8–12 relevant terms) or 
-     omitting reliance on it.
-   - Where Google ACTUALLY gathers ranking signals:
-     1. Page Title Tag (<title>) — highest on-page ranking weight.
-     2. Primary Heading (<h1>) and Section Subheadings (<h2>, <h3>).
-     3. Natural Body Copy & Structured FAQ questions/answers.
-     4. Clean URL Slugs, Breadcrumbs, and bidirectional hreflang links.
-
-B. The Anti-Boilerplate Rule (Post-August 2026 Google Spam / Helpful Content):
-   - Google's algorithms detect and penalize programmatic, formulaic translations 
-     across languages (e.g. copying the same template pattern: "[Learn X: Step-by-Step]" 
-     into every locale).
-   - Each language must use authentic, native editorial phrasing reflective of how 
-     real humans in that country search, rather than a translated template.
-
-
---------------------------------------------------------------------------------
-3. GOOGLE SEARCH CONSOLE (GSC) DATA AUDIT & PERFORMANCE TRAJECTORY
---------------------------------------------------------------------------------
-Three consecutive 24-hour GSC performance exports revealed rapid international 
-indexing and notable upward rank velocity:
-
-A. First 24-Hour Snapshot:
-   - Big Initial Win: Homepage (/de/) achieved 1 Click, 2 Impressions, 50% CTR 
-     at Average Position 2.0 in Switzerland.
-   - Impressions spread across Switzerland, Germany, US, Australia, Mexico, 
-     Brazil, and the UK.
-   - Initial rankings for unoptimized phrases hovered between positions 60 and 88.
-
-B. Second 24-Hour Snapshot (Upward Velocity):
-   - "respiracion wim hof" (Spanish) surged to Position #39.0 (Top 40 / Page 4).
-   - "respiración de wim hof" (Spanish with accent) ranked at Position #46.0.
-   - "box breathing spanish" climbed from #61 to #56.0 (+5 spots).
-   - "box breathing in spanish" climbed from #62 to #61.0.
-   - "bauchatmung übungen" (German) surged from #79 to #63.0 (+16 spots after heading update).
-   - "bauchatmung übung" (German singular) entered at Position #68.0.
-   - "zwerchfellatmung" (German) jumped from #83 to #72.0 (+11 spots).
-   - "respiration ventrale" (French) received 2 impressions at Position #77.5.
-
-C. Third 24-Hour Snapshot (September 12, 2026):
-   - "square breath"                | 0 Clicks | 2 Imp | Pos: #60.0 (Strong synonym cluster)
-   - "metodo wim hof"               | 0 Clicks | 1 Imp | Pos: #44.0 (Spanish/Italian Top 50)
-   - "respiración de wim hof"       | 0 Clicks | 1 Imp | Pos: #54.0 (Consistent Spanish demand)
-   - "breathing square"             | 0 Clicks | 1 Imp | Pos: #60.0 (English square variation)
-   - "square breathing"             | 0 Clicks | 1 Imp | Pos: #62.0 (Core English alternative name)
-   - "box breathing in spanish"     | 0 Clicks | 1 Imp | Pos: #73.0 (Bilingual search intent)
-   - "custom breathing timer"       | 0 Clicks | 1 Imp | Pos: #78.0 (HIGH INTENT tool feature query!)
-   - "tecnica di respirazione 4-7-8" | 0 Clicks | 1 Imp | Pos: #80.0 (Italian breakthrough /it/)
-   - "box breathing spanish pdf"    | 0 Clicks | 1 Imp | Pos: #92.0 (Downloadable/printable guide intent)
-
-D. Fourth 24-Hour Snapshot (September 14, 2026):
-   - "nadi shodhana"                                    | 0 Clicks | 2 Imp | Pos: #70.0 (Core Pranayama keyword)
-   - "cyclic sighing"                                  | 0 Clicks | 2 Imp | Pos: #132.0 (Scientific/Huberman synonym)
-   - "wim holf"                                        | 0 Clicks | 1 Imp | Pos: #44.0 (Typo rank - Top 45)
-   - "método de wim hof"                               | 0 Clicks | 1 Imp | Pos: #47.0 (Spanish/Portuguese accent variant)
-   - "respirer par le ventre"                          | 0 Clicks | 1 Imp | Pos: #52.0 (French belly breathing - high position)
-   - "box breathing in spanish"                        | 0 Clicks | 1 Imp | Pos: #62.0 (Spanish / bilingual Box Breathing)
-   - "respiração quadrado"                             | 0 Clicks | 1 Imp | Pos: #63.0 (PORTUGUESE /pt/ BREAKTHROUGH!)
-   - "nadishodhan"                                     | 0 Clicks | 1 Imp | Pos: #65.0 (Alternative sanskrit/compound spelling)
-   - "physiological sigh timer"                        | 0 Clicks | 1 Imp | Pos: #67.0 (HIGH INTENT tool/timer query!)
-   - "respiration diaphragmatique combien de temps par jour" | 0 Clicks | 1 Imp | Pos: #77.0 (French long-tail question intent)
-
-E. Fifth 24-Hour Snapshot (September 15, 2026 - Today's Report):
-   - "8 7 4"                           | 0 Clicks | 2 Imp | Pos: #85.5 (Reverse order numbers for 4-7-8)
-   - "box breathing deutsch"           | 0 Clicks | 2 Imp | Pos: #86.5 (German language modifier query)
-   - "respiration 4 7 8 combien de temps" | 0 Clicks | 2 Imp | Pos: #89.5 (French duration query - pending reindex)
-   - "psychologischer seufzer"         | 0 Clicks | 1 Imp | Pos: #27.0 (🔥 ALL-TIME HIGHEST RANK! Page 3 Germany!)
-   - "nadi shodhana pranayama"         | 0 Clicks | 1 Imp | Pos: #62.0 (Sanskrit phrase target moving upward)
-   - "ヴィムホフメソッド"                 | 0 Clicks | 1 Imp | Pos: #64.0 (🇯🇵 JAPANESE BREAKTHROUGH! /ja/ indexed!)
-   - "physiological sigh timer"        | 0 Clicks | 1 Imp | Pos: #69.0 (Consistent tool intent query)
-   - "square breathing technique"      | 0 Clicks | 1 Imp | Pos: #74.0 (English square breathing variation)
-   - "respirazione 4-7-8"              | 0 Clicks | 1 Imp | Pos: #80.0 (Italian 4-7-8 confirmation)
-
-F. Sixth Snapshot (September 19, 2026 - 28-Day Overview & 24h Regional Surges):
-   - 28-Day Aggregate All-Time Leaders:
-     * "diaphragmatic breathing timer"     | 0 Clicks | 27 Imp | (#1 all-time query across entire site!)
-     * "box breathing timer"               | 0 Clicks | 25 Imp | (#2 all-time query across entire site!)
-     * "alternate nostril breathing timer" | 0 Clicks | 13 Imp | (#3 all-time query)
-     * "box breathing in spanish"          | 0 Clicks | 11 Imp | (#4 all-time query)
-     * "physiological sigh timer"          | 0 Clicks | 9 Imp  | (#5 all-time query)
-     * "box breathing spanish"             | 0 Clicks | 8 Imp  | (#6 all-time query)
-   - 24-Hour International Velocity:
-     * Switzerland: Average Position #4.4 (5 impressions on Page 1!)
-     * Japan: Average Position #15.3 (3 impressions, rapid Page 2 climb)
-     * Italy: Average Position #11.0 (1 impression, top of Page 2)
-     * Canada: Average Position #82.0 (1 impression, "4-7-8 breathing timer" entry)
-   - Key Analytical Insight: GSC 24-hour mode anonymizes queries with <2-3 daily searches 
-     for privacy (hiding 12 of 16 impressions). Expanding to 28 days de-anonymizes them, 
-     revealing that Box Breathing and Diaphragmatic Breathing represent >71 impressions combined.
-
-
-G. Seventh Snapshot (September 23 & 24, 2026 - 2-Day International Breakthroughs):
-   - September 23, 2026 (24-Hour Window):
-     * "respirazione wim hof prima di dormire" | 0 Clicks | 1 Imp | Pos: #21.0 (🇮🇹 ITALIAN PAGE 3 BREAKTHROUGH!)
-     * "wim hof method breathing 10 rounds"     | 0 Clicks | 1 Imp | Pos: #25.0 (Page 3 high-intent round search)
-     * "respiração alternada"                  | 0 Clicks | 1 Imp | Pos: #56.0 (Portuguese Pranayama head term)
-     * "respiration 4-7-8"                     | 0 Clicks | 1 Imp | Pos: #69.0 (French 4-7-8 head term)
-     * "4 7 8 breathing timer"                 | 0 Clicks | 1 Imp | Pos: #76.0 (Climbed up from #82.0!)
-     * "respiración diafragmática"             | 0 Clicks | 1 Imp | Pos: #85.0 (Initial Spanish probe)
-   - September 24, 2026 (24-Hour Window):
-     * "respiración cuadrada"                  | 0 Clicks | 5 Imp | Pos: #86.8 (🔥 5x impression surge in Spanish Box Breathing)
-     * "respiración diafragmática" (cluster)   | 0 Clicks | 7 Imp | Pos: #53.0 - #70.5 (EXPLOSION across 6 accent/plural variations)
-       - respiración diafragmática: 2 imp, Pos #70.5 (climbed +14.5 spots in 24 hours!)
-       - respiración diafragmatica: 1 imp, Pos #53.0 (Page 6 entry)
-       - respiracion diafragmàtica: 1 imp, Pos #54.0
-       - respiraciones diafragmáticas: 1 imp, Pos #57.0 (Plural search volume)
-       - respiracion diafragmatica: 1 imp, Pos #67.0
-     * "physiological sigh"                    | 0 Clicks | 1 Imp | Pos: #19.0 (🚀 PAGE 2 BREAKTHROUGH! English head keyword)
-     * "サイクリック・サイ"                      | 0 Clicks | 1 Imp | Pos: #22.0 (🇯🇵 JAPANESE PAGE 3 DEBUT! Cyclic sighing term)
-     * "respiración wim hof"                   | 0 Clicks | 1 Imp | Pos: #43.0 (Spanish Wim Hof solid hold)
-     * "metodo wim hof"                        | 0 Clicks | 1 Imp | Pos: #64.0 (Spanish Wim Hof variant)
-
-H. Eighth Snapshot (September 26, 2026 - Today's Report):
-   - "wim hof breathing timer"        | 0 Clicks | 3 Imp | Pos: #20.0 (🚀 HIGHEST INTENT CORE QUERY AT PAGE 2 APEX!)
-     * 3 impressions in a single 24h window; sitting right at the Page 2 / Page 1 threshold (#20.0).
-     * High-converting transactional/tool query directly aligned with our interactive breathing engine.
-   - "winhof"                         | 0 Clicks | 2 Imp | Pos: #52.0 (High-volume typo query discovery)
-   - "7 8 4"                          | 0 Clicks | 1 Imp | Pos: #41.0 (🔥 MASSIVE JUMP: Climbed +44.5 spots from #85.5 to #41.0!)
-   - "nadi shodhana pranayama"        | 0 Clicks | 1 Imp | Pos: #48.0 (📈 Climbed +14 spots from #62.0 straight into Top 50!)
-   - "respirazione wim hof"           | 0 Clicks | 1 Imp | Pos: #48.0 (🇮🇹 Italian Wim Hof head query breaks into Top 50!)
-   - "sighing deutsch"                | 0 Clicks | 1 Imp | Pos: #68.0 (🇩🇪 German bilingual / English query seeking German sighing tool)
-   - "technique de respiration 4 7 8" | 0 Clicks | 1 Imp | Pos: #71.0 (🇫🇷 French 4-7-8 exact title intent match)
-   - "respiraciones diafragmáticas"   | 0 Clicks | 1 Imp | Pos: #78.0 (🇪🇸 Spanish diaphragmatic breathing plural query)
-   - "tecnica di respirazione 4-7-8"  | 0 Clicks | 1 Imp | Pos: #80.0 (🇮🇹 Italian 4-7-8 long-tail technique query)
-   - "respiración cuadrada"          | 0 Clicks | 1 Imp | Pos: #84.0 (🇪🇸 Spanish Box Breathing steady indexing)
-
-I. Ninth Snapshot (September 29, 2026 - Today's Report & Critical Negative Diagnostic):
-   1. 24-Hour Query Performance Table (16 Queries):
-      - "4 7 8 breathing timer online"        | 0 Clicks | 1 Imp | Pos: #6.0 (🏆 PAGE 1 BREAKTHROUGH! Direct exact-match intent)
-      - "breathing timer online"               | 0 Clicks | 1 Imp | Pos: #14.0 (🚀 MASSIVE GLOBAL HEAD TERM ON PAGE 2! Domain authority indicator)
-      - "online breathing timer"               | 0 Clicks | 1 Imp | Pos: #24.0 (Page 3 secondary word-order variation of main head term)
-      - "winhof"                               | 0 Clicks | 1 Imp | Pos: #28.0 (Surged +24 positions from #52.0 straight into Page 3)
-      - "how long can wim hof hold his breath" | 0 Clicks | 1 Imp | Pos: #45.0 (High-volume informational trivia query matching Wim Hof guide)
-      - "wimhoff atemmethode"                  | 0 Clicks | 1 Imp | Pos: #45.0 (German Wim Hof method query entering Top 50)
-      - "wim hof respiracion"                  | 0 Clicks | 1 Imp | Pos: #49.0 (Spanish Wim Hof Top 50 hold)
-      - "wimhot"                               | 0 Clicks | 1 Imp | Pos: #49.0 (Typo query ranking in Top 50)
-      - "método wim hof"                       | 0 Clicks | 1 Imp | Pos: #55.0 (Spanish Wim Hof variant)
-      - "respiracion alterna"                  | 0 Clicks | 1 Imp | Pos: #59.0 (📈 Climbed +9 spots from #68.0 into Top 60)
-      - "el metodo wim hof"                    | 0 Clicks | 2 Imp | Pos: #72.5 (Spanish article prefix variation)
-      - "respiracion cuadrada"                 | 0 Clicks | 1 Imp | Pos: #76.0 (📈 Climbed +9 spots from #85.0)
-      - "respiración cuadrada"                 | 0 Clicks | 1 Imp | Pos: #78.0 (Accented Spanish Box Breathing variant)
-      - "respiration 4 7 8 combien de temps"   | 0 Clicks | 1 Imp | Pos: #84.0 (French duration long-tail query)
-      - "bauchatmung"                          | 0 Clicks | 1 Imp | Pos: #89.0 (German belly breathing head term)
-      - "respiración diafragmática"            | 0 Clicks | 2 Imp | Pos: #90.5 (Spanish diaphragmatic breathing 2 impressions)
-
-   2. Geographic Performance:
-      - Spain: 8 impressions | Average Position #70.4 (#1 volume driver, but lagging in rank)
-      - United States: 6 impressions | Average Position #17.0 (Breakout country driving Page 1 & 2 head terms!)
-      - Germany: 3 impressions | Average Position #48.0
-      - Brazil: 2 impressions | Average Position #14.5
-      - Argentina: 2 impressions | Average Position #28.0
-      - Peru: 1 impression | Average Position #1.0 (🇵🇪 Position 1.0!)
-      - Japan: 1 impression | Average Position #10.0
-      - Mexico: 1 impression | Average Position #80.0
-      - France: 1 impression | Average Position #84.0
-
-   3. Critical Negative Signals & Performance Bottlenecks (Tracked for Future Improvement):
-      - NEGATIVE 1: Zero Clicks (0% CTR) at Position #6.0:
-        Despite ranking on Page 1 (#6.0) for "4 7 8 breathing timer online", zero clicks occurred.
-        On mobile SERPs, Position 6 is pushed below the fold by AI Overviews and app packs;
-        meta description needs stronger high-CTR hooks (e.g. "Free interactive browser timer, no signup").
-      - NEGATIVE 2: Vanishing of Core English Wim Hof Apex Query:
-        "wim hof breathing timer", which was at #20.0 with 3 impressions on Sept 26, disappeared
-        from today's top queries as Google rotated test buckets. Needs tracking to confirm re-entry.
-      - NEGATIVE 3: Spanish Deep Ranking Regression (#70.4 Average):
-        Spain is our highest-volume impression market (8 imp), but queries are buried on Pages 7-9.
-        "respiración diafragmática" fell to #90.5 and "el metodo wim hof" sits at #72.5.
-      - NEGATIVE 4: Keyword & Accent Cannibalization:
-        "respiracion cuadrada" (#76.0) and "respiración cuadrada" (#78.0) are splitting ranking authority
-        across unaccented and accented variants rather than consolidating onto one canonical entity.
-      - NEGATIVE 5: Informational Trivia vs Tool Intent Mismatch:
-        "how long can wim hof hold his breath" (#45.0) brings trivia searchers who risk high bounce rates
-        if the factual answer (6m 20s ice record / 3-5m dry) is not immediately visible above the fold.
-      - NEGATIVE 6: French & German Page 9 Stagnation:
-        "respiration 4 7 8 combien de temps" (#84.0) and "bauchatmung" (#89.0) remain trapped in the
-        deep sandbox zone without sufficient localized authority.
-
-
-J. Tenth Snapshot (September 30, 2026 - Today's Report):
-   1. 24-Hour Overall Metrics:
-      - Total Impressions: 22
-      - Total Clicks: 0
-
-   2. 24-Hour Top Queries Table (Sampled in GSC Queries View):
-      - "respiration 4 7 8"                 | 0 Clicks | 2 Imp | Pos: #71.0 (🇫🇷 French 4-7-8 head query; climbed +13 spots from #84.0)
-      - "respiración diafragmática"         | 0 Clicks | 2 Imp | Pos: #94.0 (🇪🇸 Spanish Diaphragmatic breathing head term)
-      - "diaphragmatic breathing deutsch"   | 0 Clicks | 1 Imp | Pos: #14.0 (🇩🇪 BREAKTHROUGH! Direct Page 2 debut matching German bilingual intent)
-      - "sospiro fisiologico"               | 0 Clicks | 1 Imp | Pos: #60.0 (🇮🇹 Italian Physiological Sigh head term holding Top 60)
-      - "respiração diafragmática"          | 0 Clicks | 1 Imp | Pos: #70.0 (🇵🇹 Portuguese Diaphragmatic breathing head term entering Top 70)
-      - "respiraciones diafragmáticas"      | 0 Clicks | 1 Imp | Pos: #94.0 (🇪🇸 Spanish Diaphragmatic breathing plural variation)
-
-   3. Areas to Track for Future Improvement (Factual Observations):
-      - TRACKING 1: 0% Click-Through Rate Across 22 Impressions:
-        Tracking click conversion as high-intent terms continue to advance toward Page 1.
-      - TRACKING 2: German Page 2 Elevation ("diaphragmatic breathing deutsch" at #14.0):
-        At #14.0, tracking whether this term advances the remaining ~4 positions into the Top 10 where organic clicks typically begin.
-      - TRACKING 3: Spanish Diaphragmatic Position (#94.0):
-        Tracking "respiración diafragmática" and "respiraciones diafragmáticas" to observe if they climb out of the Page 10 boundary back toward the Top 50.
-
-
-K. Eleventh Snapshot (October 1, 2026 - Today's Report & Historic Page 1 Surge):
-   1. 24-Hour Overall Metrics:
-      - Total Impressions: 35 (+59.1% surge from 22 yesterday, setting all-time 24h record!)
-      - Total Clicks: 0
-      - Geographic Coverage: 8 countries (Spain 16, Japan 5, US 4, Germany 3, France 3, Brazil 2, Switzerland 1, Italy 1).
-      - Device Split: Desktop 23 (pos #49.5), Mobile 11 (pos #31.3), Tablet 1 (pos #72.0).
-
-   2. Historic Page 1 / Top 10 Breakthrough (9 Landing Pages in Google Top 10!):
-      - https://harmonybreath.com/ja/physiological-sigh/ | Pos: #1.0 (2 imp) 🇯🇵
-      - https://harmonybreath.com/it/wim-hof/            | Pos: #1.0 (1 imp) 🇮🇹
-      - https://harmonybreath.com/ja/                   | Pos: #3.0 (1 imp) 🇯🇵
-      - https://harmonybreath.com/fr/physiological-sigh/ | Pos: #4.0 (1 imp) 🇫🇷
-      - https://harmonybreath.com/                      | Pos: #5.0 (1 imp) 🌐
-      - https://harmonybreath.com/wim-hof/              | Pos: #6.5 (2 imp) 🇺🇸
-      - https://harmonybreath.com/es/physiological-sigh/ | Pos: #9.0 (1 imp) 🇪🇸
-      - https://harmonybreath.com/ja/diaphragmatic-breathing/ | Pos: #10.0 (1 imp) 🇯🇵
-      - https://harmonybreath.com/physiological-sigh/   | Pos: #10.0 (1 imp) 🌐
-
-   3. 24-Hour Top Queries Highlights:
-      - "wim hof"                                       | 0 Clicks | 3 Imp | Pos: #46.7
-      - "metodo de wim hof"                             | 0 Clicks | 2 Imp | Pos: #45.0 (Climbed from #47.0)
-      - "quadratatmung"                                 | 0 Clicks | 2 Imp | Pos: #55.0 (Validates Ahrefs German Box Breathing research!)
-      - "respiración diafragmática"                     | 0 Clicks | 2 Imp | Pos: #82.0 (Rebounded +12 spots from #94.0 yesterday!)
-      - "nadi sodhana"                                  | 0 Clicks | 1 Imp | Pos: #39.0 (Top 40 entry)
-      - "respiracion diafragmatica como se hace"        | 0 Clicks | 1 Imp | Pos: #59.0 (Spanish step-by-step tutorial intent)
-      - "respiration 4 7 8 combien de temps"            | 0 Clicks | 1 Imp | Pos: #81.0 (French duration query climbed from #84.0)
-      - "respiración diafragmática tiempos"             | 0 Clicks | 1 Imp | Pos: #90.0 (Spanish timing/duration intent)
-      - "que es la respiración diafragmática"           | 0 Clicks | 1 Imp | Pos: #100.0 (Spanish definition intent)
-
-
-L. Twelfth Snapshot (October 3, 2026 - Today's Report & Italy Explosion):
-   1. 24-Hour Overall Metrics:
-      - Total Impressions: 43 (+95.5% surge from 22 yesterday, setting all-time 24h site record!)
-      - Total Clicks: 0
-      - Geographic Coverage: 9 countries (Italy 16, Spain 13, Germany 5, Brazil 3, US 2, Japan 1, France 1, Portugal 1, India 1).
-      - Device Split: Desktop 35 (pos #53.8), Mobile 7 (pos #47.9), Tablet 1 (pos #9.0).
-
-   2. Highlights & Page 1 Wins:
-      - https://harmonybreath.com/de/wim-hof/            | Pos: #7.0 (3 imp) 🇩🇪 (Page 1)
-      - https://harmonybreath.com/pt/box-breathing/      | Pos: #10.0 (1 imp) 🇧🇷 (Page 1)
-      - https://harmonybreath.com/ja/terms/              | Pos: #11.0 (1 imp) 🇯🇵 (Page 2 apex)
-      - https://harmonybreath.com/pt/wim-hof/            | Pos: #18.0 (2 imp) 🇧🇷 (Page 2)
-      - https://harmonybreath.com/it/diaphragmatic-breathing/ | Pos: #29.5 (2 imp) 🇮🇹 (Page 3)
-      - https://harmonybreath.com/es/diaphragmatic-breathing/ | Pos: #63.0 (6 imp) 🇪🇸 (Surged +17 spots from #80.0)
-
-   3. 24-Hour Top Queries:
-      - "ejercicios respiración diafragmática"          | 0 Clicks | 1 Imp | Pos: #27.0 (Spanish Page 3 intent!)
-      - "wim hof"                                       | 0 Clicks | 1 Imp | Pos: #70.0
-      - "wim hof respirazione"                          | 0 Clicks | 1 Imp | Pos: #31.0 (Italian Page 4 entry)
-      - "respiración diafragmática tiempos"             | 0 Clicks | 1 Imp | Pos: #76.0 (Climbed +14 spots from #90.0!)
-      - "tecnica de respiracion diafragmatica"          | 0 Clicks | 1 Imp | Pos: #60.0 (Climbed +12 spots from #72.0!)
-      - "respirazione 4 7 8 controindicazioni"          | 0 Clicks | 1 Imp | Pos: #81.0 (Emerging Italian safety intent)
-
-
---------------------------------------------------------------------------------
-4. COUNTRY-SPECIFIC AHREFS KEYWORD RESEARCH FINDINGS
---------------------------------------------------------------------------------
-
-A. GERMANY (country=de):
-   1. "bauchatmung lernen" (Learn belly breathing):
-      - Search Volume: >100 / month | Keyword Difficulty (KD): Easy.
-      - Intent: High-action / tutorial intent. Searchers want practical guidance.
-      - Variations: "tiefe bauchatmung lernen", "richtige bauchatmung lernen".
-      - Status: High-priority target; implemented in H2 and content.
-
-   2. "quadratatmung" vs "kastenatmung" (Box breathing synonyms):
-      - "quadratatmung": 5 rich high-intent variations in Ahrefs:
-        * quadratatmung anleitung (instructions)
-        * quadratatmung yoga
-        * quadratatmung wirkung (effects/benefits)
-        * quadratatmung einschlafen (falling asleep)
-      - "kastenatmung": Only 1 phrase match (<100 vol).
-      - Conclusion: "Quadratatmung" carries significantly higher user search intent 
-        and topic depth in Germany.
-
-   3. "physiologischer seufzer" & "physiologisches seufzen" (Physiological sigh):
-      - "physiologischer seufzer" (masculine noun): <100 vol, KD Easy.
-      - Variations: "was ist ein physiologischer seufzer", "wirkung", "huberman".
-      - "physiologisches seufzen" (neuter gerund): Confirmed real query in GSC.
-
-   4. "atemquadrat" (Pruned):
-      - Search Volume: 0 ("No keyword ideas found").
-      - Conclusion: Artificial compound word; pruned in favor of "Quadratatmung".
-
-B. FRANCE (country=fr):
-   1. "respiration abdominale" (Abdominal breathing):
-      - Search Volume: >1,000 / month | KD: Easy | 446 keyword ideas.
-      - Massive head keyword in France.
-      - Variations: "les 7 bienfaits de la respiration abdominale" (>100 vol), 
-        "respiration abdominale danger" (>100 vol).
-
-   2. "respiration ventrale" (Belly breathing):
-      - Search Volume: >100 / month | KD: Easy | 97 keyword ideas.
-      - Common query: "respiration ventrale ou abdominale" (comparing the two).
-
-   3. "respiration diaphragmatique" (Diaphragmatic breathing):
-      - Search Volume: >100 / month | KD: Easy.
-
-C. SPANISH & BILINGUAL SEARCHES:
-   - Users frequently search English terms with language modifiers:
-     "box breathing spanish", "box breathing in spanish", "box breathing spanish pdf".
-   - Spanish Wim Hof searches are accelerating rapidly: "respiracion wim hof" (#39).
-
-
---------------------------------------------------------------------------------
-5. COMPLETE RECORD OF CODE & CONTENT OPTIMIZATIONS APPLIED
---------------------------------------------------------------------------------
-
-1. GERMAN: Diaphragmatic Breathing (`src/i18n/diaphragmatic-breathing.ts`)
-   - Updated H2 Guide Heading:
-     FROM: "Schritt-für-Schritt-Anleitung: Richtig in den Bauch atmen"
-     TO:   "Bauchatmung lernen: Schritt-für-Schritt-Anleitung"
-   - Added verified high-intent phrases: "bauchatmung lernen", "tiefe bauchatmung lernen".
-   - Direct impact: Jumped from #79 to #63 in GSC within 24h.
-
-2. GERMAN: Box Breathing (`src/i18n/box-breathing.ts`)
-   - Updated Page Title (<title>):
-     FROM: "Box-Atmung (Kastenatmung) — Geführter Timer für Fokus"
-     TO:   "Box-Atmung & Quadratatmung — Geführter Timer für Fokus"
-     (Avoided spammy "4-4-4-4" numbers in title; natural German).
-   - Updated Physiology H2 Heading:
-     FROM: "Die Physiologie: Warum das Atemquadrat das vegetative Nervensystem beruhigt"
-     TO:   "Die Physiologie: Warum die Quadratatmung das vegetative Nervensystem beruhigt"
-   - Replaced dead keyword "atemquadrat online" with Ahrefs-verified phrases:
-     "quadratatmung anleitung", "quadratatmung wirkung", "quadratatmung yoga", 
-     "quadratatmung einschlafen".
-
-3. GERMAN: Physiological Sigh (`src/i18n/physiological-sigh.ts`)
-   - Updated Guide Question H2:
-     FROM: "Was ist der Physiologische Seufzer?"
-     TO:   "Was ist ein physiologischer Seufzer (Physiologisches Seufzen)?"
-   - Captures both the Ahrefs question intent and the neuter gerund from GSC.
-   - Enriched keywords: "physiologisches seufzen", "physiologisches seufzen timer", 
-     "physiologischer seufzer wirkung", "physiologischer seufzer atmung".
-
-4. SPANISH: Box Breathing (`src/i18n/box-breathing.ts`)
-   - Updated Page Title (<title>):
-     FROM: "Respiración Cuadrada (Box Breathing): Temporizador Guiado"
-     TO:   "Respiración Cuadrada (Box Breathing en Español): Temporizador Guiado"
-   - Added bilingual query variations: "box breathing spanish", "box breathing in spanish".
-   - Direct impact: Jumped from #61 to #56 in GSC.
-
-5. ENGLISH: 4-7-8 Breathing (`src/i18n/4-7-8.ts`)
-   - Updated FAQ Question 1:
-     FROM: "How does 4-7-8 breathing work?"
-     TO:   "How does the 4 7 8 breathing timer work?"
-   - Exact-match target for GSC query "4 7 8 breathing timer" (without hyphens) 
-     while maintaining natural editorial quality.
-
-6. FRENCH: 4-7-8 Breathing (`src/i18n/4-7-8.ts`)
-   - Updated FAQ Question 1:
-     FROM: "Comment fonctionne la respiration 4-7-8 ?"
-     TO:   "Comment fonctionne la respiration 4 7 8 ?"
-   - Exact-match target for GSC query "respiration 4 7 8".
-
-7. ENGLISH: Nadi Shodhana (`src/i18n/nadi-shodhana.ts`)
-   - Added exact compound phrase "nadi shodhana pranayama" to align with existing H1.
-
-8. FRENCH: Diaphragmatic / Abdominal Breathing (`src/i18n/diaphragmatic-breathing.ts`)
-   - Non-boilerplate French editorial update (Option 2):
-     * <title>: "Respiration Abdominale & Ventrale : Exercices de Détente au Minuteur"
-       (Leads with the >1,000 search volume keyword "Respiration Abdominale").
-     * Meta Description: "Pratiquez la respiration abdominale et ventrale avec notre minuteur gratuit..."
-     * <h1> Hero Title: "Respiration Abdominale & Ventrale\nExercices de Calme Intérieur"
-     * <h2> Guide Subheading: "Technique pas à pas pour bien respirer par le ventre"
-   - Avoids translating German templates directly, ensuring compliance with Google's 
-     Helpful Content / Anti-Boilerplate guidelines.
-
-9. ENGLISH: Homepage (`src/i18n/home.ts`)
-   - Hero Subtitle (<p>): Added "and customizable" to the intro:
-     "...crafted and customizable timers..."
-   - Feature Card 02 (<h3>):
-     FROM: "Customizable Sessions"
-     TO:   "Custom Breathing Timers & Presets"
-   - Direct exact-match targeting for GSC query "custom breathing timer" (#78.0).
-
-10. FRENCH: Diaphragmatic Breathing (`src/i18n/diaphragmatic-breathing.ts`)
-    - Updated FAQ #2 Question:
-      FROM: "À quelle fréquence doit-on la pratiquer ?"
-      TO:   "Combien de temps par jour pratiquer la respiration diaphragmatique ?"
-    - Direct exact-match targeting for GSC query "respiration diaphragmatique combien de temps par jour" (#77.0).
-
-11. ENGLISH: Physiological Sigh (`src/i18n/physiological-sigh.ts`)
-    - Updated FAQ #1:
-      FROM: "What is the Huberman psychological sigh?"
-      TO:   "What is the Huberman cyclic sighing?"
-    - Upgraded answer with authoritative Stanford 2023 clinical trial details (Spiegel/Huberman),
-      explaining the double inhale mechanism, alveoli reinflation, and guided timer.
-    - Direct targeting for "cyclic sighing" (#132.0) and "physiological sigh timer" (#67.0).
-
-12. TECHNICAL / CORE WEB VITALS: LCP WebP Image Optimization (September 18, 2026)
-    - Cloudflare Web Analytics indicated 20% LCP in "Needs Improvement" (2.5s-4.0s mobile).
-    - Converted all 7 full-viewport hero atmospheric background images from multi-megabyte 
-      PNGs (~12.3 MB total) to WebP format (~725 KB total, ~94% file size reduction):
-      * 4-7-8-breathing: 2,106 KB -> 129.8 KB (-93.8%)
-      * box-breathing: 1,738 KB -> 68.9 KB (-96.0%)
-      * nadi-shodhana: 1,761 KB -> 66.1 KB (-96.3%)
-      * physiological-sigh: 1,935 KB -> 105.4 KB (-94.6%)
-      * home-page: 1,998 KB -> 92.3 KB (-95.4%)
-      * diaphragmatic-breathing: 2,450 KB -> 199.9 KB (-91.8%)
-      * wim_hof_hero_bg: 281 KB -> 63.5 KB (-77.4%)
-    - Added `fetchpriority="high"` and `decoding="async"` on all 7 hero <img> elements.
-    - Moved original heavy PNGs to `knowledge/` archive to clean production bundle.
-
-13. ENGLISH: Meta Title Exact-Match Alignment (September 19, 2026)
-    - Anti-Boilerplate compliant title tune-up front-loading the exact search intent:
-      * 4-7-8 Breathing:
-        FROM: "4-7-8 Breathing Technique: Guided Timer for Sleep & Anxiety"
-        TO:   "4-7-8 Breathing Timer: Free Online Sleep & Anxiety Breathwork"
-      * Box Breathing:
-        FROM: "Box Breathing (Square Breathing) — Guided Calm & Focus Timer"
-        TO:   "Box Breathing Timer — Guided Square Breathing for Focus"
-      * Diaphragmatic Breathing:
-        FROM: "Diaphragmatic Breathing: Belly Breathing Timer & Exercises"
-        TO:   "Diaphragmatic Breathing Timer: Belly Breathing Exercises"
-    - Each title maintains an independent, non-boilerplate grammatical structure and tone.
-
-14. ITALIAN & ENGLISH: Wim Hof Sleep & Extended 10 Rounds Presets (September 24, 2026)
-    - Added targeted FAQs to `src/i18n/wim-hof.ts`:
-      * Italian: "Si può fare la respirazione Wim Hof prima di dormire?" & "Si possono fare 10 round di respirazione Wim Hof?"
-      * English: "Can you do Wim Hof breathing before sleep?" & "Can you do 10 rounds of Wim Hof breathing?"
-    - Direct targeting for "respirazione wim hof prima di dormire" (#21.0) and "wim hof method breathing 10 rounds" (#25.0).
-    - Freshness signal: Updated Schema `dateModified` in `src/components/WimHofPage.astro` to 2026-09-24 exclusively for `en` and `it`.
-
-15. JAPANESE: Physiological Sigh Cyclic Sighing Integration (September 24, 2026)
-    - Directly incorporated the exact GSC breakout query "サイクリック・サイ" into:
-      * Meta title: "生理的ため息（サイクリック・サイ）無料タイマー＆科学的解説"
-      * Keywords array, hero subtitle, and foundational guide copy in `src/i18n/physiological-sigh.ts`.
-    - Direct targeting for "サイクリック・サイ" (#22.0 in Japan).
-    - Freshness signal: Updated visible editorial badge (`更新日: 2026-09-24`) and Schema `dateModified` in `src/components/PhysiologicalSighPage.astro` strictly for `ja`.
-
-
-16. ITALIAN: Physiological Sigh Title & CTR Optimization (September 24, 2026)
-    - Replaced low-CTR title "Sospiro Fisiologico e Sospiro Ciclico: Guida e Timer Calma":
-      * New Title: "Sospiro Fisiologico (Sospiro Ciclico): Timer Online e Benefici"
-      * Meta Description: Updated "gratuito" -> "online" for high-intent tool clarity:
-        "Pratica il Sospiro Fisiologico con il nostro timer guidato online. Doppia inspirazione ed espirazione lunga per un rapido sollievo dallo stress."
-      * Keywords: Added exact target "sospiro fisiologico timer online".
-      * Freshness signal: Updated visible editorial badge (`Aggiornato il 24/09/2026`) and Schema `dateModified` in `src/components/PhysiologicalSighPage.astro` for `it`.
-
-
-17. ENGLISH: Wim Hof Core Timer Query Optimization — Option A (September 27, 2026)
-    - English Wim Hof (`src/i18n/wim-hof.ts` & `src/components/WimHofPage.astro`):
-      * Front-loaded high-intent query "Wim Hof Breathing Timer" using distinct, non-boilerplate natural syntax (Option A):
-        FROM: "Wim Hof Method Breathing: Guided Rounds & Retention Timer"
-        TO:   "Wim Hof Breathing Timer with Guided Retention Rounds"
-      * Targeted GSC query "wim hof breathing timer" (#20.0, 3 impressions) while avoiding punctuation/template duplication with other pages.
-      * Keywords: Added "wim hof breathing timer" and removed "wim hof breathing benefits" for a leaner, higher-intent array.
-      * Freshness signal: Updated Schema `dateModified` for English to 2026-09-27 in `WimHofPage.astro`.
-    - German Physiological Sigh (`src/i18n/physiological-sigh.ts`):
-      * Pruned the German keyword array down to 8 lean, spam-safe terms (avoiding Bing keyword-stuffing penalties):
-        Added "sighing deutsch" (targeting GSC query #68.0) and pruned generic low-value filler terms.
-
-
-18. DIAPHRAGMATIC BREATHING: Clean Schema Consolidation & Headline Polish (September 29, 2026)
-    - Schema Architecture Consolidation (`src/components/DiaphragmaticBreathingPage.astro`):
-      * Consolidated duplicate `SoftwareApplication` and `WebApplication` blocks into 1 unified `WebApplication` schema.
-      * Embedded free offer (`price: "0", priceCurrency: "USD"`), eliminating the "Missing field 'offers'" warning in Google Rich Results Test.
-      * Linked existing production asset `https://harmonybreath.com/og-image.png`.
-      * Completely removed the `Article` schema block to eliminate blog-post warnings and prevent Google from miscategorizing our interactive tool as a reading article.
-      * Removed deprecated `HowTo` schema (retired by Google in late 2023) to keep structured data clean and modern.
-      * Updated Schema `dateModified` to 2026-09-29.
-    - Editorial Headline Polish (`src/i18n/diaphragmatic-breathing.ts`):
-      * Cleaned English `heroTitle` from "Diaphragmatic / Belly Breathing\nTimer & Exercise" to "Diaphragmatic Breathing\nTimer & Exercise", eliminating awkward punctuation while preserving secondary keywords in the subtitle.
-
-
-19. DIAPHRAGMATIC BREATHING: German Bilingual Push (#14.0) & Spanish Plural Consolidation (September 30, 2026)
-    - German Optimization (`src/i18n/diaphragmatic-breathing.ts`):
-      * Targeted breakthrough query "diaphragmatic breathing deutsch" (GSC Position #14.0 on Page 2).
-      * Added "diaphragmatic breathing deutsch" and "diaphragmatic breathing" to German `keywords`.
-      * Updated guide intro (`whatIsDesc1`) with natural bilingual context: "Die Bauchatmung – international als Diaphragmatic Breathing und medizinisch als Zwerchfellatmung bezeichnet..."
-      * Objective: Provide Google exact on-page bilingual relevance to bridge the ~4 spot gap from #14.0 to Page 1 Top 10.
-    - Spanish Optimization (`src/i18n/diaphragmatic-breathing.ts`):
-      * Front-loaded high-intent action copy in `metaTitle`:
-        FROM: "Respiración Diafragmática: Temporizador Abdominal y Guía"
-        TO:   "Respiración Diafragmática: Ejercicios y Temporizador Online Gratis"
-      * Added plural query "respiraciones diafragmáticas" to Spanish `keywords` alongside "respiración diafragmática" and "temporizador respiracion diafragmatica" to eliminate keyword cannibalization and consolidate Page 10 rankings.
-    - Schema Freshness (`src/components/DiaphragmaticBreathingPage.astro`):
-      * Updated Schema `dateModified` to 2026-09-30.
-
-
-20. SPANISH: Diaphragmatic Breathing Long-Tail FAQ Optimization (October 1, 2026)
-    - Targeted emerging Spanish search intents from GSC October 1 24h export:
-      * Definition Intent: Added FAQ "¿Qué es la respiración diafragmática?" (targeting `que es la respiración diafragmática` #100.0).
-      * Tutorial Intent: Added FAQ "¿Cómo se hace la respiración diafragmática paso a paso?" (targeting `respiracion diafragmatica como se hace` #59.0 & `tecnica de respiracion diafragmatica` #72.0).
-      * Cadence / Timing Intent: Added FAQ "¿Cuáles son los tiempos de la respiración diafragmática y cuánto debe durar?" (targeting `respiración diafragmática tiempos` #90.0).
-    - Freshness Signal:
-      * Updated visible badge and WebApplication Schema `dateModified` to 2026-10-01 for Spanish (`es`) in `src/components/DiaphragmaticBreathingPage.astro`.
-      * Automatically injected into Google-compliant FAQPage JSON-LD structured data.
-
-
-21. ITALIAN: 4-7-8 Breathing Contraindications FAQ & Keyword Target (October 3, 2026)
-    - Targeted emerging Italian safety query "respirazione 4 7 8 controindicazioni" (GSC Position #81.0):
-      * Added exact query to Italian `keywords` array in `src/i18n/4-7-8.ts`.
-      * Upgraded Italian FAQ with dedicated question: "Quali sono le controindicazioni della respirazione 4-7-8?", detailing hypotension, acute respiratory conditions, and dizziness modifications.
-    - Freshness Signal:
-      * Updated Schema and badge `dateModified` strictly for `it` in `src/components/Relaxing478Page.astro` to 2026-10-03.
-
-
-22. SPANISH: Diaphragmatic Breathing "Ejercicios" On-Page Guide Heading Optimization (October 3, 2026)
-    - Targeted breakout queries "ejercicios respiración diafragmática" (GSC #27.0) and "respiración diafragmática ejercicios" (GSC #49.0):
-      * Upgraded the primary guide `<h2>` heading in `src/i18n/diaphragmatic-breathing.ts`:
-        FROM: "Cómo hacer la respiración diafragmática paso a paso"
-        TO:   "Ejercicios de respiración diafragmática: Guía paso a paso"
-      * Aligns the high-ranking guide step-by-step section with search intent without keyword stuffing.
-    - Freshness Signal:
-      * Updated Schema and badge `dateModified` strictly for `es` in `src/components/DiaphragmaticBreathingPage.astro` to 2026-10-03.
-
-
-23. FRENCH: Diaphragmatic Breathing "Exercices" Guide Heading Optimization (October 4, 2026)
-    - Targeted emerging French queries "respiration diaphragmatique exercices" (GSC #37.0), "respiration abdominale exercices" (GSC #75.0), and "exercice respiration abdominale" (GSC #74.0):
-      * Upgraded the primary French guide `<h2>` heading in `src/i18n/diaphragmatic-breathing.ts`:
-        FROM: "Technique pas à pas pour bien respirer par le ventre"
-        TO:   "Exercices de respiration diaphragmatique et abdominale : Guide pas à pas"
-      * Incorporates both exact queries ("respiration diaphragmatique exercices" & "respiration abdominale exercices") organically into a prominent H2 tag.
-    - Freshness Signal:
-      * Updated Schema and badge `dateModified` strictly for `fr` in `src/components/DiaphragmaticBreathingPage.astro` to 2026-10-04.
-
-
-24. ENGLISH: 4-7-8 Breathing Meta Description CTR Hook & Keyword Enrichment (October 4, 2026)
-    - Targeted breakout US/international queries "breath 4-7-8" (GSC #27.0), "4-7-8" (GSC #29.0), and "breathe 4 7 8" (GSC #35.0):
-      * Upgraded English `metaDescription` in `src/i18n/4-7-8.ts` with a strong high-CTR action hook:
-        FROM: "Master the 4-7-8 breathing method with our interactive guided timer. Reduce anxiety, calm your nervous system, and fall asleep faster in just 4 cycles."
-        TO:   "Breathe 4-7-8 with our free interactive timer. Inhale 4s, hold 7s, exhale 8s to relieve anxiety, quiet your mind, and fall asleep in minutes. No app needed."
-      * Added "breath 4-7-8", "breathe 4 7 8", and "4 7 8" to `keywords` array (supported by Bing search ranking while keeping total count under 10).
-    - Freshness Signal:
-      * Updated Schema and badge `dateModified` strictly for `en` in `src/components/Relaxing478Page.astro` to 2026-10-04.
-
-
-25. SPANISH: Box Breathing Meta Title & Visual Guide "Video Intent" Optimization (October 4, 2026)
-    - Targeted emerging breakout query "respiracion cuadrada video" (GSC #47.0):
-      * Refined Spanish `metaTitle` in `src/i18n/box-breathing.ts`:
-        FROM: "Respiración Cuadrada (Box Breathing en Español): Temporizador Guiado"
-        TO:   "Respiración Cuadrada: Temporizador y Guía Visual 4-4-4-4 Online"
-      * Upgraded Spanish `metaDescription` with native terminology ("respiración en caja" + "respiración cuadrada 4-4-4-4") and interactive visual guide copy satisfying video intent:
-        FROM: "Practica la respiración cuadrada (box breathing 4-4-4-4) con nuestro temporizador guiado gratis. Calma la ansiedad y mejora tu enfoque en 4 minutos."
-        TO:   "Practica la respiración en caja (respiración cuadrada 4-4-4-4) con nuestro temporizador y guía visual interactiva en tiempo real. Calma la ansiedad y enfócate en 4 minutos."
-      * Added "respiracion cuadrada video" and "guia visual respiracion cuadrada" to Spanish `keywords` array.
-    - Freshness Signal:
-      * Updated Schema and badge `dateModified` strictly for `es` in `src/components/BoxBreathingPage.astro` to 2026-10-04.
-
-
-26. SPANISH: Wim Hof Method "Meditación" & "Método Respiratorio" Optimization (October 5, 2026)
-    - Targeted breakout queries "meditacion wim hof" (GSC #24.0), "metodo respiratorio wim hof" (3 impressions, GSC #38.67), and "wim hof en español" (GSC #37.0):
-      * Upgraded Spanish `metaDescription` in `src/i18n/wim-hof.ts`:
-        FROM: "Domina la respiración del Método Wim Hof con nuestro temporizador guiado online. 30 respiraciones, retención y recuperación para energía y enfoque."
-        TO:   "Domina el método respiratorio y meditación Wim Hof con nuestro temporizador guiado en español. 30 respiraciones, retención y recuperación para energía y calma."
-      * Enriched Spanish `heroSubtitle` to mention "método respiratorio y meditación en tres fases de Wim Hof... guiado en español".
-      * Added "meditacion wim hof, metodo respiratorio wim hof, wim hof en español, wim hof respiraciones" to `keywords` array.
-      * Added dedicated FAQ question: "¿La respiración Wim Hof sirve como meditación y método respiratorio diario?"
-    - Freshness Signal:
-      * Updated Schema and badge `dateModified` strictly for `es` in `src/components/WimHofPage.astro` to 2026-10-05.
-
-
-27. SPANISH: Nadi Shodhana "Respiración Alterna" & "Cómo Se Hace" Optimization (October 5, 2026)
-    - Targeted breakout queries "respiracion alterna" (GSC #55.0) and "nadi shodhana como se hace" (GSC #95.0):
-      * Refined Spanish `metaTitle` in `src/i18n/nadi-shodhana.ts`:
-        FROM: "Nadi Shodhana: Respiración Nasal Alterna Temporizador"
-        TO:   "Nadi Shodhana (Respiración Alterna): Temporizador y Guía Online"
-      * Upgraded Spanish `metaDescription` in `src/i18n/nadi-shodhana.ts`:
-        FROM: "Domina Nadi Shodhana (respiración nasal alterna) con nuestro temporizador guiado gratis. Indicadores visuales de fosas, ritmos ajustables y calma."
-        TO:   "Aprende cómo se hace Nadi Shodhana (respiración alterna de fosas nasales) con nuestro temporizador guiado gratis. Indicadores visuales, ritmos y calma profunda."
-      * Added "respiracion alterna, respiración alterna, nadi shodhana como se hace, como hacer respiracion alterna" to `keywords` array.
-      * Added dedicated tutorial FAQ: "¿Cómo se hace la respiración alterna (Nadi Shodhana) paso a paso?"
-    - Freshness Signal:
-      * Updated Schema and badge `dateModified` strictly for `es` in `src/components/NadiShodhanaPage.astro` to 2026-10-05.
-
-
-28. FRENCH: 4-7-8 Breathing "Cohérence Cardiaque" & Sommeil Optimization (October 5, 2026)
-    - Targeted breakout queries "cohérence cardiaque 4 7 8" (GSC #73.0) and "technique de respiration 4-7-8" (GSC #74.0):
-      * Refined French `metaTitle` in `src/i18n/4-7-8.ts`:
-        FROM: "Technique de Respiration 4-7-8: Minuteur pour le Sommeil"
-        TO:   "Technique de Respiration 4-7-8: Minuteur Sommeil & Relaxation"
-      * Upgraded French `metaDescription` in `src/i18n/4-7-8.ts`:
-        FROM: "Maîtrisez la respiration 4-7-8 avec notre minuteur gratuit. Inspirez 4s, retenez 7s, expirez 8s pour calmer le stress et vous endormir plus vite."
-        TO:   "Pratiquez la technique de respiration 4-7-8 (cohérence cardiaque et sommeil) avec notre minuteur gratuit. Inspirez 4s, retenez 7s, expirez 8s pour calmer le stress."
-      * Added "technique de respiration 4-7-8, technique de respiration 4 7 8, cohérence cardiaque 4 7 8, coherence cardiaque 4 7 8" to `keywords` array.
-      * Added dedicated comparison FAQ: "Quelle est la différence entre la cohérence cardiaque et la respiration 4-7-8?"
-    - Freshness Signal:
-      * Updated Schema and badge `dateModified` strictly for `fr` in `src/components/Relaxing478Page.astro` to 2026-10-05.
-
-
-
---------------------------------------------------------------------------------
-6. RE-INDEXING ACTION CHECKLIST (GOOGLE SEARCH CONSOLE)
---------------------------------------------------------------------------------
-Whenever these changes are pushed to live production (main branch -> Cloudflare Pages), 
-request manual re-indexing for these URLs in GSC (URL Inspection -> "Request Indexing"):
-
-1. https://harmonybreath.com/es/wim-hof/ (Targeting "meditacion wim hof" #24.0 & "metodo respiratorio wim hof" #38.67)
-2. https://harmonybreath.com/es/nadi-shodhana/ (Targeting "respiracion alterna" #55.0 & "como se hace" #95.0)
-3. https://harmonybreath.com/fr/4-7-8-breathing/ (Targeting "cohérence cardiaque 4 7 8" #73.0 & "technique de respiration" #74.0)
-4. https://harmonybreath.com/es/box-breathing/ (Updated Spanish meta title, description & keywords for "respiracion cuadrada video" #47.0)
-5. https://harmonybreath.com/fr/diaphragmatic-breathing/ (Targeting "respiration diaphragmatique exercices" #37.0)
-6. https://harmonybreath.com/4-7-8-breathing/ (Targeting "breath 4-7-8" #27.0 & CTR hook)
-
-1. https://harmonybreath.com/wim-hof/ (Updated English title & keywords targeting "wim hof breathing timer" #20.0)
-2. https://harmonybreath.com/de/physiological-sigh/ (Updated German copy & keywords for "sighing deutsch" #68.0)
-3. https://harmonybreath.com/it/physiological-sigh/ (Updated Italian title for CTR & online timer)
-2. https://harmonybreath.com/box-breathing/ (Updated English title for Box Breathing Timer)
-3. https://harmonybreath.com/diaphragmatic-breathing/ (Updated English title for Diaphragmatic Breathing Timer)
-4. https://harmonybreath.com/4-7-8-breathing/ (Updated English title for 4-7-8 Breathing Timer)
-5. https://harmonybreath.com/physiological-sigh/ (Updated FAQ 1 for Cyclic Sighing & Timer)
-6. https://harmonybreath.com/ja/physiological-sigh/ (Exact match targeting for Japanese "サイクリック・サイ" #22.0)
-7. https://harmonybreath.com/it/wim-hof/ (Targeting "respirazione wim hof prima di dormire" #21.0)
-8. https://harmonybreath.com/wim-hof/ (Targeting "wim hof method breathing 10 rounds" #25.0)
-9. https://harmonybreath.com/fr/diaphragmatic-breathing/ (Updated FAQ 2 for daily practice query)
-10. https://harmonybreath.com/ (Updated customizable timer hero subtitle & H3 card)
-11. https://harmonybreath.com/pt/box-breathing/ (Portuguese breakthrough query: respiração quadrado)
-12. https://harmonybreath.com/nadi-shodhana/ (Ranking for nadishodhan & nadi shodhana)
-13. https://harmonybreath.com/es/wim-hof/ (Ranking for método de wim hof)
-14. https://harmonybreath.com/de/diaphragmatic-breathing/
-15. https://harmonybreath.com/de/box-breathing/
-
-
---------------------------------------------------------------------------------
-7. ONGOING BEST PRACTICES FOR FUTURE KEYWORD TARGETING
---------------------------------------------------------------------------------
-1. Prioritize Visible On-Page Assets:
-   - When GSC shows impressions for a new term, target it via:
-     * Natural FAQ questions / answers
-     * <h2> / <h3> subheadings
-     * Refining the <title> tag if it's a primary high-volume head term.
-2. Maintain Localization Individuality:
-   - Respect cultural and grammatical differences per language (e.g. German compound 
-     words vs French editorial phrasing vs Spanish conversational phrases).
-3. Monitor Average Ranking Positions (Positions 11–30):
-   - Queries with impressions in positions 11–30 represent the highest ROI targets; 
-     small on-page tweaks can push them onto Page 1 (Top 10) where clicks happen.
-
---------------------------------------------------------------------------------
-8. IMMUTABLE DIRECTIVE: URL STABILITY VS ON-PAGE OPTIMIZATION
---------------------------------------------------------------------------------
-CRITICAL MANDATE FOR ALL FUTURE AGENT SESSIONS:
-- NEVER recommend or execute changes to existing URL slugs, routes, or pathnames
-  (e.g., NEVER rename `/box-breathing/`, `/physiological-sigh/`, or localized paths).
-  Changing established URLs breaks Google's index, wipes out sandbox progress,
-  creates 404 dead-ends, and resets accumulated domain trust to zero.
-- URL SLUGS & SITEMAP STRUCTURE MUST REMAIN 100% PERMANENT AND UNTOUCHED.
-- ALL FUTURE OPTIMIZATIONS MUST BE EXCLUSIVELY ON-PAGE:
-  1. Add or tune FAQ questions & answers to match emerging Search Console queries.
-  2. Refine section subheadings (<h2>, <h3>).
-  3. Enrich descriptive body copy, feature cards, and instructions.
-  Rule of thumb: The store address (URL) never changes; only update the displays
-  and products (on-page content) inside the store.
-================================================================================
+# ==============================================================================
+# HARMONYBREATH.COM — MASTER SEO, KEYWORD & SEARCH CONSOLE KNOWLEDGE BASE
+# ==============================================================================
+# Domain: https://harmonybreath.com
+# Stack: Astro (Static Site Generation), Cloudflare Pages (Clean Static Build)
+# Pre-rendered Pages: 86 static HTML routes across 7 supported locales
+# Supported Locales: en (default), de, es, fr, pt, ja, it
+# Last Updated: October 7, 2026
+# ==============================================================================
+
+
+# ==============================================================================
+# 1. ALL-TIME MILESTONES & BEST RANKINGS LEADERBOARD
+# ==============================================================================
+
+## 1.1 Highest Daily Impressions Record
+* **Peak Record:** 44 daily impressions (achieved October 5, 2026)
+* **Growth Velocity:** 22 (Sep 30) -> 35 (Oct 1) -> 43 (Oct 3) -> 38 (Oct 4) -> 44 (Oct 5)
+* **Global Footprint:** All 7 supported locales actively generating impressions worldwide
+
+## 1.2 All-Time Best Organic Rank Achieved by Technique & Locale
+| Locale / Path | Technique | All-Time Best Rank | Milestone Date & Context |
+| :--- | :--- | :---: | :--- |
+| **`/pt/physiological-sigh/`** | Physiological Sigh | **#1.0** | Oct 5, 2026 (Rank #1 in Brazil) |
+| **`/it/wim-hof/`** | Wim Hof Method | **#1.0** | Oct 1 & Oct 4, 2026 (Rank #1 in Italy) |
+| **`/ja/physiological-sigh/`** | Physiological Sigh | **#1.0** / **#5.0** | Oct 1 (#1.0) & Oct 5 (#5.0 Top 5 in Japan) |
+| **`/nadi-shodhana/`** | Alternate Nostril | **#2.0** | Oct 4, 2026 (Page 1 Top 2 globally) |
+| **`/` (Global Homepage)** | Breathwork Engine | **#3.0** / **#5.0** | Oct 1, 2026 (#3.0 in Japan, #5.0 Global) |
+| **`/fr/physiological-sigh/`** | Physiological Sigh | **#4.0** | Oct 1, 2026 (Page 1 Top 4 in France) |
+| **`/de/wim-hof/`** | Wim Hof Method | **#6.0** / **#7.0** | Oct 3 (#7.0) & Oct 5 (#6.0 Top 6 in Germany) |
+| **`/wim-hof/`** | Wim Hof Method | **#6.5** / **#8.0** | Oct 1 (#6.5) & Oct 5 (#8.0 Top 8 in US) |
+| **`/es/physiological-sigh/`** | Physiological Sigh | **#9.0** | Oct 1, 2026 (Page 1 Top 9 in Spain) |
+| **`/pt/box-breathing/`** | Box Breathing | **#10.0** | Oct 3, 2026 (Page 1 Top 10 in Brazil) |
+| **`/ja/diaphragmatic-breathing/`** | Diaphragmatic | **#7.0** / **#10.0** | Oct 6 (#7.0 Page 1 Top 7) & Oct 1 (#10.0 in Japan) |
+| **`/pt/nadi-shodhana/`** | Alternate Nostril | **#7.0** | Oct 6, 2026 (Page 1 Top 7 in Portugal/Brazil) |
+| **`/physiological-sigh/`** | Physiological Sigh | **#10.0** | Oct 1, 2026 (Page 1 Top 10 Global English) |
+| **`/4-7-8-breathing/`** | 4-7-8 Breathing | **#10.0** | Oct 5, 2026 (Page 1 for "online breathing timer") |
+| **`/ja/terms/`** | Legal & Info | **#11.0** | Oct 3, 2026 (Page 2 Apex in Japan) |
+| **`/pt/wim-hof/`** | Wim Hof Method | **#18.0** | Oct 3, 2026 (Page 2 in Brazil) |
+
+## 1.3 Key Commercial Head & Tool Terms Indexed on Pages 1-3
+* **Page 1 (Positions #1.0 - #10.0):**
+  - `"4 7 8 breathing timer online"`: Position **#6.0** (Exact tool match)
+  - `"online breathing timer"`: Position **#10.0** (Massive breakout commercial head term)
+* **Page 2 (Positions #11.0 - #20.0):**
+  - `"breathing timer online"`: Position **#14.0** (High-authority generic head term)
+  - `"diaphragmatic breathing deutsch"`: Position **#14.0** (German bilingual breakout)
+  - `"physiological sigh"`: Position **#19.0** (Core English medical head keyword)
+  - `"wim hof breathing timer"`: Position **#20.0** (Apex commercial tool query)
+* **Page 3 (Positions #21.0 - #30.0):**
+  - `"respirazione wim hof prima di dormire"`: Position **#21.0** (Italian nighttime intent)
+  - `"サイクリック・サイ"` (Cyclic Sighing): Position **#22.0** (Japanese scientific query)
+  - `"respiracion diafragmatica ejercicios"`: Position **#24.0** (Spanish exercise query)
+  - `"meditacion wim hof"`: Position **#24.0** (Spanish meditation search)
+  - `"wim hof method breathing 10 rounds"`: Position **#25.0** (Advanced protocol search)
+  - `"psychologischer seufzer"`: Position **#27.0** (German physiological sigh)
+  - `"ejercicios respiración diafragmática"`: Position **#27.0** (Spanish exercise cluster)
+  - `"breath 4-7-8"`: Position **#27.0** (US breakout short-tail)
+  - `"respiración diafragmática guiada"`: Position **#28.0** (Spanish guided practice)
+  - `"winhof"`: Position **#28.0** (High-volume typo cluster)
+  - `"4-7-8"`: Position **#29.0** (Core numerical head query)
+  - `"wim hof respiracion"`: Position **#30.0** (Spanish head variant)
+
+
+# ==============================================================================
+# 2. ARCHITECTURAL & RANKING PRINCIPLES
+# ==============================================================================
+
+## 2.1 Meta Keywords Reality & True Search Engine Signals
+* **Google Reality:** Google has officially IGNORED `<meta name="keywords">` since 2009.
+  Adding words solely to the meta keywords array produces zero ranking impact in Google.
+* **Bing Nuance:** Bing treats over-stuffed or irrelevant keyword arrays as a potential
+  SPAM signal. Safe practice is keeping it strictly to 8-12 relevant terms or omitting it.
+* **Where Search Engines Actually Gather Ranking Authority:**
+  1. **Page Title Tag (`<title>`):** Highest on-page weight; front-load intent naturally.
+  2. **Headings (`<h1>`, `<h2>`, `<h3>`):** Structure topics with clear descriptive hierarchy.
+  3. **Natural Body Copy & Interactive FAQs:** Real answers satisfying user intent.
+  4. **Clean URLs, Breadcrumbs, & Valid Bidirectional Hreflang:** Architectural clarity.
+  5. **Structured Data:** Valid JSON-LD `WebApplication` & `FAQPage` schemas.
+
+## 2.2 The Anti-Boilerplate Rule (August 2026 Core, Spam & Helpful Content Updates)
+* **Algorithmic Context & Why Ranks Drop:**
+  - Google's Helpful Content System, spam classifiers, and scaled content algorithms
+    (strengthened in the August core updates) penalize websites that deploy formulaic,
+    templated title tags, headings (`<h1>`, `<h2>`, `<h3>`), and meta descriptions.
+  - When multiple pages or language routes share identical syntactic patterns
+    (e.g., copying `"[Technique Name] Timer — Guided [Benefit] Breathwork"` uniformly
+    across every page, or translating `"[Learn X: Step-by-Step]"` verbatim across all 7 locales),
+    Google treats them as programmatic boilerplate or thin duplicated content.
+  - **The Direct Consequence:** Rankings collapse into deep sandbox zones (Positions #70–#90+),
+    impressions drop, and domain-wide algorithmic trust is degraded.
+* **Strict Operational Directives for Titles, Headings & Copy:**
+  1. **Independent Title Syntax Across Pages:**
+     Every page across HarmonyBreath must utilize an independent grammatical structure,
+     distinct punctuation style, and unique semantic angle. Never replicate the same
+     sentence structure, colons, hyphens, or formulaic endings across sibling technique pages.
+  2. **Authentic Native Phrasing Over 1:1 Translated Templates:**
+     Never take a successful English or German heading and translate it directly into
+     Spanish, French, or Italian. Each locale must use authentic native phrasing based on
+     how real users search in that country:
+     - German prefers concise compound terms and action infinitives (*"Bauchatmung lernen"*).
+     - French prefers elegant nominal structures (*"Exercices de respiration abdominale et ventrale"*).
+     - Spanish prefers action-oriented phrases and natural colloquial variants (*"Ejercicios de respiración..."* or *"Respiración en caja"*).
+  3. **Customized Section Subheadings (H2/H3):**
+     Every technique page must feature guide headings tailored specifically to that technique's
+     physiological mechanism and exact search intent, rather than a generic boilerplate outline.
+
+## 2.3 Strict Per-Language DateModified Isolation Rule
+* **Mandate:** NEVER update `dateModified` or visible badges globally across all languages
+  when changes are restricted to only 1 or 2 locales.
+* Update `dateModified` in JSON-LD and visible badges *strictly* for the language that
+  received substantive content/code updates.
+* Untouched languages must preserve their original dates to maintain search engine trust
+  and prevent false freshness penalties.
+
+## 2.4 Immutable Directive: URL Stability vs On-Page Optimization
+* **CRITICAL MANDATE FOR ALL SESSIONS:** NEVER alter, rename, or redirect existing URL slugs,
+  routes, or pathnames (e.g., never touch `/box-breathing/`, `/pt/physiological-sigh/`).
+* Changing live URLs breaks Google index state, resets accumulated domain trust, triggers
+  404 crawl errors, and destroys sandbox progress.
+* **The Golden Rule:** The store address (URL) never changes; only update the displays,
+  faqs, and content (on-page optimization) inside the store.
+
+## 2.5 Country-Specific Ahrefs Keyword Foundation (Baseline Research)
+* **Germany (`de`):**
+  - `bauchatmung lernen` (>100/mo, KD Easy): Tutorial intent, high action potential.
+  - `quadratatmung` vs `kastenatmung`: `quadratatmung` carries 5 rich search intent
+    variations (anleitung, yoga, wirkung, einschlafen); `kastenatmung` had <100 volume.
+  - `atemquadrat`: 0 search volume (artificial compound word; pruned).
+  - `physiologischer seufzer`: Validated noun; `physiologisches seufzen` validated in GSC.
+* **France (`fr`):**
+  - `respiration abdominale`: >1,000/mo, KD Easy (Massive head keyword).
+  - `respiration ventrale`: >100/mo, KD Easy (Common comparative query).
+  - `respiration diaphragmatique`: >100/mo, KD Easy.
+* **Spanish & Bilingual Nuances (`es`):**
+  - High bilingual modifier frequency: *"box breathing spanish"*, *"box breathing in spanish"*.
+  - Strong rapid escalation for Wim Hof terms: *"respiracion wim hof"*, *"meditacion wim hof"*.
+
+
+# ==============================================================================
+# 3. CHRONOLOGICAL 24-HOUR GSC SNAPSHOTS (Snapshots 1 through 14)
+# ==============================================================================
+
+### Snapshot 1: Early September 2026 (Launch & Initial Indexing)
+* **Metric:** 2 Impressions | 1 Click | 50.0% CTR | Avg Pos: #2.0 (Switzerland)
+* **Geos:** Switzerland, Germany, US, Australia, Mexico, Brazil, UK.
+* **Top Landing Pages:** `/de/` (Homepage) achieved initial breakthrough in Switzerland.
+* **Queries:** Unoptimized phrases hovering between positions #60.0 and #88.0.
+
+### Snapshot 2: Early September 2026 (First Upward Rank Velocity)
+* **Metric:** Rapid upward velocity across Spanish, German, and French routes.
+* **Top Emerging Queries:**
+  - `respiracion wim hof` (Spanish): Pos #39.0 (Top 40 / Page 4 entry)
+  - `respiración de wim hof` (Spanish): Pos #46.0
+  - `box breathing spanish` (Bilingual): Climbed #61.0 -> #56.0 (+5 spots)
+  - `bauchatmung übungen` (German): Surged #79.0 -> #63.0 (+16 spots after heading tweak)
+  - `bauchatmung übung` (German): Pos #68.0
+  - `zwerchfellatmung` (German): Jumped #83.0 -> #72.0 (+11 spots)
+  - `respiration ventrale` (French): 2 imp at Pos #77.5
+
+### Snapshot 3: September 12, 2026 (Synonym & Feature Discovery)
+* **Metric:** Steady multi-language discovery across 9 core queries.
+* **Top Emerging Queries:**
+  - `metodo wim hof`: 1 imp | Pos #44.0 (Top 50 hold)
+  - `respiración de wim hof`: 1 imp | Pos #54.0
+  - `square breath` / `breathing square` / `square breathing`: 4 imp | Pos #60.0 - #62.0
+  - `box breathing in spanish`: 1 imp | Pos #73.0
+  - `custom breathing timer`: 1 imp | Pos #78.0 (High-intent tool query discovered)
+  - `tecnica di respirazione 4-7-8`: 1 imp | Pos #80.0 (Italian breakthrough /it/)
+  - `box breathing spanish pdf`: 1 imp | Pos #92.0
+
+### Snapshot 4: September 14, 2026 (Pranayama & Portuguese Debut)
+* **Metric:** Broadening technique coverage; Portuguese `/pt/` enters the index.
+* **Top Emerging Queries:**
+  - `wim holf` (Typo): 1 imp | Pos #44.0
+  - `método de wim hof`: 1 imp | Pos #47.0
+  - `respirer par le ventre`: 1 imp | Pos #52.0 (French belly breathing)
+  - `box breathing in spanish`: 1 imp | Pos #62.0
+  - `respiração quadrado`: 1 imp | Pos #63.0 (Portuguese /pt/ breakthrough)
+  - `nadishodhan`: 1 imp | Pos #65.0
+  - `physiological sigh timer`: 1 imp | Pos #67.0 (High-intent tool query)
+  - `nadi shodhana`: 2 imp | Pos #70.0 (Pranayama head term)
+  - `respiration diaphragmatique combien de temps par jour`: 1 imp | Pos #77.0
+  - `cyclic sighing`: 2 imp | Pos #132.0 (Huberman scientific synonym)
+
+### Snapshot 5: September 15, 2026 (Historic Page 3 Breakthrough in Germany)
+* **Metric:** German Physiological Sigh reaches Page 3; Japanese `/ja/` debuts.
+* **Top Emerging Queries:**
+  - `psychologischer seufzer`: 1 imp | Pos #27.0 (Page 3 Germany — highest rank to date)
+  - `nadi shodhana pranayama`: 1 imp | Pos #62.0
+  - `ヴィムホフメソッド` (Wim Hof Method): 1 imp | Pos #64.0 (Japanese /ja/ debut)
+  - `physiological sigh timer`: 1 imp | Pos #69.0
+  - `square breathing technique`: 1 imp | Pos #74.0
+  - `respirazione 4-7-8`: 1 imp | Pos #80.0
+  - `8 7 4`: 2 imp | Pos #85.5
+  - `box breathing deutsch`: 2 imp | Pos #86.5
+  - `respiration 4 7 8 combien de temps`: 2 imp | Pos #89.5
+
+### Snapshot 6: September 19, 2026 (28-Day Overview & Regional Surges)
+* **28-Day Aggregate Leaders:**
+  - `diaphragmatic breathing timer`: 27 imp (#1 query across entire site)
+  - `box breathing timer`: 25 imp (#2 query across entire site)
+  - `alternate nostril breathing timer`: 13 imp (#3 query)
+  - `box breathing in spanish`: 11 imp (#4 query)
+  - `physiological sigh timer`: 9 imp (#5 query)
+* **24-Hour Regional Metrics:**
+  - Switzerland: Avg Pos #4.4 (5 impressions on Page 1)
+  - Japan: Avg Pos #15.3 (3 impressions on Page 2)
+  - Italy: Avg Pos #11.0 (Top of Page 2)
+  - Canada: Avg Pos #82.0 (`4-7-8 breathing timer` entry)
+
+### Snapshot 7: September 23 & 24, 2026 (2-Day Breakthrough Explosion)
+* **September 23 (24h):**
+  - `respirazione wim hof prima di dormire`: 1 imp | Pos #21.0 (Italian Page 3 breakthrough)
+  - `wim hof method breathing 10 rounds`: 1 imp | Pos #25.0
+  - `respiração alternada`: 1 imp | Pos #56.0 (Portuguese Pranayama)
+  - `respiration 4-7-8`: 1 imp | Pos #69.0
+  - `4 7 8 breathing timer`: 1 imp | Pos #76.0 (Climbed from #82.0)
+* **September 24 (24h):**
+  - `physiological sigh`: 1 imp | Pos #19.0 (English Page 2 breakthrough!)
+  - `サイクリック・サイ`: 1 imp | Pos #22.0 (Japanese Page 3 debut!)
+  - `respiración wim hof`: 1 imp | Pos #43.0
+  - `respiración cuadrada`: 5 imp | Pos #86.8 (5x impression surge)
+  - `respiración diafragmática` (Cluster): 7 imp | Pos #53.0 - #70.5 across 6 variations
+
+### Snapshot 8: September 26, 2026 (Page 2 Apex for Core Wim Hof Timer)
+* **Metric:** Apex commercial query reaches the threshold of Page 1.
+* **Top Emerging Queries:**
+  - `wim hof breathing timer`: 3 imp | Pos #20.0 (High-intent transactional tool query)
+  - `7 8 4`: 1 imp | Pos #41.0 (Massive climb: +44.5 spots from #85.5)
+  - `nadi shodhana pranayama`: 1 imp | Pos #48.0 (Climbed +14 spots into Top 50)
+  - `respirazione wim hof`: 1 imp | Pos #48.0 (Italian Top 50 entry)
+  - `winhof`: 2 imp | Pos #52.0 (Typo query discovery)
+  - `sighing deutsch`: 1 imp | Pos #68.0
+  - `technique de respiration 4 7 8`: 1 imp | Pos #71.0
+  - `respiraciones diafragmáticas`: 1 imp | Pos #78.0
+  - `respiración cuadrada`: 1 imp | Pos #84.0
+
+### Snapshot 9: September 29, 2026 (Page 1 Milestone & Diagnostic Audit)
+* **Metric:** First Page 1 entry for exact-match 4-7-8 timer; deep negative audit.
+* **Top Emerging Queries (16 Queries Recorded):**
+  - `4 7 8 breathing timer online`: 1 imp | Pos #6.0 (Page 1 breakthrough!)
+  - `breathing timer online`: 1 imp | Pos #14.0 (Global head term on Page 2)
+  - `online breathing timer`: 1 imp | Pos #24.0 (Page 3 secondary word order)
+  - `winhof`: 1 imp | Pos #28.0 (Surged +24 spots from #52.0)
+  - `how long can wim hof hold his breath`: 1 imp | Pos #45.0
+  - `wimhoff atemmethode`: 1 imp | Pos #45.0
+  - `wim hof respiracion`: 1 imp | Pos #49.0
+  - `wimhot`: 1 imp | Pos #49.0
+  - `método wim hof`: 1 imp | Pos #55.0
+  - `respiracion alterna`: 1 imp | Pos #59.0 (Climbed +9 spots into Top 60)
+  - `el metodo wim hof`: 2 imp | Pos #72.5
+  - `respiracion cuadrada` / `respiración cuadrada`: 2 imp | Pos #76.0 - #78.0
+  - `respiration 4 7 8 combien de temps`: 1 imp | Pos #84.0
+  - `bauchatmung`: 1 imp | Pos #89.0
+  - `respiración diafragmática`: 2 imp | Pos #90.5
+* **Geos:** Spain (8 imp, avg #70.4), US (6 imp, avg #17.0), Germany (3 imp), Brazil (2 imp),
+  Argentina (2 imp), Peru (1 imp, Pos #1.0), Japan (1 imp, Pos #10.0), Mexico (1), France (1).
+* **Diagnostic Audit Findings:**
+  1. *Zero Clicks at Pos #6.0:* Mobile SERP crowding requires stronger meta description hooks.
+  2. *Query Rotation:* Core queries rotate in test buckets before permanent placement.
+  3. *Accent Dilution:* Need to unify accented and unaccented Spanish entities.
+
+### Snapshot 10: September 30, 2026 (German Bilingual Push & Consolidation)
+* **Metric:** 22 Total Impressions | 0 Clicks
+* **Top Emerging Queries:**
+  - `diaphragmatic breathing deutsch`: 1 imp | Pos #14.0 (German bilingual Page 2 breakthrough)
+  - `sospiro fisiologico`: 1 imp | Pos #60.0 (Italian head term)
+  - `respiração diafragmática`: 1 imp | Pos #70.0 (Portuguese head term)
+  - `respiration 4 7 8`: 2 imp | Pos #71.0 (Climbed +13 spots from #84.0)
+  - `respiración diafragmática`: 2 imp | Pos #94.0
+  - `respiraciones diafragmáticas`: 1 imp | Pos #94.0
+
+### Snapshot 11: October 1, 2026 (Historic Page 1 Top 10 Surge)
+* **Metric:** 35 Impressions (+59.1% surge) | 0 Clicks | 8 Countries
+* **Devices:** Desktop 23 (pos #49.5), Mobile 11 (pos #31.3), Tablet 1 (pos #72.0)
+* **9 Landing Pages in Google Top 10:**
+  1. `/ja/physiological-sigh/`: Pos #1.0 (2 imp)
+  2. `/it/wim-hof/`: Pos #1.0 (1 imp)
+  3. `/ja/`: Pos #3.0 (1 imp)
+  4. `/fr/physiological-sigh/`: Pos #4.0 (1 imp)
+  5. `/`: Pos #5.0 (1 imp)
+  6. `/wim-hof/`: Pos #6.5 (2 imp)
+  7. `/es/physiological-sigh/`: Pos #9.0 (1 imp)
+  8. `/ja/diaphragmatic-breathing/`: Pos #10.0 (1 imp)
+  9. `/physiological-sigh/`: Pos #10.0 (1 imp)
+* **Top Queries:** `nadi sodhana` (#39.0), `metodo de wim hof` (#45.0), `wim hof` (#46.7),
+  `quadratatmung` (#55.0), `respiracion diafragmatica como se hace` (#59.0),
+  `respiration 4 7 8 combien de temps` (#81.0), `respiración diafragmática` (#82.0).
+
+### Snapshot 12: October 3, 2026 (Volume Surge to 43 Impressions)
+* **Metric:** 43 Impressions (+95.5% surge over Sep 30) | 0 Clicks | 9 Countries
+* **Geos:** Italy (16 imp), Spain (13 imp), Germany (5 imp), Brazil (3 imp), US (2 imp),
+  Japan (1), France (1), Portugal (1), India (1).
+* **Top Landing Pages:**
+  - `/de/wim-hof/`: Pos #7.0 (3 imp — Page 1)
+  - `/pt/box-breathing/`: Pos #10.0 (1 imp — Page 1)
+  - `/ja/terms/`: Pos #11.0 (1 imp — Page 2 apex)
+  - `/pt/wim-hof/`: Pos #18.0 (2 imp — Page 2)
+  - `/it/diaphragmatic-breathing/`: Pos #29.5 (2 imp — Page 3)
+  - `/es/diaphragmatic-breathing/`: Pos #63.0 (6 imp — Surged +17 spots)
+* **Top Queries:** `ejercicios respiración diafragmática` (#27.0), `wim hof respirazione` (#31.0),
+  `tecnica de respiracion diafragmatica` (#60.0), `respiración diafragmática tiempos` (#76.0),
+  `respirazione 4 7 8 controindicazioni` (#81.0).
+
+### Snapshot 13: October 4, 2026 (French Traffic Explosion & Spanish Apex)
+* **Metric:** 38 Impressions (Sustained high volume) | 0 Clicks | 9 Countries
+* **Geos:** France (7 imp — 7x surge), Spain (9 imp on Diaphragmatic alone), US, Italy,
+  Germany, Brazil, Japan, Portugal, Guatemala (New market debut at Pos #11.0).
+* **Top Landing Pages on Page 1:**
+  - `/it/wim-hof/`: Pos #1.0 (1 imp — Rank 1 hold)
+  - `/nadi-shodhana/`: Pos #2.0 (1 imp — Top of Page 1)
+  - `/`: Pos #9.0 (1 imp — Page 1)
+  - `/es/diaphragmatic-breathing/`: 9 imp (All-time high volume, Pos #63.89)
+  - `/fr/diaphragmatic-breathing/`: 5 imp (Pos #60.6)
+* **Top Emerging Queries:**
+  - `respiracion diafragmatica ejercicios`: Pos #24.0 (Page 3 apex! Climbed from #49.0)
+  - `breath 4-7-8`: Pos #27.0 (US high-intent short-tail)
+  - `4-7-8`: Pos #29.0 (Core numerical search)
+  - `wim hof respiracion`: Pos #30.0
+  - `respiration diaphragmatique exercices`: Pos #37.0 (French Top 40)
+  - `respiracion cuadrada video`: Pos #47.0 (Visual guide intent detected)
+  - `respiracion diafragmatica como se hace`: Pos #54.0 (2 imp)
+  - `respiration du ventre`: Pos #56.0
+  - `respiration abdominale exercices` / `exercice respiration abdominale`: Pos #74.0 - #75.0
+  - `respiración diafragmática tiempos`: Pos #72.0 (+18 spots climbed since Oct 1)
+
+### Snapshot 14: October 5, 2026 (All-Time Record 44 Impressions & 5x Page 1)
+* **Metric:** 44 Impressions (All-Time Record Day!) | 0 Clicks | All 7 Locales Active
+* **Breakthrough Highlights:**
+  - **Rank #1.0 in Brazil:** `/pt/physiological-sigh/` takes #1 overall organic rank on Google.
+  - **5 Distinct Locales on Page 1 (Top 10):**
+    1. Brazil (`/pt/physiological-sigh/`): Pos **#1.0**
+    2. Japan (`/ja/physiological-sigh/`): Pos **#5.0** (Top 5 Page 1)
+    3. Germany (`/de/wim-hof/`): Pos **#6.0** (Rocketed +29 spots back to Page 1)
+    4. Global English (`/wim-hof/`): Pos **#8.0** (Top 8 Page 1)
+    5. Global English (`/4-7-8-breathing/`): Pos **#10.0** (Top 10 Page 1)
+  - **Breakout Commercial Head Term:** `"online breathing timer"` hits Page 1 at Pos **#10.0** (2 imp).
+* **Top Landing Pages 3-Day Velocity (Oct 3 -> Oct 4 -> Oct 5):**
+  - `/de/wim-hof/`: #7.0 (3 imp) -> #35.0 (1 imp) -> **#6.0 (1 imp)** (+29 spots back to Page 1)
+  - `/es/wim-hof/`: #41.8 (5 imp) -> #47.67 (3 imp) -> **#40.8 (10 imp)** (Volume exploded 3.3x)
+  - `/es/diaphragmatic-breathing/`: #63.0 (6 imp) -> #63.89 (9 imp) -> **#59.56 (9 imp)** (Enters 50s)
+  - `/es/nadi-shodhana/`: #67.5 (2 imp) -> #79.0 (3 imp) -> **#75.0 (2 imp)** (+4.0 spots rebound)
+  - `/it/wim-hof/`: #52.83 (6 imp) -> **#1.0 (1 imp)** -> **#39.0 (1 imp)** (+13.8 net gain vs Oct 3)
+  - `/es/box-breathing/`: #81.0 (2 imp) -> #66.75 (4 imp) -> **#77.0 (6 imp)** (Volume up to 6 imp)
+* **Top Emerging Queries:**
+  - `online breathing timer`: 2 imp | Pos #10.0 (Page 1 breakout!)
+  - `meditacion wim hof`: 1 imp | Pos #24.0 (Page 3 apex)
+  - `respiración diafragmática guiada`: 1 imp | Pos #28.0 (Page 3 entry)
+  - `wim hof en español`: 1 imp | Pos #37.0
+  - `metodo respiratorio wim hof`: 3 imp | Pos #38.67
+  - `respiracion alterna`: 1 imp | Pos #55.0
+  - `box breathing in spanish`: 1 imp | Pos #73.0
+  - `respiracion del cuadrado`: 1 imp | Pos #76.0 (New discovery)
+  - `respiración de caja` / `respiración cuadrada yoga`: Pos #78.0 (New discoveries)
+  - `respiración cuadrada beneficios`: Pos #83.0 (New discovery)
+  - `nadi shodhana como se hace`: 1 imp | Pos #95.0
+
+### Snapshot 15: October 6, 2026 (Global Breadth & 2x Page 1 Top 7 Records)
+* **Metric:** 32 Impressions (Sustained multi-locale volume) | 0 Clicks | 10 Countries Active
+* **Geos:** Spain (11 imp), Germany (4 imp), France (4 imp), Japan (3 imp), Mexico (3 imp),
+  Italy (2 imp), US (2 imp), Portugal (1 imp), Canada (1 imp), Argentina (1 imp).
+* **Devices:** Desktop 21 (pos #55.48), Mobile 10 (pos #43.10), Tablet 1 (pos #90.00).
+* **Breakthrough Highlights:**
+  - **Rank #7.0 (Page 1 Top 7) in Japan:** `/ja/diaphragmatic-breathing/` breaks into Page 1 Top 7 (New All-Time Record).
+  - **Rank #7.0 (Page 1 Top 7) in Portugal:** `/pt/nadi-shodhana/` vaults into Page 1 Top 7 (New All-Time Record).
+  - **Page 2 Apex Hold:** `/ja/physiological-sigh/` solidifies at Pos **#11.0**.
+  - **Page 2 German Wim Hof Anchor:** `/de/wim-hof/` captures 4 impressions at Pos **#14.5** (4x daily volume surge).
+  - **Spanish Nadi Shodhana Rocket:** `/es/nadi-shodhana/` surges +15.0 spots to Pos **#60.0** (3-day climb: #79 -> #75 -> #60).
+  - **Re-entries & Discovery:** `/it/4-7-8-breathing/` rebounds to Pos **#58.5**; `/fr/4-7-8-breathing/` captures 3 impressions at Pos **#68.67**; `/es/box-breathing/` rebounds to Pos **#72.5**.
+* **Top Emerging Queries:**
+  - `wim hof`: 1 imp | Pos #36.0 (Page 4 head term)
+  - `nadi shodhana`: 1 imp | Pos #43.0 (Page 5 pranayama term)
+  - `respiración wim hof beneficios`: 1 imp | Pos #44.0
+  - `wim hof atemtechnik anfänger`: 1 imp | Pos #44.0 (German beginner breakout)
+  - `método wim hof`: 1 imp | Pos #50.0
+  - `respiracion de diafragma`: 1 imp | Pos #50.0
+  - `breathwork 4 7 8`: 1 imp | Pos #57.0
+  - `respiracion alterna`: 2 imp | Pos #60.0
+  - `wim hof metodo`: 2 imp | Pos #60.0
+  - `tecnica de respiracion diafragmatica`: 1 imp | Pos #63.0
+  - `respiraciones diafragmáticas`: 1 imp | Pos #65.0
+  - `box breathing in spanish`: 1 imp | Pos #72.0
+  - `box breathing spanish`: 1 imp | Pos #73.0
+  - `technique de respiration 4-7-8`: 1 imp | Pos #74.0
+  - `technique de respiration 4 7 8`: 1 imp | Pos #75.0
+  - `respiraciones wim hof beneficios`: 1 imp | Pos #80.0
+  - `respiración diafragmática tiempos`: 1 imp | Pos #80.0
+  - `respiration ventrale`: 1 imp | Pos #81.0
+  - `nadi shodana`: 1 imp | Pos #87.0
+  - `respiración diafragmática`: 1 imp | Pos #88.0
+  - `bauchatmung`: 1 imp | Pos #90.0
+
+### Snapshot 16: October 7, 2026 (Historic 1st Organic Click & Global Expansion)
+* **Metric:** 29 Impressions | **1 Click (100% Mobile, Pos #6.0)** | **3.45% Site CTR (50% in Japan)** | 11 Countries Active
+* **Devices:** Mobile 7 (pos #31.43, 1 Click, 14.29% CTR), Desktop 20 (pos #55.00), Tablet 2 (pos #63.50).
+* **Breakthrough Highlights:**
+  - **First Organic Search Conversion:** `/ja/physiological-sigh/` converted a live user on mobile at Pos **#6.0** with **100% CTR** in Japan.
+  - **7 Distinct URLs on Google Page 1 (Top 10):**
+    1. `/ja/physiological-sigh/`: Pos **#6.0** (1 imp, 1 click)
+    2. `/`: Pos **#10.0** (1 imp)
+    3. `/#benefits`: Pos **#10.0** (1 imp)
+    4. `/#techniques`: Pos **#10.0** (1 imp)
+    5. `/about/`: Pos **#10.0** (1 imp)
+    6. `/it/wim-hof/`: Pos **#10.0** (1 imp)
+    7. `/quotes/`: Pos **#10.0** (1 imp)
+  - **New Country Discovery — Haiti (`HT`):** Debuts on Google Page 1 at Pos **#10.0**.
+  - **Page 1 in Switzerland:** Switzerland captured Pos **#9.0**.
+  - **Italian 4-7-8 Rocket (+23 spots):** `/it/4-7-8-breathing/` surged from #58.5 to Pos **#35.5** (Top 36).
+  - **German Beginner Intent Rocket (+12 spots):** `wim hof atemtechnik anfänger` skyrocketed from #44.0 to Pos **#32.0** following Optimization 29.
+  - **Spanish Wim Hof Rebound (+18.4 spots):** `/es/wim-hof/` surged from #55.0 to Pos **#36.6** with `wim hof` at #26.0 and `método windhoff` at #36.0.
+  - **Japanese Box Breathing Debut:** `/ja/box-breathing/` debuted directly at Pos **#44.0** (Top 45).
+  - **Spanish Diaphragmatic Rebound (+9.87 spots):** `/es/diaphragmatic-breathing/` climbed back to Pos **#59.33**; `respiraciones diafragmáticas` at #54.0.
+* **Top Emerging Queries:**
+  - `wim hof`: 2 imp | Pos #26.0 (Page 3 apex)
+  - `wim hof atemtechnik anfänger`: 1 imp | Pos #32.0 (Page 4 Top 32)
+  - `método windhoff`: 1 imp | Pos #36.0 (Page 4 apex)
+  - `nadi shodhana`: 2 imp | Pos #45.0
+  - `metodo de respiracion wim hof`: 1 imp | Pos #52.0
+  - `respiraciones diafragmáticas`: 2 imp | Pos #54.0
+  - `respiracion alterna`: 3 imp | Pos #60.0
+  - `respirazione 4 7 8 benefici`: 1 imp | Pos #61.0
+  - `respiración diafragmática`: 1 imp | Pos #70.0
+  - `box breathing spanish`: 2 imp | Pos #73.5
+  - `box breathing in spanish`: 2 imp | Pos #74.5
+  - `cyclic sighing`: 1 imp | Pos #79.0
+  - `box breathing`: 1 imp | Pos #85.0
+  - `bauchatmung`: 2 imp | Pos #87.0
+
+
+# ==============================================================================
+# 4. COMPLETE LOG OF CODE & CONTENT OPTIMIZATIONS (1 through 32)
+# ==============================================================================
+
+### Optimization 1: German Diaphragmatic Heading Upgrade (Sep 2026)
+* **File:** `src/i18n/diaphragmatic-breathing.ts` (German)
+* **Change:**
+  - Guide H2 FROM: `"Schritt-für-Schritt-Anleitung: Richtig in den Bauch atmen"`
+  - Guide H2 TO:   `"Bauchatmung lernen: Schritt-für-Schritt-Anleitung"`
+* **Target Intent:** Ahrefs high-intent phrases: `bauchatmung lernen`, `tiefe bauchatmung lernen`.
+* **Direct Result:** Jumped from #79.0 to #63.0 in GSC within 24 hours.
+
+### Optimization 2: German Box Breathing Title & Physiology H2 (Sep 2026)
+* **File:** `src/i18n/box-breathing.ts` (German)
+* **Change:**
+  - `<title>` FROM: `"Box-Atmung (Kastenatmung) — Geführter Timer für Fokus"`
+  - `<title>` TO:   `"Box-Atmung & Quadratatmung — Geführter Timer für Fokus"`
+  - Physiology H2 FROM: `"Die Physiologie: Warum das Atemquadrat das vegetative Nervensystem beruhigt"`
+  - Physiology H2 TO:   `"Die Physiologie: Warum die Quadratatmung das vegetative Nervensystem beruhigt"`
+* **Target Intent:** Replaced dead keyword `atemquadrat` with Ahrefs-verified `quadratatmung`
+  cluster (`quadratatmung anleitung`, `wirkung`, `yoga`, `einschlafen`).
+
+### Optimization 3: German Physiological Sigh Question H2 (Sep 2026)
+* **File:** `src/i18n/physiological-sigh.ts` (German)
+* **Change:**
+  - Guide H2 FROM: `"Was ist der Physiologische Seufzer?"`
+  - Guide H2 TO:   `"Was ist ein physiologischer Seufzer (Physiologisches Seufzen)?"`
+* **Target Intent:** Captures masculine noun and neuter gerund from GSC queries.
+* **Keywords Enriched:** `physiologisches seufzen`, `physiologisches seufzen timer`, `wirkung`.
+
+### Optimization 4: Spanish Box Breathing Bilingual Title (Sep 2026)
+* **File:** `src/i18n/box-breathing.ts` (Spanish)
+* **Change:**
+  - `<title>` FROM: `"Respiración Cuadrada (Box Breathing): Temporizador Guiado"`
+  - `<title>` TO:   `"Respiración Cuadrada (Box Breathing en Español): Temporizador Guiado"`
+* **Target Intent:** Captures bilingual query variants `box breathing spanish`, `box breathing in spanish`.
+* **Direct Result:** Climbed from #61.0 to #56.0 in GSC.
+
+### Optimization 5: English 4-7-8 Breathing FAQ #1 Match (Sep 2026)
+* **File:** `src/i18n/4-7-8.ts` (English)
+* **Change:**
+  - FAQ #1 Question FROM: `"How does 4-7-8 breathing work?"`
+  - FAQ #1 Question TO:   `"How does the 4 7 8 breathing timer work?"`
+* **Target Intent:** Exact-match target for GSC query `4 7 8 breathing timer` (without hyphens).
+
+### Optimization 6: French 4-7-8 Breathing FAQ #1 Match (Sep 2026)
+* **File:** `src/i18n/4-7-8.ts` (French)
+* **Change:**
+  - FAQ #1 Question FROM: `"Comment fonctionne la respiration 4-7-8 ?"`
+  - FAQ #1 Question TO:   `"Comment fonctionne la respiration 4 7 8 ?"`
+* **Target Intent:** Exact-match target for unhyphenated GSC query `respiration 4 7 8`.
+
+### Optimization 7: English Nadi Shodhana Compound Target (Sep 2026)
+* **File:** `src/i18n/nadi-shodhana.ts` (English)
+* **Change:** Added exact compound phrase `nadi shodhana pranayama` to align metadata with H1.
+
+### Optimization 8: French Diaphragmatic Editorial Non-Boilerplate (Sep 2026)
+* **File:** `src/i18n/diaphragmatic-breathing.ts` (French)
+* **Change:**
+  - `<title>`: `"Respiration Abdominale & Ventrale : Exercices de Détente au Minuteur"`
+  - Meta Description: Leads with >1,000 volume keyword `Respiration Abdominale`.
+  - `<h1>` Hero Title: `"Respiration Abdominale & Ventrale\nExercices de Calme Intérieur"`
+  - `<h2>` Subheading: `"Technique pas à pas pour bien respirer par le ventre"`
+* **Target Intent:** Targets `respiration abdominale` (>1,000/mo) and `respiration ventrale` (>100/mo)
+  with authentic French phrasing complying with Google Anti-Boilerplate guidelines.
+
+### Optimization 9: English Homepage Custom Timer Feature Match (Sep 2026)
+* **File:** `src/i18n/home.ts` (English)
+* **Change:**
+  - Hero Paragraph: Added *"and customizable"* to intro text.
+  - Feature Card 02 H3 FROM: `"Customizable Sessions"`
+  - Feature Card 02 H3 TO:   `"Custom Breathing Timers & Presets"`
+* **Target Intent:** Exact-match targeting for high-intent query `custom breathing timer` (#78.0).
+
+### Optimization 10: French Diaphragmatic Duration FAQ #2 (Sep 2026)
+* **File:** `src/i18n/diaphragmatic-breathing.ts` (French)
+* **Change:**
+  - FAQ #2 FROM: `"À quelle fréquence doit-on la pratiquer ?"`
+  - FAQ #2 TO:   `"Combien de temps par jour pratiquer la respiration diaphragmatique ?"`
+* **Target Intent:** Exact-match for `respiration diaphragmatique combien de temps par jour` (#77.0).
+
+### Optimization 11: English Physiological Sigh Stanford Trial FAQ (Sep 2026)
+* **File:** `src/i18n/physiological-sigh.ts` (English)
+* **Change:**
+  - FAQ #1 FROM: `"What is the Huberman psychological sigh?"`
+  - FAQ #1 TO:   `"What is the Huberman cyclic sighing?"`
+* **Target Intent:** Authoritative Stanford 2023 clinical trial details (Spiegel/Huberman)
+  targeting `cyclic sighing` (#132.0) and `physiological sigh timer` (#67.0).
+
+### Optimization 12: Core Web Vitals LCP WebP Image Overhaul (Sep 18, 2026)
+* **Files:** All 7 hero atmospheric background images across the application.
+* **Technical Action:**
+  - Converted multi-megabyte PNGs (~12.3 MB total) to WebP format (~725 KB total, ~94% reduction):
+    * `4-7-8-breathing`: 2,106 KB -> 129.8 KB (-93.8%)
+    * `box-breathing`: 1,738 KB -> 68.9 KB (-96.0%)
+    * `nadi-shodhana`: 1,761 KB -> 66.1 KB (-96.3%)
+    * `physiological-sigh`: 1,935 KB -> 105.4 KB (-94.6%)
+    * `home-page`: 1,998 KB -> 92.3 KB (-95.4%)
+    * `diaphragmatic-breathing`: 2,450 KB -> 199.9 KB (-91.8%)
+    * `wim_hof_hero_bg`: 281 KB -> 63.5 KB (-77.4%)
+  - Added `fetchpriority="high"` and `decoding="async"` to all 7 hero `<img>` elements.
+  - Archived heavy original PNGs to `knowledge/` to clean production bundle.
+
+### Optimization 13: English Meta Title Intent Front-Loading (Sep 19, 2026)
+* **Files:** `src/i18n/4-7-8.ts`, `src/i18n/box-breathing.ts`, `src/i18n/diaphragmatic-breathing.ts`
+* **Changes:**
+  - 4-7-8 TO: `"4-7-8 Breathing Timer: Free Online Sleep & Anxiety Breathwork"`
+  - Box Breathing TO: `"Box Breathing Timer — Guided Square Breathing for Focus"`
+  - Diaphragmatic TO: `"Diaphragmatic Breathing Timer: Belly Breathing Exercises"`
+* **Target Intent:** Front-loaded high-converting tool intent while keeping distinct structures.
+
+### Optimization 14: Italian & English Wim Hof Sleep & 10 Rounds FAQs (Sep 24, 2026)
+* **File:** `src/i18n/wim-hof.ts` (Italian & English)
+* **Changes:**
+  - Italian FAQs Added: *"Si può fare la respirazione Wim Hof prima di dormire?"* and
+    *"Si possono fare 10 round di respirazione Wim Hof?"*
+  - English FAQs Added: *"Can you do Wim Hof breathing before sleep?"* and
+    *"Can you do 10 rounds of Wim Hof breathing?"*
+* **Target Intent:** Direct targeting for `respirazione wim hof prima di dormire` (#21.0) and
+  `wim hof method breathing 10 rounds` (#25.0).
+* **Freshness Isolation:** Updated `dateModified` in `WimHofPage.astro` to 2026-09-24 strictly for `en` & `it`.
+
+### Optimization 15: Japanese Physiological Sigh Cyclic Integration (Sep 24, 2026)
+* **File:** `src/i18n/physiological-sigh.ts` (Japanese)
+* **Changes:**
+  - Title: `"生理的ため息（サイクリック・サイ）無料タイマー＆科学的解説"`
+  - Integrated `サイクリック・サイ` into keywords array, hero subtitle, and guide copy.
+* **Target Intent:** Direct targeting for GSC breakout query `サイクリック・サイ` (#22.0 in Japan).
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-09-24 strictly for `ja`.
+
+### Optimization 16: Italian Physiological Sigh Online Timer Title (Sep 24, 2026)
+* **File:** `src/i18n/physiological-sigh.ts` (Italian)
+* **Changes:**
+  - Title FROM: `"Sospiro Fisiologico e Sospiro Ciclico: Guida e Timer Calma"`
+  - Title TO:   `"Sospiro Fisiologico (Sospiro Ciclico): Timer Online e Benefici"`
+  - Meta Description: Updated *"gratuito"* -> *"online"* for high-intent tool clarity.
+  - Keywords: Added `sospiro fisiologico timer online`.
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-09-24 strictly for `it`.
+
+### Optimization 17: English Wim Hof Breathing Timer Title Tune-Up (Sep 27, 2026)
+* **Files:** `src/i18n/wim-hof.ts`, `src/components/WimHofPage.astro`, `src/i18n/physiological-sigh.ts`
+* **Changes:**
+  - Title FROM: `"Wim Hof Method Breathing: Guided Rounds & Retention Timer"`
+  - Title TO:   `"Wim Hof Breathing Timer with Guided Retention Rounds"`
+  - German Sigh Keywords: Pruned array to 8 lean terms; added `sighing deutsch` (#68.0).
+* **Target Intent:** Exact-match target for `wim hof breathing timer` (#20.0, 3 impressions).
+* **Freshness Isolation:** Updated schema `dateModified` to 2026-09-27 strictly for `en` in `WimHofPage.astro`.
+
+### Optimization 18: Diaphragmatic Clean Schema & Headline Polish (Sep 29, 2026)
+* **Files:** `src/components/DiaphragmaticBreathingPage.astro`, `src/i18n/diaphragmatic-breathing.ts`
+* **Technical Action:**
+  - Consolidated duplicate schemas into 1 unified `WebApplication` schema.
+  - Added free offer (`price: "0", priceCurrency: "USD"`) resolving Google Rich Results warning.
+  - Linked production asset `https://harmonybreath.com/og-image.png`.
+  - Removed `Article` schema to avoid blog classification.
+  - Removed deprecated `HowTo` schema (retired by Google late 2023).
+  - Headline Polish: Cleaned English `heroTitle` from `"Diaphragmatic / Belly Breathing..."` to
+    `"Diaphragmatic Breathing\nTimer & Exercise"`.
+* **Freshness Isolation:** Updated schema `dateModified` to 2026-09-29 in `DiaphragmaticBreathingPage.astro`.
+
+### Optimization 19: German Bilingual Push & Spanish Plural Consolidation (Sep 30, 2026)
+* **File:** `src/i18n/diaphragmatic-breathing.ts` (German & Spanish)
+* **Changes:**
+  - German: Added `diaphragmatic breathing deutsch` (#14.0) to keywords and natural guide intro.
+  - Spanish: Updated title to `"Respiración Diafragmática: Ejercicios y Temporizador Online Gratis"`.
+    Added plural `respiraciones diafragmáticas` to keywords to stop cannibalization.
+* **Freshness Isolation:** Updated schema `dateModified` to 2026-09-30 in `DiaphragmaticBreathingPage.astro`.
+
+### Optimization 20: Spanish Diaphragmatic Long-Tail Intent FAQs (Oct 1, 2026)
+* **File:** `src/i18n/diaphragmatic-breathing.ts` (Spanish)
+* **Changes:**
+  - Definition Intent: Added FAQ *"¿Qué es la respiración diafragmática?"* (`que es...` #100.0).
+  - Tutorial Intent: Added FAQ *"¿Cómo se hace la respiración diafragmática paso a paso?"*
+    (`respiracion diafragmatica como se hace` #59.0 & `tecnica de...` #72.0).
+  - Timing Intent: Added FAQ *"¿Cuáles son los tiempos de la respiración diafragmática y cuánto debe durar?"*
+    (`respiración diafragmática tiempos` #90.0).
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-01 strictly for `es`.
+
+### Optimization 21: Italian 4-7-8 Contraindications FAQ (Oct 3, 2026)
+* **File:** `src/i18n/4-7-8.ts` (Italian)
+* **Changes:**
+  - Added dedicated FAQ: *"Quali sono le controindicazioni della respirazione 4-7-8?"*
+  - Added `respirazione 4 7 8 controindicazioni` to Italian `keywords` array.
+* **Target Intent:** Targeted emerging Italian medical query at Pos #81.0.
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-03 strictly for `it` in `Relaxing478Page.astro`.
+
+### Optimization 22: Spanish Diaphragmatic "Ejercicios" Guide Heading (Oct 3, 2026)
+* **File:** `src/i18n/diaphragmatic-breathing.ts` (Spanish)
+* **Changes:**
+  - Guide H2 FROM: `"Cómo hacer la respiración diafragmática paso a paso"`
+  - Guide H2 TO:   `"Ejercicios de respiración diafragmática: Guía paso a paso"`
+* **Target Intent:** Aligns H2 with breakout queries `ejercicios respiración diafragmática` (#27.0)
+  and `respiración diafragmática ejercicios` (#49.0).
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-03 strictly for `es`.
+
+### Optimization 23: French Diaphragmatic "Exercices" Guide Heading (Oct 4, 2026)
+* **File:** `src/i18n/diaphragmatic-breathing.ts` (French)
+* **Changes:**
+  - Guide H2 FROM: `"Technique pas à pas pour bien respirer par le ventre"`
+  - Guide H2 TO:   `"Exercices de respiration diaphragmatique et abdominale : Guide pas à pas"`
+* **Target Intent:** Captures French breakout queries `respiration diaphragmatique exercices` (#37.0)
+  and `respiration abdominale exercices` (#75.0).
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-04 strictly for `fr`.
+
+### Optimization 24: English 4-7-8 Meta Description CTR Hook (Oct 4, 2026)
+* **File:** `src/i18n/4-7-8.ts` (English)
+* **Changes:**
+  - Description TO: `"Breathe 4-7-8 with our free interactive timer. Inhale 4s, hold 7s, exhale 8s to relieve anxiety, quiet your mind, and fall asleep in minutes. No app needed."`
+  - Added `breath 4-7-8`, `breathe 4 7 8`, and `4 7 8` to keywords array.
+* **Target Intent:** Front-loaded high-converting CTR hook targeting `breath 4-7-8` (#27.0) and `4-7-8` (#29.0).
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-04 strictly for `en` in `Relaxing478Page.astro`.
+
+### Optimization 25: Spanish Box Breathing Video Intent & Visual Guide (Oct 4, 2026)
+* **File:** `src/i18n/box-breathing.ts` (Spanish)
+* **Changes:**
+  - Title TO: `"Respiración Cuadrada: Temporizador y Guía Visual 4-4-4-4 Online"`
+  - Description TO: `"Practica la respiración en caja (respiración cuadrada 4-4-4-4) con nuestro temporizador y guía visual interactiva en tiempo real. Calma la ansiedad y enfócate en 4 minutos."`
+  - Keywords: Added `respiracion cuadrada video` and `guia visual respiracion cuadrada`.
+* **Target Intent:** Satisfies visual guide intent for `respiracion cuadrada video` (#47.0).
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-04 strictly for `es` in `BoxBreathingPage.astro`.
+
+### Optimization 26: Spanish Wim Hof "Meditación" & "Método Respiratorio" (Oct 5, 2026)
+* **File:** `src/i18n/wim-hof.ts` (Spanish)
+* **Changes:**
+  - Description TO: `"Domina el método respiratorio y meditación Wim Hof con nuestro temporizador guiado en español. 30 respiraciones, retención y recuperación para energía y calma."`
+  - Hero Subtitle: Enriched to mention *"método respiratorio y meditación en tres fases de Wim Hof... guiado en español"*.
+  - Added FAQ: *"¿La respiración Wim Hof sirve como meditación y método respiratorio diario?"*
+  - Keywords: Added `meditacion wim hof, metodo respiratorio wim hof, wim hof en español, wim hof respiraciones`.
+* **Target Intent:** Captures `meditacion wim hof` (#24.0 Page 3 apex) and `metodo respiratorio wim hof` (#38.67).
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-05 strictly for `es` in `WimHofPage.astro`.
+
+### Optimization 27: Spanish Nadi Shodhana "Respiración Alterna" & Tutorial (Oct 5, 2026)
+* **File:** `src/i18n/nadi-shodhana.ts` (Spanish)
+* **Changes:**
+  - Title TO: `"Nadi Shodhana (Respiración Alterna): Temporizador y Guía Online"`
+  - Description TO: `"Aprende cómo se hace Nadi Shodhana (respiración alterna de fosas nasales) con nuestro temporizador guiado gratis. Indicadores visuales, ritmos y calma profunda."`
+  - Added FAQ: *"¿Cómo se hace la respiración alterna (Nadi Shodhana) paso a paso?"*
+  - Keywords: Added `respiracion alterna, respiración alterna, nadi shodhana como se hace, como hacer respiracion alterna`.
+* **Target Intent:** Direct targeting for `respiracion alterna` (#55.0) and `nadi shodhana como se hace` (#95.0).
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-05 strictly for `es` in `NadiShodhanaPage.astro`.
+
+### Optimization 28: French 4-7-8 "Cohérence Cardiaque" & Sommeil (Oct 5, 2026)
+* **File:** `src/i18n/4-7-8.ts` (French)
+* **Changes:**
+  - Title TO: `"Technique de Respiration 4-7-8: Minuteur Sommeil & Relaxation"`
+  - Description TO: `"Pratiquez la technique de respiration 4-7-8 (cohérence cardiaque et sommeil) avec notre minuteur gratuit. Inspirez 4s, retenez 7s, expirez 8s pour calmer le stress."`
+  - Added FAQ: *"Quelle est la différence entre la cohérence cardiaque et la respiration 4-7-8 ?"*
+  - Keywords: Added `technique de respiration 4-7-8, technique de respiration 4 7 8, cohérence cardiaque 4 7 8, coherence cardiaque 4 7 8`.
+* **Target Intent:** Captures `cohérence cardiaque 4 7 8` (#73.0) and `technique de respiration 4-7-8` (#74.0).
+### Optimization 29: German Wim Hof "Atemtechnik Anfänger" FAQ & Keywords (Oct 6, 2026)
+* **File:** `src/i18n/wim-hof.ts` (German)
+* **Changes:**
+  - FAQ #2 Question FROM: `"Wie beginne ich am besten mit der Wim-Hof-Methode?"`
+  - FAQ #2 Question TO:   `"Wim-Hof-Atemtechnik für Anfänger: Wie starte ich am besten?"`
+  - Keywords: Added `wim hof atemtechnik anfänger, wim hof für anfänger`.
+* **Target Intent:** Captures emerging German beginner search query `wim hof atemtechnik anfänger` (#44.0).
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-06 strictly for `de` in `WimHofPage.astro`.
+
+### Optimization 30: Spanish Wim Hof "Beneficios" FAQ & Keywords (Oct 6, 2026)
+* **File:** `src/i18n/wim-hof.ts` (Spanish)
+* **Changes:**
+  - FAQ #6 Question FROM: `"¿Qué efectos produce la técnica Wim Hof en el cuerpo?"`
+  - FAQ #6 Question TO:   `"¿Cuáles son los beneficios de la respiración Wim Hof y sus efectos en el cuerpo?"`
+  - FAQ #6 Answer: Enriched with immune, oxygenation, and vitality benefits copy.
+  - Keywords: Added `respiración wim hof beneficios, respiraciones wim hof beneficios`.
+* **Target Intent:** Captures emerging Spanish queries `respiración wim hof beneficios` (#44.0) and `respiraciones wim hof beneficios` (#80.0).
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-06 strictly for `es` in `WimHofPage.astro`.
+
+
+# ==============================================================================
+# 5. ROLLING 7-DAY UPDATED PAGES LOG & RE-INDEXING CHECKLIST
+# ==============================================================================
+# Retention Policy: Tracks URLs modified today and over the previous 6 days (7-day window).
+# Pages are monitored daily for performance and rank impact, then pruned after 7 days.
+# Historical records remain permanently documented in Section 4.
+
+## 5.1 October 6, 2026 (Today)
+1. `https://harmonybreath.com/de/wim-hof/`
+   - Scope: FAQ #2 beginner intent refinement, keywords (Target: "wim hof atemtechnik anfänger" #44.0)
+2. `https://harmonybreath.com/es/wim-hof/`
+   - Scope: FAQ #6 benefits question & answer refinement, keywords (Target: "respiración wim hof beneficios" #44.0)
+
+## 5.2 October 5, 2026 (Day -1)
+3. `https://harmonybreath.com/es/wim-hof/`
+   - Scope: Meta description, hero subtitle, FAQ, keywords (Target: "meditacion wim hof" #24.0 & "metodo respiratorio" #38.67)
+4. `https://harmonybreath.com/es/nadi-shodhana/`
+   - Scope: Meta title, description, step-by-step tutorial FAQ, keywords (Target: "respiracion alterna" #55.0 & "como se hace" #95.0)
+5. `https://harmonybreath.com/fr/4-7-8-breathing/`
+   - Scope: Meta title, description, coherence cardiaque FAQ, keywords (Target: "cohérence cardiaque 4 7 8" #73.0)
+
+## 5.3 October 4, 2026 (Day -2)
+6. `https://harmonybreath.com/es/box-breathing/`
+   - Scope: Meta title, description, visual guide copy, keywords (Target: "respiracion cuadrada video" #47.0)
+7. `https://harmonybreath.com/fr/diaphragmatic-breathing/`
+   - Scope: Primary guide H2 heading upgrade (Target: "respiration diaphragmatique exercices" #37.0)
+8. `https://harmonybreath.com/4-7-8-breathing/`
+   - Scope: High-CTR meta description hook and numerical keyword enrichment (Target: "breath 4-7-8" #27.0)
+
+## 5.4 October 3, 2026 (Day -3)
+9. `https://harmonybreath.com/es/diaphragmatic-breathing/`
+   - Scope: Guide H2 heading upgrade to "Ejercicios..." (Target: "ejercicios respiración diafragmática" #27.0)
+10. `https://harmonybreath.com/it/4-7-8-breathing/`
+    - Scope: Contraindications FAQ and Italian keywords (Target: "respirazione 4 7 8 controindicazioni" #81.0)
+
+## 5.5 October 1, 2026 (Day -5)
+11. `https://harmonybreath.com/es/diaphragmatic-breathing/`
+    - Scope: Long-tail FAQ additions for definition, step-by-step tutorial, and duration/timing
+
+## 5.6 September 30, 2026 (Day -6)
+12. `https://harmonybreath.com/de/diaphragmatic-breathing/`
+    - Scope: Guide intro copy & keywords (Target: "diaphragmatic breathing deutsch" #14.0)
+13. `https://harmonybreath.com/es/diaphragmatic-breathing/`
+    - Scope: Meta title action hook and plural keyword consolidation
