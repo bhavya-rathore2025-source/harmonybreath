@@ -1454,6 +1454,10 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
         answer: 'Si basa su un tempo ritmico esatto: inspiri per 4 secondi, trattieni per 7 secondi ed espiri per 8 secondi. L’espirazione prolungata attiva il nervo vago, rallentando il battito cardiaco e stimolando la quiete parasimpatica.',
       },
       {
+        question: 'Quali sono i benefici della respirazione 4-7-8?',
+        answer: 'La tecnica 4-7-8 offre comprovati benefici fisiologici: riduce rapidamente la frequenza cardiaca e la pressione arteriosa, stimola il nervo vago attivando il sistema parasimpatico, abbassa i livelli di cortisolo (l’ormone dello stress) e disinnesca l’iperattività mentale, favorendo un rilassamento profondo e l’addormentamento rapido in pochi minuti.',
+      },
+      {
         question: 'Aiuta davvero a prendere sonno?',
         answer: 'Sì. Gli studi dimostrano che riduce l’arousal notturno e spegne il flusso di pensieri angoscianti.',
       },

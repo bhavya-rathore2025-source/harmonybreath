@@ -484,8 +484,8 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
     },
     faqs: [
       {
-        question: '¿Por qué la respiración Wim Hof es tan potente?',
-        answer: 'La respiración Wim Hof es potente porque combina una hiperventilación controlada con retenciones en vacío y recuperación. Esta alternancia altera temporalmente la química sanguínea (alcalosis respiratoria e hipoxia intermitente), liberando adrenalina y produciendo una intensa sensación de energía, calor y lucidez mental.',
+        question: '¿En qué consiste el método de respiración Wim Hof y por qué es tan potente?',
+        answer: 'El método de respiración Wim Hof es un protocolo estructurado que combina 30 inhalaciones profundas con retenciones en vacío (apnea) y una respiración de recuperación. Esta secuencia altera favorablemente la química sanguínea mediante alcalosis respiratoria e hipoxia intermitente, reduciendo la inflamación, liberando adrenalina beneficiosa y produciendo un pico inmediato de energía, calor y lucidez mental.',
       },
       {
         question: '¿Cómo empezar con el Método Wim Hof de forma segura?',
