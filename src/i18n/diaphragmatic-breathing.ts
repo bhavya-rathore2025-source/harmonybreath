@@ -182,8 +182,8 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
         answer: 'La respiración diafragmática (o respiración abdominal) es una técnica de respiración profunda que utiliza activamente el diafragma en lugar del pecho. Al inhalar hacia el vientre, se expanden completamente los pulmones y se estimula el nervio vago, induciendo un estado inmediato de calma fisiológica.',
       },
       {
-        question: '¿Cómo se hace la respiración diafragmática paso a paso?',
-        answer: 'Para practicarla: 1) Siéntate o acuéstate con una mano en el pecho y otra en el abdomen. 2) Inhala despacio por la nariz durante 4 segundos sintiendo que solo se mueve la mano del vientre. 3) Mantén el aire 2 segundos de forma suave. 4) Exhala despacio en 4 a 6 segundos vaciando el abdomen. Puedes guiarte con nuestro temporizador visual interactivo.',
+        question: '¿Cómo hacer la respiración diafragmática y cómo respirar con el diafragma paso a paso?',
+        answer: 'Para aprender cómo respirar con el diafragma correctamente: 1) Coloca una mano sobre el pecho y otra en el vientre. 2) Inhala hondo por la nariz durante 4 segundos expandiendo solo el abdomen. 3) Haz una pausa suave de 2 segundos. 4) Exhala despacio en 4 a 6 segundos desinflando el vientre hacia la columna. Nuestro temporizador visual interactivo te guía en tiempo real para dominar el ejercicio.',
       },
       {
         question: '¿Cuáles son los tiempos de la respiración diafragmática y cuánto debe durar?',

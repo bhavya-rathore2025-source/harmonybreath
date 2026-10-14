@@ -5,7 +5,7 @@
 # Stack: Astro (Static Site Generation), Cloudflare Pages (Clean Static Build)
 # Pre-rendered Pages: 86 static HTML routes across 7 supported locales
 # Supported Locales: en (default), de, es, fr, pt, ja, it
-# Last Updated: October 7, 2026
+# Last Updated: October 14, 2026
 # ==============================================================================
 
 
@@ -429,7 +429,7 @@
 
 
 # ==============================================================================
-# 4. COMPLETE LOG OF CODE & CONTENT OPTIMIZATIONS (1 through 32)
+# 4. COMPLETE LOG OF CODE & CONTENT OPTIMIZATIONS (1 through 33)
 # ==============================================================================
 
 ### Optimization 1: German Diaphragmatic Heading Upgrade (Sep 2026)
@@ -712,6 +712,15 @@
 * **Target Intent:** Captures emerging Spanish query `metodo de respiracion wim hof` (#52.0) and consolidates authority on `/es/wim-hof/` (#36.6).
 * **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-07 strictly for `es` in `WimHofPage.astro`.
 
+### Optimization 33: Spanish Diaphragmatic Tutorial Intent Capture (Oct 14, 2026)
+* **File:** `src/i18n/diaphragmatic-breathing.ts` (Spanish)
+* **Changes:**
+  - FAQ #2 Question FROM: `"¿Cómo se hace la respiración diafragmática paso a paso?"`
+  - FAQ #2 Question TO:   `"¿Cómo hacer la respiración diafragmática y cómo respirar con el diafragma paso a paso?"`
+  - FAQ #2 Answer: Refined with actionable step-by-step cueing to master breathing with the diaphragm.
+* **Target Intent:** Captures emerging high-intent Spanish queries `como hacer respiracion diafragmatica` (#60.0, 4 imp) and `como respirar con el diafragma` (#41.0, 1 imp) on the domain's #1 traffic driver (36 impressions).
+* **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-14 strictly for `es` in `DiaphragmaticBreathingPage.astro`.
+
 
 # ==============================================================================
 # 5. ROLLING 7-DAY UPDATED PAGES LOG & RE-INDEXING CHECKLIST
@@ -720,40 +729,40 @@
 # Pages are monitored daily for performance and rank impact, then pruned after 7 days.
 # Historical records remain permanently documented in Section 4.
 
-## 5.1 October 7, 2026 (Today)
-1. `https://harmonybreath.com/it/4-7-8-breathing/`
+## 5.1 October 14, 2026 (Today)
+1. `https://harmonybreath.com/es/diaphragmatic-breathing/`
+   - Scope: Refined FAQ #2 question & tutorial answer (Target: "como hacer respiracion diafragmatica" #60.0 & "como respirar con el diafragma" #41.0)
+
+## 5.2 October 7, 2026 (Previous Cycle)
+2. `https://harmonybreath.com/it/4-7-8-breathing/`
    - Scope: Added dedicated benefits FAQ (Target: "respirazione 4 7 8 benefici" #61.0)
-2. `https://harmonybreath.com/es/wim-hof/`
+3. `https://harmonybreath.com/es/wim-hof/`
    - Scope: Refined FAQ #1 for method mechanics and potency (Target: "metodo de respiracion wim hof" #52.0)
 
-## 5.2 October 6, 2026 (Day -1)
-3. `https://harmonybreath.com/de/wim-hof/`
+## 5.3 October 6, 2026
+4. `https://harmonybreath.com/de/wim-hof/`
    - Scope: FAQ #2 beginner intent refinement, keywords (Target: "wim hof atemtechnik anfänger" #44.0)
-4. `https://harmonybreath.com/es/wim-hof/`
+5. `https://harmonybreath.com/es/wim-hof/`
    - Scope: FAQ #6 benefits question & answer refinement, keywords (Target: "respiración wim hof beneficios" #44.0)
 
-## 5.3 October 5, 2026 (Day -2)
-5. `https://harmonybreath.com/es/wim-hof/`
+## 5.4 October 5, 2026
+6. `https://harmonybreath.com/es/wim-hof/`
    - Scope: Meta description, hero subtitle, FAQ, keywords (Target: "meditacion wim hof" #24.0 & "metodo respiratorio" #38.67)
-6. `https://harmonybreath.com/es/nadi-shodhana/`
+7. `https://harmonybreath.com/es/nadi-shodhana/`
    - Scope: Meta title, description, step-by-step tutorial FAQ, keywords (Target: "respiracion alterna" #55.0 & "como se hace" #95.0)
-7. `https://harmonybreath.com/fr/4-7-8-breathing/`
+8. `https://harmonybreath.com/fr/4-7-8-breathing/`
    - Scope: Meta title, description, coherence cardiaque FAQ, keywords (Target: "cohérence cardiaque 4 7 8" #73.0)
 
-## 5.4 October 4, 2026 (Day -3)
-8. `https://harmonybreath.com/es/box-breathing/`
+## 5.5 October 4, 2026
+9. `https://harmonybreath.com/es/box-breathing/`
    - Scope: Meta title, description, visual guide copy, keywords (Target: "respiracion cuadrada video" #47.0)
-9. `https://harmonybreath.com/fr/diaphragmatic-breathing/`
-   - Scope: Primary guide H2 heading upgrade (Target: "respiration diaphragmatique exercices" #37.0)
-10. `https://harmonybreath.com/4-7-8-breathing/`
+10. `https://harmonybreath.com/fr/diaphragmatic-breathing/`
+    - Scope: Primary guide H2 heading upgrade (Target: "respiration diaphragmatique exercices" #37.0)
+11. `https://harmonybreath.com/4-7-8-breathing/`
     - Scope: High-CTR meta description hook and numerical keyword enrichment (Target: "breath 4-7-8" #27.0)
 
-## 5.5 October 3, 2026 (Day -4)
-11. `https://harmonybreath.com/es/diaphragmatic-breathing/`
+## 5.6 October 3, 2026
+12. `https://harmonybreath.com/es/diaphragmatic-breathing/`
     - Scope: Guide H2 heading upgrade to "Ejercicios..." (Target: "ejercicios respiración diafragmática" #27.0)
-12. `https://harmonybreath.com/it/4-7-8-breathing/`
+13. `https://harmonybreath.com/it/4-7-8-breathing/`
     - Scope: Contraindications FAQ and Italian keywords (Target: "respirazione 4 7 8 controindicazioni" #81.0)
-
-## 5.6 October 1, 2026 (Day -6)
-13. `https://harmonybreath.com/es/diaphragmatic-breathing/`
-    - Scope: Long-tail FAQ additions for definition, step-by-step tutorial, and duration/timing
