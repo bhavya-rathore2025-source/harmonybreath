@@ -156,8 +156,8 @@ export const aboutI18n: Record<SupportedLanguage, AboutContent> = {
       {
         id: 'nadi-shodhana',
         slug: 'nadi-shodhana',
-        name: 'Nadi Shodhana (Fosas Alternadas)',
-        desc: 'Pranayama tradicional con respiración nasal alternada para el equilibrio y el foco mental.',
+        name: 'Respiracion Alterna (Nadi Shodhana)',
+        desc: 'Pranayama tradicional con respiracion alterna entre fosas nasales para el equilibrio y el foco mental.',
       },
       {
         id: 'physiological-sigh',
