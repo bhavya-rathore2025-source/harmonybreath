@@ -5,7 +5,7 @@
 # Stack: Astro (Static Site Generation), Cloudflare Pages (Clean Static Build)
 # Pre-rendered Pages: 86 static HTML routes across 7 supported locales
 # Supported Locales: en (default), de, es, fr, pt, ja, it
-# Last Updated: October 14, 2026
+# Last Updated: October 24, 2026
 # ==============================================================================
 
 
@@ -121,7 +121,32 @@
 * **The Golden Rule:** The store address (URL) never changes; only update the displays,
   faqs, and content (on-page optimization) inside the store.
 
-## 2.5 Country-Specific Ahrefs Keyword Foundation (Baseline Research)
+## 2.5 FAQ Architecture & Topical Balance Policy (Anti-Bloat & The 70/30 Rule)
+* **Algorithmic Context (Google FAQ Rich Snippet Deprecation & Helpful Content):**
+  - In late 2023, Google officially phased out FAQ rich results (expandable accordion dropdowns in SERPs)
+    for almost all standard websites, reserving them strictly for government and authoritative health domains.
+  - Adding endless FAQs does NOT grant extra visual SERP real estate.
+  - Under Google's Helpful Content System (HCS), continually stacking FAQs causes **Topical Dilution**
+    (blurring whether a page is an interactive tool or an FAQ directory), triggers **Search-Engine-First
+    Penalties** (manufactured questions targeting keyword variations), and creates **UX Bloat**.
+* **Strict Operational Rules for FAQs on HarmonyBreath:**
+  1. **Strict Cap of 6–8 FAQs Per Page:**
+     Never let an FAQ section grow into an unreadable text wall. When a new high-value query emerges
+     in GSC, **refine or consolidate an existing underperforming FAQ** rather than infinitely appending new ones.
+  2. **The 70 / 30 Topical Distribution Ratio:**
+     - **70% General / Technique / Safety / Science (Informational Intent):**
+       Covers biological mechanisms (vagus nerve, CO2 tolerance, HRV), physical mechanics,
+       safety contraindications, and practice timing. This satisfies Google YMYL (Your Money Your Life)
+       expectations and establishes E-E-A-T medical credibility.
+     - **30% (Strictly 1 to 2 FAQs Max) Dedicated Tool / Timer Intent (Commercial Intent):**
+       Specifically answers how to use the online browser timer (e.g., presets, breath retention tracking,
+       audio cues, zero registration, private local browser storage). This gives Google the exact commercial signals
+       (`"wim hof timer online"`, `"4 7 8 breathing timer"`) without turning the page into software help documentation.
+  3. **Integrate Intent Into Core UI Before Adding FAQs:**
+     Before adding or modifying an FAQ, evaluate whether user intent can be better solved directly in
+     primary UI elements: interactive preset badges, slider labels, audio tags, or visual technique cards.
+
+## 2.6 Country-Specific Ahrefs Keyword Foundation (Baseline Research)
 * **Germany (`de`):**
   - `bauchatmung lernen` (>100/mo, KD Easy): Tutorial intent, high action potential.
   - `quadratatmung` vs `kastenatmung`: `quadratatmung` carries 5 rich search intent
@@ -721,6 +746,31 @@
 * **Target Intent:** Captures emerging high-intent Spanish queries `como hacer respiracion diafragmatica` (#60.0, 4 imp) and `como respirar con el diafragma` (#41.0, 1 imp) on the domain's #1 traffic driver (36 impressions).
 * **Freshness Isolation:** Updated badge and schema `dateModified` to 2026-10-14 strictly for `es` in `DiaphragmaticBreathingPage.astro`.
 
+### Optimization 34: Portuguese Nadi Shodhana Step-by-Step Tutorial FAQ (Oct 24, 2026)
+* **File:** `src/i18n/nadi-shodhana.ts` (Portuguese `pt`)
+* **Changes:**
+  - Added dedicated step-by-step tutorial FAQ: `"Como fazer Nadi Shodhana (respiração alternada) passo a passo?"`
+  - FAQ Answer: Detailed actionable walkthrough covering posture, Vishnu mudra hand placement, nostril closure, inhalation/exhalation flow, and 5-10 minute session length.
+* **Target Intent:** Captures high-intent Portuguese queries `nadi shodhana como fazer` (#35.0, 10 imp) and `como fazer respiracao alternada` on `/pt/nadi-shodhana/`.
+* **Freshness Isolation:** Updated schema `dateModified` to 2026-10-24 strictly for `pt` in `NadiShodhanaPage.astro`.
+
+### Optimization 35: German 4-7-8 Sleep Method & Einschlaftechnik FAQ Refinement (Oct 24, 2026)
+* **File:** `src/i18n/4-7-8.ts` (German `de`)
+* **Changes:**
+  - FAQ #2 Question FROM: `"Hilft die 4-7-8 Methode wirklich beim Einschlafen?"`
+  - FAQ #2 Question TO:   `"Wie hilft die 4-7-8 Methode beim Einschlafen (Einschlaftechnik 4-7-8)?"`
+  - FAQ #2 Answer: Refined with neurophysiological explanation of vagus nerve activation, pulse lowering, nocturnal arousal reduction, and thought carousel interruption.
+* **Target Intent:** Captures emerging German queries `4 7 8 methode einschlafen` (#81.0) and `einschlaftechnik 4 7 8` on `/de/4-7-8-breathing/`.
+* **Freshness Isolation:** Updated schema `dateModified` to 2026-10-24 strictly for `de` in `Relaxing478Page.astro`.
+
+### Optimization 36: English Wim Hof Online Timer Tool FAQ Intent Capture (Oct 24, 2026)
+* **File:** `src/i18n/wim-hof.ts` (English `en`)
+* **Changes:**
+  - Added dedicated tool FAQ as FAQ #1: `"How do I use this online Wim Hof timer for guided breathing rounds?"`
+  - FAQ Answer: Clear walkthrough of browser automation across all 3 phases (30 rhythmic breaths, breath-out retention tracking, and 15s recovery chimes) across presets and custom modes with 0 registration.
+* **Target Intent:** Captures high-value commercial tool intent queries `wim hof timer` (#9.5 Page 1 Top 10) and `wim hof breathing timer` (#19.5 Page 2 Apex) without modifying the page title or triggering duplicate title template penalties.
+* **Freshness Isolation:** Updated schema `dateModified` to 2026-10-24 strictly for `en` in `WimHofPage.astro`.
+
 
 # ==============================================================================
 # 5. ROLLING 7-DAY UPDATED PAGES LOG & RE-INDEXING CHECKLIST
@@ -729,40 +779,18 @@
 # Pages are monitored daily for performance and rank impact, then pruned after 7 days.
 # Historical records remain permanently documented in Section 4.
 
-## 5.1 October 14, 2026 (Today)
-1. `https://harmonybreath.com/es/diaphragmatic-breathing/`
+## 5.1 October 24, 2026 (Today)
+1. `https://harmonybreath.com/pt/nadi-shodhana/`
+   - Scope: Added step-by-step tutorial FAQ (Target: "nadi shodhana como fazer" #35.0)
+2. `https://harmonybreath.com/de/4-7-8-breathing/`
+   - Scope: Refined FAQ #2 for sleep method intent (Target: "4 7 8 methode einschlafen" #81.0 & "einschlaftechnik 4 7 8")
+3. `https://harmonybreath.com/wim-hof/`
+   - Scope: Added dedicated online timer tool FAQ (Target: "wim hof timer" #9.5 & "wim hof breathing timer" #19.5)
+
+## 5.2 October 18, 2026
+3. `https://harmonybreath.com/es/nadi-shodhana/`
+   - Scope: Alternate nostril branding & schema alternateName enrichment (Target: "respiracion alterna" #30.0)
+
+## 5.3 October 14, 2026
+4. `https://harmonybreath.com/es/diaphragmatic-breathing/`
    - Scope: Refined FAQ #2 question & tutorial answer (Target: "como hacer respiracion diafragmatica" #60.0 & "como respirar con el diafragma" #41.0)
-
-## 5.2 October 7, 2026 (Previous Cycle)
-2. `https://harmonybreath.com/it/4-7-8-breathing/`
-   - Scope: Added dedicated benefits FAQ (Target: "respirazione 4 7 8 benefici" #61.0)
-3. `https://harmonybreath.com/es/wim-hof/`
-   - Scope: Refined FAQ #1 for method mechanics and potency (Target: "metodo de respiracion wim hof" #52.0)
-
-## 5.3 October 6, 2026
-4. `https://harmonybreath.com/de/wim-hof/`
-   - Scope: FAQ #2 beginner intent refinement, keywords (Target: "wim hof atemtechnik anfänger" #44.0)
-5. `https://harmonybreath.com/es/wim-hof/`
-   - Scope: FAQ #6 benefits question & answer refinement, keywords (Target: "respiración wim hof beneficios" #44.0)
-
-## 5.4 October 5, 2026
-6. `https://harmonybreath.com/es/wim-hof/`
-   - Scope: Meta description, hero subtitle, FAQ, keywords (Target: "meditacion wim hof" #24.0 & "metodo respiratorio" #38.67)
-7. `https://harmonybreath.com/es/nadi-shodhana/`
-   - Scope: Meta title, description, step-by-step tutorial FAQ, keywords (Target: "respiracion alterna" #55.0 & "como se hace" #95.0)
-8. `https://harmonybreath.com/fr/4-7-8-breathing/`
-   - Scope: Meta title, description, coherence cardiaque FAQ, keywords (Target: "cohérence cardiaque 4 7 8" #73.0)
-
-## 5.5 October 4, 2026
-9. `https://harmonybreath.com/es/box-breathing/`
-   - Scope: Meta title, description, visual guide copy, keywords (Target: "respiracion cuadrada video" #47.0)
-10. `https://harmonybreath.com/fr/diaphragmatic-breathing/`
-    - Scope: Primary guide H2 heading upgrade (Target: "respiration diaphragmatique exercices" #37.0)
-11. `https://harmonybreath.com/4-7-8-breathing/`
-    - Scope: High-CTR meta description hook and numerical keyword enrichment (Target: "breath 4-7-8" #27.0)
-
-## 5.6 October 3, 2026
-12. `https://harmonybreath.com/es/diaphragmatic-breathing/`
-    - Scope: Guide H2 heading upgrade to "Ejercicios..." (Target: "ejercicios respiración diafragmática" #27.0)
-13. `https://harmonybreath.com/it/4-7-8-breathing/`
-    - Scope: Contraindications FAQ and Italian keywords (Target: "respirazione 4 7 8 controindicazioni" #81.0)

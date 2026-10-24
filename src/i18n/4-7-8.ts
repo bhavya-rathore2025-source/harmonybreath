@@ -654,8 +654,8 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
         answer: 'Sie atmen 4 Sekunden lang ein, halten den Atem 7 Sekunden lang und atmen 8 Sekunden lang aus. Durch die verlängerte Ausatmung wird der Vagusnerv aktiviert, was Blutdruck und Puls senkt.',
       },
       {
-        question: 'Hilft die 4-7-8 Methode wirklich beim Einschlafen?',
-        answer: 'Ja, klinische Studien und Schlafmediziner bestätigen die Wirksamkeit. Sie senkt die nächtliche Übererregung und unterbricht das Gedankenkarussell im Kopf.',
+        question: 'Wie hilft die 4-7-8 Methode beim Einschlafen (Einschlaftechnik 4-7-8)?',
+        answer: 'Als bewährte Einschlaftechnik beruhigt die 4-7-8 Methode das autonome Nervensystem in wenigen Minuten. Die 7 Sekunden Atemanpause und 8 Sekunden lange Ausatmung stimulieren den Vagusnerv, senken die Herzfrequenz und stoppen das nächtliche Gedankenkarussell für ein schnelles, natürliches Einschlafen.',
       },
       {
         question: 'Wie oft am Tag sollte man 4-7-8 atmen?',

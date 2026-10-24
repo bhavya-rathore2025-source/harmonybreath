@@ -271,6 +271,10 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
     },
     faqs: [
       {
+        question: 'How do I use this online Wim Hof timer for guided breathing rounds?',
+        answer: 'Our free Wim Hof timer automates the full three-phase protocol directly in your browser: select your difficulty preset (Beginner, Intermediate, Advanced, or Custom), press Start, and follow the expanding visual halo through 30 deep breaths. The timer automatically tracks your breath-out retention hold and signals your 15-second recovery breath with audio chimes—no app download or registration needed.',
+      },
+      {
         question: 'Why is Wim Hof breathing so powerful?',
         answer: 'Wim Hof breathing is powerful because it pairs deep rhythmic breathing with breath holds, producing a distinct, full-body sensation that many people find energizing and mentally sharpening. The structured rhythm keeps your attention focused, and gradually building up to longer holds over time is a genuine mental and physical challenge that many practitioners find rewarding.',
       },

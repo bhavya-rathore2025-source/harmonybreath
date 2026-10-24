@@ -1231,6 +1231,10 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
         answer: 'Nadi Shodhana reduz o estresse, equilibra o sistema nervoso autônomo, harmoniza as funções cerebrais e melhora a concentração através da alternância do ar entre as narinas.',
       },
       {
+        question: 'Como fazer Nadi Shodhana (respiração alternada) passo a passo?',
+        answer: 'Para fazer Nadi Shodhana: sente-se confortavelmente com a coluna ereta. Com o polegar direito, feche a narina direita e inspire suavemente pela narina esquerda. Feche a narina esquerda com o dedo anelar, solte o polegar e expire lentamente pela narina direita. Em seguida, inspire pela direita, feche-a e expire pela esquerda. Isso completa 1 ciclo. Repita por 5 a 10 minutos.',
+      },
+      {
         question: 'Qual a diferença entre Anulom Vilom e Nadi Shodhana?',
         answer: 'A diferença central é a retenção do ar (Kumbhaka). Anulom Vilom é contínuo e sem pausas respiratórias, perfeito para iniciantes. Nadi Shodhana inclui retenções conscientes para intensificar a prática.',
       },
