@@ -5,7 +5,7 @@
 # Stack: Astro (Static Site Generation), Cloudflare Pages (Clean Static Build)
 # Pre-rendered Pages: 86 static HTML routes across 7 supported locales
 # Supported Locales: en (default), de, es, fr, pt, ja, it
-# Last Updated: October 24, 2026
+# Last Updated: November 04, 2026
 # ==============================================================================
 
 
@@ -14,8 +14,8 @@
 # ==============================================================================
 
 ## 1.1 Highest Daily Impressions Record
-* **Peak Record:** 44 daily impressions (achieved October 5, 2026)
-* **Growth Velocity:** 22 (Sep 30) -> 35 (Oct 1) -> 43 (Oct 3) -> 38 (Oct 4) -> 44 (Oct 5)
+* **Peak Record:** 54 daily impressions (achieved October 27, 2026)
+* **Growth Velocity:** 22 (Sep 30) -> 35 (Oct 1) -> 43 (Oct 3) -> 44 (Oct 5) -> 54 (Oct 27)
 * **Global Footprint:** All 7 supported locales actively generating impressions worldwide
 
 ## 1.2 All-Time Best Organic Rank Achieved by Technique & Locale
@@ -454,6 +454,48 @@
 
 
 # ==============================================================================
+### Snapshot 17: October 27 – November 02, 2026 (Rolling 7-Day Window: 5 Clicks & 54 Imp Record)
+* **Metric:** 286 Total Impressions (~40.9 imp/day) | **5 Clicks (1.75% CTR)** | Peak Day: **54 Daily Impressions on Oct 27 (All-Time Record)**
+* **Devices:** Mobile 154 (pos #16.34, 2 clicks, 1.30% CTR), Desktop 125 (pos #42.61, 3 clicks, 2.40% CTR), Tablet 7 (pos #18.43).
+* **Country Highlights:**
+  - **Japan (`ja`):** 4 Clicks (80% of site total!), 43 Impressions, **9.30% CTR**, Average Position **#7.42** (Page 1 Top 7).
+  - **Norway (`no`):** 1 Click, 3 Impressions, **33.33% CTR**, Average Position **#5.67** (Scandinavia conversion breakthrough).
+  - **Germany (`de`):** 48 Impressions (Gross volume leader), avg pos #32.98.
+  - **Austria (`at`):** 14 Impressions, avg pos **#5.64** (Page 1 cluster).
+  - **Spain (`es`):** 27 Impressions, pos #53.96.
+  - **Brazil (`pt`):** 26 Impressions, pos #31.50.
+  - **Italy (`it`):** 24 Impressions, pos #16.58.
+  - **France (`fr`):** 19 Impressions, pos #38.16.
+  - **United States (`us`):** 16 Impressions, pos #32.06.
+* **Top Landing Pages on Page 1 & Clicks:**
+  1. `/ja/nadi-shodhana/`: **2 clicks** | 7 imp | **28.57% CTR** | Pos **#6.43**
+  2. `/ja/box-breathing/`: **1 click** | 9 imp | **11.11% CTR** | Pos **#5.89**
+  3. `/de/physiological-sigh/`: **1 click** | 3 imp | **33.33% CTR** | Pos **#7.33**
+  4. `/ja/4-7-8-breathing/`: **1 click** | 2 imp | **50.00% CTR** | Pos **#2.00**
+  5. `/fr/physiological-sigh/`: 0 clicks | 5 imp | Pos **#3.60**
+  6. `/ja/diaphragmatic-breathing/`: 0 clicks | 8 imp | Pos **#6.00**
+  7. `/ja/physiological-sigh/`: 0 clicks | 7 imp | Pos **#6.43**
+  8. `/physiological-sigh/`: 0 clicks | 5 imp | Pos **#9.00**
+  9. `/de/diaphragmatic-breathing/`: 0 clicks | 16 imp | Pos **#14.75** (Page 2 apex)
+  10. `/de/wim-hof/`: 0 clicks | 45 imp | Pos **#29.71** (Domain gross impression leader)
+* **Top Emerging Queries:**
+  - `respiracion alterna`: 22 imp | Pos #63.50 (Gross query volume leader)
+  - `diaphragmatic breathing deutsch`: 14 imp | Pos **#9.93** (Page 1 Top 10 DACH bilingual breakout!)
+  - `diaphragmatic breathing 日本 語`: 4 imp | Pos **#7.75** (Page 1 Top 8 Japanese bilingual breakout!)
+  - `wim hof`: 8 imp | Pos #62.25
+  - `harmony breath`: 4 imp | Pos #56.25 (Brand discovery query!)
+  - `harmonic breathing`: 2 imp | Pos #47.00 (Brand discovery query!)
+  - `técnica wim hof 4 fases`: 1 imp | Pos **#9.00** (Page 1 Top 9 Spanish Wim Hof!)
+  - `wim hof 4 runden`: 1 imp | Pos **#10.00** (Page 1 Top 10 German protocol!)
+  - `wim hof timer`: 1 imp | Pos **#10.00** (Page 1 Top 10 German/Global tool query!)
+  - `wim hof atmung 4 runden`: 1 imp | Pos **#11.00** (Top of Page 2 German Wim Hof!)
+  - `respiracion guiada wim hof`: 1 imp | Pos #18.00 (Page 2 Spanish guided timer!)
+  - `tecnica 4 7 8 dormir`: 1 imp | Pos #22.00 (Page 3 Spanish sleep method!)
+  - `nadi shodhana benefícios`: 1 imp | Pos #26.00 (Page 3 Portuguese benefits!)
+  - `wim hof atemtechnik anfänger`: 3 imp | Pos #36.00 (Holding steady from Opt 29)
+  - `respiração 4-7-8` / `respiração 4 7 8`: 4 imp | Pos #39.00 - #41.50
+
+
 # 4. COMPLETE LOG OF CODE & CONTENT OPTIMIZATIONS (1 through 33)
 # ==============================================================================
 
@@ -773,13 +815,62 @@
 
 
 # ==============================================================================
+### Optimization 37: German Diaphragmatic Bilingual Query Hook (Nov 4, 2026)
+* **File:** `src/i18n/diaphragmatic-breathing.ts` (German `de`)
+* **Changes:**
+  - `metaDescription` TO: `"Diaphragmatic Breathing auf Deutsch: Lerne die gesunde Bauchatmung (Zwerchfellatmung) mit unserem kostenlosen Online-Timer. Vagusnerv stimulieren & Stress senken."`
+  - `heroSubtitle` TO: `"Meistere die anatomisch gesunde Bauchatmung (Diaphragmatic Breathing auf Deutsch), um deine Lungenkapazität zu erweitern, den Vagusnerv zu stimulieren und das Nervensystem sofort zu beruhigen."`
+* **Target Intent:** Captures and converts high-intent bilingual search query `diaphragmatic breathing deutsch` (#9.93, 14 impressions on Page 1) into clicks.
+* **Freshness Isolation:** Updated schema `dateModified` to 2026-11-04 strictly for `de` in `DiaphragmaticBreathingPage.astro`.
+
+### Optimization 38: Spanish Wim Hof "4 Fases" & "Respiración Guiada" FAQ (Nov 4, 2026)
+* **File:** `src/i18n/wim-hof.ts` (Spanish `es`)
+* **Changes:**
+  - FAQ #5 Question FROM: `"¿Qué es exactamente la respiración Wim Hof?"`
+  - FAQ #5 Question TO:   `"¿Cuáles son las 4 fases de la técnica de respiración guiada Wim Hof?"`
+  - FAQ #5 Answer: Structured into 4 distinct phases (inhalaciones rítmicas profundas, retención en vacío, inhalación de recuperación de 15s a pulmón lleno, e integración/relajación consciente).
+  - Keywords: Added `tecnica wim hof 4 fases, respiracion guiada wim hof`.
+* **Target Intent:** Directly targets Page 1 breakout query `técnica wim hof 4 fases` (#9.0) and Page 2 query `respiracion guiada wim hof` (#18.0).
+* **Freshness Isolation:** Updated schema `dateModified` to 2026-11-04 strictly for `es` in `WimHofPage.astro`.
+
+### Optimization 39: Spanish 4-7-8 Sleep Method Tutorial FAQ Refinement (Nov 4, 2026)
+* **File:** `src/i18n/4-7-8.ts` (Spanish `es`)
+* **Changes:**
+  - FAQ #2 Question FROM: `"¿Realmente ayuda la técnica 4-7-8 para dormir?"`
+  - FAQ #2 Question TO:   `"¿Cómo aplicar la técnica 4-7-8 para dormir y conciliar el sueño en minutos?"`
+  - FAQ #2 Answer: Actionable walkthrough of posture, nasal inhale 4s, retention 7s, smooth exhale 8s, 4 cycles, and physiological rationale for vagal activation and thoughts deceleration.
+  - Keywords: Added `tecnica 4 7 8 dormir, tecnica 4-7-8 para dormir`.
+* **Target Intent:** Captures emerging Spanish query `tecnica 4 7 8 dormir` (#22.0).
+* **Freshness Isolation:** Updated schema `dateModified` to 2026-11-04 strictly for `es` in `Relaxing478Page.astro`.
+
+### Optimization 40: Portuguese Nadi Shodhana Benefits FAQ Alignment (Nov 4, 2026)
+* **File:** `src/i18n/nadi-shodhana.ts` (Portuguese `pt`)
+* **Changes:**
+  - FAQ #1 Question FROM: `"Para que serve Nadi Shodhana?"`
+  - FAQ #1 Question TO:   `"Quais são os principais benefícios de Nadi Shodhana (respiração alternada)?"`
+  - FAQ #1 Answer: Clarified scientifically documented benefits (deep stress/anxiety reduction, hemisphere balance, heart rate reduction, parasympathetic activation).
+  - Keywords: Added `nadi shodhana benefícios, benefícios respiração alternada`.
+* **Target Intent:** Captures emerging query `nadi shodhana benefícios` (#26.0).
+* **Freshness Isolation:** Updated schema `dateModified` to 2026-11-04 strictly for `pt` in `NadiShodhanaPage.astro`.
+
+
 # 5. ROLLING 7-DAY UPDATED PAGES LOG & RE-INDEXING CHECKLIST
 # ==============================================================================
 # Retention Policy: Tracks URLs modified today and over the previous 6 days (7-day window).
 # Pages are monitored daily for performance and rank impact, then pruned after 7 days.
 # Historical records remain permanently documented in Section 4.
 
-## 5.1 October 24, 2026 (Today)
+## 5.1 November 04, 2026 (Today)
+1. `https://harmonybreath.com/de/diaphragmatic-breathing/`
+   - Scope: Diaphragmatic breathing auf Deutsch bilingual CTR optimization (Target: "diaphragmatic breathing deutsch" #9.93, 14 imp)
+2. `https://harmonybreath.com/es/wim-hof/`
+   - Scope: Técnica Wim Hof 4 fases & respiración guiada FAQ optimization (Target: "técnica wim hof 4 fases" #9.0 & "respiracion guiada wim hof" #18.0)
+3. `https://harmonybreath.com/es/4-7-8-breathing/`
+   - Scope: Técnica 4-7-8 para dormir FAQ optimization (Target: "tecnica 4 7 8 dormir" #22.0)
+4. `https://harmonybreath.com/pt/nadi-shodhana/`
+   - Scope: Benefícios de Nadi Shodhana (respiração alternada) FAQ optimization (Target: "nadi shodhana benefícios" #26.0)
+
+## 5.2 October 24, 2026
 1. `https://harmonybreath.com/pt/nadi-shodhana/`
    - Scope: Added step-by-step tutorial FAQ (Target: "nadi shodhana como fazer" #35.0)
 2. `https://harmonybreath.com/de/4-7-8-breathing/`

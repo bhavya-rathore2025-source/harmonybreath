@@ -280,7 +280,7 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
   es: {
     metaTitle: 'Técnica de Respiración 4-7-8: Temporizador para Dormir',
     metaDescription: 'Domina la respiración 4-7-8 con nuestro temporizador guiado online. Inhala 4s, retén 7s y exhala 8s para calmar la ansiedad y conciliar el sueño rápido.',
-    keywords: 'respiración 4-7-8, técnica 4-7-8, método 4-7-8, temporizador respiración 4-7-8, respiración para dormir, respiración relajante, dr andrew weil respiración, ejercicios respiración ansiedad',
+    keywords: 'respiración 4-7-8, técnica 4-7-8, método 4-7-8, temporizador respiración 4-7-8, respiración para dormir, respiración relajante, dr andrew weil respiración, ejercicios respiración ansiedad, tecnica 4 7 8 dormir, tecnica 4-7-8 para dormir',
     canonicalPath: '/es/4-7-8-breathing/',
     badge: 'MOTOR DE RELAJACIÓN PROFUNDA E INDUCCIÓN AL SUEÑO',
     heroTitle: 'Respiración 4-7-8\nTécnica de Respiración Relajante',
@@ -455,8 +455,8 @@ export const relaxing478I18n: Record<SupportedLanguage, Relaxing478Content> = {
         answer: 'Funciona mediante un ritmo preciso: inhalas 4 segundos, retienes 7 segundos y exhalas 8 segundos. La prolongación de la salida del aire activa el nervio vago, desacelerando el corazón y reduciendo la tensión arterial.',
       },
       {
-        question: '¿Realmente ayuda la técnica 4-7-8 para dormir?',
-        answer: 'Sí. Estudios clínicos demuestran que ralentizar la respiración reduce el tono simpático y detiene los pensamientos repetitivos que impiden conciliar el sueño.',
+        question: '¿Cómo aplicar la técnica 4-7-8 para dormir y conciliar el sueño en minutos?',
+        answer: 'Para usar la técnica 4-7-8 para dormir: acuéstate cómodamente, inhala 4 segundos por la nariz, retén el aire 7 segundos y exhala suavemente durante 8 segundos. Repite 4 ciclos. La exhalación prolongada activa el nervio vago, desacelera el pulso y frena los pensamientos acelerados para dormir profundamente.',
       },
       {
         question: '¿Cuántas veces al día se debe hacer?',

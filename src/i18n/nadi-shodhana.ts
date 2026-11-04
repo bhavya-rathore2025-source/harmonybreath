@@ -1108,7 +1108,7 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
   pt: {
     metaTitle: 'Nadi Shodhana: Respiração Narinas Alternadas Temporizador',
     metaDescription: 'Pratique Nadi Shodhana (respiração alternada) com nosso temporizador guiado gratuito. Indicadores visuais de narinas, ritmos ajustáveis e foco mental.',
-    keywords: 'nadi shodhana, respiracao narinas alternadas, anulom vilom, temporizador pranayama, exercicio de respiracao foco, vishnu mudra, beneficios nadi shodhana',
+    keywords: 'nadi shodhana, respiracao narinas alternadas, anulom vilom, temporizador pranayama, exercicio de respiracao foco, vishnu mudra, beneficios nadi shodhana, nadi shodhana benefícios, benefícios respiração alternada',
     canonicalPath: '/pt/nadi-shodhana/',
     badge: 'MOTOR DE PRANAYAMA IÓGICO TRADICIONAL',
     heroTitle: 'Nadi Shodhana\nRespiração das Narinas Alternadas',
@@ -1227,8 +1227,8 @@ export const nadiShodhanaI18n: Record<SupportedLanguage, NadiShodhanaContent> = 
     faqsSubtitle: 'Tudo o que você precisa saber para praticar Nadi Shodhana com segurança e eficiência.',
     faqs: [
       {
-        question: 'Para que serve Nadi Shodhana?',
-        answer: 'Nadi Shodhana reduz o estresse, equilibra o sistema nervoso autônomo, harmoniza as funções cerebrais e melhora a concentração através da alternância do ar entre as narinas.',
+        question: 'Quais são os principais benefícios de Nadi Shodhana (respiração alternada)?',
+        answer: 'Os benefícios comprovados de Nadi Shodhana incluem redução profunda do estresse e da ansiedade, equilíbrio entre os hemisférios cerebrais, diminuição da frequência cardíaca e ativação do sistema parassimpático através da alternância suave do fluxo nasal.',
       },
       {
         question: 'Como fazer Nadi Shodhana (respiração alternada) passo a passo?',

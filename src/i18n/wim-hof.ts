@@ -316,7 +316,7 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
   es: {
     metaTitle: 'Método Wim Hof: Temporizador Guiado de Rondas y Retención',
     metaDescription: 'Domina el método respiratorio y meditación Wim Hof con nuestro temporizador guiado en español. 30 respiraciones, retención y recuperación para energía y calma.',
-    keywords: 'respiracion wim hof, metodo wim hof, meditacion wim hof, metodo respiratorio wim hof, wim hof en español, wim hof respiraciones, tecnica de respiracion wim hof, metodo wim hof respiracion, temporizador wim hof, respiracion wim hof guiada, beneficios metodo wim hof, ejercicios de respiracion wim hof, respiracion iceman wim hof, retencion de respiracion, como hacer el metodo wim hof',
+    keywords: 'respiracion wim hof, metodo wim hof, meditacion wim hof, metodo respiratorio wim hof, wim hof en español, wim hof respiraciones, tecnica de respiracion wim hof, metodo wim hof respiracion, temporizador wim hof, respiracion wim hof guiada, beneficios metodo wim hof, ejercicios de respiracion wim hof, respiracion iceman wim hof, retencion de respiracion, como hacer el metodo wim hof, tecnica wim hof 4 fases, respiracion guiada wim hof',
     canonicalPath: '/es/wim-hof/',
     badge: 'RESPIRACIÓN GUIADA Y ACTIVACIÓN FISIOLÓGICA GRATIS',
     heroTitle: 'Método Wim Hof\nDomina Mente y Fisiología',
@@ -504,8 +504,8 @@ export const wimHofI18n: Record<SupportedLanguage, WimHofContent> = {
         answer: 'Wim Hof es un atleta extremo y conferenciante holandés famoso por su capacidad para resistir el frío extremo, con múltiples récords Guinness. Desarrolló el Método Wim Hof combinando técnicas de respiración consciente, exposición gradual al frío y enfoque mental para optimizar el bienestar físico y psicológico.',
       },
       {
-        question: '¿Qué es exactamente la respiración Wim Hof?',
-        answer: 'Es el pilar fundamental del Método Wim Hof. Consiste en ciclos estructurados en tres fases: 30 respiraciones profundas continuas, una retención prolongada con pulmones vacíos tras la última exhalación y una respiración final de recuperación de 15 segundos con pulmones llenos.',
+        question: '¿Cuáles son las 4 fases de la técnica de respiración guiada Wim Hof?',
+        answer: 'La técnica de respiración guiada Wim Hof se estructura en 4 fases clave: 1) Inhalaciones rítmicas profundas (30 respiraciones continuas), 2) Retención en vacío (apnea relajada sin forzar), 3) Inhalación de recuperación (retener 15 segundos con pulmones llenos), y 4) Integración y relajación consciente antes de iniciar la siguiente ronda.',
       },
       {
         question: '¿Qué efectos produce la técnica Wim Hof en el cuerpo?',

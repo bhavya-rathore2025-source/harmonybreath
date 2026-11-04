@@ -206,12 +206,12 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
 
   de: {
     metaTitle: 'Zwerchfellatmung: Bauchatmung Timer & Übungen für Ruhe',
-    metaDescription: 'Lerne die Bauchatmung (Zwerchfellatmung) mit unserem kostenlosen Online-Timer. Stimuliere den Vagusnerv, senke Stress und aktiviere tiefe Entspannung.',
+    metaDescription: 'Diaphragmatic Breathing auf Deutsch: Lerne die gesunde Bauchatmung (Zwerchfellatmung) mit unserem kostenlosen Online-Timer. Vagusnerv stimulieren & Stress senken.',
     keywords: 'diaphragmatic breathing deutsch, diaphragmatic breathing, bauchatmung, bauchatmung lernen, zwerchfellatmung, bauchatmung uebungen, tiefe bauchatmung, vagusnerv stimulieren atmung, entspannung timer',
     canonicalPath: '/de/diaphragmatic-breathing/',
     badge: 'VAGUSNERV-STIMULATION & PARASYMPATHISCHE ENTSPANNUNG',
     heroTitle: 'Bauchatmung (Zwerchfellatmung)\nÜbungen & Geführter Timer',
-    heroSubtitle: 'Meistere die anatomisch gesunde Bauchatmung, um deine Lungenkapazität zu erweitern, den Vagusnerv zu stimulieren und das Nervensystem sofort zu beruhigen.',
+    heroSubtitle: 'Meistere die anatomisch gesunde Bauchatmung (Diaphragmatic Breathing auf Deutsch), um deine Lungenkapazität zu erweitern, den Vagusnerv zu stimulieren und das Nervensystem sofort zu beruhigen.',
     breadcrumbName: 'Bauchatmung',
     startPracticeBtn: 'Übung Starten',
     jumpLinks: {
