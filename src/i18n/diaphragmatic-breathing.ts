@@ -205,8 +205,8 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   },
 
   de: {
-    metaTitle: 'Zwerchfellatmung: Bauchatmung Timer & Übungen für Ruhe',
-    metaDescription: 'Diaphragmatic Breathing auf Deutsch: Lerne die gesunde Bauchatmung (Zwerchfellatmung) mit unserem kostenlosen Online-Timer. Vagusnerv stimulieren & Stress senken.',
+    metaTitle: 'Diaphragmatic Breathing Deutsch: Zwerchfellatmung Anleitung & Timer',
+    metaDescription: 'Diaphragmatic Breathing auf Deutsch: Kostenlose Bauchatmung Anleitung & interaktiver Zwerchfellatmung-Timer. Vagusnerv stimulieren & Stress sofort senken.',
     keywords: 'diaphragmatic breathing deutsch, diaphragmatic breathing, bauchatmung, bauchatmung lernen, zwerchfellatmung, bauchatmung uebungen, tiefe bauchatmung, vagusnerv stimulieren atmung, entspannung timer',
     canonicalPath: '/de/diaphragmatic-breathing/',
     badge: 'VAGUSNERV-STIMULATION & PARASYMPATHISCHE ENTSPANNUNG',
@@ -259,6 +259,10 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
       whoUsesDesc: 'Von Lungenfachärzten, Kardiologen, Physiotherapeuten, Sängern und Sportlern empfohlen, bildet die Zwerchfellatmung die Grundlage jeder fundierten Atemtherapie und Stressprävention.',
     },
     faqs: [
+      {
+        question: 'Was bedeutet Diaphragmatic Breathing auf Deutsch?',
+        answer: 'Diaphragmatic Breathing ist der englische Begriff für Zwerchfellatmung (auch Bauchatmung). Dabei atmet man tief in den Bauchraum, sodass sich das Zwerchfell absenkt. Dies stimuliert den Vagusnerv, senkt den Blutdruck und aktiviert sofort das parasympathische Nervensystem für tiefe Ruhe.',
+      },
       {
         question: 'Hilft die Bauchatmung bei Angst und Panik?',
         answer: 'Ja, absolut. Die Zwerchfellatmung ist das wirksamste natürliche Mittel gegen akute Angstzustände. Sie signalisiert dem Gehirn über den Vagusnerv sofortige Sicherheit und stoppt Hyperventilation.',
