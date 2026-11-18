@@ -36,6 +36,11 @@ export interface DiaphragmaticBreathingContent {
     whatIsDesc2: string;
     howToTitle: string;
     howToSteps: { step: string; title: string; desc: string }[];
+    timing?: {
+      title: string;
+      subtitle: string;
+      items: { phase: string; duration: string; note: string }[];
+    };
     benefitsTitle: string;
     benefits: { title: string; desc: string }[];
     scienceTitle: string;
@@ -89,6 +94,16 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
         { step: '3', title: 'Gentle Pause', desc: 'Hold the breath softly for 2 seconds, feeling the expansiveness across your lower abdomen and lower back.' },
         { step: '4', title: 'Slow, Relaxing Exhale', desc: 'Exhale through pursed lips or nostrils for 4–6 seconds as your belly gently deflates inward.' },
       ],
+      timing: {
+        title: 'Diaphragmatic Breathing Timing & Cadence',
+        subtitle: 'For optimal vagus nerve stimulation and autonomic calm, follow a slow rhythmic cadence (4-2-4 or 4-2-6 pattern):',
+        items: [
+          { phase: '1. Inhale', duration: '4 sec', note: 'Deep into lower abdomen' },
+          { phase: '2. Hold', duration: '2 sec', note: 'Gentle pause, relaxed chest' },
+          { phase: '3. Exhale', duration: '4–6 sec', note: 'Slow release through lips' },
+          { phase: '4. Pause', duration: '2 sec', note: 'Tranquil bottom stillness' },
+        ],
+      },
       benefitsTitle: 'Evidence-Based Health Benefits',
       benefits: [
         { title: 'Vagus Nerve Stimulation', desc: 'Direct mechanical movement of the diaphragm massages the vagus nerve, immediately shifting autonomic tone toward rest-and-digest.' },
@@ -123,9 +138,9 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
   },
 
   es: {
-    metaTitle: 'Respiración Diafragmática: Ejercicios y Temporizador Online Gratis',
-    metaDescription: 'Aprende la respiración diafragmática (abdominal) con nuestro temporizador gratis. Estimula el nervio vago, reduce el cortisol y calma la ansiedad.',
-    keywords: 'respiración diafragmática, respiraciones diafragmáticas, respiracion abdominal, ejercicios de respiracion diafragmatica, temporizador respiracion diafragmatica, como respirar con el diafragma, respiracion para calmar la ansiedad, nervio vago respiracion',
+    metaTitle: 'Respiración Diafragmática: Cómo Hacerla Paso a Paso y Temporizador',
+    metaDescription: 'Aprende cómo hacer la respiración diafragmática paso a paso con temporizador guiado. Descubre la técnica, tiempos recomendados y calma la ansiedad.',
+    keywords: 'respiración diafragmática, como hacer respiracion diafragmatica, respiracion diafragmatica pasos, respiracion diafragmatica como se hace, tecnica de respiracion diafragmatica, respiracion diafragmatica tiempos, respiraciones diafragmáticas, ejercicios de respiracion diafragmatica, temporizador respiracion diafragmatica',
     canonicalPath: '/es/diaphragmatic-breathing/',
     badge: 'ESTIMULACIÓN DEL NERVIO VAGO Y ACTIVACIÓN PARASIMPÁTICA',
     heroTitle: 'Respiración Diafragmática\nRespiración Abdominal y Vientre',
@@ -156,13 +171,23 @@ export const diaphragmaticBreathingI18n: Record<SupportedLanguage, Diaphragmatic
       whatIsTitle: '¿Qué es la Respiración Diafragmática (Respiración Abdominal)?',
       whatIsDesc1: 'La respiración diafragmática—también llamada respiración abdominal o de vientre—es la forma natural y anatómicamente óptima en que el cuerpo humano está diseñado para respirar. Utiliza el músculo diafragma en lugar de los músculos secundarios del pecho y cuello.',
       whatIsDesc2: 'Al inhalar diafragmáticamente, el diafragma desciende masajeando los órganos internos y llenando la base de los pulmones, donde existe la mayor concentración de vasos sanguíneos y receptores de calma del sistema nervioso.',
-      howToTitle: 'Ejercicios de respiración diafragmática: Guía paso a paso',
+      howToTitle: 'Cómo hacer la respiración diafragmática paso a paso',
       howToSteps: [
         { step: '1', title: 'Coloca tus manos', desc: 'Acuéstate o siéntate cómodo. Pon una mano en tu pecho y la otra sobre tu vientre, justo bajo las costillas.' },
         { step: '2', title: 'Inhala hacia el abdomen', desc: 'Inhala despacio por la nariz durante 4 segundos. La mano del vientre debe subir mientras la del pecho apenas se mueve.' },
         { step: '3', title: 'Pausa breve y suave', desc: 'Sostén el aire 2 segundos con tranquilidad, percibiendo la expansión abdominal.' },
         { step: '4', title: 'Exhalación lenta y relajante', desc: 'Exhala por la boca o nariz durante 4 a 6 segundos mientras el abdomen vuelve a su posición inicial.' },
       ],
+      timing: {
+        title: 'Tiempos de la respiración diafragmática (Cadencia recomendada)',
+        subtitle: 'Para activar la relajación profunda y estimular el nervio vago, mantén una cadencia lenta y rítmica (ritmo estándar 4-2-4 o 4-2-6):',
+        items: [
+          { phase: '1. Inhalación', duration: '4 seg', note: 'Lento hacia el abdomen' },
+          { phase: '2. Retención', duration: '2 seg', note: 'Pausa suave sin tensión' },
+          { phase: '3. Exhalación', duration: '4–6 seg', note: 'Desinflando el vientre' },
+          { phase: '4. Descanso', duration: '2 seg', note: 'Quietud relajante' },
+        ],
+      },
       benefitsTitle: 'Beneficios científicamente probados de la respiración diafragmática',
       benefits: [
         { title: 'Estimulación directa del nervio vago', desc: 'El movimiento mecánico del diafragma activa el nervio vago, activando el sistema parasimpático para frenar el estrés.' },
